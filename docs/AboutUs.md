@@ -7,21 +7,11 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
+You can reach us at the email `ssimantak@u.nus.edu`
 
 ## Project team
 
-### John Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
-
-### Jane Doe
+### Simantak Dabhade
 
 <img src="images/johndoe.png" width="200px">
 
@@ -29,28 +19,27 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
+* Responsibilities: Scheduling and Tracking
 
-### Johnny Doe
+### Tan Xuan Xuan Kelly
+
+<img src="images/kellytxn.png" width="200px">
+
+[[github](https://github.com/kellytxn)]
+[[linkedin](https://www.linkedin.com/in/kellytxn)]
+
+* Role: Documentation + Deliverables and Deadlines
+
+### Loh Zi Yang Cameron
 
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Testing
 
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
+### Goh Joshua
 
 <img src="images/johndoe.png" width="200px">
 
@@ -58,4 +47,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Integration
+
+### Nguyen Ngoc Dang Khoa
+
+<img src="images/johndoe.png" width="200px">
+
+[[github](http://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: Coding Quality
