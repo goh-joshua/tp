@@ -26,7 +26,7 @@ You can reach us at the email `cameronlzy15@u.nus.edu`
 <img src="images/kellytxn.png" width="200px">
 
 [[github](https://github.com/kellytxn)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/kelly.md)]
 
 * Role: Team Lead
 * Responsibilities: Documentation, Deliverables and Deadlines
@@ -36,7 +36,7 @@ You can reach us at the email `cameronlzy15@u.nus.edu`
 <img src="images/SanguineChameleon.png" width="200px">
 
 [[github](https://github.com/SanguineChameleon)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/khoa.md)]
 
 * Role: Developer
 * Responsibilities: Code Quality
@@ -46,17 +46,17 @@ You can reach us at the email `cameronlzy15@u.nus.edu`
 <img src="images/cameronlzy.png" width="200px">
 
 [[github](http://github.com/cameronlzy)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/cameron.md)]
 
 * Role: Developer
 * Responsibilities: QA + Testing
 
-### James Doe
+### Joshua Goh
 
 <img src="images/joshua.png" width="200px">
 
-[[github](http://github.com/joshua)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/goh-joshua)]
+[[portfolio](team/joshua.md)]
 
 * Role: Developer
 * Responsibilities: UI
