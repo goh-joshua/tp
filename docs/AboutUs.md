@@ -7,13 +7,14 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
+
 You can reach us at the email `ssimantak@u.nus.edu`
 
 ## Project team
 
 ### Simantak Dabhade
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/simantak-dabhade.png" width="200px">
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
@@ -42,20 +43,20 @@ You can reach us at the email `ssimantak@u.nus.edu`
 
 ### Goh Joshua
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/cameronlzy.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/cameronlzy)]
+[[portfolio](team/cameron.md)]
 
 * Role: Developer
 * Responsibilities: Integration
 
 ### Nguyen Ngoc Dang Khoa
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/joshua.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/goh-joshua)]
+[[portfolio](team/joshua.md)]
 
 * Role: Developer
 * Responsibilities: Coding Quality
