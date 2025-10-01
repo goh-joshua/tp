@@ -30,11 +30,12 @@ You can reach us at the email `ssimantak@u.nus.edu`
 
 * Role: Documentation + Deliverables and Deadlines
 
+
 ### Loh Zi Yang Cameron
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/simantak-dabhade.png.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/simantak-dabahde)] [[portfolio](team/simantak.md)]
 
 * Role: Developer
 * Responsibilities: Testing
