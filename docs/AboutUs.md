@@ -26,7 +26,7 @@ You can reach us at the email `ssimantak@u.nus.edu`
 <img src="images/kellytxn.png" width="200px">
 
 [[github](https://github.com/kellytxn)]
-[[linkedin](https://www.linkedin.com/in/kellytxn)]
+[[portfolio](team/kelly.md)]
 
 * Role: Documentation + Deliverables and Deadlines
 
