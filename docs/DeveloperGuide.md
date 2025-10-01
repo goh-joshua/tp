@@ -274,58 +274,244 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* sports agents who manage multiple athletes and their careers 
+* need to stay organised with many organisations (teams, sponsors, brands)
+* prefer structured tools over manual spreadsheets or scattered files 
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: The ultimate platform that empowers sports agents to stay organised, build stronger relationships, and drive success for their athletes and partners.
+
+
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a …​      | I want to …​                                                                                 | So that I can…​                                                      |
+|----------|--------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| `* * *`  | new user     | see usage instructions                                                                       | refer to instructions when I forget how to use the App               |
+| `* * *`  | sports agent | create a new athlete profile                                                                 | keep track of the athletes I currently represent                     |
+| `* * *`  | sports agent | delete an athlete profile                                                                    | remove athletes I no longer represent                                |
+| `* * *`  | sports agent | create a new organisation                                                                    | store details of teams, sponsors, or brands I work with              |
+| `* * *`  | sports agent | delete an organisation                                                                       | remove organisations that are no longer relevant                     |
+| `* * *`  | sports agent | upload a new contract                                                                        | track my athletes’ active agreements                                 |
+| `* * *`  | sports agent | delete a contract                                                                            | keep my records up to date                                           |
+| `* *`    | sports agent | search for an athlete or organisation                                                        | quickly find the information I need without scrolling                |
+| `*`      | sports agent | view analytics on contracts & deals                                                          | gain insights into performance and opportunities                     |
+| `*`      | sports agent | link travel plans to competition and appearance schedules                                    | coordinate logistics efficiently and avoid scheduling conflicts      |
+| `*`      | sports agent | manage and sync my athletes’ competition schedules and training events in a central calendar | coordinate effectively with teams, sponsors, and travel arrangements |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `playbook.io` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add Athlete Profile**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Agent requests to add athlete 
+2.  playbook.io stores the new athlete profile
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. Missing required parameter
 
-  Use case ends.
+    * 1a1. playbook.io shows an error message
 
-* 3a. The given index is invalid.
+      Use case ends.
 
-    * 3a1. AddressBook shows an error message.
+* 1b. The given parameter is invalid
 
-      Use case resumes at step 2.
+    * 1b1. playbook.io shows an error message
 
-*{More to be added}*
+      Use case ends.
+
+* 2aDuplicate athlete
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Delete Athlete Profile**
+
+**MSS**
+
+1.  Agent requests to delete athlete
+2.  If exactly one match is found, playbook.io deletes the athlete
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No athlete found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2b. Multiple athletes found
+
+    * 2b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2c. Athlete has active contracts
+
+    * 2c1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Add Organisation**
+
+**MSS**
+
+1.  Agent requests to add organisation
+2.  playbook.io stores the new athlete profile
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. Duplicate contact with associated organisation
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Delete Organisation**
+
+**MSS**
+
+1.  Agent requests to delete a contact associated with an organisation
+2.  If exactly one match is found, playbook.io deletes the contact
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No organisation found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2b. Multiple contacts with associated organisation found
+
+    * 2b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2c. Contact has active contracts
+
+    * 2c1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Add Contract**
+
+**MSS**
+
+1.  Agent requests to add contract
+2.  playbook.io stores the new contract
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+  
+* 2a. No athlete / organisation / contact found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2b. Duplicate contract 
+
+    * 2b1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Delete Contract**
+
+**MSS**
+
+1.  Agent requests to delete a contract
+2.  playbook.io deletes the contract
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No contract found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
 
 ### Non-Functional Requirements
 
