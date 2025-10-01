@@ -7,55 +7,56 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
+You can reach us at the email `ssimantak@u.nus.edu`
 
 ## Project team
 
-### John Doe
+### Simantak Dabhade
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/simantak-dabhade.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/simantak-dabhade)]
+[[portfolio](team/simantak.md)]
 
-* Role: Project Advisor
+* Role: The genius
 
-### Jane Doe
+### Kelly Tan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/kellytxn.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/kellytxn)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
+* Responsibilities: Documentation, Deliverables and Deadlines
 
-### Johnny Doe
+### Khoa
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/SanguineChameleon.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/SanguineChameleon)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Code Quality
 
-### James Doe
+### Cameron
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/cameronlzy.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/cameronlzy)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: QA + Testing
+
+### Joshua
+
+<img src="images/goh-joshua.png" width="200px">
+
+[[github](http://github.com/goh-joshua)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: Integration
