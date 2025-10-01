@@ -7,6 +7,7 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
+
 You can reach us at the email `ssimantak@u.nus.edu`
 
 ## Project team
@@ -15,48 +16,47 @@ You can reach us at the email `ssimantak@u.nus.edu`
 
 <img src="images/simantak-dabhade.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/simantak-dabhade)]
-[[portfolio](team/simantak.md)]
+[[github](http://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
 
-* Role: The genius
+* Role: Team Lead
+* Responsibilities: Scheduling and Tracking
 
-### Kelly Tan
+### Tan Xuan Xuan Kelly
 
 <img src="images/kellytxn.png" width="200px">
 
 [[github](https://github.com/kellytxn)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/kelly.md)]
 
-* Role: Team Lead
-* Responsibilities: Documentation, Deliverables and Deadlines
+* Role: Documentation + Deliverables and Deadlines
 
-### Khoa
 
-<img src="images/SanguineChameleon.png" width="200px">
+### Loh Zi Yang Cameron
 
-[[github](https://github.com/SanguineChameleon)]
-[[portfolio](team/johndoe.md)]
+<img src="images/simantak-dabhade.png.png" width="200px">
+
+[[github](http://github.com/simantak-dabahde)] [[portfolio](team/simantak.md)]
 
 * Role: Developer
-* Responsibilities: Code Quality
+* Responsibilities: Testing
 
-### Cameron
+### Goh Joshua
 
 <img src="images/cameronlzy.png" width="200px">
 
 [[github](http://github.com/cameronlzy)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: QA + Testing
-
-### Joshua
-
-<img src="images/goh-joshua.png" width="200px">
-
-[[github](http://github.com/goh-joshua)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/cameron.md)]
 
 * Role: Developer
 * Responsibilities: Integration
+
+### Nguyen Ngoc Dang Khoa
+
+<img src="images/joshua.png" width="200px">
+
+[[github](http://github.com/goh-joshua)]
+[[portfolio](team/joshua.md)]
+
+* Role: Developer
+* Responsibilities: Coding Quality
