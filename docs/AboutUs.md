@@ -16,6 +16,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/sanguinechameleon.png" width="200px">
 
 [[github](https://github.com/SanguineChameleon)]
+[[portfolio]](team/khoa.md)
 
 * Role: Developer
 * Responsibilities: Code Quality
