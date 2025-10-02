@@ -274,9 +274,9 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* sports agents who manage multiple athletes and their careers 
+* sports agents who manage multiple athletes and their careers
 * need to stay organised with many organisations (teams, sponsors, brands)
-* prefer structured tools over manual spreadsheets or scattered files 
+* prefer structured tools over manual spreadsheets or scattered files
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -313,7 +313,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  Agent requests to add athlete 
+1.  Agent requests to add athlete
 2.  playbook.io stores the new athlete profile
 
     Use case ends.
@@ -402,9 +402,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1c. Duplicate contact with associated organisation
+* 2a Duplicate athlete
 
-    * 1c1. playbook.io shows an error message
+    * 2a1. playbook.io shows an error message
 
       Use case ends.
 
@@ -471,14 +471,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. playbook.io shows an error message
 
       Use case ends.
-  
+      
 * 2a. No athlete / organisation / contact found
 
     * 2a1. playbook.io shows an error message
 
       Use case ends.
 
-* 2b. Duplicate contract 
+* 2b. Duplicate contract
 
     * 2b1. playbook.io shows an error message
 
@@ -518,13 +518,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+4.	Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid input is detected.
+5.	Should prevent accidental data loss by requiring explicit confirmation for destructive operations such as deleting athletes, organisations, or contracts.
+6.	Should provide meaningful error handling and recovery messages if storage or system errors occur (e.g., “Unable to save contract. Please try again.”).
+7.	Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for ease of deployment across environments.
+8.	Should allow a new user to learn the system within 10 minutes by following the user guide and trying out the sample dataset.
+9.	Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes, organisations, or contracts under normal usage load.
+10.	Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport, same organisation + contact person).
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Athlete Profile**: A record containing an athlete’s details such as name, sport, age, and contact information.
+* **Organisation**: An entity such as a team, brand, or sponsor that interacts with the sports agent.
+* **Contract**: A formal agreement between an athlete and an organisation, including details like duration, payment, and contact person.
+* **Sponsor**: A company or brand that provides financial or material support to athletes, often in exchange for promotion.
+* **Competition Schedule**: A calendar of matches, events, or appearances an athlete participates in.
+* **Training Event**: A scheduled practice or preparation session for an athlete.
+* **Contact Person**: The representative from an organisation who communicates with the sports agent.
+* **MVP (Minimum Viable Product)**: The smallest set of features that make the app usable, such as creating and deleting athletes, organisations, and contracts.
+* **CRUD Operations**: Basic system functions — Create, Read, Update, Delete.
+* **Duplicate Handling**: Rules to prevent multiple entries of the same athlete, organisation, or contract.
+* **Validation Error**: A system-generated message shown when user input does not meet required constraints (e.g., invalid email format).
+* **UI Mock-up**: A sample design of the interface showing how the system should look and behave.
 
 --------------------------------------------------------------------------------------------------------------------
 
