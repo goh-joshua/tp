@@ -274,71 +274,274 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* sports agents who manage multiple athletes and their careers
+* need to stay organised with many organisations (teams, sponsors, brands)
+* prefer structured tools over manual spreadsheets or scattered files
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: The ultimate platform that empowers sports agents to stay organised, build stronger relationships, and drive success for their athletes and partners.
+
+
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a …​      | I want to …​                                                                                 | So that I can…​                                                      |
+|----------|--------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| `* * *`  | new user     | see usage instructions                                                                       | refer to instructions when I forget how to use the App               |
+| `* * *`  | sports agent | create a new athlete profile                                                                 | keep track of the athletes I currently represent                     |
+| `* * *`  | sports agent | delete an athlete profile                                                                    | remove athletes I no longer represent                                |
+| `* * *`  | sports agent | create a new organisation                                                                    | store details of teams, sponsors, or brands I work with              |
+| `* * *`  | sports agent | delete an organisation                                                                       | remove organisations that are no longer relevant                     |
+| `* * *`  | sports agent | upload a new contract                                                                        | track my athletes’ active agreements                                 |
+| `* * *`  | sports agent | delete a contract                                                                            | keep my records up to date                                           |
+| `* *`    | sports agent | search for an athlete or organisation                                                        | quickly find the information I need without scrolling                |
+| `*`      | sports agent | view analytics on contracts & deals                                                          | gain insights into performance and opportunities                     |
+| `*`      | sports agent | link travel plans to competition and appearance schedules                                    | coordinate logistics efficiently and avoid scheduling conflicts      |
+| `*`      | sports agent | manage and sync my athletes’ competition schedules and training events in a central calendar | coordinate effectively with teams, sponsors, and travel arrangements |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `playbook.io` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add Athlete Profile**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Agent requests to add athlete
+2.  playbook.io stores the new athlete profile
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. Missing required parameter
 
-  Use case ends.
+    * 1a1. playbook.io shows an error message
 
-* 3a. The given index is invalid.
+      Use case ends.
 
-    * 3a1. AddressBook shows an error message.
+* 1b. The given parameter is invalid
 
-      Use case resumes at step 2.
+    * 1b1. playbook.io shows an error message
 
-*{More to be added}*
+      Use case ends.
+
+* 2aDuplicate athlete
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Delete Athlete Profile**
+
+**MSS**
+
+1.  Agent requests to delete athlete
+2.  If exactly one match is found, playbook.io deletes the athlete
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No athlete found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2b. Multiple athletes found
+
+    * 2b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2c. Athlete has active contracts
+
+    * 2c1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Add Organisation**
+
+**MSS**
+
+1.  Agent requests to add organisation
+2.  playbook.io stores the new athlete profile
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. Duplicate contact with associated organisation
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Delete Organisation**
+
+**MSS**
+
+1.  Agent requests to delete a contact associated with an organisation
+2.  If exactly one match is found, playbook.io deletes the contact
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No organisation found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2b. Multiple contacts with associated organisation found
+
+    * 2b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2c. Contact has active contracts
+
+    * 2c1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Add Contract**
+
+**MSS**
+
+1.  Agent requests to add contract
+2.  playbook.io stores the new contract
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No athlete / organisation / contact found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2b. Duplicate contract
+
+    * 2b1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Delete Contract**
+
+**MSS**
+
+1.  Agent requests to delete a contract
+2.  playbook.io deletes the contract
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. The given parameter is invalid
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No contract found
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+4.	Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid input is detected.
+5.	Should prevent accidental data loss by requiring explicit confirmation for destructive operations such as deleting athletes, organisations, or contracts.
+6.	Should provide meaningful error handling and recovery messages if storage or system errors occur (e.g., “Unable to save contract. Please try again.”).
+7.	Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for ease of deployment across environments.
+8.	Should allow a new user to learn the system within 10 minutes by following the user guide and trying out the sample dataset.
+9.	Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes, organisations, or contracts under normal usage load.
+10.	Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport, same organisation + contact person).
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Athlete Profile**: A record containing an athlete’s details such as name, sport, age, and contact information.
+* **Organisation**: An entity such as a team, brand, or sponsor that interacts with the sports agent.
+* **Contract**: A formal agreement between an athlete and an organisation, including details like duration, payment, and contact person.
+* **Sponsor**: A company or brand that provides financial or material support to athletes, often in exchange for promotion.
+* **Competition Schedule**: A calendar of matches, events, or appearances an athlete participates in.
+* **Training Event**: A scheduled practice or preparation session for an athlete.
+* **Contact Person**: The representative from an organisation who communicates with the sports agent.
+* **MVP (Minimum Viable Product)**: The smallest set of features that make the app usable, such as creating and deleting athletes, organisations, and contracts.
+* **CRUD Operations**: Basic system functions — Create, Read, Update, Delete.
+* **Duplicate Handling**: Rules to prevent multiple entries of the same athlete, organisation, or contract.
+* **Validation Error**: A system-generated message shown when user input does not meet required constraints (e.g., invalid email format).
+* **UI Mock-up**: A sample design of the interface showing how the system should look and behave.
 
 --------------------------------------------------------------------------------------------------------------------
 
