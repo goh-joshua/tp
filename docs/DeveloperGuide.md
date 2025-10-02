@@ -402,9 +402,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 1c. Duplicate contact with associated organisation
+* 2a Duplicate athlete
 
-    * 1c1. playbook.io shows an error message
+    * 2a1. playbook.io shows an error message
 
       Use case ends.
 
@@ -471,7 +471,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. playbook.io shows an error message
 
       Use case ends.
-
+      
 * 2a. No athlete / organisation / contact found
 
     * 2a1. playbook.io shows an error message

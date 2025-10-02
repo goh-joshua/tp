@@ -7,55 +7,56 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
+
+You can reach us at the email `simantak@u.nus.edu`
 
 ## Project team
 
-### John Doe
+### Simantak Dabahde
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/simantak-dabhade.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/simantak-dabahde)] [[portfolio](team/simantak.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Team Lead + Scheduling and Tracking
 
-### Jean Doe
+### Nguyen Ngoc Dang Khoa
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/sanguinechameleon.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/SanguineChameleon)]
+[[portfolio]](team/khoa.md)
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Code Quality
+
+### Tan Xuan Xuan Kelly
+
+<img src="images/kellytxn.png" width="200px">
+
+[[github](https://github.com/kellytxn)]
+[[portfolio](team/kelly.md)]
+
+* Role: Developer
+* Role: Documentation + Deliverables and Deadlines
+
+### Loh Zi Yang Cameron
+
+<img src="images/cameronlzy.png" width="200px">
+
+[[github](http://github.com/cameronlzy)]
+[[portfolio](team/cameron.md)]
+
+* Role: Developer
+* Responsibilities: Testing
+
+### Goh Joshua
+
+<img src="images/goh-joshua.png" width="200px">
+
+[[github](http://github.com/goh-joshua)]
+[[portfolio](team/goh-joshua.md)]
+
+* Role: Developer
+* Responsibilities: Integration
