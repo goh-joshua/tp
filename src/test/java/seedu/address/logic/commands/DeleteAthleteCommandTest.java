@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalAthletes.getTypicalAthleteBook;
 import static seedu.address.testutil.TypicalAthletes.ALICE;
+import static seedu.address.testutil.TypicalAthletes.getTypicalAthleteBook;
 
 import org.junit.jupiter.api.Test;
 

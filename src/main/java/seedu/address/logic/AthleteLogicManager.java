@@ -48,7 +48,7 @@ public class AthleteLogicManager implements AthleteLogic {
         AthleteCommand command = athleteParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
-       /*  try {
+        /*  try {
            storage.saveAthleteBook(model.getAthleteBook());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);

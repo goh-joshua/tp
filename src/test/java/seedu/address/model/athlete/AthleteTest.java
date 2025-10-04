@@ -1,13 +1,17 @@
 package seedu.address.model.athlete;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.AthleteBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.logic.commands.CommandTestUtil.*;
-import static seedu.address.testutil.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.testutil.TypicalAthletes.ALICE;
 import static seedu.address.testutil.TypicalAthletes.BENSON;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.AthleteBuilder;
 
 public class AthleteTest {
 

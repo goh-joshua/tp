@@ -35,35 +35,35 @@ public class EmailTest {
 
         // invalid parts
         assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@-")); // invalid domain name
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@exam_ple.com")); // underscore in domain name
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peter jack@example.com")); // spaces in local part
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@exam ple.com")); // spaces in domain name
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@exam_ple.com")); // underscore
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peter jack@example.com")); // spaces
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@exam ple.com")); // spaces
         assertFalse(seedu.address.model.athlete.Email.isValidEmail(" peterjack@example.com")); // leading space
         assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.com ")); // trailing space
         assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@@example.com")); // double '@' symbol
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peter@jack@example.com")); // '@' symbol in local part
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("-peterjack@example.com")); // local part starts with a hyphen
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack-@example.com")); // local part ends with a hyphen
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peter..jack@example.com")); // local part has two consecutive periods
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example@com")); // '@' symbol in domain name
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@.example.com")); // domain name starts with a period
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.com.")); // domain name ends with a period
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@-example.com")); // domain name starts with a hyphen
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.com-")); // domain name ends with a hyphen
-        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.c")); // top level domain has less than two chars
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peter@jack@example.com")); // '@' symbol
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("-peterjack@example.com")); //  hyphen
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack-@example.com")); // hyphen
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peter..jack@example.com"));
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example@com")); // '@' symbol
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@.example.com"));
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.com."));
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@-example.com"));
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.com-"));
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.c"));
 
         // valid email
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack_1190@example.com")); // underscore in local part
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack.1190@example.com")); // period in local part
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack+1190@example.com")); // '+' symbol in local part
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack-1190@example.com")); // hyphen in local part
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack_1190@example.com")); // underscore
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack.1190@example.com")); // period
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack+1190@example.com")); // '+' symbol
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack-1190@example.com")); // hyphen
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("a@bc")); // minimal
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("test@localhost")); // alphabets only
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("123@145")); // numeric local part and domain name
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("a1+be.d@example1.com")); // mixture of alphanumeric and special characters
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("peter_jack@very-very-very-long-example.com")); // long domain name
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
-        assertTrue(seedu.address.model.athlete.Email.isValidEmail("e1234567@u.nus.edu")); // more than one period in domain
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("123@145")); // numeric
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("a1+be.d@example1.com")); // mixture
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("peter_jack@very-very-very-long-example.com"));
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com"));
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail("e1234567@u.nus.edu")); // more than one period
     }
 
     @Test

@@ -36,6 +36,12 @@ public class DeleteAthleteCommand extends AthleteCommand {
     private final Name name;
     private final Sport sport;
 
+    /**
+     * Creates a {@code DeleteAthleteCommand} to delete the specified athlete.
+     *
+     * @param name  Name of the athlete to delete.
+     * @param sport Sport of the athlete to delete.
+     */
     public DeleteAthleteCommand(Name name, Sport sport) {
         this.name = name;
         this.sport = sport;

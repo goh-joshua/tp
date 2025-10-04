@@ -1,6 +1,11 @@
 package seedu.address.testutil;
 
-import seedu.address.model.athlete.*;
+import seedu.address.model.athlete.Age;
+import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.Email;
+import seedu.address.model.athlete.Name;
+import seedu.address.model.athlete.Phone;
+import seedu.address.model.athlete.Sport;
 
 /**
  * A utility class to help with building Athlete objects.

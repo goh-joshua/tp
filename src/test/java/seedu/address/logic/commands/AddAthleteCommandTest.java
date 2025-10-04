@@ -50,7 +50,8 @@ public class AddAthleteCommandTest {
         AddAthleteCommand addAthleteCommand = new AddAthleteCommand(validAthlete);
         ModelStub modelStub = new ModelStubWithAthlete(validAthlete);
 
-        assertThrows(CommandException.class, AddAthleteCommand.MESSAGE_DUPLICATE_ATHLETE, () -> addAthleteCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddAthleteCommand.MESSAGE_DUPLICATE_ATHLETE, () -> addAthleteCommand.execute(modelStub));
     }
 
     @Test

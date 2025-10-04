@@ -1,10 +1,10 @@
 package seedu.address.model.athlete;
 
-import seedu.address.commons.util.StringUtil;
-import seedu.address.commons.util.ToStringBuilder;
-
 import java.util.List;
 import java.util.function.Predicate;
+
+import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.ToStringBuilder;
 
 /**
  * Tests that an {@code Athlete}'s {@code Name} matches any of the keywords given.

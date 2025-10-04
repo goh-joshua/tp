@@ -46,7 +46,7 @@ public class AthleteCommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_SPORT_DESC = " " + PREFIX_SPORT + "Basket++"; // empty string not allowed for sport
+    public static final String INVALID_SPORT_DESC = " " + PREFIX_SPORT + "Basket++"; // '+' not allowed for sport
     public static final String INVALID_AGE_DESC = " " + PREFIX_AGE + "three"; // letters not allowed for age
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -56,7 +56,8 @@ public class AthleteCommandTestUtil {
      * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
      * - the {@code actualModel} matches {@code expectedModel}
      */
-    public static void assertCommandSuccess(AthleteCommand command, AthleteModel actualModel, CommandResult expectedCommandResult,
+    public static void assertCommandSuccess(AthleteCommand command, AthleteModel actualModel,
+                                            CommandResult expectedCommandResult,
                                             AthleteModel expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);

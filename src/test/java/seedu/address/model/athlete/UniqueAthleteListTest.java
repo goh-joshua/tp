@@ -1,174 +1,121 @@
 package seedu.address.model.athlete;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.testutil.PersonBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalAthletes.ALICE;
+import static seedu.address.testutil.TypicalAthletes.BENSON;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.athlete.exceptions.AthleteNotFoundException;
+import seedu.address.model.athlete.exceptions.DuplicateAthleteException;
+import seedu.address.testutil.AthleteBuilder;
 
 public class UniqueAthleteListTest {
 
-    private final UniquePersonList uniquePersonList = new UniquePersonList();
+    private final UniqueAthleteList uniqueAthleteList = new UniqueAthleteList();
 
     @Test
-    public void contains_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonList.contains(null));
+    public void contains_nullAthlete_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueAthleteList.contains(null));
     }
 
     @Test
-    public void contains_personNotInList_returnsFalse() {
-        assertFalse(uniquePersonList.contains(ALICE));
+    public void contains_athleteNotInList_returnsFalse() {
+        assertFalse(uniqueAthleteList.contains(ALICE));
     }
 
     @Test
-    public void contains_personInList_returnsTrue() {
-        uniquePersonList.add(ALICE);
-        assertTrue(uniquePersonList.contains(ALICE));
+    public void contains_athleteInList_returnsTrue() {
+        uniqueAthleteList.add(ALICE);
+        assertTrue(uniqueAthleteList.contains(ALICE));
     }
 
     @Test
-    public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
-        uniquePersonList.add(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
-        assertTrue(uniquePersonList.contains(editedAlice));
+    public void contains_athleteWithSameIdentityFieldsInList_returnsTrue() {
+        uniqueAthleteList.add(ALICE);
+        Athlete editedAlice = new AthleteBuilder(ALICE).build();
+        assertTrue(uniqueAthleteList.contains(editedAlice));
     }
 
     @Test
-    public void add_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonList.add(null));
+    public void add_nullAthlete_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueAthleteList.add(null));
     }
 
     @Test
-    public void add_duplicatePerson_throwsDuplicatePersonException() {
-        uniquePersonList.add(ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniquePersonList.add(ALICE));
+    public void add_duplicateAthlete_throwsDuplicatePersonException() {
+        uniqueAthleteList.add(ALICE);
+        assertThrows(DuplicateAthleteException.class, () -> uniqueAthleteList.add(ALICE));
     }
 
     @Test
-    public void setPerson_nullTargetPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonList.setPerson(null, ALICE));
+    public void remove_nullAthlete_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueAthleteList.remove(null));
     }
 
     @Test
-    public void setPerson_nullEditedPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonList.setPerson(ALICE, null));
+    public void remove_athleteDoesNotExist_throwsPersonNotFoundException() {
+        assertThrows(AthleteNotFoundException.class, () -> uniqueAthleteList.remove(ALICE));
     }
 
     @Test
-    public void setPerson_targetPersonNotInList_throwsPersonNotFoundException() {
-        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.setPerson(ALICE, ALICE));
+    public void remove_existingAthlete_removesAthlete() {
+        uniqueAthleteList.add(ALICE);
+        uniqueAthleteList.remove(ALICE);
+        UniqueAthleteList expectedUniqueAthleteList = new UniqueAthleteList();
+        assertEquals(expectedUniqueAthleteList, uniqueAthleteList);
     }
 
     @Test
-    public void setPerson_editedPersonIsSamePerson_success() {
-        uniquePersonList.add(ALICE);
-        uniquePersonList.setPerson(ALICE, ALICE);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        expectedUniquePersonList.add(ALICE);
-        assertEquals(expectedUniquePersonList, uniquePersonList);
+    public void setAthletes_nullUniqueAthleteList_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueAthleteList.setAthletes((UniqueAthleteList) null));
     }
 
     @Test
-    public void setPerson_editedPersonHasSameIdentity_success() {
-        uniquePersonList.add(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
-        uniquePersonList.setPerson(ALICE, editedAlice);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        expectedUniquePersonList.add(editedAlice);
-        assertEquals(expectedUniquePersonList, uniquePersonList);
+    public void setAthletes_uniqueAthleteList_replacesOwnListWithProvidedUniqueAthleteList() {
+        uniqueAthleteList.add(ALICE);
+        UniqueAthleteList expectedUniqueAthleteList = new UniqueAthleteList();
+        expectedUniqueAthleteList.add(BENSON);
+        uniqueAthleteList.setAthletes(expectedUniqueAthleteList);
+        assertEquals(expectedUniqueAthleteList, uniqueAthleteList);
     }
 
     @Test
-    public void setPerson_editedPersonHasDifferentIdentity_success() {
-        uniquePersonList.add(ALICE);
-        uniquePersonList.setPerson(ALICE, BOB);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        expectedUniquePersonList.add(BOB);
-        assertEquals(expectedUniquePersonList, uniquePersonList);
+    public void setAthletes_nullList_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueAthleteList.setAthletes((List<Athlete>) null));
     }
 
     @Test
-    public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
-        uniquePersonList.add(ALICE);
-        uniquePersonList.add(BOB);
-        assertThrows(DuplicatePersonException.class, () -> uniquePersonList.setPerson(ALICE, BOB));
+    public void setAthletes_list_replacesOwnListWithProvidedList() {
+        uniqueAthleteList.add(ALICE);
+        List<Athlete> athleteList = Collections.singletonList(BENSON);
+        uniqueAthleteList.setAthletes(athleteList);
+        UniqueAthleteList expectedUniqueAthleteList = new UniqueAthleteList();
+        expectedUniqueAthleteList.add(BENSON);
+        assertEquals(expectedUniqueAthleteList, uniqueAthleteList);
     }
 
     @Test
-    public void remove_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonList.remove(null));
-    }
-
-    @Test
-    public void remove_personDoesNotExist_throwsPersonNotFoundException() {
-        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.remove(ALICE));
-    }
-
-    @Test
-    public void remove_existingPerson_removesPerson() {
-        uniquePersonList.add(ALICE);
-        uniquePersonList.remove(ALICE);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        assertEquals(expectedUniquePersonList, uniquePersonList);
-    }
-
-    @Test
-    public void setPersons_nullUniquePersonList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonList.setPersons((UniquePersonList) null));
-    }
-
-    @Test
-    public void setPersons_uniquePersonList_replacesOwnListWithProvidedUniquePersonList() {
-        uniquePersonList.add(ALICE);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        expectedUniquePersonList.add(BOB);
-        uniquePersonList.setPersons(expectedUniquePersonList);
-        assertEquals(expectedUniquePersonList, uniquePersonList);
-    }
-
-    @Test
-    public void setPersons_nullList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniquePersonList.setPersons((List<Person>) null));
-    }
-
-    @Test
-    public void setPersons_list_replacesOwnListWithProvidedList() {
-        uniquePersonList.add(ALICE);
-        List<Person> personList = Collections.singletonList(BOB);
-        uniquePersonList.setPersons(personList);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        expectedUniquePersonList.add(BOB);
-        assertEquals(expectedUniquePersonList, uniquePersonList);
-    }
-
-    @Test
-    public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
-        List<Person> listWithDuplicatePersons = Arrays.asList(ALICE, ALICE);
-        assertThrows(DuplicatePersonException.class, () -> uniquePersonList.setPersons(listWithDuplicatePersons));
+    public void setAthletes_listWithDuplicateAthletes_throwsDuplicateAthleteException() {
+        List<Athlete> listWithDuplicateAthletes = Arrays.asList(ALICE, ALICE);
+        assertThrows(DuplicateAthleteException.class, () -> uniqueAthleteList.setAthletes(listWithDuplicateAthletes));
     }
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> uniquePersonList.asUnmodifiableObservableList().remove(0));
+            -> uniqueAthleteList.asUnmodifiableObservableList().remove(0));
     }
 
     @Test
     public void toStringMethod() {
-        assertEquals(uniquePersonList.asUnmodifiableObservableList().toString(), uniquePersonList.toString());
+        assertEquals(uniqueAthleteList.asUnmodifiableObservableList().toString(), uniqueAthleteList.toString());
     }
 }

@@ -465,7 +465,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. playbook.io shows an error message
 
       Use case ends.
-      
+
 * 2a. No athlete / organisation / contact found
 
     * 2a1. playbook.io shows an error message

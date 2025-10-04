@@ -1,7 +1,7 @@
 package seedu.address.model.athlete;
 
-import static seedu.address.commons.util.AppUtil.checkArgument;
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an Athlete's sport in playbook.io.

@@ -1,56 +1,33 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.AthleteMessages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.AGE_DESC_AMY;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.AGE_DESC_BOB;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.INVALID_AGE_DESC;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.INVALID_SPORT_DESC;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.NAME_DESC_BOB;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.PHONE_DESC_BOB;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.PREAMBLE_NON_EMPTY;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.SPORT_DESC_AMY;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.SPORT_DESC_BOB;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.VALID_AGE_AMY;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.VALID_AGE_BOB;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.AthleteCommandTestUtil.VALID_SPORT_AMY;
 import static seedu.address.logic.commands.AthleteCommandTestUtil.VALID_SPORT_BOB;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.AthleteCommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.AthleteCommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalAthletes.ALICE;
-import static seedu.address.testutil.TypicalAthletes.BENSON;
-import static seedu.address.logic.AthleteMessages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
-import static seedu.address.logic.parser.AthleteCommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.parser.AthleteCommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalAthletes.ALICE;
 import static seedu.address.testutil.TypicalAthletes.BENSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.AthleteMessages;
 import seedu.address.logic.commands.AddAthleteCommand;
 import seedu.address.model.athlete.Age;
+import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Email;
 import seedu.address.model.athlete.Name;
-import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Phone;
 import seedu.address.model.athlete.Sport;
 import seedu.address.testutil.AthleteBuilder;
@@ -62,9 +39,9 @@ public class AddAthleteCommandParserTest {
     public void parse_allFieldsPresent_success() {
         Athlete expectedAthlete = new AthleteBuilder(BENSON).build();
 
-        assertParseSuccess(parser,  NAME_DESC_BOB + SPORT_DESC_BOB
-                + AGE_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                , new AddAthleteCommand(expectedAthlete));
+        assertParseSuccess(parser, NAME_DESC_BOB + SPORT_DESC_BOB
+                + AGE_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB,
+                new AddAthleteCommand(expectedAthlete));
     }
 
     @Test

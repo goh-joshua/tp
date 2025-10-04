@@ -1,11 +1,10 @@
 package seedu.address.model.athlete;
 
-import seedu.address.commons.util.ToStringBuilder;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.address.commons.util.ToStringBuilder;
 
 /**
  * Represents an Athlete in playbook.io.
@@ -37,9 +36,13 @@ public class Athlete {
         return name;
     }
 
-    public Sport getSport() { return sport; }
+    public Sport getSport() {
+        return sport;
+    }
 
-    public Age getAge() { return age; }
+    public Age getAge() {
+        return age;
+    }
 
     public Phone getPhone() {
         return phone;
