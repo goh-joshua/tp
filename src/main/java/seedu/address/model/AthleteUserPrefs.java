@@ -63,7 +63,7 @@ public class AthleteUserPrefs implements ReadOnlyAthleteUserPrefs {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof UserPrefs)) {
+        if (!(other instanceof AthleteUserPrefs)) {
             return false;
         }
 

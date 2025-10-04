@@ -57,9 +57,8 @@ public class DeleteAthleteCommand extends AthleteCommand {
         }
 
         model.deleteAthlete(athleteToDelete);
-        return new CommandResult(String.format(
-                MESSAGE_DELETE_ATHLETE_SUCCESS,
-                AthleteMessages.format(athleteToDelete)));
+        return new CommandResult(String.format(MESSAGE_DELETE_ATHLETE_SUCCESS, athleteToDelete));
+
     }
 
     @Override

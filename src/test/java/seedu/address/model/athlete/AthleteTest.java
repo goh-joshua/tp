@@ -1,0 +1,80 @@
+package seedu.address.model.athlete;
+
+import org.junit.jupiter.api.Test;
+import seedu.address.testutil.AthleteBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalAthletes.ALICE;
+import static seedu.address.testutil.TypicalAthletes.BENSON;
+
+public class AthleteTest {
+
+    @Test
+    public void isSameAthlete() {
+        // same object -> returns true
+        assertTrue(ALICE.isSameAthlete(ALICE));
+
+        // null -> returns false
+        assertFalse(ALICE.isSameAthlete(null));
+
+        // same name and sport, all other attributes different -> returns true
+        Athlete editedAlice = new AthleteBuilder(ALICE).withAge("18").withPhone("99999999").withEmail("bob@example.com")
+                .build();
+        assertTrue(ALICE.isSameAthlete(editedAlice));
+
+        // different name, all other attributes same -> returns false
+        editedAlice = new AthleteBuilder(ALICE).withName("Bob").build();
+        assertFalse(ALICE.isSameAthlete(editedAlice));
+
+        // name differs in case, all other attributes same -> returns true
+        Athlete editedBenson = new AthleteBuilder(BENSON).withName("benson").build();
+        assertFalse(BENSON.isSameAthlete(editedBenson));
+    }
+
+    @Test
+    public void equals() {
+        // same values -> returns true
+        Athlete aliceCopy = new AthleteBuilder(ALICE).build();
+        assertTrue(ALICE.equals(aliceCopy));
+
+        // same object -> returns true
+        assertTrue(ALICE.equals(ALICE));
+
+        // null -> returns false
+        assertFalse(ALICE.equals(null));
+
+        // different type -> returns false
+        assertFalse(ALICE.equals(5));
+
+        // different person -> returns false
+        assertFalse(ALICE.equals(BENSON));
+
+        // different name -> returns false
+        Athlete editedAlice = new AthleteBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
+        // different phone -> returns false
+        editedAlice = new AthleteBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
+        // different email -> returns false
+        editedAlice = new AthleteBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
+
+    }
+
+    @Test
+    public void toStringMethod() {
+        String expected = Athlete.class.getCanonicalName()
+                + "{name=" + ALICE.getName()
+                + ", sport=" + ALICE.getSport()
+                + ", age=" + ALICE.getAge()
+                + ", phone=" + ALICE.getPhone()
+                + ", email=" + ALICE.getEmail()
+                + "}";
+        assertEquals(expected, ALICE.toString());
+    }
+}

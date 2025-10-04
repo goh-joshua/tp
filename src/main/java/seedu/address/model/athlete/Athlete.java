@@ -59,7 +59,7 @@ public class Athlete {
         }
 
         return otherAthlete != null
-                && otherAthlete.getName().equals(getName());
+                && otherAthlete.getName().equals(getName()) && otherAthlete.getSport().equals(getSport());
     }
 
     /**
