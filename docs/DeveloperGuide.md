@@ -343,7 +343,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  Agent requests to delete athlete
-2.  If exactly one match is found, playbook.io deletes the athlete
+2.  playbook.io deletes the athlete
 
     Use case ends.
 
@@ -367,15 +367,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 2b. Multiple athletes found
+* 2b.  Athlete has active contracts
 
     * 2b1. playbook.io shows an error message
-
-      Use case ends.
-
-* 2c. Athlete has active contracts
-
-    * 2c1. playbook.io shows an error message
 
       Use case ends.
 
