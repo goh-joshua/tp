@@ -17,11 +17,11 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.organization.OrganizationAddress;
+import seedu.address.model.organization.OrganizationEmail;
+import seedu.address.model.organization.OrganizationName;
+import seedu.address.model.organization.Organization;
+import seedu.address.model.organization.OrganizationPhone;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -44,15 +44,15 @@ public class AddOrganizationCommandParser implements Parser<AddOrganizationComma
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        OrganizationName name = ParserUtil.parseOrganizationName(argMultimap.getValue(PREFIX_NAME).get());
+        OrganizationPhone phone = ParserUtil.parseOrganizationPhone(argMultimap.getValue(PREFIX_PHONE).get());
+        OrganizationEmail email = ParserUtil.parseOrganizationEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        OrganizationAddress address = ParserUtil.parseOrganizationAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, address, tagList);
+        Organization organization = new Organization(name, phone, email, address, tagList);
 
-        return new AddOrganizationCommand(person);
+        return new AddOrganizationCommand(organization);
     }
 
     /**
