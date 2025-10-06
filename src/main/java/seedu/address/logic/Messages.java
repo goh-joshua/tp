@@ -61,14 +61,12 @@ public class Messages {
     public static String format(Organization organization) {
         final StringBuilder builder = new StringBuilder();
         builder.append(organization.getName())
+                .append("; Contact: ")
+                .append(organization.getContactName())
                 .append("; Phone: ")
                 .append(organization.getPhone())
                 .append("; Email: ")
-                .append(organization.getEmail())
-                .append("; Address: ")
-                .append(organization.getAddress())
-                .append("; Tags: ");
-        organization.getTags().forEach(builder::append);
+                .append(organization.getEmail());
         return builder.toString();
     }
 }
