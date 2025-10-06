@@ -10,7 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class OrganizationName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid organisation: Only letters, numbers, spaces, apostrophes ('), ampersands (&), and hyphens (-) are allowed.";
+            "Invalid organisation: "
+                    + "Only letters, numbers, spaces, apostrophes ('), ampersands (&), and hyphens (-) are allowed.";
 
     /*
      * Organization names can include letters, digits, spaces, apostrophes, ampersands, and hyphens.

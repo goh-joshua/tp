@@ -13,11 +13,12 @@ import seedu.address.model.organization.exceptions.OrganizationNotFoundException
 
 /**
  * A list of Organizations that enforces uniqueness between its elements and does not allow nulls.
- * An Organizationation is considered unique by comparing using {@code Organization#isSameOrganization(Organization)}. As such, adding and updating of
- * Organizations uses Organization#isSameOrganization(Organization) for equality so as to ensure that the Organization being added or updated is
- * unique in terms of identity in the UniqueOrganizationList. However, the removal of an Organization uses Organization#equals(Object) so
- * as to ensure that the Organization with exactly the same fields will be removed.
- *
+ * An Organizationation is considered unique by comparing using {@code Organization#isSameOrganization(Organization)}.
+ * As such, adding and updating of Organizations uses Organization#isSameOrganization(Organization) for equality so
+ * as to ensure that the Organization being added or updated is unique in terms of identity in the
+ * UniqueOrganizationList. However, the removal of an Organization uses Organization#equals(Object) so as to
+ * ensure that the Organization with exactly the same fields will be removed.
+ * <p>
  * Supports a minimal set of list operations.
  *
  * @see Organization#isSameOrganization(Organization)
@@ -51,7 +52,8 @@ public class UniqueOrganizationList implements Iterable<Organization> {
     /**
      * Replaces the Organization {@code target} in the list with {@code editedOrganization}.
      * {@code target} must exist in the list.
-     * The Organization identity of {@code editedOrganization} must not be the same as another existing Organization in the list.
+     * The Organization identity of {@code editedOrganization} must not be the same as
+     * another existing Organization in the list.
      */
     public void setOrganization(Organization target, Organization editedOrganization) {
         requireAllNonNull(target, editedOrganization);
@@ -88,13 +90,13 @@ public class UniqueOrganizationList implements Iterable<Organization> {
      * Replaces the contents of this list with {@code Organizations}.
      * {@code Organizations} must not contain duplicate Organizations.
      */
-    public void setOrganizations(List<Organization> Organizations) {
-        requireAllNonNull(Organizations);
-        if (!OrganizationsAreUnique(Organizations)) {
+    public void setOrganizations(List<Organization> organizations) {
+        requireAllNonNull(organizations);
+        if (!organizationsAreUnique(organizations)) {
             throw new DuplicateOrganizationException();
         }
 
-        internalList.setAll(Organizations);
+        internalList.setAll(organizations);
     }
 
     /**
@@ -137,10 +139,10 @@ public class UniqueOrganizationList implements Iterable<Organization> {
     /**
      * Returns true if {@code Organizations} contains only unique Organizations.
      */
-    private boolean OrganizationsAreUnique(List<Organization> Organizations) {
-        for (int i = 0; i < Organizations.size() - 1; i++) {
-            for (int j = i + 1; j < Organizations.size(); j++) {
-                if (Organizations.get(i).isSameOrganization(Organizations.get(j))) {
+    private boolean organizationsAreUnique(List<Organization> organizations) {
+        for (int i = 0; i < organizations.size() - 1; i++) {
+            for (int j = i + 1; j < organizations.size(); j++) {
+                if (organizations.get(i).isSameOrganization(organizations.get(j))) {
                     return false;
                 }
             }
