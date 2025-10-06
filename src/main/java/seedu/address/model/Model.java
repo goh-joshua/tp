@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
+import seedu.address.model.organization.Organization;
 
 /**
  * The API of the Model component.
@@ -13,6 +14,13 @@ import seedu.address.model.person.Person;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
+    /** {@code Predicate} that always evaluates to true */
+    Predicate<Organization> PREDICATE_SHOW_ALL_ORGANIZATIONS = unused -> true;
+
+    // ------------------------------------------------------------------------
+    // User preferences
+    // ------------------------------------------------------------------------
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -44,6 +52,10 @@ public interface Model {
      */
     void setAddressBookFilePath(Path addressBookFilePath);
 
+    // ------------------------------------------------------------------------
+    // AddressBook data
+    // ------------------------------------------------------------------------
+
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
@@ -51,6 +63,10 @@ public interface Model {
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
+
+    // ------------------------------------------------------------------------
+    // Person operations
+    // ------------------------------------------------------------------------
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
@@ -76,7 +92,7 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /** Returns an unmodifiable view of the filtered person list. */
     ObservableList<Person> getFilteredPersonList();
 
     /**
@@ -84,4 +100,43 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    // ------------------------------------------------------------------------
+    // Organization operations
+    // ------------------------------------------------------------------------
+
+    /**
+     * Returns true if an organization with the same identity as {@code organization}
+     * exists in the address book.
+     */
+    boolean hasOrganization(Organization organization);
+
+    /**
+     * Deletes the given organization.
+     * The organization must exist in the address book.
+     */
+    void deleteOrganization(Organization target);
+
+    /**
+     * Adds the given organization.
+     * {@code organization} must not already exist in the address book.
+     */
+    void addOrganization(Organization organization);
+
+    /**
+     * Replaces the given organization {@code target} with {@code editedOrganization}.
+     * {@code target} must exist in the address book.
+     * The organization identity of {@code editedOrganization} must not be the same as another
+     * existing organization in the address book.
+     */
+    void setOrganization(Organization target, Organization editedOrganization);
+
+    /** Returns an unmodifiable view of the filtered organization list. */
+    ObservableList<Organization> getFilteredOrganizationList();
+
+    /**
+     * Updates the filter of the filtered organization list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredOrganizationList(Predicate<Organization> predicate);
 }
