@@ -5,14 +5,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an Organization's phone number in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidOrganizationPhone(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}.
  */
 public class OrganizationPhone {
 
-
     public static final String MESSAGE_CONSTRAINTS =
-            "OrganizationPhone numbers should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Invalid phone number: Must be exactly 8 digits.";
+    public static final String VALIDATION_REGEX = "\\d{8}";
+
     public final String value;
 
     /**
@@ -23,7 +23,7 @@ public class OrganizationPhone {
     public OrganizationPhone(String phone) {
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
-        value = phone;
+        value = phone.trim();
     }
 
     /**
@@ -40,22 +40,13 @@ public class OrganizationPhone {
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(other instanceof OrganizationPhone)) {
-            return false;
-        }
-
-        OrganizationPhone otherOrganizationPhone = (OrganizationPhone) other;
-        return value.equals(otherOrganizationPhone.value);
+        return other == this
+                || (other instanceof OrganizationPhone
+                && value.equals(((OrganizationPhone) other).value));
     }
 
     @Override
     public int hashCode() {
         return value.hashCode();
     }
-
 }
