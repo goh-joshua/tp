@@ -18,7 +18,7 @@ public class Organization {
 
     // Identity fields
     private final OrganizationName name;
-    private final Phone phone;
+    private final OrganizationPhone phone;
     private final OrganizationEmail email;
 
     // Data fields
@@ -28,7 +28,7 @@ public class Organization {
     /**
      * Every field must be present and not null.
      */
-    public Organization(OrganizationName name, Phone phone, OrganizationEmail email, OrganizationAddress address, Set<Tag> tags) {
+    public Organization(OrganizationName name, OrganizationPhone phone, OrganizationEmail email, OrganizationAddress address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -41,7 +41,7 @@ public class Organization {
         return name;
     }
 
-    public Phone getPhone() {
+    public OrganizationPhone getOrganizationPhone() {
         return phone;
     }
 

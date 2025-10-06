@@ -5,31 +5,31 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an Organization's phone number in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidOrganizationPhone(String)}
  */
-public class Phone {
+public class OrganizationPhone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
+            "OrganizationPhone numbers should only contain numbers, and it should be at least 3 digits long";
     public static final String VALIDATION_REGEX = "\\d{3,}";
     public final String value;
 
     /**
-     * Constructs a {@code Phone}.
+     * Constructs a {@code OrganizationPhone}.
      *
      * @param phone A valid phone number.
      */
-    public Phone(String phone) {
+    public OrganizationPhone(String phone) {
         requireNonNull(phone);
-        checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidOrganizationPhone(phone), MESSAGE_CONSTRAINTS);
         value = phone;
     }
 
     /**
      * Returns true if a given string is a valid phone number.
      */
-    public static boolean isValidPhone(String test) {
+    public static boolean isValidOrganizationPhone(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -45,12 +45,12 @@ public class Phone {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Phone)) {
+        if (!(other instanceof OrganizationPhone)) {
             return false;
         }
 
-        Phone otherPhone = (Phone) other;
-        return value.equals(otherPhone.value);
+        OrganizationPhone otherOrganizationPhone = (OrganizationPhone) other;
+        return value.equals(otherOrganizationPhone.value);
     }
 
     @Override
