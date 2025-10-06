@@ -7,19 +7,19 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code Organization}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Organization}'s {@code OrganizationName} matches any of the keywords given.
  */
-public class NameContainsKeywordsPredicate implements Predicate<Organization> {
+public class OrganizationNameContainsKeywordsPredicate implements Predicate<Organization> {
     private final List<String> keywords;
 
-    public NameContainsKeywordsPredicate(List<String> keywords) {
+    public OrganizationNameContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
     @Override
     public boolean test(Organization Organization) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(Organization.getName().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(Organization.getOrganizationName().fullOrganizationName, keyword));
     }
 
     @Override
@@ -29,12 +29,12 @@ public class NameContainsKeywordsPredicate implements Predicate<Organization> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof NameContainsKeywordsPredicate)) {
+        if (!(other instanceof OrganizationNameContainsKeywordsPredicate)) {
             return false;
         }
 
-        NameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (NameContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        OrganizationNameContainsKeywordsPredicate otherOrganizationNameContainsKeywordsPredicate = (OrganizationNameContainsKeywordsPredicate) other;
+        return keywords.equals(otherOrganizationNameContainsKeywordsPredicate.keywords);
     }
 
     @Override

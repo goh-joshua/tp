@@ -17,7 +17,7 @@ import seedu.address.model.tag.Tag;
 public class Organization {
 
     // Identity fields
-    private final Name name;
+    private final OrganizationName name;
     private final Phone phone;
     private final OrganizationEmail email;
 
@@ -28,7 +28,7 @@ public class Organization {
     /**
      * Every field must be present and not null.
      */
-    public Organization(Name name, Phone phone, OrganizationEmail email, OrganizationAddress address, Set<Tag> tags) {
+    public Organization(OrganizationName name, Phone phone, OrganizationEmail email, OrganizationAddress address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -37,7 +37,7 @@ public class Organization {
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
+    public OrganizationName getOrganizationName() {
         return name;
     }
 
@@ -71,7 +71,7 @@ public class Organization {
         }
 
         return otherOrganization != null
-                && otherOrganization.getName().equals(getName());
+                && otherOrganization.getOrganizationName().equals(getOrganizationName());
     }
 
     /**

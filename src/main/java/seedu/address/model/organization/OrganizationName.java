@@ -5,12 +5,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an Organization's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidOrganizationName(String)}
  */
-public class Name {
+public class OrganizationName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "OrganizationNames should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -18,30 +18,30 @@ public class Name {
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
-    public final String fullName;
+    public final String fullOrganizationName;
 
     /**
-     * Constructs a {@code Name}.
+     * Constructs a {@code OrganizationName}.
      *
      * @param name A valid name.
      */
-    public Name(String name) {
+    public OrganizationName(String name) {
         requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        fullName = name;
+        checkArgument(isValidOrganizationName(name), MESSAGE_CONSTRAINTS);
+        fullOrganizationName = name;
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidOrganizationName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
 
     @Override
     public String toString() {
-        return fullName;
+        return fullOrganizationName;
     }
 
     @Override
@@ -51,17 +51,17 @@ public class Name {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Name)) {
+        if (!(other instanceof OrganizationName)) {
             return false;
         }
 
-        Name otherName = (Name) other;
-        return fullName.equals(otherName.fullName);
+        OrganizationName otherOrganizationName = (OrganizationName) other;
+        return fullOrganizationName.equals(otherOrganizationName.fullOrganizationName);
     }
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return fullOrganizationName.hashCode();
     }
 
 }
