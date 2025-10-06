@@ -14,6 +14,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.organization.OrganizationAddress;
+import seedu.address.model.organization.OrganizationEmail;
+import seedu.address.model.organization.OrganizationName;
+import seedu.address.model.organization.OrganizationPhone;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -35,12 +39,10 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
-    /**
-     * Parses a {@code String name} into a {@code Name}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code name} is invalid.
-     */
+    // ============================================================
+    // Person parsing methods
+    // ============================================================
+
     public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
@@ -50,12 +52,6 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
-    /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
     public static Phone parsePhone(String phone) throws ParseException {
         requireNonNull(phone);
         String trimmedPhone = phone.trim();
@@ -65,12 +61,6 @@ public class ParserUtil {
         return new Phone(trimmedPhone);
     }
 
-    /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
     public static Address parseAddress(String address) throws ParseException {
         requireNonNull(address);
         String trimmedAddress = address.trim();
@@ -80,12 +70,6 @@ public class ParserUtil {
         return new Address(trimmedAddress);
     }
 
-    /**
-     * Parses a {@code String email} into an {@code Email}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code email} is invalid.
-     */
     public static Email parseEmail(String email) throws ParseException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
@@ -95,12 +79,6 @@ public class ParserUtil {
         return new Email(trimmedEmail);
     }
 
-    /**
-     * Parses a {@code String tag} into a {@code Tag}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code tag} is invalid.
-     */
     public static Tag parseTag(String tag) throws ParseException {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
@@ -110,14 +88,78 @@ public class ParserUtil {
         return new Tag(trimmedTag);
     }
 
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
-     */
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
         requireNonNull(tags);
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(parseTag(tagName));
+        }
+        return tagSet;
+    }
+
+    // ============================================================
+    // Organization parsing methods
+    // ============================================================
+
+    /**
+     * Parses a {@code String name} into an {@code OrganizationName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static OrganizationName parseOrganizationName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!OrganizationName.isValidName(trimmedName)) {
+            throw new ParseException(OrganizationName.MESSAGE_CONSTRAINTS);
+        }
+        return new OrganizationName(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String phone} into an {@code OrganizationPhone}.
+     */
+    public static OrganizationPhone parseOrganizationPhone(String phone) throws ParseException {
+        requireNonNull(phone);
+        String trimmedPhone = phone.trim();
+        if (!OrganizationPhone.isValidPhone(trimmedPhone)) {
+            throw new ParseException(OrganizationPhone.MESSAGE_CONSTRAINTS);
+        }
+        return new OrganizationPhone(trimmedPhone);
+    }
+
+    /**
+     * Parses a {@code String address} into an {@code OrganizationAddress}.
+     */
+    public static OrganizationAddress parseOrganizationAddress(String address) throws ParseException {
+        requireNonNull(address);
+        String trimmedAddress = address.trim();
+        if (!OrganizationAddress.isValidAddress(trimmedAddress)) {
+            throw new ParseException(OrganizationAddress.MESSAGE_CONSTRAINTS);
+        }
+        return new OrganizationAddress(trimmedAddress);
+    }
+
+    /**
+     * Parses a {@code String email} into an {@code OrganizationEmail}.
+     */
+    public static OrganizationEmail parseOrganizationEmail(String email) throws ParseException {
+        requireNonNull(email);
+        String trimmedEmail = email.trim();
+        if (!OrganizationEmail.isValidEmail(trimmedEmail)) {
+            throw new ParseException(OrganizationEmail.MESSAGE_CONSTRAINTS);
+        }
+        return new OrganizationEmail(trimmedEmail);
+    }
+
+    /**
+     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     */
+    public static Set<Tag> parseOrganizationTags(Collection<String> tags) throws ParseException {
+        requireNonNull(tags);
+        final Set<Tag> tagSet = new HashSet<>();
+        for (String tagName : tags) {
+            tagSet.add(parseTag(tagName)); // reuse existing tag logic
         }
         return tagSet;
     }
