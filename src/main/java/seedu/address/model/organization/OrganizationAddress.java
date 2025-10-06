@@ -26,14 +26,14 @@ public class OrganizationAddress {
      */
     public OrganizationAddress(String address) {
         requireNonNull(address);
-        checkArgument(isValidOrganizationAddress(address), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidAddress(address), MESSAGE_CONSTRAINTS);
         value = address;
     }
 
     /**
      * Returns true if a given string is a valid email.
      */
-    public static boolean isValidOrganizationAddress(String test) {
+    public static boolean isValidAddress(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

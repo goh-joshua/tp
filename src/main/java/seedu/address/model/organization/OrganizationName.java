@@ -27,14 +27,14 @@ public class OrganizationName {
      */
     public OrganizationName(String name) {
         requireNonNull(name);
-        checkArgument(isValidOrganizationName(name), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
         fullOrganizationName = name;
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
-    public static boolean isValidOrganizationName(String test) {
+    public static boolean isValidName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

@@ -37,19 +37,19 @@ public class Organization {
         this.tags.addAll(tags);
     }
 
-    public OrganizationName getOrganizationName() {
+    public OrganizationName getName() {
         return name;
     }
 
-    public OrganizationPhone getOrganizationPhone() {
+    public OrganizationPhone getPhone() {
         return phone;
     }
 
-    public OrganizationEmail getOrganizationEmail() {
+    public OrganizationEmail getEmail() {
         return email;
     }
 
-    public OrganizationAddress getOrganizationAddress() {
+    public OrganizationAddress getAddress() {
         return address;
     }
 
@@ -71,7 +71,7 @@ public class Organization {
         }
 
         return otherOrganization != null
-                && otherOrganization.getOrganizationName().equals(getOrganizationName());
+                && otherOrganization.getName().equals(getName());
     }
 
     /**

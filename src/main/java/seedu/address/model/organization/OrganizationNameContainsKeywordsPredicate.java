@@ -19,7 +19,7 @@ public class OrganizationNameContainsKeywordsPredicate implements Predicate<Orga
     @Override
     public boolean test(Organization Organization) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(Organization.getOrganizationName().fullOrganizationName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(Organization.getName().fullOrganizationName, keyword));
     }
 
     @Override

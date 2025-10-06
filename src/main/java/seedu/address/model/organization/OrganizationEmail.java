@@ -40,14 +40,14 @@ public class OrganizationEmail {
      */
     public OrganizationEmail(String email) {
         requireNonNull(email);
-        checkArgument(isValidOrganizationEmail(email), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
         value = email;
     }
 
     /**
      * Returns if a given string is a valid email.
      */
-    public static boolean isValidOrganizationEmail(String test) {
+    public static boolean isValidEmail(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
