@@ -14,7 +14,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.organization.OrganizationAddress;
+import seedu.address.model.organization.OrganizationContactName;
 import seedu.address.model.organization.OrganizationEmail;
 import seedu.address.model.organization.OrganizationName;
 import seedu.address.model.organization.OrganizationPhone;
@@ -25,6 +25,10 @@ import seedu.address.model.organization.OrganizationPhone;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+
+    // ============================================================
+    // Common utility
+    // ============================================================
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -117,6 +121,18 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String contactName} into an {@code OrganizationContactName}.
+     */
+    public static OrganizationContactName parseOrganizationContactName(String contactName) throws ParseException {
+        requireNonNull(contactName);
+        String trimmedContactName = contactName.trim();
+        if (!OrganizationContactName.isValidName(trimmedContactName)) {
+            throw new ParseException(OrganizationContactName.MESSAGE_CONSTRAINTS);
+        }
+        return new OrganizationContactName(trimmedContactName);
+    }
+
+    /**
      * Parses a {@code String phone} into an {@code OrganizationPhone}.
      */
     public static OrganizationPhone parseOrganizationPhone(String phone) throws ParseException {
@@ -129,18 +145,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code OrganizationAddress}.
-     */
-    public static OrganizationAddress parseOrganizationAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!OrganizationAddress.isValidAddress(trimmedAddress)) {
-            throw new ParseException(OrganizationAddress.MESSAGE_CONSTRAINTS);
-        }
-        return new OrganizationAddress(trimmedAddress);
-    }
-
-    /**
      * Parses a {@code String email} into an {@code OrganizationEmail}.
      */
     public static OrganizationEmail parseOrganizationEmail(String email) throws ParseException {
@@ -150,17 +154,5 @@ public class ParserUtil {
             throw new ParseException(OrganizationEmail.MESSAGE_CONSTRAINTS);
         }
         return new OrganizationEmail(trimmedEmail);
-    }
-
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
-     */
-    public static Set<Tag> parseOrganizationTags(Collection<String> tags) throws ParseException {
-        requireNonNull(tags);
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(parseTag(tagName)); // reuse existing tag logic
-        }
-        return tagSet;
     }
 }
