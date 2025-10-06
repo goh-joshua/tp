@@ -22,13 +22,13 @@ public class Organization {
     private final Email email;
 
     // Data fields
-    private final Address address;
+    private final OrganizationAddress address;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Organization(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Organization(Name name, Phone phone, Email email, OrganizationAddress address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -49,7 +49,7 @@ public class Organization {
         return email;
     }
 
-    public Address getAddress() {
+    public OrganizationAddress getOrganizationAddress() {
         return address;
     }
 
