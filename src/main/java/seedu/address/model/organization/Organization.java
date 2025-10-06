@@ -2,13 +2,9 @@ package seedu.address.model.organization;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents an Organization in the address book.
@@ -18,27 +14,28 @@ public class Organization {
 
     // Identity fields
     private final OrganizationName name;
+    private final OrganizationContactName contactName;
     private final OrganizationPhone phone;
     private final OrganizationEmail email;
-
-    // Data fields
-    private final OrganizationAddress address;
-    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Organization(OrganizationName name, OrganizationPhone phone, OrganizationEmail email, OrganizationAddress address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Organization(OrganizationName name, OrganizationContactName contactName,
+                        OrganizationPhone phone, OrganizationEmail email) {
+        requireAllNonNull(name, contactName, phone, email);
         this.name = name;
+        this.contactName = contactName;
         this.phone = phone;
         this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
     }
 
     public OrganizationName getName() {
         return name;
+    }
+
+    public OrganizationContactName getContactName() {
+        return contactName;
     }
 
     public OrganizationPhone getPhone() {
@@ -49,29 +46,17 @@ public class Organization {
         return email;
     }
 
-    public OrganizationAddress getAddress() {
-        return address;
-    }
-
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
-    /**
-     * Returns true if both Organizations have the same name.
+     * Returns true if both Organizations have the same name and contact person.
      * This defines a weaker notion of equality between two Organizations.
      */
     public boolean isSameOrganization(Organization otherOrganization) {
         if (otherOrganization == this) {
             return true;
         }
-
         return otherOrganization != null
-                && otherOrganization.getName().equals(getName());
+                && otherOrganization.getName().equals(name)
+                && otherOrganization.getContactName().equals(contactName);
     }
 
     /**
@@ -83,35 +68,29 @@ public class Organization {
         if (other == this) {
             return true;
         }
-
-        // instanceof handles nulls
         if (!(other instanceof Organization)) {
             return false;
         }
 
-        Organization otherOrganization = (Organization) other;
-        return name.equals(otherOrganization.name)
-                && phone.equals(otherOrganization.phone)
-                && email.equals(otherOrganization.email)
-                && address.equals(otherOrganization.address)
-                && tags.equals(otherOrganization.tags);
+        Organization otherOrg = (Organization) other;
+        return name.equals(otherOrg.name)
+                && contactName.equals(otherOrg.contactName)
+                && phone.equals(otherOrg.phone)
+                && email.equals(otherOrg.email);
     }
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, contactName, phone, email);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
+                .add("contactName", contactName)
                 .add("phone", phone)
                 .add("email", email)
-                .add("address", address)
-                .add("tags", tags)
                 .toString();
     }
-
 }
