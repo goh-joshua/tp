@@ -17,16 +17,18 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.organization.AddOrganizationCommand;
+import seedu.address.logic.commands.organization.DeleteOrganizationCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.organization.AddOrganizationCommandParser;
+import seedu.address.logic.parser.organization.DeleteOrganizationCommandParser;
 
 /**
  * Parses user input.
  */
 public class AddressBookParser {
 
-    /**
-     * Used for initial separation of command word and args.
-     */
+    /** Used for initial separation of command word and args. */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
     private static final Logger logger = LogsCenter.getLogger(AddressBookParser.class);
 
@@ -35,7 +37,7 @@ public class AddressBookParser {
      *
      * @param userInput full user input string
      * @return the command based on the user input
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform to the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
@@ -46,9 +48,6 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
-        // log messages such as the one below.
-        // Lower level log messages are used sparingly to minimize noise in the code.
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
@@ -56,11 +55,18 @@ public class AddressBookParser {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
-
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
+
+        // === Organization commands ===
+        case AddOrganizationCommand.COMMAND_WORD:
+            return new AddOrganizationCommandParser().parse(arguments);
+
+        case DeleteOrganizationCommand.COMMAND_WORD:
+            return new DeleteOrganizationCommandParser().parse(arguments);
+
+        case EditCommand.COMMAND_WORD:
+            return new EditCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
@@ -82,5 +88,4 @@ public class AddressBookParser {
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }

@@ -7,10 +7,12 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
 
 /**
@@ -22,6 +24,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Organization> filteredOrganizations;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,6 +37,8 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        // TODO: replace null with proper list once organization support is added to AddressBook
+        filteredOrganizations = new FilteredList<>(FXCollections.observableArrayList());
     }
 
     public ModelManager() {
@@ -43,14 +48,14 @@ public class ModelManager implements Model {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
@@ -78,14 +83,16 @@ public class ModelManager implements Model {
     //=========== AddressBook ================================================================================
 
     @Override
+    public ReadOnlyAddressBook getAddressBook() {
+        return addressBook;
+    }
+
+    @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
     }
 
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
-    }
+    //=========== Person =====================================================================================
 
     @Override
     public boolean hasPerson(Person person) {
@@ -107,8 +114,44 @@ public class ModelManager implements Model {
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
-
         addressBook.setPerson(target, editedPerson);
+    }
+
+    //=========== Organization ===============================================================================
+
+    @Override
+    public boolean hasOrganization(Organization organization) {
+        requireNonNull(organization);
+        throw new UnsupportedOperationException("Organization support not yet implemented");
+    }
+
+    @Override
+    public void deleteOrganization(Organization target) {
+        requireNonNull(target);
+        throw new UnsupportedOperationException("Organization support not yet implemented");
+    }
+
+    @Override
+    public void addOrganization(Organization organization) {
+        requireNonNull(organization);
+        throw new UnsupportedOperationException("Organization support not yet implemented");
+    }
+
+    @Override
+    public void setOrganization(Organization target, Organization editedOrganization) {
+        requireAllNonNull(target, editedOrganization);
+        throw new UnsupportedOperationException("Organization support not yet implemented");
+    }
+
+    @Override
+    public ObservableList<Organization> getFilteredOrganizationList() {
+        return filteredOrganizations;
+    }
+
+    @Override
+    public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
+        requireNonNull(predicate);
+        throw new UnsupportedOperationException("Organization filtering not yet implemented");
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -128,6 +171,8 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    //=========== Utility ====================================================================================
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -144,5 +189,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons);
     }
-
 }
