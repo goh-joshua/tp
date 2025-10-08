@@ -1,20 +1,7 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Predicate;
-
-import org.junit.jupiter.api.Test;
-
 import javafx.collections.ObservableList;
+import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -22,9 +9,21 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.athlete.Athlete;
+import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Predicate;
+
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.ALICE;
 
 public class AddCommandTest {
 
@@ -89,6 +88,39 @@ public class AddCommandTest {
      * A default model stub that have all of the methods failing.
      */
     private class ModelStub implements Model {
+
+        // ===== Athletes =====
+        @Override
+        public boolean hasAthlete(Athlete athlete) { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void deleteAthlete(Athlete target) { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void addAthlete(Athlete athlete) { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public ObservableList<Athlete> getFilteredAthleteList() { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void updateFilteredAthleteList(Predicate<Athlete> predicate) { throw new AssertionError("This method should not be called."); }
+
+        // ===== Contracts =====
+        @Override
+        public boolean hasContract(Contract contract) { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void addContract(Contract contract) { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void deleteContract(Contract target) { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public ObservableList<Contract> getFilteredContractList() { throw new AssertionError("This method should not be called."); }
+
+        @Override
+        public void updateFilteredContractList(Predicate<Contract> predicate) { throw new AssertionError("This method should not be called."); }
+
         @Override
         public ReadOnlyUserPrefs getUserPrefs() {
             throw new AssertionError("This method should not be called.");

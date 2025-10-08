@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalAthletes.ALICE;
-import static seedu.address.testutil.TypicalAthletes.BENSON;
+import static seedu.address.testutil.athlete.TypicalAthletes.ALICE;
+import static seedu.address.testutil.athlete.TypicalAthletes.BENSON;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.athlete.exceptions.AthleteNotFoundException;
 import seedu.address.model.athlete.exceptions.DuplicateAthleteException;
-import seedu.address.testutil.AthleteBuilder;
+import seedu.address.testutil.athlete.AthleteBuilder;
 
 public class UniqueAthleteListTest {
 

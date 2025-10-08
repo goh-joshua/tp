@@ -1,26 +1,35 @@
 package seedu.address.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import javafx.collections.ObservableList;
+import org.junit.jupiter.api.Test;
+import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.athlete.Athlete;
+import seedu.address.model.contract.Contract;
+import seedu.address.model.organization.Organization;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.OrganizationBuilder;
+import seedu.address.testutil.athlete.AthleteBuilder;
+import seedu.address.testutil.contract.ContractBuilder;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.function.Predicate;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Test;
-
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.testutil.AddressBookBuilder;
-
 public class ModelManagerTest {
 
     private ModelManager modelManager = new ModelManager();
+
+    // ============================================================
+    // Existing person-centric tests
+    // ============================================================
 
     @Test
     public void constructor() {
@@ -94,7 +103,7 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void equals() {
+    public void equals_personScenarios() {
         AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
@@ -128,5 +137,89 @@ public class ModelManagerTest {
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
+    }
+
+    // ============================================================
+    // Athlete tests
+    // ============================================================
+
+    @Test
+    public void hasAthlete_nullAthlete_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasAthlete(null));
+    }
+
+    @Test
+    public void hasAthlete_athleteNotInAddressBook_returnsFalse() {
+        Athlete athlete = new AthleteBuilder().withName("Alice Pauline").build();
+        assertFalse(modelManager.hasAthlete(athlete));
+    }
+
+    @Test
+    public void hasAthlete_athleteInAddressBook_returnsTrue() {
+        Athlete athlete = new AthleteBuilder().withName("Alice Pauline").build();
+        modelManager.addAthlete(athlete);
+        assertTrue(modelManager.hasAthlete(athlete));
+    }
+
+    @Test
+    public void getFilteredAthleteList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredAthleteList().remove(0));
+    }
+
+    // ============================================================
+    // Contract tests
+    // ============================================================
+
+    @Test
+    public void hasContract_nullContract_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasContract(null));
+    }
+
+    @Test
+    public void hasContract_contractNotInAddressBook_returnsFalse() {
+        Contract contract = new ContractBuilder().build();
+        assertFalse(modelManager.hasContract(contract));
+    }
+
+    @Test
+    public void hasContract_contractInAddressBook_returnsTrue() {
+        Contract contract = new ContractBuilder().build();
+        modelManager.addContract(contract);
+        assertTrue(modelManager.hasContract(contract));
+    }
+
+    @Test
+    public void getFilteredContractList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredContractList().remove(0));
+    }
+
+    // ============================================================
+    // Organization tests (currently unsupported ops)
+    // ============================================================
+
+    @Test
+    public void organization_methods_throwUnsupportedOperationException() {
+        Organization org = new OrganizationBuilder().withName("Nike").build();
+
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.hasOrganization(org));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.addOrganization(org));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.deleteOrganization(org));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.setOrganization(org, org));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.updateFilteredOrganizationList(o -> true));
+    }
+
+    @Test
+    public void getFilteredOrganizationList_returnsNotNullInitiallyEmpty() {
+        ObservableList<Organization> orgs = modelManager.getFilteredOrganizationList();
+        assertNotNull(orgs);
+        assertTrue(orgs.isEmpty()); // placeholder list in current implementation
+    }
+
+    // ============================================================
+    // Helper (optionally used; here just to show typing)
+    // ============================================================
+
+    private <T> void setPredicate(ObservableList<T> list, Predicate<T> predicate) {
+        // no-op helper to avoid unused warnings if needed
     }
 }
