@@ -8,6 +8,13 @@ public class Amount {
 
     public final int value;
 
+    /**
+     * Constructs an {@code Amount} with the specified integer value.
+     * The value must be a positive integer.
+     *
+     * @param value The amount value.
+     * @throws IllegalArgumentException if {@code value} is not positive.
+     */
     public Amount(int value) {
         if (value <= 0) {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
@@ -15,8 +22,16 @@ public class Amount {
         this.value = value;
     }
 
+    /**
+     * Returns true if the given string represents a valid positive integer amount.
+     *
+     * @param test The string to test.
+     * @return true if the string is a valid positive integer, false otherwise.
+     */
     public static boolean isValidAmount(String test) {
-        if (test == null) return false;
+        if (test == null) {
+            return false;
+        }
         String t = test.trim();
         try {
             int v = Integer.parseInt(t);
@@ -26,7 +41,13 @@ public class Amount {
         }
     }
 
-    @Override public String toString() { return String.valueOf(value); }
-    @Override public boolean equals(Object o) { return o instanceof Amount && value == ((Amount) o).value; }
-    @Override public int hashCode() { return Objects.hash(value); }
+    @Override public String toString() {
+        return String.valueOf(value);
+    }
+    @Override public boolean equals(Object o) {
+        return o instanceof Amount && value == ((Amount) o).value;
+    }
+    @Override public int hashCode() {
+        return Objects.hash(value);
+    }
 }

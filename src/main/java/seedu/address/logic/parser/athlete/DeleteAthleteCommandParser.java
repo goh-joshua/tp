@@ -1,14 +1,17 @@
 package seedu.address.logic.parser.athlete;
 
-import seedu.address.logic.commands.athlete.DeleteAthleteCommand;
-import seedu.address.logic.parser.*;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.athlete.Name;
-import seedu.address.model.athlete.Sport;
-
 import static seedu.address.logic.AthleteMessages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
+
+import seedu.address.logic.commands.athlete.DeleteAthleteCommand;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.AthleteParserUtil;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.athlete.Name;
+import seedu.address.model.athlete.Sport;
 
 /**
  * Parses input arguments and creates a new DeleteAthleteCommand object

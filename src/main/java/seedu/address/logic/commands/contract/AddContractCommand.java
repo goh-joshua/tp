@@ -1,5 +1,10 @@
 package seedu.address.logic.commands.contract;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+import java.util.Optional;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.ContractMessages;
 import seedu.address.logic.commands.Command;
@@ -15,11 +20,6 @@ import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
-import java.util.List;
-import java.util.Optional;
-
-import static java.util.Objects.requireNonNull;
-
 /**
  * Adds a {@link Contract} linking an athlete and organization.
  */
@@ -27,7 +27,8 @@ public class AddContractCommand extends Command {
 
     public static final String COMMAND_WORD = "add-contract";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a contract linking an athlete and an organization. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+        + ": Adds a contract linking an athlete and an organization. "
             + "Parameters: "
             + "n/ATHLETE_NAME "
             + "s/SPORT "
@@ -49,6 +50,16 @@ public class AddContractCommand extends Command {
     private final Date8 endDate;
     private final Amount amount;
 
+    /**
+     * Constructs an {@code AddContractCommand} with the given details.
+     *
+     * @param athleteName Name of the athlete.
+     * @param sport Sport of the contract.
+     * @param organizationName Name of the organization.
+     * @param startDate Start date of the contract.
+     * @param endDate End date of the contract.
+     * @param amount Amount in the contract.
+     */
     public AddContractCommand(Name athleteName,
                               Sport sport,
                               Name organizationName,

@@ -1,14 +1,15 @@
 package seedu.address.model.contract;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Objects;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.OrganizationContactName;
 
-import java.util.Objects;
-
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Represents a Contract between an Athlete and an Organization.
@@ -18,12 +19,12 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 public class Contract {
 
     // Identity/data fields
-    private final Athlete athlete;          // full Person
-    private final Sport sport;             // value object
-    private final Organization organization;     // full Person (per your request)
-    private final Date8 startDate;         // DDMMYYYY validator
-    private final Date8 endDate;           // DDMMYYYY validator
-    private final Amount amount;           // positive integer
+    private final Athlete athlete; // full Person
+    private final Sport sport; // value object
+    private final Organization organization; // full Person
+    private final Date8 startDate; // DDMMYYYY validator
+    private final Date8 endDate; // DDMMYYYY validator
+    private final Amount amount; // positive integer
 
     /**
      * All fields must be present and non-null.
@@ -90,8 +91,12 @@ public class Contract {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) { return true; }
-        if (!(o instanceof Contract)) { return false; }
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Contract)) {
+            return false;
+        }
         Contract c = (Contract) o;
         // Strong equality (compare all fields deeply)
         return athlete.equals(c.athlete)

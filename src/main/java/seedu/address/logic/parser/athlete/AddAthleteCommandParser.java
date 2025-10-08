@@ -1,15 +1,27 @@
 package seedu.address.logic.parser.athlete;
 
-import seedu.address.logic.commands.athlete.AddAthleteCommand;
-import seedu.address.logic.parser.*;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.athlete.*;
+import static seedu.address.logic.AthleteMessages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
 
 import java.util.stream.Stream;
 
-import static seedu.address.logic.AthleteMessages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
-
+import seedu.address.logic.commands.athlete.AddAthleteCommand;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.AthleteParserUtil;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.Prefix;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.athlete.Age;
+import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.Email;
+import seedu.address.model.athlete.Name;
+import seedu.address.model.athlete.Phone;
+import seedu.address.model.athlete.Sport;
 
 /**
  * Parses input arguments and creates a new AddAthleteCommand object

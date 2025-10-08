@@ -1,15 +1,15 @@
 package seedu.address.model.contract;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import seedu.address.model.contract.exceptions.ContractNotFoundException;
-import seedu.address.model.contract.exceptions.DuplicateContractException;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.contract.exceptions.ContractNotFoundException;
+import seedu.address.model.contract.exceptions.DuplicateContractException;
 
 /**
  * A list of contracts that enforces uniqueness between its elements and does not allow nulls.
@@ -96,8 +96,12 @@ public class UniqueContractList implements Iterable<Contract> {
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) { return true; }
-        if (!(other instanceof UniqueContractList)) { return false; }
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof UniqueContractList)) {
+            return false;
+        }
         UniqueContractList o = (UniqueContractList) other;
         return internalList.equals(o.internalList);
     }

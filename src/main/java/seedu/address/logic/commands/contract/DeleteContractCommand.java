@@ -1,5 +1,10 @@
 package seedu.address.logic.commands.contract;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+import java.util.Optional;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.ContractMessages;
 import seedu.address.logic.commands.Command;
@@ -12,11 +17,6 @@ import seedu.address.model.contract.Date8;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Name;
 
-import java.util.List;
-import java.util.Optional;
-
-import static java.util.Objects.requireNonNull;
-
 /**
  * Deletes an existing {@link Contract} identified by athlete/org/dates.
  */
@@ -24,7 +24,8 @@ public class DeleteContractCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-contract";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes a contract by athlete, organization, and dates. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+        + ": Deletes a contract by athlete, organization, and dates. "
             + "Parameters: "
             + "n/ATHLETE_NAME "
             + "o/ORG_NAME "
@@ -41,6 +42,14 @@ public class DeleteContractCommand extends Command {
     private final Date8 startDate;
     private final Date8 endDate;
 
+    /**
+     * Constructs a {@code DeleteContractCommand} with the specified athlete, organization, and date range.
+     *
+     * @param athleteName Name of the athlete whose contract is to be deleted.
+     * @param organizationName Name of the organization involved in the contract.
+     * @param startDate Start date of the contract.
+     * @param endDate End date of the contract.
+     */
     public DeleteContractCommand(Name athleteName, Name organizationName, Date8 startDate, Date8 endDate) {
         requireNonNull(athleteName);
         requireNonNull(organizationName);

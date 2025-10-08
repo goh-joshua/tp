@@ -1,12 +1,12 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Date8;
-import seedu.address.model.athlete.Sport;
 import seedu.address.model.person.Name;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Contains utility methods used for parsing strings into Contract-related model objects.

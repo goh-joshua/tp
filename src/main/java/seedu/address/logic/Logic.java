@@ -1,5 +1,7 @@
 package seedu.address.logic;
 
+import java.nio.file.Path;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
@@ -10,8 +12,6 @@ import seedu.address.model.athlete.Athlete;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
-
-import java.nio.file.Path;
 
 /**
  * API of the Logic component

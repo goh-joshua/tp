@@ -1,5 +1,9 @@
 package seedu.address.model;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.List;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.athlete.Athlete;
@@ -10,10 +14,6 @@ import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.UniqueOrganizationList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
-
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * Wraps all data at the address-book level.
@@ -102,6 +102,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     // Person-Level Operations
     // ============================================================
 
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return persons.contains(person);
@@ -129,6 +132,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     // Organization-Level Operations
     // ============================================================
 
+    /**
+     * Returns true if an organization with the same identity as {@code organization} exists in the address book.
+     */
     public boolean hasOrganization(Organization organization) {
         requireNonNull(organization);
         return organizations.contains(organization);
@@ -155,6 +161,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     // Athlete-Level Operations
     // ============================================================
 
+    /**
+     * Returns true if an athlete with the same identity as {@code athlete} exists in the address book.
+     */
     public boolean hasAthlete(Athlete athlete) {
         requireNonNull(athlete);
         return athletes.contains(athlete);
@@ -177,6 +186,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     // Contract-Level Operations
     // ============================================================
 
+    /**
+     * Returns true if a contract with the same identity as {@code contract} exists in the address book.
+     */
     public boolean hasContract(Contract contract) {
         requireNonNull(contract);
         return contracts.contains(contract);

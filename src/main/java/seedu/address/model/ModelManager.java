@@ -1,5 +1,12 @@
 package seedu.address.model;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.nio.file.Path;
+import java.util.function.Predicate;
+import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -9,13 +16,6 @@ import seedu.address.model.athlete.Athlete;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
-
-import java.nio.file.Path;
-import java.util.function.Predicate;
-import java.util.logging.Logger;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Represents the in-memory model of all app data using a single AddressBook:
@@ -40,6 +40,12 @@ public class ModelManager implements Model {
     // Constructors
     // =====================================================================================
 
+    /**
+     * Constructs a {@code ModelManager} with the given address book and user preferences.
+     *
+     * @param addressBook the address book data to initialize from
+     * @param userPrefs   the user preferences to initialize from
+     */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(addressBook, userPrefs);
 
@@ -246,8 +252,12 @@ public class ModelManager implements Model {
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) return true;
-        if (!(other instanceof ModelManager)) return false;
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof ModelManager)) {
+            return false;
+        }
 
         ModelManager o = (ModelManager) other;
         return addressBook.equals(o.addressBook)

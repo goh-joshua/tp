@@ -1,5 +1,11 @@
 package seedu.address.logic.commands.athlete;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
+
+import java.util.List;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.AthleteMessages;
 import seedu.address.logic.commands.Command;
@@ -9,13 +15,6 @@ import seedu.address.model.Model;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
-
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
-
 
 /**
  * Deletes an athlete identified using it's displayed index from playbook.io.
