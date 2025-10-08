@@ -22,16 +22,29 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.athlete.AddAthleteCommand;
+import seedu.address.logic.commands.athlete.DeleteAthleteCommand;
+import seedu.address.logic.commands.contract.AddContractCommand;
+import seedu.address.logic.commands.contract.DeleteContractCommand;
+import seedu.address.logic.commands.organization.DeleteOrganizationCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.athlete.AthleteBuilder;
+import seedu.address.testutil.athlete.AthleteUtil;
+import seedu.address.testutil.contract.ContractBuilder;
+import seedu.address.testutil.contract.ContractUtil;
 
 public class AddressBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
+
+    // ============================================================
+    // Core AB3 commands
+    // ============================================================
 
     @Test
     public void parseCommand_add() throws Exception {
@@ -88,14 +101,66 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
     }
 
+    // ============================================================
+    // Athlete Commands
+    // ============================================================
+
+    @Test
+    public void parseCommand_addAthlete() throws Exception {
+        AddAthleteCommand command = (AddAthleteCommand)
+                parser.parseCommand(AthleteUtil.getAddAthleteCommand(new AthleteBuilder().build()));
+        assertTrue(command instanceof AddAthleteCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteAthlete() throws Exception {
+        String args = " n/John Doe s/Football";
+        assertTrue(parser.parseCommand(DeleteAthleteCommand.COMMAND_WORD + args) instanceof DeleteAthleteCommand);
+    }
+
+    // ============================================================
+    // Organization Commands
+    // ============================================================
+
+    @Test
+    public void parseCommand_deleteOrganization() throws Exception {
+        String args = " 1";
+        assertTrue(parser.parseCommand(DeleteOrganizationCommand.COMMAND_WORD + args)
+                instanceof DeleteOrganizationCommand);
+    }
+
+    // ============================================================
+    // Contract Commands
+    // ============================================================
+
+    @Test
+    public void parseCommand_addContract() throws Exception {
+        AddContractCommand command = (AddContractCommand)
+                parser.parseCommand(ContractUtil.getAddContractCommand(new ContractBuilder().build()));
+        assertTrue(command instanceof AddContractCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteContract() throws Exception {
+        String args = " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025";
+        assertTrue(parser.parseCommand(DeleteContractCommand.COMMAND_WORD + args)
+                instanceof DeleteContractCommand);
+    }
+
+    // ============================================================
+    // Error handling
+    // ============================================================
+
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+        assertThrows(ParseException.class,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), () ->
+                parser.parseCommand(""));
     }
 
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () ->
+            parser.parseCommand("unknownCommand"));
     }
 }
