@@ -1,15 +1,21 @@
 package seedu.address.model.contract;
 
-import javafx.collections.ObservableList;
-import org.junit.jupiter.api.Test;
-import seedu.address.model.contract.exceptions.ContractNotFoundException;
-import seedu.address.model.contract.exceptions.DuplicateContractException;
-import seedu.address.testutil.contract.ContractBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import javafx.collections.ObservableList;
+import seedu.address.model.contract.exceptions.ContractNotFoundException;
+import seedu.address.model.contract.exceptions.DuplicateContractException;
+import seedu.address.testutil.contract.ContractBuilder;
 
 class UniqueContractListTest {
 

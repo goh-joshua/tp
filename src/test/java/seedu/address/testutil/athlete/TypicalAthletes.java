@@ -1,11 +1,11 @@
 package seedu.address.testutil.athlete;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.athlete.Athlete;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import seedu.address.model.AddressBook;
+import seedu.address.model.athlete.Athlete;
 
 /**
  * A utility class containing a list of {@code Athlete} objects to be used in tests.

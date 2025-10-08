@@ -1,9 +1,14 @@
 package seedu.address.testutil.contract;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ORG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+
 import seedu.address.logic.commands.contract.AddContractCommand;
 import seedu.address.model.contract.Contract;
-
-import static seedu.address.logic.parser.CliSyntax.*;
 
 /**
  * A utility class for Contract.

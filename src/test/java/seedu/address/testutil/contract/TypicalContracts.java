@@ -1,13 +1,13 @@
 package seedu.address.testutil.contract;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import seedu.address.model.AddressBook;
 import seedu.address.model.contract.Contract;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A utility class containing a list of {@code Contract} objects to be used in tests.

@@ -1,21 +1,28 @@
 package seedu.address.model.contract;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for {@link Date8}.
+ */
 class Date8Test {
 
     @Test
     void constructor_invalid_throwsIllegalArgumentException() {
         assertThrows(NullPointerException.class, () -> new Date8(null));
         assertThrows(IllegalArgumentException.class, () -> new Date8(""));
-        assertThrows(IllegalArgumentException.class, () -> new Date8("010120"));     // too short
+        assertThrows(IllegalArgumentException.class, () -> new Date8("010120")); // too short
         assertThrows(IllegalArgumentException.class, () -> new Date8("01-01-2025")); // non-digit
-        assertThrows(IllegalArgumentException.class, () -> new Date8("31022025"));   // invalid date
-        assertThrows(IllegalArgumentException.class, () -> new Date8("29022025"));   // non-leap year Feb 29
+        assertThrows(IllegalArgumentException.class, () -> new Date8("31022025")); // invalid date
+        assertThrows(IllegalArgumentException.class, () -> new Date8("29022025")); // non-leap year Feb 29
     }
 
     @Test
@@ -25,7 +32,6 @@ class Date8Test {
         assertFalse(Date8.isValidDate8("010120"));
         assertFalse(Date8.isValidDate8("31-12-2024"));
         assertFalse(Date8.isValidDate8("31022025"));
-
         assertTrue(Date8.isValidDate8("01012025"));
         assertTrue(Date8.isValidDate8("29022024")); // leap day
     }

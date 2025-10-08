@@ -1,5 +1,16 @@
 package seedu.address.logic.commands.athlete;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
+import static seedu.address.testutil.Assert.assertThrows;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -7,15 +18,8 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.athlete.Athlete;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.testutil.Assert.assertThrows;
-
 /**
- * Contains helper methods for testing commands.
+ * Contains helper methods for testing athlete commands.
  */
 public class AthleteCommandTestUtil {
 
@@ -44,15 +48,17 @@ public class AthleteCommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_SPORT_DESC = " " + PREFIX_SPORT + "Basket++"; // '+' not allowed for sport
+    public static final String INVALID_SPORT_DESC = " " + PREFIX_SPORT + "Basket++"; // '+' not allowed in sport
     public static final String INVALID_AGE_DESC = " " + PREFIX_AGE + "three"; // letters not allowed for age
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
     /**
-     * Executes the given {@code command}, confirms that <br>
-     * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
-     * - the {@code actualModel} matches {@code expectedModel}
+     * Executes the given {@code command}, confirms that:
+     * <ul>
+     *     <li>The returned {@link CommandResult} matches {@code expectedCommandResult}</li>
+     *     <li>The {@code actualModel} matches {@code expectedModel}</li>
+     * </ul>
      */
     public static void assertCommandSuccess(Command command, Model actualModel,
                                             CommandResult expectedCommandResult,
@@ -68,7 +74,7 @@ public class AthleteCommandTestUtil {
     }
 
     /**
-     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)} (AthleteCommand, AthleteModel, CommandResult, AthleteModel)}
+     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
@@ -78,14 +84,14 @@ public class AthleteCommandTestUtil {
     }
 
     /**
-     * Executes the given {@code command}, confirms that <br>
-     * - a {@code CommandException} is thrown <br>
-     * - the CommandException message matches {@code expectedMessage} <br>
-     * - the address book, filtered athlete list and selected athlete in {@code actualModel} remain unchanged
+     * Executes the given {@code command}, confirms that:
+     * <ul>
+     *     <li>A {@code CommandException} is thrown</li>
+     *     <li>The CommandException message matches {@code expectedMessage}</li>
+     *     <li>The address book and filtered athlete list in {@code actualModel} remain unchanged</li>
+     * </ul>
      */
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
-        // we are unable to defensively copy the model for comparison later, so we can
-        // only do so by copying its components.
         AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
         List<Athlete> expectedFilteredList = new ArrayList<>(actualModel.getFilteredAthleteList());
 
@@ -93,6 +99,4 @@ public class AthleteCommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredAthleteList());
     }
-
-
 }

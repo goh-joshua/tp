@@ -1,6 +1,17 @@
 package seedu.address.logic.parser.contract;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ORG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.contract.AddContractCommand;
 import seedu.address.model.athlete.Sport;
@@ -8,13 +19,10 @@ import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Date8;
 import seedu.address.model.person.Name;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-
+/**
+ * Tests for {@link AddContractCommandParser}.
+ */
 public class AddContractCommandParserTest {
-
     private static final String VALID_ATHLETE_NAME = "Lionel Messi";
     private static final String VALID_SPORT = "Football";
     private static final String VALID_ORG_NAME = "Inter Miami CF";
@@ -29,12 +37,15 @@ public class AddContractCommandParserTest {
     private static final String END_DESC = " " + PREFIX_END_DATE + VALID_END;
     private static final String AMT_DESC = " " + PREFIX_AMOUNT + VALID_AMOUNT;
 
-    private static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "1234";        // Name with digits
-    private static final String INVALID_SPORT_DESC = " " + PREFIX_SPORT + "";          // empty
-    private static final String INVALID_ORG_DESC = " " + PREFIX_ORG + "@@";            // invalid symbols
-    private static final String INVALID_START_DESC = " " + PREFIX_START_DATE + "31132024"; // invalid date
-    private static final String INVALID_END_DESC = " " + PREFIX_END_DATE + "abcd2024"; // non-digit
-    private static final String INVALID_AMT_DESC = " " + PREFIX_AMOUNT + "-10";        // negative
+    private static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "1234"; // Name with digits
+    private static final String INVALID_SPORT_DESC = " " + PREFIX_SPORT + ""; // empty
+    private static final String INVALID_ORG_DESC = " " + PREFIX_ORG + "@@"; // invalid symbols
+    private static final String INVALID_START_DESC =
+            " " + PREFIX_START_DATE + "31132024"; // invalid date
+    private static final String INVALID_END_DESC =
+            " " + PREFIX_END_DATE + "abcd2024"; // non-digit
+    private static final String INVALID_AMT_DESC =
+            " " + PREFIX_AMOUNT + "-10"; // negative
 
     private final AddContractCommandParser parser = new AddContractCommandParser();
 
@@ -49,84 +60,40 @@ public class AddContractCommandParserTest {
                 new Amount(Integer.parseInt(VALID_AMOUNT))
         );
 
-        assertParseSuccess(parser,
-                NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
-                expected);
+        assertParseSuccess(parser, NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC, expected);
     }
 
     @Test
     public void parse_missingCompulsoryField_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddContractCommand.MESSAGE_USAGE);
 
-        // missing name
-        assertParseFailure(parser,
-                SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
-                expectedMessage);
-
-        // missing sport
-        assertParseFailure(parser,
-                NAME_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
-                expectedMessage);
-
-        // missing org
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + START_DESC + END_DESC + AMT_DESC,
-                expectedMessage);
-
-        // missing start date
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + ORG_DESC + END_DESC + AMT_DESC,
-                expectedMessage);
-
-        // missing end date
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + AMT_DESC,
-                expectedMessage);
-
-        // missing amount
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC,
-                expectedMessage);
-
-        // preamble not empty
-        assertParseFailure(parser,
-                "preamble" + NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
+        assertParseFailure(parser, SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC, expectedMessage);
+        assertParseFailure(parser, NAME_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC, expectedMessage);
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + START_DESC + END_DESC + AMT_DESC, expectedMessage);
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + ORG_DESC + END_DESC + AMT_DESC, expectedMessage);
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + AMT_DESC, expectedMessage);
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC, expectedMessage);
+        assertParseFailure(parser, "preamble" + NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
                 expectedMessage);
     }
 
     @Test
     public void parse_invalidValues_failure() {
-//        // invalid athlete name
-//        assertParseFailure(parser,
-//                INVALID_NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
-//                Name.MESSAGE_CONSTRAINTS);
-
-        // invalid sport (empty)
-        assertParseFailure(parser,
-                NAME_DESC + INVALID_SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
+        assertParseFailure(parser, NAME_DESC + INVALID_SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
                 Sport.MESSAGE_CONSTRAINTS);
 
-        // invalid org name
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + INVALID_ORG_DESC + START_DESC + END_DESC + AMT_DESC,
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + INVALID_ORG_DESC + START_DESC + END_DESC + AMT_DESC,
                 Name.MESSAGE_CONSTRAINTS);
 
-        // invalid start date
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + ORG_DESC + INVALID_START_DESC + END_DESC + AMT_DESC,
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + ORG_DESC + INVALID_START_DESC + END_DESC + AMT_DESC,
                 Date8.MESSAGE_CONSTRAINTS);
 
-        // invalid end date
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + INVALID_END_DESC + AMT_DESC,
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + INVALID_END_DESC + AMT_DESC,
                 Date8.MESSAGE_CONSTRAINTS);
 
-        // invalid amount
-        assertParseFailure(parser,
-                NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + INVALID_AMT_DESC,
+        assertParseFailure(parser, NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + INVALID_AMT_DESC,
                 Amount.MESSAGE_CONSTRAINTS);
 
-        // multiple invalids — first reported
         assertParseFailure(parser,
                 INVALID_NAME_DESC + INVALID_SPORT_DESC + INVALID_ORG_DESC + INVALID_START_DESC
                         + INVALID_END_DESC + INVALID_AMT_DESC,
@@ -135,7 +102,6 @@ public class AddContractCommandParserTest {
 
     @Test
     public void parse_duplicatePrefixes_failure() {
-        // duplicates per field
         assertParseFailure(parser,
                 NAME_DESC + NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
@@ -160,7 +126,6 @@ public class AddContractCommandParserTest {
                 NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC + AMT_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_AMOUNT));
 
-        // multiple across fields
         assertParseFailure(parser,
                 NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC
                         + NAME_DESC + SPORT_DESC + ORG_DESC + START_DESC + END_DESC + AMT_DESC,

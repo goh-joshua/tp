@@ -1,9 +1,13 @@
 package seedu.address.testutil.athlete;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
+
 import seedu.address.logic.commands.athlete.AddAthleteCommand;
 import seedu.address.model.athlete.Athlete;
-
-import static seedu.address.logic.parser.CliSyntax.*;
 
 /**
  * A utility class for Athlete.

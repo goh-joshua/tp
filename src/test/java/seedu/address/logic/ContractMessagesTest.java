@@ -1,6 +1,10 @@
 package seedu.address.logic;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
@@ -10,9 +14,6 @@ import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Name;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Unit tests for {@link ContractMessages}.

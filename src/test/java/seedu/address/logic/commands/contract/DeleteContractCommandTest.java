@@ -1,7 +1,19 @@
 package seedu.address.logic.commands.contract;
 
-import javafx.collections.ObservableList;
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.Test;
+
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
@@ -19,17 +31,9 @@ import seedu.address.model.person.Person;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
-
+/**
+ * Tests for {@link DeleteContractCommand}.
+ */
 public class DeleteContractCommandTest {
 
     private static final Name ATHLETE_NAME = new Name("Lionel Messi");
@@ -60,15 +64,18 @@ public class DeleteContractCommandTest {
 
         DeleteContractCommand cmd = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END);
         assertThrows(CommandException.class, () -> cmd.execute(modelStub));
-        assertTrue(modelStub.deleted.isEmpty());
+        assertTrue(modelStub.getDeleted().isEmpty());
     }
 
-    // ---------- equals / toString ----------
+    // -------------------------------------------------------------------------
+    // equals / toString
+    // -------------------------------------------------------------------------
     @Test
     public void equals() {
         DeleteContractCommand a = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END);
         DeleteContractCommand same = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END);
-        DeleteContractCommand diff = new DeleteContractCommand(new Name("Kylian Mbappe"), ORG_NAME, START, END);
+        DeleteContractCommand diff =
+                new DeleteContractCommand(new Name("Kylian Mbappe"), ORG_NAME, START, END);
 
         assertTrue(a.equals(a));
         assertTrue(a.equals(same));
@@ -90,56 +97,165 @@ public class DeleteContractCommandTest {
         }
     }
 
-    // ---------- minimal Model stubs ----------
+    // -------------------------------------------------------------------------
+    // minimal Model stubs
+    // -------------------------------------------------------------------------
     private static class ModelStub implements Model {
-        // Organizations
-        @Override public boolean hasOrganization(Organization organization) { throw new AssertionError("Should not be called"); }
-        @Override public void deleteOrganization(Organization target) { throw new AssertionError("Should not be called"); }
-        @Override public void addOrganization(Organization organization) { throw new AssertionError("Should not be called"); }
-        @Override public void setOrganization(Organization target, Organization editedOrganization) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Organization> getFilteredOrganizationList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredOrganizationList(Predicate<Organization> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public boolean hasOrganization(Organization organization) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // Contracts
-        @Override public boolean hasContract(Contract contract) { throw new AssertionError("Should not be called"); }
-        @Override public void addContract(Contract contract) { throw new AssertionError("Should not be called"); }
-        @Override public void deleteContract(Contract target) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Contract> getFilteredContractList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredContractList(Predicate<Contract> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public void deleteOrganization(Organization target) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // Persons
-        @Override public boolean hasPerson(Person person) { throw new AssertionError("Should not be called"); }
-        @Override public void deletePerson(Person target) { throw new AssertionError("Should not be called"); }
-        @Override public void addPerson(Person person) { throw new AssertionError("Should not be called"); }
-        @Override public void setPerson(Person target, Person editedPerson) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Person> getFilteredPersonList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredPersonList(Predicate<Person> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public void addOrganization(Organization organization) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // File/prefs/gui
-        @Override public Path getAddressBookFilePath() { throw new AssertionError("Should not be called"); }
-        @Override public void setAddressBookFilePath(Path addressBookFilePath) { throw new AssertionError("Should not be called"); }
-        @Override public ReadOnlyUserPrefs getUserPrefs() { throw new AssertionError("Should not be called"); }
-        @Override public void setUserPrefs(ReadOnlyUserPrefs userPrefs) { throw new AssertionError("Should not be called"); }
-        @Override public GuiSettings getGuiSettings() { throw new AssertionError("Should not be called"); }
-        @Override public void setGuiSettings(GuiSettings guiSettings) { throw new AssertionError("Should not be called"); }
+        @Override
+        public void setOrganization(Organization target, Organization editedOrganization) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // Athletes
-        @Override public void addAthlete(Athlete athlete) { throw new AssertionError("Should not be called"); }
-        @Override public boolean hasAthlete(Athlete athlete) { throw new AssertionError("Should not be called"); }
-        @Override public void deleteAthlete(Athlete target) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Athlete> getFilteredAthleteList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredAthleteList(Predicate<Athlete> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public ObservableList<Organization> getFilteredOrganizationList() {
+            throw new AssertionError("Should not be called");
+        }
 
-        // AddressBook
-        @Override public void setAddressBook(ReadOnlyAddressBook newData) { throw new AssertionError("Should not be called"); }
-        @Override public ReadOnlyAddressBook getAddressBook() { throw new AssertionError("Should not be called"); }
+        @Override
+        public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public boolean hasContract(Contract contract) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void addContract(Contract contract) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void deleteContract(Contract target) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ObservableList<Contract> getFilteredContractList() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void updateFilteredContractList(Predicate<Contract> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public boolean hasPerson(Person person) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void deletePerson(Person target) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void addPerson(Person person) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setPerson(Person target, Person editedPerson) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ObservableList<Person> getFilteredPersonList() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public Path getAddressBookFilePath() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setAddressBookFilePath(Path addressBookFilePath) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ReadOnlyUserPrefs getUserPrefs() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public GuiSettings getGuiSettings() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setGuiSettings(GuiSettings guiSettings) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void addAthlete(Athlete athlete) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public boolean hasAthlete(Athlete athlete) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void deleteAthlete(Athlete target) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ObservableList<Athlete> getFilteredAthleteList() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void updateFilteredAthleteList(Predicate<Athlete> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setAddressBook(ReadOnlyAddressBook newData) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ReadOnlyAddressBook getAddressBook() {
+            throw new AssertionError("Should not be called");
+        }
     }
 
     private static class ModelStubWithContracts extends ModelStub {
         private final AddressBook backing = new AddressBook();
-
         private final List<Contract> filteredContracts = new ArrayList<>();
-        final List<Contract> deleted = new ArrayList<>();
+        private final List<Contract> deleted = new ArrayList<>();
 
         @Override
         public void addAthlete(Athlete athlete) {
@@ -165,7 +281,7 @@ public class DeleteContractCommandTest {
         }
 
         @Override
-        public javafx.collections.ObservableList<Contract> getFilteredContractList() {
+        public ObservableList<Contract> getFilteredContractList() {
             return javafx.collections.FXCollections.observableList(filteredContracts);
         }
 
@@ -173,6 +289,10 @@ public class DeleteContractCommandTest {
         public void deleteContract(Contract target) {
             deleted.add(target);
             filteredContracts.remove(target);
+        }
+
+        public List<Contract> getDeleted() {
+            return deleted;
         }
     }
 }

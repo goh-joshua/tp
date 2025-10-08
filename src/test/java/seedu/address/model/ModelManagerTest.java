@@ -1,7 +1,22 @@
 package seedu.address.model;
 
-import javafx.collections.ObservableList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.BENSON;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.Test;
+
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.contract.Contract;
@@ -12,17 +27,9 @@ import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
 import seedu.address.testutil.contract.ContractBuilder;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.function.Predicate;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BENSON;
-
+/**
+ * Tests for {@link ModelManager}.
+ */
 public class ModelManagerTest {
 
     private ModelManager modelManager = new ModelManager();
@@ -51,7 +58,6 @@ public class ModelManagerTest {
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
-        // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
         userPrefs.setAddressBookFilePath(Paths.get("new/address/book/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
@@ -99,7 +105,8 @@ public class ModelManagerTest {
 
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPersonList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                modelManager.getFilteredPersonList().remove(0));
     }
 
     @Test
@@ -108,32 +115,20 @@ public class ModelManagerTest {
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
 
-        // same values -> returns true
         modelManager = new ModelManager(addressBook, userPrefs);
         ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
-
-        // same object -> returns true
         assertTrue(modelManager.equals(modelManager));
-
-        // null -> returns false
         assertFalse(modelManager.equals(null));
-
-        // different types -> returns false
         assertFalse(modelManager.equals(5));
-
-        // different addressBook -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
 
-        // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
 
-        // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
@@ -163,7 +158,8 @@ public class ModelManagerTest {
 
     @Test
     public void getFilteredAthleteList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredAthleteList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                modelManager.getFilteredAthleteList().remove(0));
     }
 
     // ============================================================
@@ -190,11 +186,12 @@ public class ModelManagerTest {
 
     @Test
     public void getFilteredContractList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredContractList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                modelManager.getFilteredContractList().remove(0));
     }
 
     // ============================================================
-    // Organization tests (currently unsupported ops)
+    // Organization tests
     // ============================================================
 
     @Test
@@ -205,21 +202,22 @@ public class ModelManagerTest {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.addOrganization(org));
         assertThrows(UnsupportedOperationException.class, () -> modelManager.deleteOrganization(org));
         assertThrows(UnsupportedOperationException.class, () -> modelManager.setOrganization(org, org));
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.updateFilteredOrganizationList(o -> true));
+        assertThrows(UnsupportedOperationException.class, () ->
+                modelManager.updateFilteredOrganizationList(o -> true));
     }
 
     @Test
     public void getFilteredOrganizationList_returnsNotNullInitiallyEmpty() {
         ObservableList<Organization> orgs = modelManager.getFilteredOrganizationList();
         assertNotNull(orgs);
-        assertTrue(orgs.isEmpty()); // placeholder list in current implementation
+        assertTrue(orgs.isEmpty());
     }
 
     // ============================================================
-    // Helper (optionally used; here just to show typing)
+    // Helper
     // ============================================================
 
     private <T> void setPredicate(ObservableList<T> list, Predicate<T> predicate) {
-        // no-op helper to avoid unused warnings if needed
+        // no-op
     }
 }

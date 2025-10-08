@@ -1,7 +1,19 @@
 package seedu.address.logic.commands.contract;
 
-import javafx.collections.ObservableList;
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.Test;
+
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
@@ -19,17 +31,9 @@ import seedu.address.model.person.Person;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
-
+/**
+ * Tests for {@link AddContractCommand}.
+ */
 public class AddContractCommandTest {
 
     private static final Name ATHLETE_NAME = new Name("Lionel Messi");
@@ -47,27 +51,28 @@ public class AddContractCommandTest {
         return new OrganizationBuilder().withName(ORG_NAME.fullName).build();
     }
 
-    // ---------- constructor null checks ----------
+    // -------------------------------------------------------------------------
+    // Constructor null checks
+    // -------------------------------------------------------------------------
     @Test
     public void constructor_nullArgs_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> new AddContractCommand(null, SPORT, ORG_NAME, START, END, AMT));
-        assertThrows(NullPointerException.class,
-                () -> new AddContractCommand(ATHLETE_NAME, null, ORG_NAME, START, END, AMT));
-        assertThrows(NullPointerException.class,
-                () -> new AddContractCommand(ATHLETE_NAME, SPORT, null, START, END, AMT));
-        assertThrows(NullPointerException.class,
-                () -> new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, null, END, AMT));
-        assertThrows(NullPointerException.class,
-                () -> new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, null, AMT));
-        assertThrows(NullPointerException.class,
-                () -> new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, null));
+        assertThrows(NullPointerException.class, () ->
+            new AddContractCommand(null, SPORT, ORG_NAME, START, END, AMT));
+        assertThrows(NullPointerException.class, () ->
+            new AddContractCommand(ATHLETE_NAME, null, ORG_NAME, START, END, AMT));
+        assertThrows(NullPointerException.class, () ->
+            new AddContractCommand(ATHLETE_NAME, SPORT, null, START, END, AMT));
+        assertThrows(NullPointerException.class, () ->
+            new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, null, END, AMT));
+        assertThrows(NullPointerException.class, () ->
+            new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, null, AMT));
+        assertThrows(NullPointerException.class, () ->
+            new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, null));
     }
 
     @Test
     public void execute_athleteMissing_throwsCommandException() {
         ModelStubAcceptingContractAdded modelStub = new ModelStubAcceptingContractAdded();
-        // Only org present
         modelStub.addOrganization(validOrganization());
 
         AddContractCommand cmd = new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, AMT);
@@ -78,7 +83,6 @@ public class AddContractCommandTest {
     @Test
     public void execute_organizationMissing_throwsCommandException() {
         ModelStubAcceptingContractAdded modelStub = new ModelStubAcceptingContractAdded();
-        // Only athlete present
         modelStub.addAthlete(validAthlete());
 
         AddContractCommand cmd = new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, AMT);
@@ -86,12 +90,15 @@ public class AddContractCommandTest {
         assertTrue(modelStub.contractsAdded.isEmpty());
     }
 
-    // ---------- equals / toString ----------
+    // -------------------------------------------------------------------------
+    // equals() and toString()
+    // -------------------------------------------------------------------------
     @Test
     public void equals() {
         AddContractCommand a = new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, AMT);
         AddContractCommand same = new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, AMT);
-        AddContractCommand diff = new AddContractCommand(new Name("Kylian Mbappe"), SPORT, ORG_NAME, START, END, AMT);
+        AddContractCommand diff =
+                new AddContractCommand(new Name("Kylian Mbappe"), SPORT, ORG_NAME, START, END, AMT);
 
         assertTrue(a.equals(a));
         assertTrue(a.equals(same));
@@ -104,6 +111,7 @@ public class AddContractCommandTest {
     public void toStringMethod() {
         AddContractCommand a = new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, AMT);
         String s = a.toString();
+
         for (String mustContain : Arrays.asList(
                 "athleteName=" + ATHLETE_NAME,
                 "sport=" + SPORT,
@@ -115,56 +123,165 @@ public class AddContractCommandTest {
         }
     }
 
-    // ---------- minimal Model stubs ----------
+    // -------------------------------------------------------------------------
+    // Minimal model stubs
+    // -------------------------------------------------------------------------
     private class ModelStub implements Model {
-        // Organizations
-        @Override public boolean hasOrganization(Organization organization) { throw new AssertionError("Should not be called"); }
-        @Override public void deleteOrganization(Organization target) { throw new AssertionError("Should not be called"); }
-        @Override public void addOrganization(Organization organization) { throw new AssertionError("Should not be called"); }
-        @Override public void setOrganization(Organization target, Organization editedOrganization) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Organization> getFilteredOrganizationList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredOrganizationList(Predicate<Organization> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public boolean hasOrganization(Organization organization) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // Contracts
-        @Override public boolean hasContract(Contract contract) { throw new AssertionError("Should not be called"); }
-        @Override public void addContract(Contract contract) { throw new AssertionError("Should not be called"); }
-        @Override public void deleteContract(Contract target) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Contract> getFilteredContractList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredContractList(Predicate<Contract> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public void deleteOrganization(Organization target) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // Persons
-        @Override public boolean hasPerson(Person person) { throw new AssertionError("Should not be called"); }
-        @Override public void deletePerson(Person target) { throw new AssertionError("Should not be called"); }
-        @Override public void addPerson(Person person) { throw new AssertionError("Should not be called"); }
-        @Override public void setPerson(Person target, Person editedPerson) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Person> getFilteredPersonList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredPersonList(Predicate<Person> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public void addOrganization(Organization organization) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // File/prefs/gui
-        @Override public Path getAddressBookFilePath() { throw new AssertionError("Should not be called"); }
-        @Override public void setAddressBookFilePath(Path addressBookFilePath) { throw new AssertionError("Should not be called"); }
-        @Override public ReadOnlyUserPrefs getUserPrefs() { throw new AssertionError("Should not be called"); }
-        @Override public void setUserPrefs(ReadOnlyUserPrefs userPrefs) { throw new AssertionError("Should not be called"); }
-        @Override public GuiSettings getGuiSettings() { throw new AssertionError("Should not be called"); }
-        @Override public void setGuiSettings(GuiSettings guiSettings) { throw new AssertionError("Should not be called"); }
+        @Override
+        public void setOrganization(Organization target, Organization editedOrganization) {
+            throw new AssertionError("Should not be called");
+        }
 
-        // Athletes
-        @Override public void addAthlete(Athlete athlete) { throw new AssertionError("Should not be called"); }
-        @Override public boolean hasAthlete(Athlete athlete) { throw new AssertionError("Should not be called"); }
-        @Override public void deleteAthlete(Athlete target) { throw new AssertionError("Should not be called"); }
-        @Override public ObservableList<Athlete> getFilteredAthleteList() { throw new AssertionError("Should not be called"); }
-        @Override public void updateFilteredAthleteList(Predicate<Athlete> predicate) { throw new AssertionError("Should not be called"); }
+        @Override
+        public ObservableList<Organization> getFilteredOrganizationList() {
+            throw new AssertionError("Should not be called");
+        }
 
-        // AddressBook
-        @Override public void setAddressBook(ReadOnlyAddressBook newData) { throw new AssertionError("Should not be called"); }
-        @Override public ReadOnlyAddressBook getAddressBook() { throw new AssertionError("Should not be called"); }
+        @Override
+        public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public boolean hasContract(Contract contract) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void addContract(Contract contract) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void deleteContract(Contract target) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ObservableList<Contract> getFilteredContractList() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void updateFilteredContractList(Predicate<Contract> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public boolean hasPerson(Person person) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void deletePerson(Person target) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void addPerson(Person person) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setPerson(Person target, Person editedPerson) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ObservableList<Person> getFilteredPersonList() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public Path getAddressBookFilePath() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setAddressBookFilePath(Path addressBookFilePath) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ReadOnlyUserPrefs getUserPrefs() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public GuiSettings getGuiSettings() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setGuiSettings(GuiSettings guiSettings) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void addAthlete(Athlete athlete) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public boolean hasAthlete(Athlete athlete) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void deleteAthlete(Athlete target) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ObservableList<Athlete> getFilteredAthleteList() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void updateFilteredAthleteList(Predicate<Athlete> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public void setAddressBook(ReadOnlyAddressBook newData) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ReadOnlyAddressBook getAddressBook() {
+            throw new AssertionError("Should not be called");
+        }
     }
 
     private class ModelStubAcceptingContractAdded extends ModelStub {
         private final AddressBook backing = new AddressBook();
-
-        final List<Contract> contractsAdded = new ArrayList<>();
-        boolean duplicateOnHasContract = false;
+        private final List<Contract> contractsAdded = new ArrayList<>();
+        private boolean duplicateOnHasContract = false;
 
         @Override
         public boolean hasContract(Contract contract) {
@@ -177,7 +294,6 @@ public class AddContractCommandTest {
             contractsAdded.add(contract);
         }
 
-        // Seed model
         @Override
         public void addAthlete(Athlete athlete) {
             requireNonNull(athlete);
@@ -193,6 +309,14 @@ public class AddContractCommandTest {
         @Override
         public ReadOnlyAddressBook getAddressBook() {
             return backing;
+        }
+
+        public void setDuplicateOnHasContract(boolean duplicateOnHasContract) {
+            this.duplicateOnHasContract = duplicateOnHasContract;
+        }
+
+        public boolean isDuplicateOnHasContract() {
+            return duplicateOnHasContract;
         }
     }
 }

@@ -1,14 +1,19 @@
 package seedu.address.model.contract;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.organization.Organization;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
 import seedu.address.testutil.contract.ContractBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ContractTest {
 
