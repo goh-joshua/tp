@@ -1,6 +1,9 @@
 package seedu.address.testutil;
 
 import seedu.address.model.AddressBook;
+import seedu.address.model.athlete.Athlete;
+import seedu.address.model.contract.Contract;
+import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
 
 /**
@@ -27,6 +30,32 @@ public class AddressBookBuilder {
         addressBook.addPerson(person);
         return this;
     }
+
+    /**
+     * Adds a new {@code Contract} to the {@code AddressBook} that we are building.
+     */
+    public AddressBookBuilder withContract(Contract contract) {
+        addressBook.addContract(contract);
+        return this;
+    }
+
+    /**
+     * Adds a new {@code Athlete} to the {@code AthleteBook} that we are building.
+     */
+    public AddressBookBuilder withAthlete(Athlete athlete) {
+        addressBook.addAthlete(athlete);
+        return this;
+    }
+
+    /**
+     * Adds a new {@code Contract} to the {@code AddressBook} that we are building.
+     */
+    public AddressBookBuilder withOrganization(Organization organization) {
+        addressBook.addOrganization(organization);
+        return this;
+    }
+
+
 
     public AddressBook build() {
         return addressBook;

@@ -17,14 +17,23 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.athlete.AddAthleteCommand;
+import seedu.address.logic.commands.athlete.DeleteAthleteCommand;
+import seedu.address.logic.commands.contract.AddContractCommand;
+import seedu.address.logic.commands.contract.DeleteContractCommand;
 import seedu.address.logic.commands.organization.AddOrganizationCommand;
 import seedu.address.logic.commands.organization.DeleteOrganizationCommand;
+import seedu.address.logic.parser.athlete.AddAthleteCommandParser;
+import seedu.address.logic.parser.athlete.DeleteAthleteCommandParser;
+import seedu.address.logic.parser.contract.AddContractCommandParser;
+import seedu.address.logic.parser.contract.DeleteContractCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.organization.AddOrganizationCommandParser;
 import seedu.address.logic.parser.organization.DeleteOrganizationCommandParser;
 
 /**
  * Parses user input.
+ * Unified parser for AddressBook, Organizations, Athletes, and Contracts.
  */
 public class AddressBookParser {
 
@@ -51,25 +60,15 @@ public class AddressBookParser {
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-
+        // ================= People (core AB3) =================
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
-        // === Organization commands ===
-        case AddOrganizationCommand.COMMAND_WORD:
-            return new AddOrganizationCommandParser().parse(arguments);
-
-        case DeleteOrganizationCommand.COMMAND_WORD:
-            return new DeleteOrganizationCommandParser().parse(arguments);
-
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
-
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
@@ -77,11 +76,35 @@ public class AddressBookParser {
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
+        case ClearCommand.COMMAND_WORD:
+            return new ClearCommand();
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        // ================= Organizations =================
+        case AddOrganizationCommand.COMMAND_WORD:
+            return new AddOrganizationCommandParser().parse(arguments);
+
+        case DeleteOrganizationCommand.COMMAND_WORD:
+            return new DeleteOrganizationCommandParser().parse(arguments);
+
+        // ================= Athletes =================
+        case AddAthleteCommand.COMMAND_WORD:
+            return new AddAthleteCommandParser().parse(arguments);
+
+        case DeleteAthleteCommand.COMMAND_WORD:
+            return new DeleteAthleteCommandParser().parse(arguments);
+
+        // ================= Contracts =================
+        case AddContractCommand.COMMAND_WORD:
+            return new AddContractCommandParser().parse(arguments);
+
+        case DeleteContractCommand.COMMAND_WORD:
+            return new DeleteContractCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

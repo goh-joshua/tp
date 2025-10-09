@@ -8,6 +8,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.athlete.Athlete;
+import seedu.address.model.contract.Contract;
+import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
 
 /**
@@ -47,4 +50,18 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns an unmodifiable view of the filtered list of contracts.
+     *
+     * @see seedu.address.model.Model#getFilteredContractList()
+     */
+    ObservableList<Contract> getFilteredContractList();
+
+    /** Returns an unmodifiable view of the filtered list of athletes */
+    ObservableList<Athlete> getFilteredAthleteList();
+
+    /** Returns an unmodifiable view of the filtered list of athletes */
+    ObservableList<Organization> getFilteredOrganizationList();
+
 }

@@ -12,40 +12,61 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.athlete.Athlete;
+import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of all app data using a single AddressBook:
+ * - Persons, Contracts, Organizations (placeholder)
+ * - Athletes (now stored in AddressBook as well)
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    // ---- Single AddressBook domain ----
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
+
+    // filtered views
     private final FilteredList<Person> filteredPersons;
-    private final FilteredList<Organization> filteredOrganizations;
+    private final FilteredList<Organization> filteredOrganizations; // placeholder until wired
+    private final FilteredList<Contract> filteredContracts;
+    private final FilteredList<Athlete> filteredAthletes;
+
+    // =====================================================================================
+    // Constructors
+    // =====================================================================================
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Constructs a {@code ModelManager} with the given address book and user preferences.
+     *
+     * @param addressBook the address book data to initialize from
+     * @param userPrefs   the user preferences to initialize from
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + addressBook + " | user prefs: " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-        // TODO: replace null with proper list once organization support is added to AddressBook
-        filteredOrganizations = new FilteredList<>(FXCollections.observableArrayList());
+
+        this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.filteredContracts = new FilteredList<>(this.addressBook.getContractList());
+        this.filteredOrganizations = new FilteredList<>(FXCollections.observableArrayList()); // placeholder
+        this.filteredAthletes = new FilteredList<>(this.addressBook.getAthleteList());
     }
 
     public ModelManager() {
         this(new AddressBook(), new UserPrefs());
     }
 
-    //=========== UserPrefs ==================================================================================
+    // =====================================================================================
+    // UserPrefs (AddressBook)
+    // =====================================================================================
 
     @Override
     public ReadOnlyUserPrefs getUserPrefs() {
@@ -80,20 +101,21 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
-
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
-    }
+    // =====================================================================================
+    // AddressBook (Persons / Contracts / Orgs / Athletes)
+    // =====================================================================================
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
     }
 
-    //=========== Person =====================================================================================
+    @Override
+    public ReadOnlyAddressBook getAddressBook() {
+        return addressBook;
+    }
 
+    // ---- Persons ----
     @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
@@ -117,8 +139,49 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
-    //=========== Organization ===============================================================================
+    @Override
+    public ObservableList<Person> getFilteredPersonList() {
+        return filteredPersons;
+    }
 
+    @Override
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
+        requireNonNull(predicate);
+        filteredPersons.setPredicate(predicate);
+    }
+
+    // ---- Contracts ----
+    @Override
+    public boolean hasContract(Contract contract) {
+        requireNonNull(contract);
+        return addressBook.hasContract(contract);
+    }
+
+    @Override
+    public void addContract(Contract contract) {
+        requireNonNull(contract);
+        addressBook.addContract(contract);
+        updateFilteredContractList(PREDICATE_SHOW_ALL_CONTRACTS);
+    }
+
+    @Override
+    public void deleteContract(Contract target) {
+        requireNonNull(target);
+        addressBook.removeContract(target);
+    }
+
+    @Override
+    public ObservableList<Contract> getFilteredContractList() {
+        return filteredContracts;
+    }
+
+    @Override
+    public void updateFilteredContractList(Predicate<Contract> predicate) {
+        requireNonNull(predicate);
+        filteredContracts.setPredicate(predicate);
+    }
+
+    // ---- Organizations (placeholders) ----
     @Override
     public boolean hasOrganization(Organization organization) {
         requireNonNull(organization);
@@ -154,39 +217,53 @@ public class ModelManager implements Model {
         throw new UnsupportedOperationException("Organization filtering not yet implemented");
     }
 
-    //=========== Filtered Person List Accessors =============================================================
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
+    // ---- Athletes (now from addressBook) ----
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public boolean hasAthlete(Athlete athlete) {
+        requireNonNull(athlete);
+        return addressBook.hasAthlete(athlete);
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void deleteAthlete(Athlete target) {
+        addressBook.removeAthlete(target);
+    }
+
+    @Override
+    public void addAthlete(Athlete athlete) {
+        addressBook.addAthlete(athlete);
+        updateFilteredAthleteList(PREDICATE_SHOW_ALL_ATHLETES);
+    }
+
+    @Override
+    public ObservableList<Athlete> getFilteredAthleteList() {
+        return filteredAthletes;
+    }
+
+    @Override
+    public void updateFilteredAthleteList(Predicate<Athlete> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredAthletes.setPredicate(predicate);
     }
 
-    //=========== Utility ====================================================================================
+    // =====================================================================================
+    // Equality
+    // =====================================================================================
 
     @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
         }
-
-        // instanceof handles nulls
         if (!(other instanceof ModelManager)) {
             return false;
         }
 
-        ModelManager otherModelManager = (ModelManager) other;
-        return addressBook.equals(otherModelManager.addressBook)
-                && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+        ModelManager o = (ModelManager) other;
+        return addressBook.equals(o.addressBook)
+                && userPrefs.equals(o.userPrefs)
+                && filteredPersons.equals(o.filteredPersons)
+                && filteredContracts.equals(o.filteredContracts)
+                && filteredAthletes.equals(o.filteredAthletes);
     }
 }

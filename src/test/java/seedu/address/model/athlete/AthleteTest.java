@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.testutil.TypicalAthletes.ALICE;
-import static seedu.address.testutil.TypicalAthletes.BENSON;
+import static seedu.address.testutil.athlete.TypicalAthletes.ALICE;
+import static seedu.address.testutil.athlete.TypicalAthletes.BENSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.testutil.AthleteBuilder;
+import seedu.address.testutil.athlete.AthleteBuilder;
 
 public class AthleteTest {
 
