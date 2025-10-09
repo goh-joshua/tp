@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
@@ -97,6 +98,9 @@ public interface Model {
     // ============================================================
     // Athlete Logic
     // ============================================================
+
+    /** Returns the AthleteList. */
+    ReadOnlyAthleteList getAthleteList();
 
     /** Returns true if an athlete with the same identity exists. */
     boolean hasAthlete(Athlete athlete);

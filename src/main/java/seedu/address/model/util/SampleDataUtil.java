@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.athlete.AthleteList;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -55,6 +57,13 @@ public class SampleDataUtil {
         return Arrays.stream(strings)
                 .map(Tag::new)
                 .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns an empty athlete list for initializing the model when no athlete data is present.
+     */
+    public static ReadOnlyAthleteList getEmptyAthleteList() {
+        return new AthleteList();
     }
 
 }

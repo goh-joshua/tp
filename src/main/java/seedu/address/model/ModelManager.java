@@ -13,6 +13,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.AthleteList;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.person.Person;
@@ -29,6 +31,7 @@ public class ModelManager implements Model {
     // ---- Single AddressBook domain ----
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
+    private final AthleteList athleteList;
 
     // filtered views
     private final FilteredList<Person> filteredPersons;
@@ -46,13 +49,16 @@ public class ModelManager implements Model {
      * @param addressBook the address book data to initialize from
      * @param userPrefs   the user preferences to initialize from
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyAthleteList athleteList) {
+        requireAllNonNull(addressBook, userPrefs, athleteList);
 
-        logger.fine("Initializing with address book: " + addressBook + " | user prefs: " + userPrefs);
+        logger.fine("Initializing with address book: " + addressBook
+            + " | user prefs: " + userPrefs);
+        logger.fine("Initializing athlete list: " + athleteList);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.athleteList = new AthleteList(athleteList);
 
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredContracts = new FilteredList<>(this.addressBook.getContractList());
@@ -61,7 +67,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), new AthleteList());
     }
 
     // =====================================================================================
@@ -218,6 +224,18 @@ public class ModelManager implements Model {
     }
 
     // ---- Athletes (now from addressBook) ----
+
+    @Override
+    public ReadOnlyAthleteList getAthleteList() {
+        // Return a read-only view of the addressBook's athlete list (where changes actually happen)
+        return new ReadOnlyAthleteList() {
+            @Override
+            public ObservableList<Athlete> getAthleteList() {
+                return addressBook.getAthleteList();
+            }
+        };
+    }
+
     @Override
     public boolean hasAthlete(Athlete athlete) {
         requireNonNull(athlete);

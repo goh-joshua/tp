@@ -10,6 +10,7 @@ import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
 
 /**
  * Manages storage of AddressBook data in local storage.
@@ -19,13 +20,18 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
+    private AthleteListStorage athleteListStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code AddressBookStorage},
+     * {@code UserPrefStorage} and {@code AthleteListStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(AddressBookStorage addressBookStorage,
+                          UserPrefsStorage userPrefsStorage,
+                          AthleteListStorage athleteListStorage) {
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.athleteListStorage = athleteListStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -73,6 +79,35 @@ public class StorageManager implements Storage {
     public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         addressBookStorage.saveAddressBook(addressBook, filePath);
+    }
+
+    // ================ AthleteList methods ==============================
+
+    @Override
+    public Path getAthleteListFilePath() {
+        return athleteListStorage.getAthleteListFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyAthleteList> readAthleteList() throws DataLoadingException {
+        return readAthleteList(athleteListStorage.getAthleteListFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyAthleteList> readAthleteList(Path filePath) throws DataLoadingException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return athleteListStorage.readAthleteList(filePath);
+    }
+
+    @Override
+    public void saveAthleteList(ReadOnlyAthleteList athletes) throws IOException {
+        saveAthleteList(athletes, athleteListStorage.getAthleteListFilePath());
+    }
+
+    @Override
+    public void saveAthleteList(ReadOnlyAthleteList athletes, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        athleteListStorage.saveAthleteList(athletes, filePath);
     }
 
 }
