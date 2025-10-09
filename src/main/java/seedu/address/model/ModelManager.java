@@ -60,6 +60,11 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         this.athleteList = new AthleteList(athleteList);
 
+        // Populate addressBook with the loaded athletes
+        for (Athlete athlete : athleteList.getAthleteList()) {
+            this.addressBook.addAthlete(athlete);
+        }
+
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredContracts = new FilteredList<>(this.addressBook.getContractList());
         this.filteredOrganizations = new FilteredList<>(FXCollections.observableArrayList()); // placeholder
