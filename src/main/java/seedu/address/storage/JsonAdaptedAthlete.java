@@ -88,6 +88,4 @@ class JsonAdaptedAthlete {
 
         return new Athlete(modelName, modelSport, modelAge, modelPhone, modelEmail);
     }
-
-    // equals and hashCode methods removed as per requirements
 }

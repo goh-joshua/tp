@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -16,7 +15,11 @@ import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.AthleteList;
 import seedu.address.model.athlete.ReadOnlyAthleteList;
 import seedu.address.model.contract.Contract;
+import seedu.address.model.contract.ContractList;
+import seedu.address.model.contract.ReadOnlyContractList;
 import seedu.address.model.organization.Organization;
+import seedu.address.model.organization.OrganizationList;
+import seedu.address.model.organization.ReadOnlyOrganizationList;
 import seedu.address.model.person.Person;
 
 /**
@@ -32,6 +35,8 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final AthleteList athleteList;
+    private final ContractList contractList;
+    private final OrganizationList organizationList;
 
     // filtered views
     private final FilteredList<Person> filteredPersons;
@@ -49,30 +54,46 @@ public class ModelManager implements Model {
      * @param addressBook the address book data to initialize from
      * @param userPrefs   the user preferences to initialize from
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyAthleteList athleteList) {
-        requireAllNonNull(addressBook, userPrefs, athleteList);
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
+                        ReadOnlyAthleteList athleteList, ReadOnlyContractList contractList,
+                        ReadOnlyOrganizationList organizationList) {
+        requireAllNonNull(addressBook, userPrefs, athleteList, contractList, organizationList);
 
         logger.fine("Initializing with address book: " + addressBook
             + " | user prefs: " + userPrefs);
         logger.fine("Initializing athlete list: " + athleteList);
+        logger.fine("Initializing contract list: " + contractList);
+        logger.fine("Initializing organization list: " + organizationList);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.athleteList = new AthleteList(athleteList);
+        this.contractList = new ContractList(contractList);
+        this.organizationList = new OrganizationList(organizationList);
 
         // Populate addressBook with the loaded athletes
         for (Athlete athlete : athleteList.getAthleteList()) {
             this.addressBook.addAthlete(athlete);
         }
 
+        // Populate addressBook with the loaded contracts
+        for (Contract contract : contractList.getContractList()) {
+            this.addressBook.addContract(contract);
+        }
+
+        // Populate addressBook with the loaded organizations
+        for (Organization organization : organizationList.getOrganizationList()) {
+            this.addressBook.addOrganization(organization);
+        }
+
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredContracts = new FilteredList<>(this.addressBook.getContractList());
-        this.filteredOrganizations = new FilteredList<>(FXCollections.observableArrayList()); // placeholder
+        this.filteredOrganizations = new FilteredList<>(this.addressBook.getOrganizationList());
         this.filteredAthletes = new FilteredList<>(this.addressBook.getAthleteList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new AthleteList());
+        this(new AddressBook(), new UserPrefs(), new AthleteList(), new ContractList(), new OrganizationList());
     }
 
     // =====================================================================================
@@ -162,6 +183,18 @@ public class ModelManager implements Model {
     }
 
     // ---- Contracts ----
+
+    @Override
+    public ReadOnlyContractList getContractList() {
+        // Return a read-only view of the addressBook's contract list (where changes actually happen)
+        return new ReadOnlyContractList() {
+            @Override
+            public ObservableList<Contract> getContractList() {
+                return addressBook.getContractList();
+            }
+        };
+    }
+
     @Override
     public boolean hasContract(Contract contract) {
         requireNonNull(contract);
@@ -192,29 +225,42 @@ public class ModelManager implements Model {
         filteredContracts.setPredicate(predicate);
     }
 
-    // ---- Organizations (placeholders) ----
+    // ---- Organizations ----
+
+    @Override
+    public ReadOnlyOrganizationList getOrganizationList() {
+        // Return a read-only view of the live organization list from addressBook
+        return new ReadOnlyOrganizationList() {
+            @Override
+            public ObservableList<Organization> getOrganizationList() {
+                return addressBook.getOrganizationList();
+            }
+        };
+    }
+
     @Override
     public boolean hasOrganization(Organization organization) {
         requireNonNull(organization);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        return addressBook.hasOrganization(organization);
     }
 
     @Override
     public void deleteOrganization(Organization target) {
         requireNonNull(target);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        addressBook.removeOrganization(target);
     }
 
     @Override
     public void addOrganization(Organization organization) {
         requireNonNull(organization);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        addressBook.addOrganization(organization);
+        updateFilteredOrganizationList(PREDICATE_SHOW_ALL_ORGANIZATIONS);
     }
 
     @Override
     public void setOrganization(Organization target, Organization editedOrganization) {
         requireAllNonNull(target, editedOrganization);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        addressBook.setOrganization(target, editedOrganization);
     }
 
     @Override
@@ -225,7 +271,7 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
         requireNonNull(predicate);
-        throw new UnsupportedOperationException("Organization filtering not yet implemented");
+        filteredOrganizations.setPredicate(predicate);
     }
 
     // ---- Athletes (now from addressBook) ----

@@ -50,15 +50,13 @@ public class AddOrganizationCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        // TODO: Uncomment once organization storage is implemented
-        // if (model.hasOrganization(toAdd)) {
-        //     throw new CommandException(MESSAGE_DUPLICATE_ORGANIZATION);
-        // }
-        // model.addOrganization(toAdd);
+        if (model.hasOrganization(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ORGANIZATION);
+        }
+        model.addOrganization(toAdd);
 
-        // Temporary placeholder result
         return new CommandResult(String.format(
-                MESSAGE_SUCCESS + " (storage not yet implemented)",
+                MESSAGE_SUCCESS,
                 Messages.format(toAdd)
         ));
     }

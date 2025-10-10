@@ -8,6 +8,10 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.athlete.AthleteList;
 import seedu.address.model.athlete.ReadOnlyAthleteList;
+import seedu.address.model.contract.ContractList;
+import seedu.address.model.contract.ReadOnlyContractList;
+import seedu.address.model.organization.OrganizationList;
+import seedu.address.model.organization.ReadOnlyOrganizationList;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -64,6 +68,20 @@ public class SampleDataUtil {
      */
     public static ReadOnlyAthleteList getEmptyAthleteList() {
         return new AthleteList();
+    }
+
+    /**
+     * Returns an empty contract list for initializing the model when no contract data is present.
+     */
+    public static ReadOnlyContractList getEmptyContractList() {
+        return new ContractList();
+    }
+
+    /**
+     * Returns an empty organization list for initializing the model when no organization data is present.
+     */
+    public static ReadOnlyOrganizationList getEmptyOrganizationList() {
+        return new OrganizationList();
     }
 
 }

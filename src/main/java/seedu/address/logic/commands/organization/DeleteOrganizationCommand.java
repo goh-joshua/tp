@@ -44,12 +44,10 @@ public class DeleteOrganizationCommand extends Command {
 
         Organization organizationToDelete = lastShownList.get(targetIndex.getZeroBased());
 
-        // TODO: Uncomment once organization storage is implemented
-        // model.deleteOrganization(organizationToDelete);
+        model.deleteOrganization(organizationToDelete);
 
-        // Temporary placeholder result
         return new CommandResult(String.format(
-                MESSAGE_DELETE_ORGANIZATION_SUCCESS + " (storage not yet implemented)",
+                MESSAGE_DELETE_ORGANIZATION_SUCCESS,
                 Messages.format(organizationToDelete)
         ));
     }

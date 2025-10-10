@@ -12,10 +12,11 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.contract.Date8;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.person.Name;
+import seedu.address.model.organization.OrganizationName;
 
 /**
  * Deletes an existing {@link Contract} identified by athlete/org/dates.
@@ -38,7 +39,7 @@ public class DeleteContractCommand extends Command {
             "No matching contract found for athlete '%s', organization '%s', start '%s', end '%s'.";
 
     private final Name athleteName;
-    private final Name organizationName;
+    private final OrganizationName organizationName;
     private final Date8 startDate;
     private final Date8 endDate;
 
@@ -50,7 +51,7 @@ public class DeleteContractCommand extends Command {
      * @param startDate Start date of the contract.
      * @param endDate End date of the contract.
      */
-    public DeleteContractCommand(Name athleteName, Name organizationName, Date8 startDate, Date8 endDate) {
+    public DeleteContractCommand(Name athleteName, OrganizationName organizationName, Date8 startDate, Date8 endDate) {
         requireNonNull(athleteName);
         requireNonNull(organizationName);
         requireNonNull(startDate);
@@ -98,7 +99,7 @@ public class DeleteContractCommand extends Command {
                 .findFirst();
     }
 
-    private Optional<Organization> findOrganizationByName(Model model, Name name) {
+    private Optional<Organization> findOrganizationByName(Model model, OrganizationName name) {
         return model.getAddressBook().getOrganizationList().stream()
                 .filter(o -> o.getName().equals(name))
                 .findFirst();

@@ -8,7 +8,9 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.ReadOnlyAthleteList;
 import seedu.address.model.contract.Contract;
+import seedu.address.model.contract.ReadOnlyContractList;
 import seedu.address.model.organization.Organization;
+import seedu.address.model.organization.ReadOnlyOrganizationList;
 import seedu.address.model.person.Person;
 
 /**
@@ -77,6 +79,9 @@ public interface Model {
     // Organization Logic
     // ============================================================
 
+    /** Returns the OrganizationList. */
+    ReadOnlyOrganizationList getOrganizationList();
+
     /** Returns true if an organization with the same identity exists. */
     boolean hasOrganization(Organization organization);
 
@@ -120,6 +125,9 @@ public interface Model {
     // ============================================================
     // Contract Logic
     // ============================================================
+
+    /** Returns the ContractList. */
+    ReadOnlyContractList getContractList();
 
     /** Returns true if a contract with the same identity exists. */
     boolean hasContract(Contract contract);
