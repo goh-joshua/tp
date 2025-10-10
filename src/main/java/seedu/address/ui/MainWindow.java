@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -32,6 +33,9 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private AthleteListPanel athleteListPanel;
+    private OrganizationListPanel organizationListPanel;
+    private ContractListPanel contractListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -42,7 +46,19 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private TabPane tabPane;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
+
+    @FXML
+    private StackPane athleteListPanelPlaceholder;
+
+    @FXML
+    private StackPane organizationListPanelPlaceholder;
+
+    @FXML
+    private StackPane contractListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -74,6 +90,33 @@ public class MainWindow extends UiPart<Stage> {
 
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+        setTabAccelerators();
+    }
+
+    /**
+     * Sets up keyboard shortcuts for tab switching.
+     */
+    private void setTabAccelerators() {
+        setTabAccelerator(KeyCombination.valueOf("Shortcut+1"), 0); // People tab
+        setTabAccelerator(KeyCombination.valueOf("Shortcut+2"), 1); // Athletes tab
+        setTabAccelerator(KeyCombination.valueOf("Shortcut+3"), 2); // Organizations tab
+        setTabAccelerator(KeyCombination.valueOf("Shortcut+4"), 3); // Contracts tab
+    }
+
+    /**
+     * Sets up a keyboard shortcut to switch to a specific tab.
+     * @param keyCombination the key combination to trigger the tab switch
+     * @param tabIndex the index of the tab to switch to
+     */
+    private void setTabAccelerator(KeyCombination keyCombination, int tabIndex) {
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (keyCombination.match(event)) {
+                if (tabPane != null && tabIndex < tabPane.getTabs().size()) {
+                    tabPane.getSelectionModel().select(tabIndex);
+                }
+                event.consume();
+            }
+        });
     }
 
     /**
@@ -112,6 +155,15 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        athleteListPanel = new AthleteListPanel(logic.getFilteredAthleteList());
+        athleteListPanelPlaceholder.getChildren().add(athleteListPanel.getRoot());
+
+        organizationListPanel = new OrganizationListPanel(logic.getFilteredOrganizationList());
+        organizationListPanelPlaceholder.getChildren().add(organizationListPanel.getRoot());
+
+        contractListPanel = new ContractListPanel(logic.getFilteredContractList());
+        contractListPanelPlaceholder.getChildren().add(contractListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

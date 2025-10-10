@@ -43,13 +43,10 @@ public class DeleteOrganizationCommand extends Command {
         }
 
         Organization organizationToDelete = lastShownList.get(targetIndex.getZeroBased());
-
         model.deleteOrganization(organizationToDelete);
+        return new CommandResult(String.format(MESSAGE_DELETE_ORGANIZATION_SUCCESS,
+                Messages.format(organizationToDelete)));
 
-        return new CommandResult(String.format(
-                MESSAGE_DELETE_ORGANIZATION_SUCCESS,
-                Messages.format(organizationToDelete)
-        ));
     }
 
     @Override

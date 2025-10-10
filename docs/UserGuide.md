@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# Playbook.io User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+Playbook.io is a **desktop app for managing sports contacts including athletes, organizations, and contracts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Playbook.io can get your sports management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -32,6 +32,10 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    * `list` : Lists all contacts.
 
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+
+   * `add-a n/LeBron James s/Basketball ag/40 p/98765432 e/james@example.com` : Adds an athlete named `LeBron James` to Playbook.io.
+
+   * `add-org o/Nike cn/John Doe p/98765432 e/john.doe@nike.com` : Adds an organization named `Nike` to Playbook.io.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -146,6 +150,88 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Adding an athlete: `add-a`
+
+Adds an athlete to playbook.io.
+
+Format: `add-a n/NAME s/SPORT ag/AGE p/PHONE_NUMBER e/EMAIL`
+
+* All fields are required.
+* `AGE` must be a positive integer.
+* `SPORT` can be any sport type (e.g., Basketball, Football, Tennis).
+
+Examples:
+* `add-a n/LeBron James s/Basketball ag/40 p/98765432 e/james@example.com`
+* `add-a n/Serena Williams s/Tennis ag/42 p/87654321 e/serena@example.com`
+
+### Deleting an athlete: `delete-a`
+
+Deletes the specified athlete from playbook.io.
+
+Format: `delete-a INDEX`
+
+* Deletes the athlete at the specified `INDEX`.
+* The index refers to the index number shown in the displayed athlete list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `delete-a 1` deletes the 1st athlete in the athlete list.
+
+### Adding an organization: `add-org`
+
+Adds an organization to the address book.
+
+Format: `add-org o/ORGANIZATION_NAME cn/CONTACT_NAME p/PHONE_NUMBER e/EMAIL`
+
+* All fields are required.
+* `ORGANIZATION_NAME` is the name of the organization (e.g., Nike, Adidas).
+* `CONTACT_NAME` is the name of the contact person at the organization.
+
+Examples:
+* `add-org o/Nike cn/John Doe p/98765432 e/john.doe@nike.com`
+* `add-org o/Manchester United cn/Jane Smith p/87654321 e/jane@manutd.com`
+
+### Deleting an organization: `delete-org`
+
+Deletes the specified organization from the address book.
+
+Format: `delete-org INDEX`
+
+* Deletes the organization at the specified `INDEX`.
+* The index refers to the index number shown in the displayed organization list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `delete-org 2` deletes the 2nd organization in the organization list.
+
+### Adding a contract: `add-contract`
+
+Adds a contract linking an athlete and an organization.
+
+Format: `add-contract n/ATHLETE_NAME s/SPORT o/ORG_NAME sd/START_DATE ed/END_DATE am/AMOUNT`
+
+* All fields are required.
+* `ATHLETE_NAME` and `ORG_NAME` must correspond to existing athletes and organizations.
+* `START_DATE` and `END_DATE` must be in DDMMYYYY format.
+* `AMOUNT` must be a positive integer representing the contract value.
+
+Examples:
+* `add-contract n/LeBron James s/Basketball o/Lakers sd/01012024 ed/31122024 am/50000000`
+* `add-contract n/Lionel Messi s/Football o/Inter Miami sd/15062023 ed/15062025 am/60000000`
+
+### Deleting a contract: `delete-contract`
+
+Deletes the specified contract.
+
+Format: `delete-contract INDEX`
+
+* Deletes the contract at the specified `INDEX`.
+* The index refers to the index number shown in the displayed contract list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `delete-contract 1` deletes the 1st contract in the contract list.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -195,12 +281,18 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+Action               | Format, Examples
+---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Add Person**       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add Athlete**      | `add-a n/NAME s/SPORT ag/AGE p/PHONE_NUMBER e/EMAIL` <br> e.g., `add-a n/LeBron James s/Basketball ag/40 p/98765432 e/james@example.com`
+**Add Organization** | `add-org o/ORGANIZATION_NAME cn/CONTACT_NAME p/PHONE_NUMBER e/EMAIL` <br> e.g., `add-org o/Nike cn/John Doe p/98765432 e/john.doe@nike.com`
+**Add Contract**     | `add-contract n/ATHLETE_NAME s/SPORT o/ORG_NAME sd/START_DATE ed/END_DATE am/AMOUNT` <br> e.g., `add-contract n/LeBron James s/Basketball o/Lakers sd/01012024 ed/31122024 am/50000000`
+**Clear**            | `clear`
+**Delete Person**    | `delete INDEX`<br> e.g., `delete 3`
+**Delete Athlete**   | `delete-a INDEX`<br> e.g., `delete-a 1`
+**Delete Organization** | `delete-org INDEX`<br> e.g., `delete-org 2`
+**Delete Contract**  | `delete-contract INDEX`<br> e.g., `delete-contract 1`
+**Edit**             | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Find**             | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**List**             | `list`
+**Help**             | `help`

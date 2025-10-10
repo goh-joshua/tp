@@ -53,12 +53,10 @@ public class AddOrganizationCommand extends Command {
         if (model.hasOrganization(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_ORGANIZATION);
         }
-        model.addOrganization(toAdd);
 
-        return new CommandResult(String.format(
-                MESSAGE_SUCCESS,
-                Messages.format(toAdd)
-        ));
+        model.addOrganization(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+
     }
 
     @Override
