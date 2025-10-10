@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private AthleteListPanel athleteListPanel;
     private OrganizationListPanel organizationListPanel;
+    private ContractListPanel contractListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -160,6 +161,9 @@ public class MainWindow extends UiPart<Stage> {
 
         organizationListPanel = new OrganizationListPanel(logic.getFilteredOrganizationList());
         organizationListPanelPlaceholder.getChildren().add(organizationListPanel.getRoot());
+
+        contractListPanel = new ContractListPanel(logic.getFilteredContractList());
+        contractListPanelPlaceholder.getChildren().add(contractListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

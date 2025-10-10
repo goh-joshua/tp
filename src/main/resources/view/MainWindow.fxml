@@ -80,9 +80,7 @@
                 <padding>
                   <Insets top="10" right="10" bottom="10" left="10" />
                 </padding>
-                <StackPane fx:id="contractListPanelPlaceholder" VBox.vgrow="ALWAYS">
-                  <Label text="Contracts - Coming Soon" styleClass="cell_big_label"/>
-                </StackPane>
+                <StackPane fx:id="contractListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
               </VBox>
             </Tab>
           </tabs>
