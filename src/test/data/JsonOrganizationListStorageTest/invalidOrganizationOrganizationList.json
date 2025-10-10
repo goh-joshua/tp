@@ -1,0 +1,10 @@
+{
+  "organizations": [
+    {
+      "name": "Invalid@Org!",
+      "contactName": "John Smith",
+      "phone": "91234567",
+      "email": "john.smith@nike.com"
+    }
+  ]
+}

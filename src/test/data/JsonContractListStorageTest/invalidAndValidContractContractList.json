@@ -1,0 +1,40 @@
+{
+  "contracts": [
+    {
+      "athlete": {
+        "name": "Lionel Messi",
+        "sport": "Football",
+        "age": "36",
+        "phone": "91234567",
+        "email": "messi@intermiami.com"
+      },
+      "organization": {
+        "name": "Inter Miami CF",
+        "contactName": "Manager",
+        "phone": "91234567",
+        "email": "contact@intermiami.com"
+      },
+      "startDate": "01012024",
+      "endDate": "31122024",
+      "amount": 5000000
+    },
+    {
+      "athlete": {
+        "name": "Cristiano Ronaldo",
+        "sport": "Invalid@Sport",
+        "age": "39",
+        "phone": "92345678",
+        "email": "ronaldo@alnassr.com"
+      },
+      "organization": {
+        "name": "Al Nassr",
+        "contactName": "Manager",
+        "phone": "92345678",
+        "email": "contact@alnassr.com"
+      },
+      "startDate": "01022024",
+      "endDate": "31012025",
+      "amount": 6000000
+    }
+  ]
+}

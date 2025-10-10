@@ -19,8 +19,11 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.AthleteList;
 import seedu.address.model.contract.Contract;
+import seedu.address.model.contract.ContractList;
 import seedu.address.model.organization.Organization;
+import seedu.address.model.organization.OrganizationList;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.OrganizationBuilder;
@@ -115,23 +118,28 @@ public class ModelManagerTest {
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
 
-        modelManager = new ModelManager(addressBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs);
+        modelManager = new ModelManager(addressBook, userPrefs, new AthleteList(),
+                new ContractList(), new OrganizationList());
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, new AthleteList(),
+                new ContractList(), new OrganizationList());
         assertTrue(modelManager.equals(modelManagerCopy));
         assertTrue(modelManager.equals(modelManager));
         assertFalse(modelManager.equals(null));
         assertFalse(modelManager.equals(5));
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs,
+                new AthleteList(), new ContractList(), new OrganizationList())));
 
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
+                new AthleteList(), new ContractList(), new OrganizationList())));
 
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs,
+                new AthleteList(), new ContractList(), new OrganizationList())));
     }
 
     // ============================================================
@@ -198,7 +206,7 @@ public class ModelManagerTest {
     public void organization_methods_workCorrectly() {
         Organization org = new OrganizationBuilder().withName("Nike").build();
 
-        // Test that organization methods no longer throw UnsupportedOperationException
+        // Test that organization methods work as expected
         assertFalse(modelManager.hasOrganization(org));
         modelManager.addOrganization(org);
         assertTrue(modelManager.hasOrganization(org));

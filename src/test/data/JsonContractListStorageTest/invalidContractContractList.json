@@ -1,0 +1,22 @@
+{
+  "contracts": [
+    {
+      "athlete": {
+        "name": "Lionel Messi",
+        "sport": "Invalid@Sport",
+        "age": "36",
+        "phone": "91234567",
+        "email": "messi@intermiami.com"
+      },
+      "organization": {
+        "name": "Inter Miami CF",
+        "contactName": "Manager",
+        "phone": "91234567",
+        "email": "contact@intermiami.com"
+      },
+      "startDate": "01012024",
+      "endDate": "31122024",
+      "amount": 5000000
+    }
+  ]
+}

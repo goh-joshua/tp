@@ -15,6 +15,9 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
+    private Path athleteListFilePath = Paths.get("data", "athletelist.json");
+    private Path contractListFilePath = Paths.get("data", "contractlist.json");
+    private Path organizationListFilePath = Paths.get("data", "organizationlist.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -54,6 +57,33 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         this.addressBookFilePath = addressBookFilePath;
+    }
+
+    public Path getAthleteListFilePath() {
+        return athleteListFilePath;
+    }
+
+    public void setAthleteListFilePath(Path athleteListFilePath) {
+        requireNonNull(athleteListFilePath);
+        this.athleteListFilePath = athleteListFilePath;
+    }
+
+    public Path getContractListFilePath() {
+        return contractListFilePath;
+    }
+
+    public void setContractListFilePath(Path contractListFilePath) {
+        requireNonNull(contractListFilePath);
+        this.contractListFilePath = contractListFilePath;
+    }
+
+    public Path getOrganizationListFilePath() {
+        return organizationListFilePath;
+    }
+
+    public void setOrganizationListFilePath(Path organizationListFilePath) {
+        requireNonNull(organizationListFilePath);
+        this.organizationListFilePath = organizationListFilePath;
     }
 
     @Override

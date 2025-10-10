@@ -1,0 +1,14 @@
+{
+  "_comment": "OrganizationList save file which contains typical organizations",
+  "organizations" : [ {
+    "name" : "Nike",
+    "contactName" : "John Smith",
+    "phone" : "91234567",
+    "email" : "nike@example.com"
+  }, {
+    "name" : "Adidas",
+    "contactName" : "Jane Doe",
+    "phone" : "98765432",
+    "email" : "adidas@example.com"
+  } ]
+}

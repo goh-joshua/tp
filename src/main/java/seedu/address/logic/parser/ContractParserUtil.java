@@ -3,10 +3,12 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Date8;
-import seedu.address.model.person.Name;
+import seedu.address.model.organization.OrganizationName;
+
 
 /**
  * Contains utility methods used for parsing strings into Contract-related model objects.
@@ -63,8 +65,8 @@ public class ContractParserUtil {
         return parseStrictName(name);
     }
 
-    public static Name parseOrgName(String name) throws ParseException {
-        return parseStrictName(name);
+    public static OrganizationName parseOrgName(String name) throws ParseException {
+        return parseStrictOrganizationName(name);
     }
 
     private static Name parseStrictName(String name) throws ParseException {
@@ -75,5 +77,15 @@ public class ContractParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmed);
+    }
+
+    private static OrganizationName parseStrictOrganizationName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmed = name.trim();
+        // letters and spaces only, at least one letter
+        if (!trimmed.matches("(?i)^[A-Z]+(?:[ A-Z]+)*$")) {
+            throw new ParseException(OrganizationName.MESSAGE_CONSTRAINTS);
+        }
+        return new OrganizationName(trimmed);
     }
 }

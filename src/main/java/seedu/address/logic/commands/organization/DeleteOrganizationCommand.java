@@ -46,6 +46,7 @@ public class DeleteOrganizationCommand extends Command {
         model.deleteOrganization(organizationToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_ORGANIZATION_SUCCESS,
                 Messages.format(organizationToDelete)));
+
     }
 
     @Override
