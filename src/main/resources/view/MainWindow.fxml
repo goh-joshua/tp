@@ -64,9 +64,7 @@
                 <padding>
                   <Insets top="10" right="10" bottom="10" left="10" />
                 </padding>
-                <StackPane fx:id="athleteListPanelPlaceholder" VBox.vgrow="ALWAYS">
-                  <Label text="Athletes - Coming Soon" styleClass="cell_big_label"/>
-                </StackPane>
+                <StackPane fx:id="athleteListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
               </VBox>
             </Tab>
             <Tab text="Organizations">
@@ -74,9 +72,7 @@
                 <padding>
                   <Insets top="10" right="10" bottom="10" left="10" />
                 </padding>
-                <StackPane fx:id="organizationListPanelPlaceholder" VBox.vgrow="ALWAYS">
-                  <Label text="Organizations - Coming Soon" styleClass="cell_big_label"/>
-                </StackPane>
+                <StackPane fx:id="organizationListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
               </VBox>
             </Tab>
             <Tab text="Contracts">

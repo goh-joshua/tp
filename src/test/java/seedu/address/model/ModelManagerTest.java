@@ -195,15 +195,21 @@ public class ModelManagerTest {
     // ============================================================
 
     @Test
-    public void organization_methods_throwUnsupportedOperationException() {
+    public void organization_methods_workCorrectly() {
         Organization org = new OrganizationBuilder().withName("Nike").build();
 
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.hasOrganization(org));
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.addOrganization(org));
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.deleteOrganization(org));
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.setOrganization(org, org));
-        assertThrows(UnsupportedOperationException.class, () ->
-                modelManager.updateFilteredOrganizationList(o -> true));
+        // Test that organization methods no longer throw UnsupportedOperationException
+        assertFalse(modelManager.hasOrganization(org));
+        modelManager.addOrganization(org);
+        assertTrue(modelManager.hasOrganization(org));
+
+        // Test filtering
+        modelManager.updateFilteredOrganizationList(o -> true);
+        assertEquals(1, modelManager.getFilteredOrganizationList().size());
+
+        // Test deletion
+        modelManager.deleteOrganization(org);
+        assertFalse(modelManager.hasOrganization(org));
     }
 
     @Test

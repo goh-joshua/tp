@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -56,7 +55,7 @@ public class ModelManager implements Model {
 
         this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredContracts = new FilteredList<>(this.addressBook.getContractList());
-        this.filteredOrganizations = new FilteredList<>(FXCollections.observableArrayList()); // placeholder
+        this.filteredOrganizations = new FilteredList<>(this.addressBook.getOrganizationList());
         this.filteredAthletes = new FilteredList<>(this.addressBook.getAthleteList());
     }
 
@@ -181,29 +180,30 @@ public class ModelManager implements Model {
         filteredContracts.setPredicate(predicate);
     }
 
-    // ---- Organizations (placeholders) ----
+    // ---- Organizations ----
     @Override
     public boolean hasOrganization(Organization organization) {
         requireNonNull(organization);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        return addressBook.hasOrganization(organization);
     }
 
     @Override
     public void deleteOrganization(Organization target) {
         requireNonNull(target);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        addressBook.removeOrganization(target);
     }
 
     @Override
     public void addOrganization(Organization organization) {
         requireNonNull(organization);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        addressBook.addOrganization(organization);
+        updateFilteredOrganizationList(PREDICATE_SHOW_ALL_ORGANIZATIONS);
     }
 
     @Override
     public void setOrganization(Organization target, Organization editedOrganization) {
         requireAllNonNull(target, editedOrganization);
-        throw new UnsupportedOperationException("Organization support not yet implemented");
+        addressBook.setOrganization(target, editedOrganization);
     }
 
     @Override
@@ -214,7 +214,7 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
         requireNonNull(predicate);
-        throw new UnsupportedOperationException("Organization filtering not yet implemented");
+        filteredOrganizations.setPredicate(predicate);
     }
 
     // ---- Athletes (now from addressBook) ----
