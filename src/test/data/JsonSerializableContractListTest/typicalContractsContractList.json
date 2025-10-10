@@ -1,0 +1,76 @@
+{
+  "_comment": "ContractList save file which contains the same Contract values as in TypicalContracts#getTypicalContracts()",
+  "contracts" : [ {
+    "athlete" : {
+      "name" : "Lionel Messi",
+      "sport" : "Football",
+      "age" : "36",
+      "phone" : "91234567",
+      "email" : "messi@intermiami.com"
+    },
+    "sport" : "Football",
+    "organization" : {
+      "name" : "Inter Miami CF",
+      "contactName" : "Organization",
+      "phone" : "12345678",
+      "email" : "johndoe@example.com"
+    },
+    "startDate" : "01012024",
+    "endDate" : "31122024",
+    "amount" : "5000000"
+  }, {
+    "athlete" : {
+      "name" : "Cristiano Ronaldo",
+      "sport" : "Football",
+      "age" : "39",
+      "phone" : "92345678",
+      "email" : "ronaldo@alnassr.com"
+    },
+    "sport" : "Football",
+    "organization" : {
+      "name" : "Al Nassr",
+      "contactName" : "Organization",
+      "phone" : "12345678",
+      "email" : "johndoe@example.com"
+    },
+    "startDate" : "01022024",
+    "endDate" : "31012025",
+    "amount" : "6000000"
+  }, {
+    "athlete" : {
+      "name" : "LeBron James",
+      "sport" : "Basketball",
+      "age" : "38",
+      "phone" : "93456789",
+      "email" : "lebron@lakers.com"
+    },
+    "sport" : "Basketball",
+    "organization" : {
+      "name" : "LA Lakers",
+      "contactName" : "Organization",
+      "phone" : "12345678",
+      "email" : "johndoe@example.com"
+    },
+    "startDate" : "01072023",
+    "endDate" : "30062024",
+    "amount" : "4500000"
+  }, {
+    "athlete" : {
+      "name" : "Roger Federer",
+      "sport" : "Tennis",
+      "age" : "41",
+      "phone" : "94567890",
+      "email" : "roger@uniqlo.com"
+    },
+    "sport" : "Tennis",
+    "organization" : {
+      "name" : "Uniqlo",
+      "contactName" : "Organization",
+      "phone" : "12345678",
+      "email" : "johndoe@example.com"
+    },
+    "startDate" : "01032022",
+    "endDate" : "28022025",
+    "amount" : "3000000"
+  } ]
+}

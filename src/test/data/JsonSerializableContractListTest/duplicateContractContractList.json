@@ -1,0 +1,40 @@
+{
+  "_comment": "ContractList with duplicate contracts",
+  "contracts" : [ {
+    "athlete" : {
+      "name" : "Lionel Messi",
+      "sport" : "Football",
+      "age" : "36",
+      "phone" : "91234567",
+      "email" : "messi@intermiami.com"
+    },
+    "sport" : "Football",
+    "organization" : {
+      "name" : "Inter Miami CF",
+      "contactName" : "Organization",
+      "phone" : "12345678",
+      "email" : "johndoe@example.com"
+    },
+    "startDate" : "01012024",
+    "endDate" : "31122024",
+    "amount" : "5000000"
+  }, {
+    "athlete" : {
+      "name" : "Lionel Messi",
+      "sport" : "Football",
+      "age" : "36",
+      "phone" : "91234567",
+      "email" : "messi@intermiami.com"
+    },
+    "sport" : "Football",
+    "organization" : {
+      "name" : "Inter Miami CF",
+      "contactName" : "Organization",
+      "phone" : "12345678",
+      "email" : "johndoe@example.com"
+    },
+    "startDate" : "01012024",
+    "endDate" : "31122024",
+    "amount" : "5000000"
+  } ]
+}

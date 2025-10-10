@@ -1,0 +1,10 @@
+{
+  "_comment": "AthleteList with an athlete that has invalid name value",
+  "athletes" : [ {
+    "name" : "Invalid@Name",
+    "sport" : "Swimming",
+    "age" : "25",
+    "phone" : "94351253",
+    "email" : "alice@example.com"
+  } ]
+}

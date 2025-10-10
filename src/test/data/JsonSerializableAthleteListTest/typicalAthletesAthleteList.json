@@ -1,0 +1,28 @@
+{
+  "_comment": "AthleteList save file which contains the same Athlete values as in TypicalAthletes#getTypicalAthletes()",
+  "athletes" : [ {
+    "name" : "Alice Pauline",
+    "sport" : "Swimming",
+    "age" : "30",
+    "phone" : "94351253",
+    "email" : "alice@example.com"
+  }, {
+    "name" : "Benson Meier",
+    "sport" : "Pool",
+    "age" : "18",
+    "phone" : "90808767",
+    "email" : "ben@example.com"
+  }, {
+    "name" : "Carl Tan",
+    "sport" : "Golf",
+    "age" : "35",
+    "phone" : "81234567",
+    "email" : "carl@example.com"
+  }, {
+    "name" : "Daniel Soh",
+    "sport" : "Basketball",
+    "age" : "23",
+    "phone" : "87264845",
+    "email" : "daniel@example.com"
+  } ]
+}
