@@ -14,8 +14,11 @@ import seedu.address.logic.AthleteMessages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.athlete.AthleteList;
 import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
+import seedu.address.model.contract.ContractList;
+import seedu.address.model.organization.OrganizationList;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
@@ -23,7 +26,8 @@ import seedu.address.model.athlete.Sport;
  */
 public class DeleteAthleteCommandTest {
 
-    private final Model model = new ModelManager(getTypicalAddressBookWithAthletes(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalAddressBookWithAthletes(), new UserPrefs(),
+            new AthleteList(), new ContractList(), new OrganizationList());
 
     @Test
     public void execute_validNameSportUnfilteredList_success() {
@@ -34,7 +38,8 @@ public class DeleteAthleteCommandTest {
 
         String expectedMessage = String.format(DeleteAthleteCommand.MESSAGE_DELETE_ATHLETE_SUCCESS, ALICE);
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(),
+                new AthleteList(), new ContractList(), new OrganizationList());
         expectedModel.deleteAthlete(ALICE);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);

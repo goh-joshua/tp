@@ -18,14 +18,19 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.athlete.AthleteList;
+import seedu.address.model.contract.ContractList;
+import seedu.address.model.organization.OrganizationList;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(),
+            new AthleteList(), new ContractList(), new OrganizationList());
+    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(),
+            new AthleteList(), new ContractList(), new OrganizationList());
 
     @Test
     public void equals() {
