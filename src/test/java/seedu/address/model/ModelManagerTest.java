@@ -4,14 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -19,13 +15,8 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.athlete.Athlete;
-import seedu.address.model.athlete.AthleteList;
 import seedu.address.model.contract.Contract;
-import seedu.address.model.contract.ContractList;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.organization.OrganizationList;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
 import seedu.address.testutil.contract.ContractBuilder;
@@ -88,58 +79,6 @@ public class ModelManagerTest {
         Path path = Paths.get("address/book/file/path");
         modelManager.setAddressBookFilePath(path);
         assertEquals(path, modelManager.getAddressBookFilePath());
-    }
-
-    @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
-    }
-
-    @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasPerson(ALICE));
-    }
-
-    @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
-        modelManager.addPerson(ALICE);
-        assertTrue(modelManager.hasPerson(ALICE));
-    }
-
-    @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () ->
-                modelManager.getFilteredPersonList().remove(0));
-    }
-
-    @Test
-    public void equals_personScenarios() {
-        AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
-        AddressBook differentAddressBook = new AddressBook();
-        UserPrefs userPrefs = new UserPrefs();
-
-        modelManager = new ModelManager(addressBook, userPrefs, new AthleteList(),
-                new ContractList(), new OrganizationList());
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, new AthleteList(),
-                new ContractList(), new OrganizationList());
-        assertTrue(modelManager.equals(modelManagerCopy));
-        assertTrue(modelManager.equals(modelManager));
-        assertFalse(modelManager.equals(null));
-        assertFalse(modelManager.equals(5));
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs,
-                new AthleteList(), new ContractList(), new OrganizationList())));
-
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                new AthleteList(), new ContractList(), new OrganizationList())));
-
-        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-
-        UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs,
-                new AthleteList(), new ContractList(), new OrganizationList())));
     }
 
     // ============================================================

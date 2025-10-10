@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.contract.Date8;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.person.Name;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
 

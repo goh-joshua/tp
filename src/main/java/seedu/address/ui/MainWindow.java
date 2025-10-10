@@ -32,7 +32,6 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
     private AthleteListPanel athleteListPanel;
     private OrganizationListPanel organizationListPanel;
     private ContractListPanel contractListPanel;
@@ -97,10 +96,9 @@ public class MainWindow extends UiPart<Stage> {
      * Sets up keyboard shortcuts for tab switching.
      */
     private void setTabAccelerators() {
-        setTabAccelerator(KeyCombination.valueOf("Shortcut+1"), 0); // People tab
-        setTabAccelerator(KeyCombination.valueOf("Shortcut+2"), 1); // Athletes tab
-        setTabAccelerator(KeyCombination.valueOf("Shortcut+3"), 2); // Organizations tab
-        setTabAccelerator(KeyCombination.valueOf("Shortcut+4"), 3); // Contracts tab
+        setTabAccelerator(KeyCombination.valueOf("Shortcut+1"), 0); // Athletes tab
+        setTabAccelerator(KeyCombination.valueOf("Shortcut+2"), 1); // Organizations tab
+        setTabAccelerator(KeyCombination.valueOf("Shortcut+3"), 2); // Contracts tab
     }
 
     /**
@@ -153,9 +151,6 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
-
         athleteListPanel = new AthleteListPanel(logic.getFilteredAthleteList());
         athleteListPanelPlaceholder.getChildren().add(athleteListPanel.getRoot());
 
@@ -213,10 +208,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
     }
 
     /**

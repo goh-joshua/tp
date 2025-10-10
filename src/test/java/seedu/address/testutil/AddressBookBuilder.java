@@ -4,7 +4,6 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.person.Person;
 
 /**
  * A utility class to help with building Addressbook objects.
@@ -21,14 +20,6 @@ public class AddressBookBuilder {
 
     public AddressBookBuilder(AddressBook addressBook) {
         this.addressBook = addressBook;
-    }
-
-    /**
-     * Adds a new {@code Person} to the {@code AddressBook} that we are building.
-     */
-    public AddressBookBuilder withPerson(Person person) {
-        addressBook.addPerson(person);
-        return this;
     }
 
     /**

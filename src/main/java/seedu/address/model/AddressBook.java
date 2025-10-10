@@ -12,8 +12,6 @@ import seedu.address.model.contract.Contract;
 import seedu.address.model.contract.UniqueContractList;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.UniqueOrganizationList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
 
 /**
  * Wraps all data at the address-book level.
@@ -25,7 +23,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     // Internal Data Structures
     // ============================================================
 
-    private final UniquePersonList persons;
     private final UniqueOrganizationList organizations;
     private final UniqueAthleteList athletes;
     private final UniqueContractList contracts;
@@ -35,7 +32,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      * are initialized for all constructors.
      */
     {
-        persons = new UniquePersonList();
         organizations = new UniqueOrganizationList();
         athletes = new UniqueAthleteList();
         contracts = new UniqueContractList();
@@ -54,14 +50,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     // ============================================================
     // Overwrite Operations
     // ============================================================
-
-    /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
-     */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
-    }
 
     /**
      * Replaces the contents of the organization list with {@code organizations}.
@@ -92,40 +80,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
-        setPersons(newData.getPersonList());
         setOrganizations(newData.getOrganizationList());
         setAthletes(newData.getAthleteList());
         setContracts(newData.getContractList());
-    }
-
-    // ============================================================
-    // Person-Level Operations
-    // ============================================================
-
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
-    }
-
-    public void addPerson(Person p) {
-        persons.add(p);
-    }
-
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
-        persons.setPerson(target, editedPerson);
-    }
-
-    public void removePerson(Person key) {
-        persons.remove(key);
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
     }
 
     // ============================================================
@@ -214,7 +171,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("persons", persons)
                 .add("organizations", organizations)
                 .add("athletes", athletes)
                 .add("contracts", contracts)
@@ -232,16 +188,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         AddressBook otherBook = (AddressBook) other;
-        return persons.equals(otherBook.persons)
-                && organizations.equals(otherBook.organizations)
+        return organizations.equals(otherBook.organizations)
                 && athletes.equals(otherBook.athletes)
                 && contracts.equals(otherBook.contracts);
     }
 
     @Override
     public int hashCode() {
-        int result = persons.hashCode();
-        result = 31 * result + organizations.hashCode();
+        int result = organizations.hashCode();
         result = 31 * result + athletes.hashCode();
         result = 31 * result + contracts.hashCode();
         return result;

@@ -36,7 +36,8 @@ public class DeleteAthleteCommandTest {
 
         DeleteAthleteCommand deleteCommand = new DeleteAthleteCommand(nameToDelete, sportToDelete);
 
-        String expectedMessage = String.format(DeleteAthleteCommand.MESSAGE_DELETE_ATHLETE_SUCCESS, ALICE);
+        String expectedMessage = String.format(DeleteAthleteCommand.MESSAGE_DELETE_ATHLETE_SUCCESS,
+                AthleteMessages.format(ALICE));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(),
                 new AthleteList(), new ContractList(), new OrganizationList());

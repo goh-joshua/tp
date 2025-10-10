@@ -28,7 +28,7 @@ public class AddAthleteCommand extends Command {
             + PREFIX_SPORT + "SPORT "
             + PREFIX_AGE + "AGE "
             + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL "
+            + PREFIX_EMAIL + "EMAIL\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "LeBron James "
             + PREFIX_SPORT + "Basketball "
