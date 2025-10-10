@@ -25,7 +25,7 @@ import seedu.address.model.organization.OrganizationName;
  */
 public class AddContractCommand extends Command {
 
-    public static final String COMMAND_WORD = "add-contract";
+    public static final String COMMAND_WORD = "add-c";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Adds a contract linking an athlete and an organization. "
@@ -37,7 +37,7 @@ public class AddContractCommand extends Command {
             + "ed/DDMMYYYY "
             + "am/AMOUNT\n"
             + "Example: " + COMMAND_WORD + " "
-            + "n/Lionel Messi s/Football o/Inter Miami cn/John Doe sd/01012024 ed/01012025 am/50000000";
+            + "n/Lionel Messi s/Football o/Inter Miami sd/01012024 ed/01012025 am/50000000";
 
     public static final String MESSAGE_SUCCESS = "Contract created: %1$s";
     public static final String MESSAGE_DUPLICATE_CONTRACT = "This contract already exists";

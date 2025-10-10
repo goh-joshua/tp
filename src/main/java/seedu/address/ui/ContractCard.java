@@ -44,8 +44,7 @@ public class ContractCard extends UiPart<Region> {
         this.contract = contract;
         id.setText(displayedIndex + ". ");
         athleteInfo.setText(contract.getAthlete().getName().fullName + " - " + contract.getSport().value);
-        organizationInfo.setText("Organization: " + contract.getOrganization().getName().fullOrganizationName
-                + " (Contact: " + contract.getContact().fullName + ")");
+        organizationInfo.setText("Organization: " + contract.getOrganization().getName().fullOrganizationName);
         duration.setText("Duration: " + formatDate(contract.getStartDate().value)
                 + " → " + formatDate(contract.getEndDate().value));
         amount.setText("Amount: $" + formatAmount(contract.getAmount().value));
