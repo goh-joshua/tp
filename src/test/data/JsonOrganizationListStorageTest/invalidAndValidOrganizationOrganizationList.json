@@ -1,0 +1,16 @@
+{
+  "organizations": [
+    {
+      "name": "Nike",
+      "contactName": "John Smith",
+      "phone": "91234567",
+      "email": "john.smith@nike.com"
+    },
+    {
+      "name": "Invalid@Org!",
+      "contactName": "Jane Doe",
+      "phone": "98765432",
+      "email": "jane.doe@adidas.com"
+    }
+  ]
+}

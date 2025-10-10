@@ -2,7 +2,10 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static seedu.address.testutil.TypicalOrganizations.getTypicalOrganizations;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.athlete.TypicalAthletes.getTypicalAthletes;
+import static seedu.address.testutil.contract.TypicalContracts.getTypicalContracts;
 
 import java.nio.file.Path;
 
@@ -14,6 +17,12 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.athlete.AthleteList;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
+import seedu.address.model.contract.ContractList;
+import seedu.address.model.contract.ReadOnlyContractList;
+import seedu.address.model.organization.OrganizationList;
+import seedu.address.model.organization.ReadOnlyOrganizationList;
 
 public class StorageManagerTest {
 
@@ -68,6 +77,64 @@ public class StorageManagerTest {
     @Test
     public void getAddressBookFilePath() {
         assertNotNull(storageManager.getAddressBookFilePath());
+    }
+
+    @Test
+    public void athleteListReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonAthleteListStorage} class.
+         * More extensive testing of athlete list saving/reading is done in {@link JsonAthleteListStorageTest} class.
+         */
+        AthleteList original = new AthleteList();
+        original.setAthletes(getTypicalAthletes());
+        storageManager.saveAthleteList(original);
+        ReadOnlyAthleteList retrieved = storageManager.readAthleteList().get();
+        assertEquals(original.getAthleteList(), retrieved.getAthleteList());
+    }
+
+    @Test
+    public void getAthleteListFilePath() {
+        assertNotNull(storageManager.getAthleteListFilePath());
+    }
+
+    @Test
+    public void contractListReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonContractListStorage} class.
+         * More extensive testing of contract list saving/reading is done in {@link JsonContractListStorageTest} class.
+         */
+        ContractList original = new ContractList();
+        original.setContracts(getTypicalContracts());
+        storageManager.saveContractList(original);
+        ReadOnlyContractList retrieved = storageManager.readContractList().get();
+        assertEquals(original.getContractList(), retrieved.getContractList());
+    }
+
+    @Test
+    public void getContractListFilePath() {
+        assertNotNull(storageManager.getContractListFilePath());
+    }
+
+    @Test
+    public void organizationListReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonOrganizationListStorage} class.
+         * More extensive testing of organization list saving/reading is done in
+         * {@link JsonOrganizationListStorageTest} class.
+         */
+        OrganizationList original = new OrganizationList();
+        original.setOrganizations(getTypicalOrganizations());
+        storageManager.saveOrganizationList(original);
+        ReadOnlyOrganizationList retrieved = storageManager.readOrganizationList().get();
+        assertEquals(original.getOrganizationList(), retrieved.getOrganizationList());
+    }
+
+    @Test
+    public void getOrganizationListFilePath() {
+        assertNotNull(storageManager.getOrganizationListFilePath());
     }
 
 }

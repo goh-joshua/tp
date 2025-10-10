@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.athlete.TypicalAthletes.ALICE;
-import static seedu.address.testutil.athlete.TypicalAthletes.BENSON;
-import static seedu.address.testutil.athlete.TypicalAthletes.CARL;
 import static seedu.address.testutil.athlete.TypicalAthletes.getTypicalAthletes;
 
 import java.io.IOException;
@@ -17,8 +15,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.exceptions.DataLoadingException;
+import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.AthleteList;
 import seedu.address.model.athlete.ReadOnlyAthleteList;
+import seedu.address.testutil.athlete.AthleteBuilder;
 
 public class JsonAthleteListStorageTest {
 
@@ -75,20 +75,22 @@ public class JsonAthleteListStorageTest {
         // Save in new file and read back
         jsonAthleteListStorage.saveAthleteList(original, filePath);
         ReadOnlyAthleteList readBack = jsonAthleteListStorage.readAthleteList(filePath).get();
-        assertEquals(original, new AthleteList(readBack));
+        assertEquals(original.getAthleteList(), readBack.getAthleteList());
 
         // Modify data, overwrite exiting file, and read back
-        original.addAthlete(ALICE);
-        original.removeAthlete(BENSON);
+        Athlete hoon = new AthleteBuilder().withName("Hoon Meier").withSport("Running")
+                .withAge("25").withEmail("hoon@example.com").withPhone("95551234").build();
+        original.addAthlete(hoon);
+        original.removeAthlete(ALICE);
         jsonAthleteListStorage.saveAthleteList(original, filePath);
         readBack = jsonAthleteListStorage.readAthleteList(filePath).get();
-        assertEquals(original, new AthleteList(readBack));
+        assertEquals(original.getAthleteList(), readBack.getAthleteList());
 
         // Save and read without specifying file path
-        original.addAthlete(CARL);
+        original.addAthlete(ALICE);
         jsonAthleteListStorage.saveAthleteList(original); // file path not specified
         readBack = jsonAthleteListStorage.readAthleteList().get(); // file path not specified
-        assertEquals(original, new AthleteList(readBack));
+        assertEquals(original.getAthleteList(), readBack.getAthleteList());
     }
 
     @Test
