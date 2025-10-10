@@ -13,7 +13,6 @@ public class ContractCardTest {
     @Test
     public void contractCard_validContract_fieldsCorrect() {
         Contract contract = new ContractBuilder().build();
-        
         assertNotNull(contract);
         assertEquals("Football", contract.getSport().value);
         assertEquals("01012024", contract.getStartDate().value);

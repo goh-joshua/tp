@@ -13,7 +13,6 @@ public class OrganizationCardTest {
     @Test
     public void organizationCard_validOrganization_fieldsCorrect() {
         Organization organization = new OrganizationBuilder().build();
-        
         assertNotNull(organization);
         assertEquals("Nike", organization.getName().fullOrganizationName);
     }

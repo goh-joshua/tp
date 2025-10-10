@@ -13,7 +13,6 @@ public class AthleteCardTest {
     @Test
     public void athleteCard_validAthlete_fieldsCorrect() {
         Athlete athlete = new AthleteBuilder().build();
-        
         assertNotNull(athlete);
         assertEquals("Amy Bee", athlete.getName().fullName);
         assertEquals("Swimming", athlete.getSport().value);
