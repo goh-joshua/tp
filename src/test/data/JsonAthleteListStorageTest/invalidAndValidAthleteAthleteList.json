@@ -1,0 +1,18 @@
+{
+  "athletes": [
+    {
+      "name": "Alice Pauline",
+      "sport": "Swimming",
+      "age": "30",
+      "phone": "94351253",
+      "email": "alice@example.com"
+    },
+    {
+      "name": "Invalid@Name",
+      "sport": "Pool",
+      "age": "18",
+      "phone": "90808767",
+      "email": "ben@example.com"
+    }
+  ]
+}

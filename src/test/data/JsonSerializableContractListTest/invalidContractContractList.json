@@ -1,0 +1,22 @@
+{
+  "_comment": "ContractList with a contract that has invalid sport value",
+  "contracts" : [ {
+    "athlete" : {
+      "name" : "Test Athlete",
+      "sport" : "Football",
+      "age" : "25",
+      "phone" : "91234567",
+      "email" : "athlete@example.com"
+    },
+    "sport" : "Invalid@Sport!",
+    "organization" : {
+      "name" : "Test Org",
+      "contactName" : "Test Contact",
+      "phone" : "98765432",
+      "email" : "org@example.com"
+    },
+    "startDate" : "20230715",
+    "endDate" : "20251231",
+    "amount" : "1000000"
+  } ]
+}

@@ -14,10 +14,11 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.contract.AddContractCommand;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Date8;
-import seedu.address.model.person.Name;
+import seedu.address.model.organization.OrganizationName;
 
 /**
  * Tests for {@link AddContractCommandParser}.
@@ -54,7 +55,7 @@ public class AddContractCommandParserTest {
         AddContractCommand expected = new AddContractCommand(
                 new Name(VALID_ATHLETE_NAME),
                 new Sport(VALID_SPORT),
-                new Name(VALID_ORG_NAME),
+                new OrganizationName(VALID_ORG_NAME),
                 new Date8(VALID_START),
                 new Date8(VALID_END),
                 new Amount(Integer.parseInt(VALID_AMOUNT))
@@ -83,7 +84,7 @@ public class AddContractCommandParserTest {
                 Sport.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser, NAME_DESC + SPORT_DESC + INVALID_ORG_DESC + START_DESC + END_DESC + AMT_DESC,
-                Name.MESSAGE_CONSTRAINTS);
+                OrganizationName.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser, NAME_DESC + SPORT_DESC + ORG_DESC + INVALID_START_DESC + END_DESC + AMT_DESC,
                 Date8.MESSAGE_CONSTRAINTS);

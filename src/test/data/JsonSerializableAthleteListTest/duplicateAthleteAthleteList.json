@@ -1,0 +1,30 @@
+{
+  "_comment": "AthleteList save file with duplicate athlete entries",
+  "athletes" : [ {
+    "name" : "Alice Pauline",
+    "sport" : "Swimming",
+    "age" : "30",
+    "phone" : "94351253",
+    "email" : "alice@example.com"
+  }, {
+    "name" : "Alice Pauline",
+    "sport" : "Swimming",
+    "age" : "30",
+    "phone" : "94351253",
+    "email" : "alice@example.com"
+  } ]
+} "AthleteList with duplicate athletes",
+  "athletes" : [ {
+    "name" : "Alice Pauline",
+    "sport" : "Swimming",
+    "age" : "25",
+    "phone" : "94351253",
+    "email" : "alice@example.com"
+  }, {
+    "name" : "Alice Pauline",
+    "sport" : "Swimming",
+    "age" : "25",
+    "phone" : "94351253",
+    "email" : "alice@example.com"
+  } ]
+}

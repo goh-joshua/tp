@@ -24,8 +24,11 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
 import seedu.address.model.contract.Contract;
+import seedu.address.model.contract.ReadOnlyContractList;
 import seedu.address.model.organization.Organization;
+import seedu.address.model.organization.ReadOnlyOrganizationList;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.athlete.AthleteBuilder;
 
@@ -102,6 +105,11 @@ public class AddAthleteCommandTest {
 
         // ===== Organization =====
         @Override
+        public ReadOnlyOrganizationList getOrganizationList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasOrganization(Organization organization) {
             throw new AssertionError("This method should not be called.");
         }
@@ -132,6 +140,11 @@ public class AddAthleteCommandTest {
         }
 
         // ===== Contracts =====
+        @Override
+        public ReadOnlyContractList getContractList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public boolean hasContract(Contract contract) {
             throw new AssertionError("This method should not be called.");
@@ -220,6 +233,11 @@ public class AddAthleteCommandTest {
         }
 
         // ===== Athletes =====
+        @Override
+        public ReadOnlyAthleteList getAthleteList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public void addAthlete(Athlete athlete) {
             throw new AssertionError("This method should not be called.");

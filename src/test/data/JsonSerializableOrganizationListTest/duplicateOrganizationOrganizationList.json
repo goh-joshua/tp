@@ -1,0 +1,14 @@
+{
+  "_comment": "OrganizationList with duplicate organizations",
+  "organizations" : [ {
+    "name" : "Nike",
+    "contactName" : "John Smith",
+    "phone" : "91234567",
+    "email" : "nike@example.com"
+  }, {
+    "name" : "Nike",
+    "contactName" : "John Smith",
+    "phone" : "91234567",
+    "email" : "nike@example.com"
+  } ]
+}

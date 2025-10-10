@@ -1,0 +1,9 @@
+{
+  "_comment": "OrganizationList with an organization that has invalid name value",
+  "organizations" : [ {
+    "name" : "Invalid@Org!",
+    "contactName" : "John Smith",
+    "phone" : "91234567",
+    "email" : "org@example.com"
+  } ]
+}

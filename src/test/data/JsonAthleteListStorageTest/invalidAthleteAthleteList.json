@@ -1,0 +1,11 @@
+{
+  "athletes": [
+    {
+      "name": "Invalid@Name",
+      "sport": "Swimming",
+      "age": "30",
+      "phone": "94351253",
+      "email": "alice@example.com"
+    }
+  ]
+}

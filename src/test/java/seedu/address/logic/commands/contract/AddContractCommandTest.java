@@ -21,12 +21,16 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.Name;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.contract.Date8;
+import seedu.address.model.contract.ReadOnlyContractList;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.person.Name;
+import seedu.address.model.organization.OrganizationName;
+import seedu.address.model.organization.ReadOnlyOrganizationList;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
@@ -38,7 +42,7 @@ public class AddContractCommandTest {
 
     private static final Name ATHLETE_NAME = new Name("Lionel Messi");
     private static final Sport SPORT = new Sport("Football");
-    private static final Name ORG_NAME = new Name("Inter Miami");
+    private static final OrganizationName ORG_NAME = new OrganizationName("Inter Miami");
     private static final Date8 START = new Date8("01012024");
     private static final Date8 END = new Date8("01012025");
     private static final Amount AMT = new Amount(5_000_000);
@@ -48,7 +52,7 @@ public class AddContractCommandTest {
     }
 
     private Organization validOrganization() {
-        return new OrganizationBuilder().withName(ORG_NAME.fullName).build();
+        return new OrganizationBuilder().withName(ORG_NAME.fullOrganizationName).build();
     }
 
     // -------------------------------------------------------------------------
@@ -128,6 +132,11 @@ public class AddContractCommandTest {
     // -------------------------------------------------------------------------
     private class ModelStub implements Model {
         @Override
+        public ReadOnlyOrganizationList getOrganizationList() {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
         public boolean hasOrganization(Organization organization) {
             throw new AssertionError("Should not be called");
         }
@@ -154,6 +163,11 @@ public class AddContractCommandTest {
 
         @Override
         public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ReadOnlyContractList getContractList() {
             throw new AssertionError("Should not be called");
         }
 
@@ -244,6 +258,11 @@ public class AddContractCommandTest {
 
         @Override
         public void addAthlete(Athlete athlete) {
+            throw new AssertionError("Should not be called");
+        }
+
+        @Override
+        public ReadOnlyAthleteList getAthleteList() {
             throw new AssertionError("Should not be called");
         }
 

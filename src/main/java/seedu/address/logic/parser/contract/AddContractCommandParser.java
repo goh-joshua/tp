@@ -15,10 +15,12 @@ import seedu.address.logic.parser.ContractParserUtil;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Date8;
-import seedu.address.model.person.Name;
+import seedu.address.model.organization.OrganizationName;
+
 
 /**
  * Parses input arguments and creates a new AddContractCommand object.
@@ -55,13 +57,13 @@ public class AddContractCommandParser implements Parser<AddContractCommand> {
         // Parse values with the proper utilities
         Name athleteName = ContractParserUtil.parseAthleteName(argMultimap.getValue(PREFIX_NAME).get());
         Sport sport = ContractParserUtil.parseSport(argMultimap.getValue(PREFIX_SPORT).get());
-        Name organisationName = ContractParserUtil.parseOrgName(argMultimap.getValue(PREFIX_ORG).get());
+        OrganizationName organizationName = ContractParserUtil.parseOrgName(argMultimap.getValue(PREFIX_ORG).get());
         Date8 startDate = ContractParserUtil.parseDate8(argMultimap.getValue(PREFIX_START_DATE).get());
         Date8 endDate = ContractParserUtil.parseDate8(argMultimap.getValue(PREFIX_END_DATE).get());
         Amount amount = ContractParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get());
 
         // Build command (Person resolution happens in AddContractCommand#execute)
-        return new AddContractCommand(athleteName, sport, organisationName, startDate, endDate, amount);
+        return new AddContractCommand(athleteName, sport, organizationName, startDate, endDate, amount);
     }
 
     /**

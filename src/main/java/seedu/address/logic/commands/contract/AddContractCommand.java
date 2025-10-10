@@ -12,13 +12,13 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.athlete.Athlete;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.contract.Date8;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
+import seedu.address.model.organization.OrganizationName;
 
 /**
  * Adds a {@link Contract} linking an athlete and organization.
@@ -45,7 +45,7 @@ public class AddContractCommand extends Command {
 
     private final Name athleteName;
     private final Sport sport;
-    private final Name organizationName;
+    private final OrganizationName organizationName;
     private final Date8 startDate;
     private final Date8 endDate;
     private final Amount amount;
@@ -62,7 +62,7 @@ public class AddContractCommand extends Command {
      */
     public AddContractCommand(Name athleteName,
                               Sport sport,
-                              Name organizationName,
+                              OrganizationName organizationName,
                               Date8 startDate,
                               Date8 endDate,
                               Amount amount) {
@@ -107,20 +107,11 @@ public class AddContractCommand extends Command {
         return match.get();
     }
 
-    private Organization findOrganizationByNameOrThrow(Model model, Name name) throws CommandException {
+    private Organization findOrganizationByNameOrThrow(Model model, OrganizationName name) throws CommandException {
         List<Organization> list = model.getAddressBook().getOrganizationList();
         Optional<Organization> match = list.stream().filter(o -> o.getName().equals(name)).findFirst();
         if (match.isEmpty()) {
             throw new CommandException(String.format(MESSAGE_NOT_FOUND_FMT, "Organization", name));
-        }
-        return match.get();
-    }
-
-    private Person findPersonByNameOrThrow(Model model, Name name) throws CommandException {
-        List<Person> list = model.getAddressBook().getPersonList();
-        Optional<Person> match = list.stream().filter(p -> p.getName().equals(name)).findFirst();
-        if (match.isEmpty()) {
-            throw new CommandException(String.format(MESSAGE_NOT_FOUND_FMT, "Person", name));
         }
         return match.get();
     }

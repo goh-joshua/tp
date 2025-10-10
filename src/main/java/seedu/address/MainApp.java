@@ -21,10 +21,19 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.athlete.ReadOnlyAthleteList;
+import seedu.address.model.contract.ReadOnlyContractList;
+import seedu.address.model.organization.ReadOnlyOrganizationList;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
+import seedu.address.storage.AthleteListStorage;
+import seedu.address.storage.ContractListStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonAthleteListStorage;
+import seedu.address.storage.JsonContractListStorage;
+import seedu.address.storage.JsonOrganizationListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.OrganizationListStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
@@ -58,7 +67,13 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        AthleteListStorage athleteListStorage = new JsonAthleteListStorage(userPrefs.getAthleteListFilePath());
+        ContractListStorage contractListStorage = new JsonContractListStorage(
+                userPrefs.getContractListFilePath());
+        OrganizationListStorage organizationListStorage = new JsonOrganizationListStorage(
+                userPrefs.getOrganizationListFilePath());
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, athleteListStorage,
+                contractListStorage, organizationListStorage);
 
         model = initModelManager(storage, userPrefs);
 
@@ -74,9 +89,19 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
+        logger.info("Using athlete data file: " + storage.getAthleteListFilePath());
+        logger.info("Using contract data file: " + storage.getContractListFilePath());
+        logger.info("Using organization data file: " + storage.getOrganizationListFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
+        Optional<ReadOnlyAthleteList> athleteListOptional;
+        ReadOnlyAthleteList initialAthleteList;
+        Optional<ReadOnlyContractList> contractListOptional;
+        ReadOnlyContractList initialContractList;
+        Optional<ReadOnlyOrganizationList> organizationListOptional;
+        ReadOnlyOrganizationList initialOrganizationList;
+
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
@@ -90,7 +115,48 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        try {
+            athleteListOptional = storage.readAthleteList();
+            if (!athleteListOptional.isPresent()) {
+                logger.info("Creating a new athlete data file " + storage.getAthleteListFilePath()
+                        + " populated with an empty AthleteList.");
+            }
+            initialAthleteList = athleteListOptional.orElseGet(SampleDataUtil::getEmptyAthleteList);
+        } catch (DataLoadingException e) {
+            logger.warning("Athlete data file at " + storage.getAthleteListFilePath() + " could not be loaded."
+                    + " Will be starting with an empty AthleteList.");
+            initialAthleteList = SampleDataUtil.getEmptyAthleteList();
+        }
+
+        try {
+            contractListOptional = storage.readContractList();
+            if (!contractListOptional.isPresent()) {
+                logger.info("Creating a new contract data file " + storage.getContractListFilePath()
+                        + " populated with an empty ContractList.");
+            }
+            initialContractList = contractListOptional.orElseGet(SampleDataUtil::getEmptyContractList);
+        } catch (DataLoadingException e) {
+            logger.warning("Contract data file at " + storage.getContractListFilePath() + " could not be loaded."
+                    + " Will be starting with an empty ContractList.");
+            initialContractList = SampleDataUtil.getEmptyContractList();
+        }
+
+        try {
+            organizationListOptional = storage.readOrganizationList();
+            if (!organizationListOptional.isPresent()) {
+                logger.info("Creating a new organization data file " + storage.getOrganizationListFilePath()
+                        + " populated with an empty OrganizationList.");
+            }
+            initialOrganizationList = organizationListOptional.orElseGet(
+                    SampleDataUtil::getEmptyOrganizationList);
+        } catch (DataLoadingException e) {
+            logger.warning("Organization data file at " + storage.getOrganizationListFilePath()
+                    + " could not be loaded. Will be starting with an empty OrganizationList.");
+            initialOrganizationList = SampleDataUtil.getEmptyOrganizationList();
+        }
+
+        return new ModelManager(initialData, userPrefs, initialAthleteList, initialContractList,
+                initialOrganizationList);
     }
 
     private void initLogging(Config config) {

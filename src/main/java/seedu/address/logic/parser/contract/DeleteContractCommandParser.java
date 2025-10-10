@@ -13,8 +13,10 @@ import seedu.address.logic.parser.ContractParserUtil;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.contract.Date8;
-import seedu.address.model.person.Name;
+import seedu.address.model.organization.OrganizationName;
+
 
 /**
  * Parses input arguments and creates a new DeleteContractCommand object.
@@ -41,7 +43,7 @@ public class DeleteContractCommandParser implements Parser<DeleteContractCommand
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ORG, PREFIX_START_DATE, PREFIX_END_DATE);
 
         Name athleteName = ContractParserUtil.parseAthleteName(argMultimap.getValue(PREFIX_NAME).get());
-        Name organizationName = ContractParserUtil.parseOrgName(argMultimap.getValue(PREFIX_ORG).get());
+        OrganizationName organizationName = ContractParserUtil.parseOrgName(argMultimap.getValue(PREFIX_ORG).get());
         Date8 startDate = ContractParserUtil.parseDate8(argMultimap.getValue(PREFIX_START_DATE).get());
         Date8 endDate = ContractParserUtil.parseDate8(argMultimap.getValue(PREFIX_END_DATE).get());
 

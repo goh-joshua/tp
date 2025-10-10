@@ -12,8 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.contract.DeleteContractCommand;
+import seedu.address.model.athlete.Name;
 import seedu.address.model.contract.Date8;
-import seedu.address.model.person.Name;
+import seedu.address.model.organization.OrganizationName;
 
 /**
  * Contains unit tests for {@link DeleteContractCommandParser}.
@@ -41,7 +42,7 @@ public class DeleteContractCommandParserTest {
     public void parse_allFieldsPresent_success() {
         DeleteContractCommand expected = new DeleteContractCommand(
                 new Name(VALID_ATHLETE_NAME),
-                new Name(VALID_ORG_NAME),
+                new OrganizationName(VALID_ORG_NAME),
                 new Date8(VALID_START),
                 new Date8(VALID_END));
 
@@ -70,7 +71,7 @@ public class DeleteContractCommandParserTest {
 
         assertParseFailure(parser,
                 NAME_DESC + INVALID_ORG_DESC + START_DESC + END_DESC,
-                Name.MESSAGE_CONSTRAINTS);
+                OrganizationName.MESSAGE_CONSTRAINTS);
 
         assertParseFailure(parser,
                 NAME_DESC + ORG_DESC + INVALID_START_DESC + END_DESC,
