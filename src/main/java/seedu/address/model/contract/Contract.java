@@ -56,10 +56,6 @@ public class Contract {
         return organization;
     }
 
-    public OrganizationContactName getContact() {
-        return organization.getContactName();
-    }
-
     public Date8 getStartDate() {
         return startDate;
     }

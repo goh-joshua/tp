@@ -86,7 +86,6 @@ class ContractTest {
         assertEquals(s, c.getSport());
         assertNotNull(c.getAthlete());
         assertNotNull(c.getOrganization());
-        assertNotNull(c.getContact()); // derived from organization
     }
 
     @Test
