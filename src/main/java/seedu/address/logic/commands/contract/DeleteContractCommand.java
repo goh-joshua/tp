@@ -23,7 +23,7 @@ import seedu.address.model.organization.OrganizationName;
  */
 public class DeleteContractCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete-contract";
+    public static final String COMMAND_WORD = "delete-c";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Deletes a contract by athlete, organization, and dates. "
