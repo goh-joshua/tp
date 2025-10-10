@@ -8,7 +8,6 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Sport;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.organization.OrganizationContactName;
 
 
 /**
