@@ -51,14 +51,6 @@
 
         <TabPane fx:id="tabPane" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" side="BOTTOM">
           <tabs>
-            <Tab text="People">
-              <VBox fx:id="personList" styleClass="pane-with-border">
-                <padding>
-                  <Insets top="10" right="10" bottom="10" left="10" />
-                </padding>
-                <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-              </VBox>
-            </Tab>
             <Tab text="Athletes">
               <VBox fx:id="athleteList" styleClass="pane-with-border">
                 <padding>

@@ -14,7 +14,7 @@ import seedu.address.model.Model;
 import seedu.address.model.organization.Organization;
 
 /**
- * Deletes an organization identified using it's displayed index from the address book.
+ * Deletes an organization identified using it's displayed index from playbook.io.
  */
 public class DeleteOrganizationCommand extends Command {
 

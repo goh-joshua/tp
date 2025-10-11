@@ -31,7 +31,6 @@ import seedu.address.model.contract.ReadOnlyContractList;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.OrganizationName;
 import seedu.address.model.organization.ReadOnlyOrganizationList;
-import seedu.address.model.person.Person;
 import seedu.address.testutil.OrganizationBuilder;
 import seedu.address.testutil.athlete.AthleteBuilder;
 
@@ -193,36 +192,6 @@ public class AddContractCommandTest {
 
         @Override
         public void updateFilteredContractList(Predicate<Contract> predicate) {
-            throw new AssertionError("Should not be called");
-        }
-
-        @Override
-        public boolean hasPerson(Person person) {
-            throw new AssertionError("Should not be called");
-        }
-
-        @Override
-        public void deletePerson(Person target) {
-            throw new AssertionError("Should not be called");
-        }
-
-        @Override
-        public void addPerson(Person person) {
-            throw new AssertionError("Should not be called");
-        }
-
-        @Override
-        public void setPerson(Person target, Person editedPerson) {
-            throw new AssertionError("Should not be called");
-        }
-
-        @Override
-        public ObservableList<Person> getFilteredPersonList() {
-            throw new AssertionError("Should not be called");
-        }
-
-        @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("Should not be called");
         }
 

@@ -28,7 +28,6 @@ public class MainWindowTest {
                 new JsonOrganizationListStorage(java.nio.file.Paths.get("test"))));
 
         assertNotNull(logic);
-        assertNotNull(logic.getFilteredPersonList());
         assertNotNull(logic.getFilteredAthleteList());
         assertNotNull(logic.getFilteredOrganizationList());
         assertNotNull(logic.getFilteredContractList());

@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an Organization's phone number in the address book.
+ * Represents an Organization's phone number in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}.
  */
 public class OrganizationPhone {

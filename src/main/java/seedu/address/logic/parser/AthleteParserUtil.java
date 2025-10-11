@@ -10,7 +10,7 @@ import seedu.address.model.athlete.Phone;
 import seedu.address.model.athlete.Sport;
 
 /**
- * Contains utility methods used for parsing strings in the various *Parser classes.
+ * Contains utility methods used for parsing strings in parser/athlete classes.
  */
 public class AthleteParserUtil {
 

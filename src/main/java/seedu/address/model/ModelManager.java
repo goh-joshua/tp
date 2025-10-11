@@ -20,12 +20,10 @@ import seedu.address.model.contract.ReadOnlyContractList;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.OrganizationList;
 import seedu.address.model.organization.ReadOnlyOrganizationList;
-import seedu.address.model.person.Person;
 
 /**
  * Represents the in-memory model of all app data using a single AddressBook:
- * - Persons, Contracts, Organizations (placeholder)
- * - Athletes (now stored in AddressBook as well)
+ * - Athletes, Contracts, Organizations
  */
 public class ModelManager implements Model {
 
@@ -39,7 +37,6 @@ public class ModelManager implements Model {
     private final OrganizationList organizationList;
 
     // filtered views
-    private final FilteredList<Person> filteredPersons;
     private final FilteredList<Organization> filteredOrganizations; // placeholder until wired
     private final FilteredList<Contract> filteredContracts;
     private final FilteredList<Athlete> filteredAthletes;
@@ -86,7 +83,6 @@ public class ModelManager implements Model {
             this.addressBook.addOrganization(organization);
         }
 
-        this.filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.filteredContracts = new FilteredList<>(this.addressBook.getContractList());
         this.filteredOrganizations = new FilteredList<>(this.addressBook.getOrganizationList());
         this.filteredAthletes = new FilteredList<>(this.addressBook.getAthleteList());
@@ -134,7 +130,7 @@ public class ModelManager implements Model {
     }
 
     // =====================================================================================
-    // AddressBook (Persons / Contracts / Orgs / Athletes)
+    // AddressBook (Contracts / Orgs / Athletes)
     // =====================================================================================
 
     @Override
@@ -145,41 +141,6 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
-    }
-
-    // ---- Persons ----
-    @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return addressBook.hasPerson(person);
-    }
-
-    @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
-    }
-
-    @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-        addressBook.setPerson(target, editedPerson);
-    }
-
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
-    }
-
-    @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
-        requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
     }
 
     // ---- Contracts ----
@@ -274,7 +235,7 @@ public class ModelManager implements Model {
         filteredOrganizations.setPredicate(predicate);
     }
 
-    // ---- Athletes (now from addressBook) ----
+    // ---- Athletes ----
 
     @Override
     public ReadOnlyAthleteList getAthleteList() {
@@ -331,7 +292,6 @@ public class ModelManager implements Model {
         ModelManager o = (ModelManager) other;
         return addressBook.equals(o.addressBook)
                 && userPrefs.equals(o.userPrefs)
-                && filteredPersons.equals(o.filteredPersons)
                 && filteredContracts.equals(o.filteredContracts)
                 && filteredAthletes.equals(o.filteredAthletes);
     }

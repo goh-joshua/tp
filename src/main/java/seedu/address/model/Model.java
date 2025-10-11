@@ -11,7 +11,6 @@ import seedu.address.model.contract.Contract;
 import seedu.address.model.contract.ReadOnlyContractList;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.ReadOnlyOrganizationList;
-import seedu.address.model.person.Person;
 
 /**
  * The unified API of the Model component.
@@ -20,7 +19,6 @@ public interface Model {
     // ============================================================
     // Predicates
     // ============================================================
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
     Predicate<Organization> PREDICATE_SHOW_ALL_ORGANIZATIONS = unused -> true;
     Predicate<Athlete> PREDICATE_SHOW_ALL_ATHLETES = unused -> true;
     Predicate<Contract> PREDICATE_SHOW_ALL_CONTRACTS = unused -> true;
@@ -56,24 +54,6 @@ public interface Model {
 
     /** Replaces address book data with {@code addressBook}. */
     void setAddressBook(ReadOnlyAddressBook addressBook);
-
-    /** Returns true if a person with the same identity exists. */
-    boolean hasPerson(Person person);
-
-    /** Deletes the given person. */
-    void deletePerson(Person target);
-
-    /** Adds the given person. */
-    void addPerson(Person person);
-
-    /** Replaces the given person with an edited one. */
-    void setPerson(Person target, Person editedPerson);
-
-    /** Returns an unmodifiable view of the filtered person list. */
-    ObservableList<Person> getFilteredPersonList();
-
-    /** Updates the filtered person list using the given predicate. */
-    void updateFilteredPersonList(Predicate<Person> predicate);
 
     // ============================================================
     // Organization Logic
