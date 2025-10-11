@@ -16,7 +16,7 @@ import seedu.address.model.Model;
 import seedu.address.model.athlete.Athlete;
 
 /**
- * Adds an athlete to the address book.
+ * Adds an athlete to playbook.io.
  */
 public class AddAthleteCommand extends Command {
 

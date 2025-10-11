@@ -7,7 +7,7 @@ import java.util.Objects;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Represents an Organization in the address book.
+ * Represents an Organization in playbook.io.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Organization {

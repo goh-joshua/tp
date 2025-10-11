@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents an Organization's email in the address book.
+ * Represents an Organization's email in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}.
  */
 public class OrganizationEmail {

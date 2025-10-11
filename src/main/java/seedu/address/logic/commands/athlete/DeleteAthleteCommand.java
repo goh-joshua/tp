@@ -17,7 +17,7 @@ import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
 
 /**
- * Deletes an athlete identified using it's displayed index from playbook.io.
+ * Deletes an athlete identified from playbook.io.
  */
 public class DeleteAthleteCommand extends Command {
 

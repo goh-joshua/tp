@@ -23,8 +23,7 @@ import seedu.address.model.organization.ReadOnlyOrganizationList;
 
 /**
  * Represents the in-memory model of all app data using a single AddressBook:
- * - Persons, Contracts, Organizations (placeholder)
- * - Athletes (now stored in AddressBook as well)
+ * - Athletes, Contracts, Organizations
  */
 public class ModelManager implements Model {
 
@@ -131,7 +130,7 @@ public class ModelManager implements Model {
     }
 
     // =====================================================================================
-    // AddressBook (Persons / Contracts / Orgs / Athletes)
+    // AddressBook (Contracts / Orgs / Athletes)
     // =====================================================================================
 
     @Override
@@ -236,7 +235,7 @@ public class ModelManager implements Model {
         filteredOrganizations.setPredicate(predicate);
     }
 
-    // ---- Athletes (now from addressBook) ----
+    // ---- Athletes ----
 
     @Override
     public ReadOnlyAthleteList getAthleteList() {

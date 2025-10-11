@@ -15,7 +15,7 @@ import seedu.address.model.Model;
 import seedu.address.model.organization.Organization;
 
 /**
- * Adds an organization to the address book.
+ * Adds an organization to playbook.io.
  */
 public class AddOrganizationCommand extends Command {
 
@@ -39,7 +39,7 @@ public class AddOrganizationCommand extends Command {
     private final Organization toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Organization}
+     * Creates an AddOrgnaizationCommand to add the specified {@code Organization}
      */
     public AddOrganizationCommand(Organization organization) {
         requireNonNull(organization);
