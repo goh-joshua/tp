@@ -16,7 +16,7 @@ You can reach us at the email `simantak@u.nus.edu`
 
 <img src="images/simantak-dabhade.png" width="200px">
 
-[[github](http://github.com/simantak-dabahde)] [[portfolio](team/simantak.md)]
+[[github](http://github.com/simantak-dabhade)] [[portfolio](team/simantak.md)]
 
 * Role: Developer
 * Responsibilities: Team Lead + Scheduling and Tracking
