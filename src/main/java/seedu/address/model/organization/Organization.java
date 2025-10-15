@@ -14,28 +14,21 @@ public class Organization {
 
     // Identity fields
     private final OrganizationName name;
-    private final OrganizationContactName contactName;
     private final OrganizationPhone phone;
     private final OrganizationEmail email;
 
     /**
      * Every field must be present and not null.
      */
-    public Organization(OrganizationName name, OrganizationContactName contactName,
-                        OrganizationPhone phone, OrganizationEmail email) {
-        requireAllNonNull(name, contactName, phone, email);
+    public Organization(OrganizationName name, OrganizationPhone phone, OrganizationEmail email) {
+        requireAllNonNull(name, phone, email);
         this.name = name;
-        this.contactName = contactName;
         this.phone = phone;
         this.email = email;
     }
 
     public OrganizationName getName() {
         return name;
-    }
-
-    public OrganizationContactName getContactName() {
-        return contactName;
     }
 
     public OrganizationPhone getPhone() {
@@ -47,7 +40,7 @@ public class Organization {
     }
 
     /**
-     * Returns true if both Organizations have the same name and contact person.
+     * Returns true if both Organizations have the same name.
      * This defines a weaker notion of equality between two Organizations.
      */
     public boolean isSameOrganization(Organization otherOrganization) {
@@ -55,8 +48,7 @@ public class Organization {
             return true;
         }
         return otherOrganization != null
-                && otherOrganization.getName().equals(name)
-                && otherOrganization.getContactName().equals(contactName);
+                && otherOrganization.getName().equals(name);
     }
 
     /**
@@ -74,21 +66,19 @@ public class Organization {
 
         Organization otherOrg = (Organization) other;
         return name.equals(otherOrg.name)
-                && contactName.equals(otherOrg.contactName)
                 && phone.equals(otherOrg.phone)
                 && email.equals(otherOrg.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, contactName, phone, email);
+        return Objects.hash(name, phone, email);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("contactName", contactName)
                 .add("phone", phone)
                 .add("email", email)
                 .toString();
