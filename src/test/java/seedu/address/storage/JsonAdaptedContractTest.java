@@ -12,6 +12,9 @@ import seedu.address.model.athlete.Sport;
 import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Date8;
 
+/**
+ * Tests for {@link JsonAdaptedContract}.
+ */
 public class JsonAdaptedContractTest {
     private static final JsonAdaptedAthlete VALID_ATHLETE = new JsonAdaptedAthlete(MESSI_MIAMI.getAthlete());
     private static final String VALID_SPORT = MESSI_MIAMI.getSport().value;
@@ -126,7 +129,7 @@ public class JsonAdaptedContractTest {
     public void toModelType_invalidOrganizationInContract_throwsIllegalValueException() {
         // Create an organization with invalid data
         JsonAdaptedOrganization invalidOrganization = new JsonAdaptedOrganization(
-                null, "John Doe", "98765432", "john@nike.com");
+                null, "98765432", "john@nike.com");
         JsonAdaptedContract contract = new JsonAdaptedContract(
                 VALID_ATHLETE, VALID_SPORT, invalidOrganization, VALID_START_DATE, VALID_END_DATE, VALID_AMOUNT);
         assertThrows(IllegalValueException.class, contract::toModelType);
