@@ -1,45 +1,102 @@
 package seedu.address.logic.commands.organization;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.organization.Organization;
+import seedu.address.model.organization.OrganizationName;
+import seedu.address.testutil.OrganizationBuilder;
 
 /**
- * Basic unit tests for {@code DeleteOrganizationCommand}.
- * Functional behavior tests are omitted until model/storage integration is complete.
+ * Integration tests for {@code DeleteOrganizationCommand}.
  */
 public class DeleteOrganizationCommandTest {
 
-    @Test
-    public void equals() {
-        DeleteOrganizationCommand deleteFirst = new DeleteOrganizationCommand(Index.fromOneBased(1));
-        DeleteOrganizationCommand deleteSecond = new DeleteOrganizationCommand(Index.fromOneBased(2));
+    private Model model;
 
-        // same object -> true
-        assertTrue(deleteFirst.equals(deleteFirst));
-
-        // same values -> true
-        assertTrue(deleteFirst.equals(new DeleteOrganizationCommand(Index.fromOneBased(1))));
-
-        // different index -> false
-        assertFalse(deleteFirst.equals(deleteSecond));
-
-        // null -> false
-        assertFalse(deleteFirst.equals(null));
-
-        // different type -> false
-        assertFalse(deleteFirst.equals(1));
+    @BeforeEach
+    public void setUp() {
+        model = new ModelManager(); // fresh model for each test
     }
 
     @Test
-    public void toStringMethod() {
-        Index targetIndex = Index.fromOneBased(1);
-        DeleteOrganizationCommand command = new DeleteOrganizationCommand(targetIndex);
-        String expected = DeleteOrganizationCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
-        assertEquals(expected, command.toString());
+    public void execute_existingOrganization_success() throws Exception {
+        // Arrange
+        Organization organization = new OrganizationBuilder()
+                .withName("Nike")
+                .withPhone("98765432")
+                .withEmail("contact@nike.com")
+                .build();
+        model.addOrganization(organization);
+
+        DeleteOrganizationCommand command = new DeleteOrganizationCommand(new OrganizationName("Nike"));
+
+        // Act
+        var result = command.execute(model);
+
+        // Assert
+        String expectedMessage = String.format(DeleteOrganizationCommand.MESSAGE_DELETE_ORGANIZATION_SUCCESS,
+                organization);
+        assertEquals(expectedMessage, result.getFeedbackToUser());
+        assertEquals(0, model.getFilteredOrganizationList().size());
+    }
+
+    @Test
+    public void execute_nonexistentOrganization_throwsCommandException() {
+        DeleteOrganizationCommand command = new DeleteOrganizationCommand(new OrganizationName("UnknownBrand"));
+
+        assertThrows(CommandException.class,
+                String.format(DeleteOrganizationCommand.MESSAGE_ORGANIZATION_NOT_FOUND, "UnknownBrand"), ()
+                        -> command.execute(model));
+    }
+
+    @Test
+    public void execute_caseInsensitiveMatch_success() throws Exception {
+        Organization organization = new OrganizationBuilder()
+                .withName("Adidas")
+                .withPhone("91234567")
+                .withEmail("team@adidas.com")
+                .build();
+        model.addOrganization(organization);
+
+        // delete using lowercase name
+        DeleteOrganizationCommand command = new DeleteOrganizationCommand(new OrganizationName("adidas"));
+        var result = command.execute(model);
+
+        String expectedMessage = String.format(DeleteOrganizationCommand.MESSAGE_DELETE_ORGANIZATION_SUCCESS,
+                organization);
+        assertEquals(expectedMessage, result.getFeedbackToUser());
+    }
+
+    @Test
+    public void execute_multipleOrganizations_deleteOnlyTarget() throws Exception {
+        Organization nike = new OrganizationBuilder()
+                .withName("Nike")
+                .withPhone("98765432")
+                .withEmail("contact@nike.com")
+                .build();
+
+        Organization adidas = new OrganizationBuilder()
+                .withName("Adidas")
+                .withPhone("91234567")
+                .withEmail("team@adidas.com")
+                .build();
+
+        model.addOrganization(nike);
+        model.addOrganization(adidas);
+
+        DeleteOrganizationCommand command = new DeleteOrganizationCommand(new OrganizationName("Nike"));
+        var result = command.execute(model);
+
+        String expectedMessage = String.format(DeleteOrganizationCommand.MESSAGE_DELETE_ORGANIZATION_SUCCESS, nike);
+        assertEquals(expectedMessage, result.getFeedbackToUser());
+        assertEquals(1, model.getFilteredOrganizationList().size());
+        assertEquals(adidas, model.getFilteredOrganizationList().get(0));
     }
 }
