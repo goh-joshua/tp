@@ -13,18 +13,16 @@ import org.junit.jupiter.api.Test;
 public class OrganizationTest {
 
     private final OrganizationName nikeName = new OrganizationName("Nike");
-    private final OrganizationContactName johnContact = new OrganizationContactName("John Doe");
     private final OrganizationPhone phone = new OrganizationPhone("98765432");
     private final OrganizationEmail email = new OrganizationEmail("john@nike.com");
 
-    private final Organization nike = new Organization(nikeName, johnContact, phone, email);
+    private final Organization nike = new Organization(nikeName, phone, email);
 
     @Test
     public void constructor_nullFields_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Organization(null, johnContact, phone, email));
-        assertThrows(NullPointerException.class, () -> new Organization(nikeName, null, phone, email));
-        assertThrows(NullPointerException.class, () -> new Organization(nikeName, johnContact, null, email));
-        assertThrows(NullPointerException.class, () -> new Organization(nikeName, johnContact, phone, null));
+        assertThrows(NullPointerException.class, () -> new Organization(null, phone, email));
+        assertThrows(NullPointerException.class, () -> new Organization(nikeName, null, email));
+        assertThrows(NullPointerException.class, () -> new Organization(nikeName, phone, null));
     }
 
     @Test
@@ -35,10 +33,9 @@ public class OrganizationTest {
         // null -> false
         assertFalse(nike.isSameOrganization(null));
 
-        // same name and contact -> true
+        // same name -> true
         Organization sameNike = new Organization(
                 new OrganizationName("Nike"),
-                new OrganizationContactName("John Doe"),
                 new OrganizationPhone("87654321"),
                 new OrganizationEmail("other@nike.com"));
         assertTrue(nike.isSameOrganization(sameNike));
@@ -46,24 +43,15 @@ public class OrganizationTest {
         // different name -> false
         Organization differentName = new Organization(
                 new OrganizationName("Adidas"),
-                johnContact,
                 phone,
                 email);
         assertFalse(nike.isSameOrganization(differentName));
-
-        // different contact -> false
-        Organization differentContact = new Organization(
-                nikeName,
-                new OrganizationContactName("Jane Doe"),
-                phone,
-                email);
-        assertFalse(nike.isSameOrganization(differentContact));
     }
 
     @Test
     public void equals() {
         // same values -> true
-        Organization nikeCopy = new Organization(nikeName, johnContact, phone, email);
+        Organization nikeCopy = new Organization(nikeName, phone, email);
         assertTrue(nike.equals(nikeCopy));
 
         // same object -> true
@@ -76,19 +64,15 @@ public class OrganizationTest {
         assertFalse(nike.equals(5));
 
         // different name -> false
-        Organization diffName = new Organization(new OrganizationName("Adidas"), johnContact, phone, email);
+        Organization diffName = new Organization(new OrganizationName("Adidas"), phone, email);
         assertFalse(nike.equals(diffName));
 
-        // different contact name -> false
-        Organization diffContact = new Organization(nikeName, new OrganizationContactName("Jane Doe"), phone, email);
-        assertFalse(nike.equals(diffContact));
-
         // different phone -> false
-        Organization diffPhone = new Organization(nikeName, johnContact, new OrganizationPhone("87654321"), email);
+        Organization diffPhone = new Organization(nikeName, new OrganizationPhone("87654321"), email);
         assertFalse(nike.equals(diffPhone));
 
         // different email -> false
-        Organization diffEmail = new Organization(nikeName, johnContact, phone, new OrganizationEmail("new@nike.com"));
+        Organization diffEmail = new Organization(nikeName, phone, new OrganizationEmail("new@nike.com"));
         assertFalse(nike.equals(diffEmail));
     }
 
@@ -96,7 +80,6 @@ public class OrganizationTest {
     public void toStringMethod() {
         String expected = Organization.class.getCanonicalName()
                 + "{name=" + nike.getName()
-                + ", contactName=" + nike.getContactName()
                 + ", phone=" + nike.getPhone()
                 + ", email=" + nike.getEmail()
                 + "}";
