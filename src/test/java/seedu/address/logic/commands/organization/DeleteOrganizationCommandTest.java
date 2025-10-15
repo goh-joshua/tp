@@ -6,6 +6,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -42,7 +43,7 @@ public class DeleteOrganizationCommandTest {
 
         // Assert
         String expectedMessage = String.format(DeleteOrganizationCommand.MESSAGE_DELETE_ORGANIZATION_SUCCESS,
-                organization);
+                Messages.format(organization));
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(0, model.getFilteredOrganizationList().size());
     }
@@ -70,12 +71,13 @@ public class DeleteOrganizationCommandTest {
         var result = command.execute(model);
 
         String expectedMessage = String.format(DeleteOrganizationCommand.MESSAGE_DELETE_ORGANIZATION_SUCCESS,
-                organization);
+                Messages.format(organization));
         assertEquals(expectedMessage, result.getFeedbackToUser());
+        assertEquals(0, model.getFilteredOrganizationList().size());
     }
 
     @Test
-    public void execute_multipleOrganizations_deleteOnlyTarget() throws Exception {
+    public void execute_deleteOnlyTarget_success() throws Exception {
         Organization nike = new OrganizationBuilder()
                 .withName("Nike")
                 .withPhone("98765432")
@@ -94,7 +96,8 @@ public class DeleteOrganizationCommandTest {
         DeleteOrganizationCommand command = new DeleteOrganizationCommand(new OrganizationName("Nike"));
         var result = command.execute(model);
 
-        String expectedMessage = String.format(DeleteOrganizationCommand.MESSAGE_DELETE_ORGANIZATION_SUCCESS, nike);
+        String expectedMessage = String.format(DeleteOrganizationCommand.MESSAGE_DELETE_ORGANIZATION_SUCCESS,
+                Messages.format(nike));
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(1, model.getFilteredOrganizationList().size());
         assertEquals(adidas, model.getFilteredOrganizationList().get(0));
