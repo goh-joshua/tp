@@ -10,6 +10,7 @@ import seedu.address.logic.commands.athlete.AddAthleteCommand;
 import seedu.address.logic.commands.athlete.DeleteAthleteCommand;
 import seedu.address.logic.commands.contract.AddContractCommand;
 import seedu.address.logic.commands.contract.DeleteContractCommand;
+import seedu.address.logic.commands.organization.AddOrganizationCommand;
 import seedu.address.logic.commands.organization.DeleteOrganizationCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.testutil.athlete.AthleteBuilder;
@@ -17,6 +18,9 @@ import seedu.address.testutil.athlete.AthleteUtil;
 import seedu.address.testutil.contract.ContractBuilder;
 import seedu.address.testutil.contract.ContractUtil;
 
+/**
+ * Tests for {@link AddressBookParser}.
+ */
 public class AddressBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
@@ -43,8 +47,15 @@ public class AddressBookParserTest {
     // ============================================================
 
     @Test
+    public void parseCommand_addOrganization() throws Exception {
+        String args = " o/Nike p/98765432 e/john.doe@nike.com";
+        assertTrue(parser.parseCommand(AddOrganizationCommand.COMMAND_WORD + args)
+                instanceof AddOrganizationCommand);
+    }
+
+    @Test
     public void parseCommand_deleteOrganization() throws Exception {
-        String args = " 1";
+        String args = " o/Nike";
         assertTrue(parser.parseCommand(DeleteOrganizationCommand.COMMAND_WORD + args)
                 instanceof DeleteOrganizationCommand);
     }
@@ -74,6 +85,6 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () ->
-            parser.parseCommand("unknownCommand"));
+                parser.parseCommand("unknownCommand"));
     }
 }
