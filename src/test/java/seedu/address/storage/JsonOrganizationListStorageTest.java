@@ -20,6 +20,9 @@ import seedu.address.model.organization.OrganizationList;
 import seedu.address.model.organization.ReadOnlyOrganizationList;
 import seedu.address.testutil.OrganizationBuilder;
 
+/**
+ * Tests for {@link JsonOrganizationListStorage}.
+ */
 public class JsonOrganizationListStorageTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
@@ -79,9 +82,8 @@ public class JsonOrganizationListStorageTest {
         ReadOnlyOrganizationList readBack = jsonOrganizationListStorage.readOrganizationList(filePath).get();
         assertEquals(original.getOrganizationList(), readBack.getOrganizationList());
 
-        // Modify data, overwrite exiting file, and read back
+        // Modify data, overwrite existing file, and read back
         Organization puma = new OrganizationBuilder().withName("Puma")
-                .withContactName("Michael Brown")
                 .withPhone("93456789")
                 .withEmail("michael.brown@puma.com").build();
         original.addOrganization(puma);
@@ -92,7 +94,6 @@ public class JsonOrganizationListStorageTest {
 
         // Save and read without specifying file path
         Organization underArmour = new OrganizationBuilder().withName("Under Armour")
-                .withContactName("Sarah Johnson")
                 .withPhone("98765432")
                 .withEmail("sarah.johnson@ua.com").build();
         original.addOrganization(underArmour);
