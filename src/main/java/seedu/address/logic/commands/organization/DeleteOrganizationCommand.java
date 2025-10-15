@@ -26,10 +26,16 @@ public class DeleteOrganizationCommand extends Command {
             + "Example: " + COMMAND_WORD + " o/Nike";
 
     public static final String MESSAGE_DELETE_ORGANIZATION_SUCCESS = "Deleted Organization: %1$s";
-    public static final String MESSAGE_ORGANIZATION_NOT_FOUND = "Error: No organization found with name '%1$s'.";
+    public static final String MESSAGE_ORGANIZATION_NOT_FOUND =
+            "Error: No organization found with name '%1$s'.";
 
     private final OrganizationName targetName;
 
+    /**
+     * Creates a {@code DeleteOrganizationCommand} to delete the specified {@code Organization}.
+     *
+     * @param targetName the name of the organization to delete.
+     */
     public DeleteOrganizationCommand(OrganizationName targetName) {
         requireNonNull(targetName);
         this.targetName = targetName;
@@ -41,8 +47,10 @@ public class DeleteOrganizationCommand extends Command {
 
         List<Organization> lastShownList = model.getFilteredOrganizationList();
 
+        // Case-insensitive name comparison to comply with specification
         Organization organizationToDelete = lastShownList.stream()
-                .filter(org -> org.getName().equals(targetName))
+                .filter(org -> org.getName().fullOrganizationName
+                        .equalsIgnoreCase(targetName.fullOrganizationName))
                 .findFirst()
                 .orElse(null);
 
