@@ -24,7 +24,7 @@ public class DeleteAthleteCommand extends Command {
     public static final String COMMAND_WORD = "delete-a";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the athlete identified by name and sport.\n"
+            + ": Deletes the athlete identified by name and sport. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_SPORT + "SPORT\n"

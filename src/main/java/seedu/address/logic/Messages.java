@@ -18,10 +18,6 @@ public class Messages {
             "Multiple values specified for the following single-valued field(s): ";
 
     // === Organization messages ===
-    public static final String MESSAGE_INVALID_ORGANIZATION_DISPLAYED_INDEX =
-            "The organization index provided is invalid";
-    public static final String MESSAGE_ORGANIZATIONS_LISTED_OVERVIEW =
-            "%1$d organizations listed!";
 
     /**
      * Returns an error message indicating the duplicate prefixes.

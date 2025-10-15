@@ -26,17 +26,17 @@ public class DeleteContractCommand extends Command {
     public static final String COMMAND_WORD = "delete-c";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Deletes a contract by athlete, organization, and dates. "
+            + ": Deletes a contract by athlete, organisation, and dates. "
             + "Parameters: "
-            + "n/ATHLETE_NAME "
-            + "o/ORG_NAME "
+            + "n/NAME "
+            + "o/ORG "
             + "sd/DDMMYYYY "
             + "ed/DDMMYYYY\n"
             + "Example: " + COMMAND_WORD + " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025";
 
     public static final String MESSAGE_SUCCESS = "Deleted contract: %1$s";
     public static final String MESSAGE_CONTRACT_NOT_FOUND =
-            "No matching contract found for athlete '%s', organization '%s', start '%s', end '%s'.";
+            "No matching contract found for athlete '%s', organisation '%s', start '%s', end '%s'.";
 
     private final Name athleteName;
     private final OrganizationName organizationName;
@@ -46,10 +46,10 @@ public class DeleteContractCommand extends Command {
     /**
      * Constructs a {@code DeleteContractCommand} with the specified athlete, organization, and date range.
      *
-     * @param athleteName Name of the athlete whose contract is to be deleted.
+     * @param athleteName      Name of the athlete whose contract is to be deleted.
      * @param organizationName Name of the organization involved in the contract.
-     * @param startDate Start date of the contract.
-     * @param endDate End date of the contract.
+     * @param startDate        Start date of the contract.
+     * @param endDate          End date of the contract.
      */
     public DeleteContractCommand(Name athleteName, OrganizationName organizationName, Date8 startDate, Date8 endDate) {
         requireNonNull(athleteName);
