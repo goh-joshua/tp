@@ -20,7 +20,6 @@ public class OrganizationCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-
     public final Organization organization;
 
     @FXML
@@ -29,8 +28,6 @@ public class OrganizationCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
-    @FXML
-    private Label contactName;
     @FXML
     private Label phone;
     @FXML
@@ -44,7 +41,6 @@ public class OrganizationCard extends UiPart<Region> {
         this.organization = organization;
         id.setText(displayedIndex + ". ");
         name.setText(organization.getName().fullOrganizationName);
-        contactName.setText("Contact: " + organization.getContactName().fullName);
         phone.setText(organization.getPhone().value);
         email.setText(organization.getEmail().value);
     }

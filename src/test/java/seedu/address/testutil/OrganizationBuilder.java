@@ -1,7 +1,6 @@
 package seedu.address.testutil;
 
 import seedu.address.model.organization.Organization;
-import seedu.address.model.organization.OrganizationContactName;
 import seedu.address.model.organization.OrganizationEmail;
 import seedu.address.model.organization.OrganizationName;
 import seedu.address.model.organization.OrganizationPhone;
@@ -12,12 +11,10 @@ import seedu.address.model.organization.OrganizationPhone;
 public class OrganizationBuilder {
 
     public static final String DEFAULT_NAME = "Nike";
-    public static final String DEFAULT_CONTACT_NAME = "John Doe";
     public static final String DEFAULT_PHONE = "98765432";
     public static final String DEFAULT_EMAIL = "john.doe@nike.com";
 
     private OrganizationName name;
-    private OrganizationContactName contactName;
     private OrganizationPhone phone;
     private OrganizationEmail email;
 
@@ -26,7 +23,6 @@ public class OrganizationBuilder {
      */
     public OrganizationBuilder() {
         name = new OrganizationName(DEFAULT_NAME);
-        contactName = new OrganizationContactName(DEFAULT_CONTACT_NAME);
         phone = new OrganizationPhone(DEFAULT_PHONE);
         email = new OrganizationEmail(DEFAULT_EMAIL);
     }
@@ -36,7 +32,6 @@ public class OrganizationBuilder {
      */
     public OrganizationBuilder(Organization organizationToCopy) {
         name = organizationToCopy.getName();
-        contactName = organizationToCopy.getContactName();
         phone = organizationToCopy.getPhone();
         email = organizationToCopy.getEmail();
     }
@@ -46,14 +41,6 @@ public class OrganizationBuilder {
      */
     public OrganizationBuilder withName(String name) {
         this.name = new OrganizationName(name);
-        return this;
-    }
-
-    /**
-     * Sets the {@code OrganizationContactName} of the {@code Organization} that we are building.
-     */
-    public OrganizationBuilder withContactName(String contactName) {
-        this.contactName = new OrganizationContactName(contactName);
         return this;
     }
 
@@ -77,6 +64,6 @@ public class OrganizationBuilder {
      * Builds and returns the {@code Organization}.
      */
     public Organization build() {
-        return new Organization(name, contactName, phone, email);
+        return new Organization(name, phone, email);
     }
 }

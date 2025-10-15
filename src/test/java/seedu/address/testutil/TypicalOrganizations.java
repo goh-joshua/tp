@@ -12,17 +12,20 @@ import seedu.address.model.organization.Organization;
  */
 public class TypicalOrganizations {
 
-    public static final Organization NIKE = new OrganizationBuilder().withName("Nike")
-            .withContactName("John Smith")
+    public static final Organization NIKE = new OrganizationBuilder()
+            .withName("Nike")
             .withPhone("91234567")
-            .withEmail("john.smith@nike.com").build();
+            .withEmail("john.smith@nike.com")
+            .build();
 
-    public static final Organization ADIDAS = new OrganizationBuilder().withName("Adidas")
-            .withContactName("Jane Doe")
+    public static final Organization ADIDAS = new OrganizationBuilder()
+            .withName("Adidas")
             .withPhone("98765432")
-            .withEmail("jane.doe@adidas.com").build();
+            .withEmail("jane.doe@adidas.com")
+            .build();
 
-    private TypicalOrganizations() {} // prevents instantiation
+    private TypicalOrganizations() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical organizations.
@@ -35,6 +38,9 @@ public class TypicalOrganizations {
         return ab;
     }
 
+    /**
+     * Returns a list of typical {@code Organization} objects.
+     */
     public static List<Organization> getTypicalOrganizations() {
         return new ArrayList<>(Arrays.asList(NIKE, ADIDAS));
     }

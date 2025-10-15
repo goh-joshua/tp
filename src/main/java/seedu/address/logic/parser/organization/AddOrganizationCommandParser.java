@@ -1,7 +1,6 @@
 package seedu.address.logic.parser.organization;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTACT_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -16,7 +15,6 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.organization.Organization;
-import seedu.address.model.organization.OrganizationContactName;
 import seedu.address.model.organization.OrganizationEmail;
 import seedu.address.model.organization.OrganizationName;
 import seedu.address.model.organization.OrganizationPhone;
@@ -27,8 +25,8 @@ import seedu.address.model.organization.OrganizationPhone;
 public class AddOrganizationCommandParser implements Parser<AddOrganizationCommand> {
 
     /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
+     * Returns true if none of the prefixes contains empty {@code Optional} values
+     * in the given {@code ArgumentMultimap}.
      */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
@@ -43,23 +41,21 @@ public class AddOrganizationCommandParser implements Parser<AddOrganizationComma
     @Override
     public AddOrganizationCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_ORG, PREFIX_CONTACT_NAME, PREFIX_PHONE, PREFIX_EMAIL);
+                ArgumentTokenizer.tokenize(args, PREFIX_ORG, PREFIX_PHONE, PREFIX_EMAIL);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_ORG, PREFIX_CONTACT_NAME, PREFIX_PHONE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_ORG, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT, AddOrganizationCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ORG, PREFIX_CONTACT_NAME, PREFIX_PHONE, PREFIX_EMAIL);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ORG, PREFIX_PHONE, PREFIX_EMAIL);
 
         OrganizationName name = ParserUtil.parseOrganizationName(argMultimap.getValue(PREFIX_ORG).get());
-        OrganizationContactName contactName = ParserUtil.parseOrganizationContactName(
-                argMultimap.getValue(PREFIX_CONTACT_NAME).get());
         OrganizationPhone phone = ParserUtil.parseOrganizationPhone(argMultimap.getValue(PREFIX_PHONE).get());
         OrganizationEmail email = ParserUtil.parseOrganizationEmail(argMultimap.getValue(PREFIX_EMAIL).get());
 
-        Organization organization = new Organization(name, contactName, phone, email);
+        Organization organization = new Organization(name, phone, email);
 
         return new AddOrganizationCommand(organization);
     }

@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.organization.Organization;
 import seedu.address.testutil.OrganizationBuilder;
 
+/**
+ * Unit tests for {@code OrganizationListPanel}.
+ */
 public class OrganizationListPanelTest {
 
     @Test
@@ -23,7 +26,7 @@ public class OrganizationListPanelTest {
     public void organizationList_listWithOrganizations_success() {
         List<Organization> organizationList = new ArrayList<>();
         organizationList.add(new OrganizationBuilder().build());
-        organizationList.add(new OrganizationBuilder().withName("Second Org").withContactName("Jane Smith").build());
+        organizationList.add(new OrganizationBuilder().withName("Second Org").build());
 
         assertEquals(2, organizationList.size());
         assertEquals("Second Org", organizationList.get(1).getName().fullOrganizationName);
@@ -34,7 +37,6 @@ public class OrganizationListPanelTest {
         List<Organization> organizationList = new ArrayList<>();
         Organization organization = new OrganizationBuilder()
                 .withName("Test Organization")
-                .withContactName("Test Contact")
                 .withPhone("98765432")
                 .withEmail("test@org.com")
                 .build();
