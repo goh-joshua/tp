@@ -15,9 +15,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_AGE = new Prefix("a/"); // Age for athlete
 
     // ===== Organization-related =====
-    public static final Prefix PREFIX_ORG = new Prefix("o/"); // Organization name
-    public static final Prefix PREFIX_CONTACT_NAME = new Prefix("cn/"); // Contact person for org
-
+    public static final Prefix PREFIX_ORG = new Prefix("o/"); // Organization name// Contact person for org
 
     // ===== Contract-related =====
     public static final Prefix PREFIX_START_DATE = new Prefix("sd/"); // Contract start date (DDMMYYYY)
