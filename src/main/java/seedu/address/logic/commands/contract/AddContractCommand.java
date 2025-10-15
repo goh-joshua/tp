@@ -28,11 +28,11 @@ public class AddContractCommand extends Command {
     public static final String COMMAND_WORD = "add-c";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Adds a contract linking an athlete and an organization. "
+            + ": Adds a contract linking an athlete and an organisation. "
             + "Parameters: "
-            + "n/ATHLETE_NAME "
+            + "n/NAME "
             + "s/SPORT "
-            + "o/ORG_NAME "
+            + "o/ORG "
             + "sd/DDMMYYYY "
             + "ed/DDMMYYYY "
             + "am/AMOUNT\n"
@@ -53,12 +53,12 @@ public class AddContractCommand extends Command {
     /**
      * Constructs an {@code AddContractCommand} with the given details.
      *
-     * @param athleteName Name of the athlete.
-     * @param sport Sport of the contract.
+     * @param athleteName      Name of the athlete.
+     * @param sport            Sport of the contract.
      * @param organizationName Name of the organization.
-     * @param startDate Start date of the contract.
-     * @param endDate End date of the contract.
-     * @param amount Amount in the contract.
+     * @param startDate        Start date of the contract.
+     * @param endDate          End date of the contract.
+     * @param amount           Amount in the contract.
      */
     public AddContractCommand(Name athleteName,
                               Sport sport,
