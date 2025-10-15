@@ -20,9 +20,9 @@ public class AddOrganizationCommand extends Command {
 
     public static final String COMMAND_WORD = "add-o";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an organization to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an organisation to the address book. "
             + "Parameters: "
-            + PREFIX_ORG + "ORGANIZATION_NAME "
+            + PREFIX_ORG + "ORGANISATION_NAME "
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL\n"
             + "Example: " + COMMAND_WORD + " "
@@ -30,8 +30,8 @@ public class AddOrganizationCommand extends Command {
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "john.doe@nike.com";
 
-    public static final String MESSAGE_SUCCESS = "New organization added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ORGANIZATION = "This organization already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "New organisation added: %1$s";
+    public static final String MESSAGE_DUPLICATE_ORGANIZATION = "This organisation already exists in the address book";
 
     private final Organization toAdd;
 
