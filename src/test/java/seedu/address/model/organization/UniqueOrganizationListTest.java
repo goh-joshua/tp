@@ -24,14 +24,12 @@ public class UniqueOrganizationListTest {
 
     private final Organization nike = new OrganizationBuilder()
             .withName("Nike")
-            .withContactName("John Doe")
             .withPhone("98765432")
             .withEmail("john@nike.com")
             .build();
 
     private final Organization adidas = new OrganizationBuilder()
             .withName("Adidas")
-            .withContactName("Jane Smith")
             .withPhone("87654321")
             .withEmail("jane@adidas.com")
             .build();
