@@ -18,7 +18,7 @@ import seedu.address.model.organization.Organization;
  */
 public class DeleteOrganizationCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete-org";
+    public static final String COMMAND_WORD = "delete-o";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the organization identified by the index number used in the displayed organization list.\n"
