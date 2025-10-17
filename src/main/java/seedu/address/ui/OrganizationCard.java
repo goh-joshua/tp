@@ -1,9 +1,11 @@
 package seedu.address.ui;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 
 /**
@@ -36,7 +38,7 @@ public class OrganizationCard extends UiPart<Region> {
     /**
      * Creates a {@code OrganizationCard} with the given {@code Organization} and index to display.
      */
-    public OrganizationCard(Organization organization, int displayedIndex) {
+    public OrganizationCard(Organization organization, int displayedIndex, ObservableList<Contract> allContracts) {
         super(FXML);
         this.organization = organization;
         id.setText(displayedIndex + ". ");
