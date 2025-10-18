@@ -7,6 +7,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.contract.Contract;
+import seedu.address.model.organization.Organization;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 /**
  * An UI component that displays information of a {@code Athlete}.
@@ -39,6 +44,10 @@ public class AthleteCard extends UiPart<Region> {
     private Label phone;
     @FXML
     private Label email;
+    @FXML
+    private Label totalContracts;
+    @FXML
+    private Label organizationList;
 
     /**
      * Creates a {@code AthleteCard} with the given {@code Athlete} and index to display.
@@ -52,5 +61,17 @@ public class AthleteCard extends UiPart<Region> {
         age.setText("Age: " + athlete.getAge().value);
         phone.setText(athlete.getPhone().value);
         email.setText(athlete.getEmail().value);
+        int totalAmount = athlete.getTotalContractAmount(allContracts);
+        String formattedAmount = NumberFormat.getNumberInstance(Locale.US).format(totalAmount);
+        totalContracts.setText("Total Contract Value: $" + formattedAmount);
+        ObservableList<Organization> organizations = athlete.getOrganizations(allContracts);
+        if (organizations.isEmpty()) {
+            organizationList.setText("Organizations: None");
+        } else {
+            String organizationNames = organizations.stream()
+                    .map(a -> a.getName().fullOrganizationName)
+                    .collect(Collectors.joining(", "));
+            organizationList.setText("Organizations: " + organizationNames);
+        }
     }
 }
