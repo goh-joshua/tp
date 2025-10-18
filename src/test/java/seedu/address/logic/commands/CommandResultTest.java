@@ -33,6 +33,13 @@ public class CommandResultTest {
 
         // different exit value -> returns false
         assertFalse(commandResult.equals(new CommandResult("feedback", false, true)));
+
+        // different tab -> returns false
+        assertFalse(commandResult.equals(new CommandResult("feedback", CommandResult.UiTab.ATHLETES)));
+
+        // same tab -> returns true
+        CommandResult athleteTabResult = new CommandResult("feedback", CommandResult.UiTab.ATHLETES);
+        assertTrue(athleteTabResult.equals(new CommandResult("feedback", CommandResult.UiTab.ATHLETES)));
     }
 
     @Test
@@ -50,6 +57,10 @@ public class CommandResultTest {
 
         // different exit value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true).hashCode());
+
+        // different tab value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(),
+                new CommandResult("feedback", CommandResult.UiTab.ATHLETES).hashCode());
     }
 
     @Test
@@ -57,7 +68,8 @@ public class CommandResultTest {
         CommandResult commandResult = new CommandResult("feedback");
         String expected = CommandResult.class.getCanonicalName() + "{feedbackToUser="
                 + commandResult.getFeedbackToUser() + ", showHelp=" + commandResult.isShowHelp()
-                + ", exit=" + commandResult.isExit() + "}";
+                + ", exit=" + commandResult.isExit() + ", tabToShow="
+                + commandResult.getTabToShow().orElse(null) + "}";
         assertEquals(expected, commandResult.toString());
     }
 }

@@ -221,6 +221,8 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
+            commandResult.getTabToShow().ifPresent(this::switchToTab);
+
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
@@ -234,6 +236,12 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
+        }
+    }
+
+    private void switchToTab(CommandResult.UiTab tab) {
+        if (tabPane != null) {
+            tabPane.getSelectionModel().select(tab.getTabIndex());
         }
     }
 }
