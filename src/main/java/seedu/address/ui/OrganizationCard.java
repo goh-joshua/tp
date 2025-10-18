@@ -1,5 +1,9 @@
 package seedu.address.ui;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.stream.Collectors;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,10 +12,6 @@ import javafx.scene.layout.Region;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
-
-import java.text.NumberFormat;
-import java.util.Locale;
-import java.util.stream.Collectors;
 
 /**
  * An UI component that displays information of a {@code Organization}.
