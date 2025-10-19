@@ -1,11 +1,11 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.CommandResult.UiTab;
 import seedu.address.logic.commands.FindCommand.SearchScope;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -41,17 +41,7 @@ public class FindCommandTest {
         String keyword = "Alice";
         FindCommand command = new FindCommand(SearchScope.ATHLETE_NAME, keyword);
 
-        expectedModel.updateFilteredAthleteList(athlete ->
-                athlete.getName().toString().toLowerCase().contains(keyword.toLowerCase()));
-        expectedModel.updateFilteredOrganizationList(Model.PREDICATE_SHOW_ALL_ORGANIZATIONS);
-        expectedModel.updateFilteredContractList(Model.PREDICATE_SHOW_ALL_CONTRACTS);
-
-        CommandResult expectedResult = new CommandResult(
-                String.format("Showing %1$d %2$s matching \"%3$s\".",
-                        expectedModel.getFilteredAthleteList().size(),
-                        SearchScope.ATHLETE_NAME.getNoun(),
-                        keyword),
-                UiTab.ATHLETES);
+        CommandResult expectedResult = new FindCommand(SearchScope.ATHLETE_NAME, keyword).execute(expectedModel);
 
         assertCommandSuccess(command, model, expectedResult, expectedModel);
     }
@@ -61,17 +51,7 @@ public class FindCommandTest {
         String keyword = "nike";
         FindCommand command = new FindCommand(SearchScope.ORGANIZATION_NAME, keyword);
 
-        expectedModel.updateFilteredOrganizationList(organization ->
-                organization.getName().toString().toLowerCase().contains(keyword.toLowerCase()));
-        expectedModel.updateFilteredAthleteList(Model.PREDICATE_SHOW_ALL_ATHLETES);
-        expectedModel.updateFilteredContractList(Model.PREDICATE_SHOW_ALL_CONTRACTS);
-
-        CommandResult expectedResult = new CommandResult(
-                String.format("Showing %1$d %2$s matching \"%3$s\".",
-                        expectedModel.getFilteredOrganizationList().size(),
-                        SearchScope.ORGANIZATION_NAME.getNoun(),
-                        keyword),
-                UiTab.ORGANIZATIONS);
+        CommandResult expectedResult = new FindCommand(SearchScope.ORGANIZATION_NAME, keyword).execute(expectedModel);
 
         assertCommandSuccess(command, model, expectedResult, expectedModel);
     }
@@ -81,19 +61,32 @@ public class FindCommandTest {
         String keyword = "football";
         FindCommand command = new FindCommand(SearchScope.CONTRACT_SPORT, keyword);
 
-        expectedModel.updateFilteredContractList(contract ->
-                contract.getSport().toString().toLowerCase().contains(keyword.toLowerCase()));
-        expectedModel.updateFilteredAthleteList(Model.PREDICATE_SHOW_ALL_ATHLETES);
-        expectedModel.updateFilteredOrganizationList(Model.PREDICATE_SHOW_ALL_ORGANIZATIONS);
-
-        CommandResult expectedResult = new CommandResult(
-                String.format("Showing %1$d %2$s matching \"%3$s\".",
-                        expectedModel.getFilteredContractList().size(),
-                        SearchScope.CONTRACT_SPORT.getNoun(),
-                        keyword),
-                UiTab.CONTRACTS);
+        CommandResult expectedResult = new FindCommand(SearchScope.CONTRACT_SPORT, keyword).execute(expectedModel);
 
         assertCommandSuccess(command, model, expectedResult, expectedModel);
+    }
+
+    @Test
+    public void execute_athleteNameScope_fuzzyMatchesMisspelling() {
+        String keyword = "Aliec"; // close misspelling of Alice
+        FindCommand command = new FindCommand(SearchScope.ATHLETE_NAME, keyword);
+
+        CommandResult expectedResult = new FindCommand(SearchScope.ATHLETE_NAME, keyword).execute(expectedModel);
+
+        assertCommandSuccess(command, model, expectedResult, expectedModel);
+        assertTrue(expectedModel.getFilteredAthleteList().stream()
+                .anyMatch(athlete -> athlete.getName().toString().equals("Alice Pauline")));
+    }
+
+    @Test
+    public void execute_athleteNameScope_doesNotMatchUnrelatedKeyword() {
+        String keyword = "zzzzzz";
+        FindCommand command = new FindCommand(SearchScope.ATHLETE_NAME, keyword);
+
+        CommandResult expectedResult = new FindCommand(SearchScope.ATHLETE_NAME, keyword).execute(expectedModel);
+
+        assertCommandSuccess(command, model, expectedResult, expectedModel);
+        assertTrue(expectedModel.getFilteredAthleteList().isEmpty());
     }
 
     private AddressBook buildPopulatedAddressBook() {
