@@ -90,6 +90,7 @@ public class MainWindow extends UiPart<Stage> {
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
         setTabAccelerators();
+        setRefreshAccelerator();
     }
 
     /**
@@ -111,6 +112,23 @@ public class MainWindow extends UiPart<Stage> {
             if (keyCombination.match(event)) {
                 if (tabPane != null && tabIndex < tabPane.getTabs().size()) {
                     tabPane.getSelectionModel().select(tabIndex);
+                }
+                event.consume();
+            }
+        });
+    }
+
+    /**
+     * Sets up keyboard shortcut for refresh command (Cmd+R or Ctrl+R).
+     */
+    private void setRefreshAccelerator() {
+        KeyCombination refreshKeyCombination = KeyCombination.valueOf("Shortcut+R");
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (refreshKeyCombination.match(event)) {
+                try {
+                    executeCommand("refresh");
+                } catch (CommandException | ParseException e) {
+                    logger.warning("Failed to execute refresh command via keyboard shortcut: " + e.getMessage());
                 }
                 event.consume();
             }
