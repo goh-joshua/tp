@@ -16,7 +16,7 @@ allowing agents to focus on what truly matters.
 
 ## Quick Start
 
-1. Ensure you have Java `17` or above installed on your computer.  
+1. Ensure you have Java `17` or above installed on your computer.
    **Mac users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html) to
    install the correct JDK version.
 
@@ -30,10 +30,10 @@ allowing agents to focus on what truly matters.
    java -jar playbook.io.jar
    ```
 
-5. The playbook.io interface should appear in a few seconds, preloaded with sample data for exploration.  
+5. The playbook.io interface should appear in a few seconds, preloaded with sample data for exploration.
    ![Ui](images/Ui.png)
 
-6. Use commands in the command box to manage your athletes, organisations, and contracts.  
+6. Use commands in the command box to manage your athletes, organisations, and contracts.
    Example:
    ```
    add-a n/LeBron James s/Basketball a/40 p/98765432 e/james@example.com

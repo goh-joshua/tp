@@ -29,7 +29,8 @@ public class FindCommand extends Command {
             + "  -cs KEYWORD    Shows contracts whose sport closely matches KEYWORD.\n"
             + "Example: " + COMMAND_WORD + " -an Lionel";
 
-    private static final String MESSAGE_RESULTS_FORMAT = "Showing %1$d %2$s closely matching \"%3$s\".";
+    private static final String MESSAGE_RESULTS_FORMAT = "Showing %1$d %2$s closely matching \"%3$s\".\n"
+            + "Use the \"refresh\" command (or Cmd+R) to show all data again.";
 
     /**
      * Supported scopes for the find command.
@@ -151,22 +152,38 @@ public class FindCommand extends Command {
         return (scope.name() + "|" + keyword.toLowerCase()).hashCode();
     }
 
+    /**
+     * Performs fuzzy matching between the search keyword and target text.
+     * Uses a three-tier matching strategy:
+     * 1. Exact substring match (case-insensitive)
+     * 2. Levenshtein distance matching on the full text
+     * 3. Word-by-word Levenshtein distance matching
+     *
+     * @param haystack the text to search in
+     * @param needleLower the search keyword (must be lowercase)
+     * @return true if the keyword fuzzy-matches the haystack text
+     */
     private static boolean matchesFuzzy(String haystack, String needleLower) {
         String haystackLower = haystack.toLowerCase();
 
+        // Tier 1: Exact substring match (fastest)
         if (haystackLower.contains(needleLower)) {
             return true;
         }
 
+        // Calculate allowed edit distance based on keyword length
         int allowedDistance = allowableDistance(needleLower.length());
         if (allowedDistance == 0) {
-            return false;
+            return false; // Too short for fuzzy matching
         }
 
+        // Tier 2: Full text Levenshtein distance match
         if (levenshteinDistance(haystackLower, needleLower) <= allowedDistance) {
             return true;
         }
 
+        // Tier 3: Word-by-word Levenshtein distance match
+        // Splits text into words and tries matching each word individually
         Matcher matcher = WORD_PATTERN.matcher(haystackLower);
         while (matcher.find()) {
             String token = matcher.group();
@@ -178,22 +195,42 @@ public class FindCommand extends Command {
         return false;
     }
 
+    /**
+     * Calculates the maximum allowed Levenshtein distance for fuzzy matching
+     * based on the keyword length. Shorter keywords require exact matches,
+     * while longer keywords allow more edits.
+     *
+     * @param length the length of the search keyword
+     * @return the maximum allowed edit distance
+     */
     private static int allowableDistance(int length) {
         if (length <= 2) {
-            return 0;
+            return 0; // 1-2 chars: exact match only
         }
         if (length <= 4) {
-            return 1;
+            return 1; // 3-4 chars: 1 edit allowed
         }
         if (length <= 7) {
-            return 2;
+            return 2; // 5-7 chars: 2 edits allowed
         }
         if (length <= 11) {
-            return 3;
+            return 3; // 8-11 chars: 3 edits allowed
         }
-        return 4;
+        return 4; // 12+ chars: 4 edits allowed
     }
 
+    /**
+     * Calculates the Levenshtein distance (edit distance) between two strings.
+     * The edit distance is the minimum number of single-character edits
+     * (insertions, deletions, or substitutions) required to change one string
+     * into another.
+     *
+     * Uses dynamic programming with space optimization (O(min(m,n)) space).
+     *
+     * @param left the first string
+     * @param right the second string
+     * @return the minimum edit distance between the strings
+     */
     private static int levenshteinDistance(String left, String right) {
         if (left.isEmpty()) {
             return right.length();
