@@ -74,7 +74,7 @@ This guide is designed for **sports agents and talent managers** who:
 
 5. **First Look**
    
-   The playbook.io interface should appear in a few seconds, preloaded with sample data for exploration.
+   The playbook.io interface should appear in a few seconds.
    
    ![Ui](images/Ui.png)
 
