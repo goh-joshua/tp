@@ -101,6 +101,12 @@ public class AddContractCommand extends Command {
         }
 
         model.addContract(toAdd);
+        model.updateFilteredAthleteList(unused -> false);
+        model.updateFilteredAthleteList(Model.PREDICATE_SHOW_ALL_ATHLETES);
+
+        model.updateFilteredOrganizationList(unused -> false);
+        model.updateFilteredOrganizationList(Model.PREDICATE_SHOW_ALL_ORGANIZATIONS);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, ContractMessages.format(toAdd)));
     }
 
