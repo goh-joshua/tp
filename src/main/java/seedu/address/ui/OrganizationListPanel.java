@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.contract.Contract;
@@ -37,6 +38,28 @@ public class OrganizationListPanel extends UiPart<Region> {
      * Custom {@code ListCell} that displays the graphics of a {@code Organization} using a {@code OrganizationCard}.
      */
     class OrganizationListViewCell extends ListCell<Organization> {
+
+        OrganizationListViewCell() {
+            // Toggle selection on click
+            addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
+                if (isEmpty()) {
+                    return;
+                }
+
+                var listView = getListView();
+                int index = getIndex();
+
+                if (listView.getSelectionModel().isSelected(index)) {
+                    listView.getSelectionModel().clearSelection();
+                    e.consume();
+                } else {
+                    listView.getSelectionModel().clearSelection();
+                    listView.getSelectionModel().select(index);
+                    e.consume();
+                }
+            });
+        }
+
         @Override
         protected void updateItem(Organization organization, boolean empty) {
             super.updateItem(organization, empty);
@@ -49,5 +72,4 @@ public class OrganizationListPanel extends UiPart<Region> {
             }
         }
     }
-
 }

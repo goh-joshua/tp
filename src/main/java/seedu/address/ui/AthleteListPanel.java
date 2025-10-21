@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.athlete.Athlete;
@@ -29,13 +30,39 @@ public class AthleteListPanel extends UiPart<Region> {
         super(FXML);
         this.allContracts = contractList;
         athleteListView.setItems(athleteList);
-        athleteListView.setCellFactory(listView -> new AthleteListViewCell());
+        athleteListView.setCellFactory(listView -> new AthleteListViewCell(allContracts));
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Athlete} using a {@code AthleteCard}.
      */
     class AthleteListViewCell extends ListCell<Athlete> {
+        private final ObservableList<Contract> allContracts;
+
+        AthleteListViewCell(ObservableList<Contract> allContracts) {
+            this.allContracts = allContracts;
+
+            // Toggle select/deselect on click
+            addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
+                if (isEmpty()) {
+                    return;
+                }
+
+                var lv = getListView();
+                int idx = getIndex();
+                var sel = lv.getSelectionModel();
+
+                if (sel.isSelected(idx)) {
+                    sel.clearSelection();
+                    e.consume(); // prevent default re-select
+                } else {
+                    sel.clearSelection();
+                    sel.select(idx);
+                    e.consume();
+                }
+            });
+        }
+
         @Override
         protected void updateItem(Athlete athlete, boolean empty) {
             super.updateItem(athlete, empty);
