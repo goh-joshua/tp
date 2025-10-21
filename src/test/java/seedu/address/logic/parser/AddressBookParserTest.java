@@ -6,6 +6,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.athlete.AddAthleteCommand;
 import seedu.address.logic.commands.athlete.DeleteAthleteCommand;
 import seedu.address.logic.commands.contract.AddContractCommand;
@@ -76,6 +77,12 @@ public class AddressBookParserTest {
         String args = " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025";
         assertTrue(parser.parseCommand(DeleteContractCommand.COMMAND_WORD + args)
                 instanceof DeleteContractCommand);
+    }
+
+    @Test
+    public void parseCommand_find() throws Exception {
+        String args = " -an Alice";
+        assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + args) instanceof FindCommand);
     }
 
     // ============================================================
