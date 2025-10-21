@@ -16,7 +16,8 @@ public class RefreshCommand extends Command {
             + ": Clears all active filters and shows all athletes, organizations, and contracts.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "All filters cleared. Showing all athletes, organizations, and contracts.";
+    public static final String MESSAGE_SUCCESS = "All filters cleared. "
+            + "Showing all athletes, organizations, and contracts.";
 
     @Override
     public CommandResult execute(Model model) {
