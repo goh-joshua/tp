@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.contract.Contract;
@@ -33,6 +34,28 @@ public class ContractListPanel extends UiPart<Region> {
      * Custom {@code ListCell} that displays the graphics of a {@code Contract} using a {@code ContractCard}.
      */
     class ContractListViewCell extends ListCell<Contract> {
+
+        ContractListViewCell() {
+            // Toggle selection on click
+            addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
+                if (isEmpty()) {
+                    return;
+                }
+
+                var listView = getListView();
+                int index = getIndex();
+
+                if (listView.getSelectionModel().isSelected(index)) {
+                    listView.getSelectionModel().clearSelection();
+                    e.consume();
+                } else {
+                    listView.getSelectionModel().clearSelection();
+                    listView.getSelectionModel().select(index);
+                    e.consume();
+                }
+            });
+        }
+
         @Override
         protected void updateItem(Contract contract, boolean empty) {
             super.updateItem(contract, empty);
@@ -45,5 +68,4 @@ public class ContractListPanel extends UiPart<Region> {
             }
         }
     }
-
 }
