@@ -151,7 +151,7 @@ add-a n/Michael Jordan s/Basketball a/61 p/95551234 e/mj@example.com
 
 **Expected Output:**
 ```
-New athlete added: Serena Williams
+New athlete added: Serena Williams; Sport: Tennis; Age: 42; Phone: 91234567; Email: serena@example.com
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -176,7 +176,7 @@ delete-a n/Cristiano Ronaldo s/Football
 
 **Expected Output:**
 ```
-Deleted athlete: Serena Williams
+Deleted Athlete: Serena Williams; Sport: Tennis; Age: 42; Phone: 91234567; Email: serena@example.com
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -207,7 +207,7 @@ add-o o/IMG Academy p/15551234567 e/talent@img.com
 
 **Expected Output:**
 ```
-New organization added: Nike
+New organisation added: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
 
 <div markdown="block" class="alert alert-info">
@@ -231,7 +231,7 @@ delete-o o/Manchester United
 
 **Expected Output:**
 ```
-Deleted organization: Nike
+Deleted Organisation: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -265,7 +265,7 @@ add-c n/Serena Williams s/Tennis o/Wilson sd/01012020 ed/31122024 am/5000000
 
 **Expected Output:**
 ```
-New contract added: Lionel Messi with Inter Miami
+Contract created: Athlete: Lionel Messi; Sport: Football; Organisation: Inter Miami; Start: 01/07/2023; End: 31/12/2025; Amount: 50000000
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -295,7 +295,7 @@ delete-c n/LeBron James o/Nike sd/15052022 ed/15052032
 
 **Expected Output:**
 ```
-Deleted contract: Lionel Messi with Inter Miami
+Deleted contract: Athlete: Lionel Messi; Sport: Football; Organisation: Inter Miami; Start: 01/07/2023; End: 31/12/2025; Amount: 50000000
 ```
 
 ### Finding & Filtering Data
@@ -455,16 +455,16 @@ Exiting Address Book as requested ...
 
 ### Common Pitfalls & Solutions
 
-**Problem:** "Athlete not found" when adding contracts
+**Problem:** "Athlete not found" when adding contracts  
 **Solution:** Use `find -an [name]` first to verify the exact name spelling
 
 **Problem:** Accidentally deleted important data  
-**Solution:** Check the backup files in your home folder (automatic daily backups)
+**Solution:** Data is automatically saved after each command - restart the application to restore the previous state
 
-**Problem:** Too many search results
+**Problem:** Too many search results  
 **Solution:** Use more specific keywords or combine with tab switching
 
-**Problem:** Slow performance with large datasets
+**Problem:** Slow performance with large datasets  
 **Solution:** Use search filters regularly instead of browsing all data
 
 --------------------------------------------------------------------------------------------------------------------
@@ -504,18 +504,6 @@ Exiting Address Book as requested ...
 - Check available disk space (need 50MB minimum)
 - Ensure Java version is 17 or higher
 - Try moving to a different folder location
-
-### Data Recovery
-
-**Lost data after crash:**
-- Check for backup files in your home folder (files ending in `.backup`)
-- Rename backup file to remove `.backup` extension
-- Restart the application
-
-**Corrupted data file:**
-- Locate the most recent `.backup` file in your home folder
-- Replace the main data file with the backup
-- Contact support if issues persist
 
 ### Getting More Help
 
@@ -561,7 +549,6 @@ Exiting Address Book as requested ...
 
 **Data Storage:**
 - All data stored locally in JSON format
-- Automatic daily backups created
 - No internet connection required for operation
 - Data files are human-readable and portable
 
