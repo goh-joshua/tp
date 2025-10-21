@@ -29,7 +29,8 @@ public class FindCommand extends Command {
             + "  -cs KEYWORD    Shows contracts whose sport closely matches KEYWORD.\n"
             + "Example: " + COMMAND_WORD + " -an Lionel";
 
-    private static final String MESSAGE_RESULTS_FORMAT = "Showing %1$d %2$s closely matching \"%3$s\".\nUse the \"refresh\" command (or Cmd+R) to show all data again.";
+    private static final String MESSAGE_RESULTS_FORMAT = "Showing %1$d %2$s closely matching \"%3$s\".\n"
+            + "Use the \"refresh\" command (or Cmd+R) to show all data again.";
 
     /**
      * Supported scopes for the find command.
