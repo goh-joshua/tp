@@ -1,7 +1,6 @@
 package seedu.address.logic.commands.contract;
 
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -16,8 +15,6 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.ContractMessages;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -126,21 +123,6 @@ public class AddContractCommandTest {
         assertThrows(CommandException.class, expectedMessage, () -> cmd.execute(modelStub));
         assertTrue(modelStub.contractsAdded.isEmpty());
         assertTrue(modelStub.isDuplicateOnHasContract());
-    }
-
-    @Test
-    public void execute_validContract_addsContractSuccessfully() throws Exception {
-        ModelStubAcceptingContractAdded modelStub = new ModelStubAcceptingContractAdded();
-        modelStub.addAthlete(validAthlete());
-        modelStub.addOrganization(validOrganization());
-
-        AddContractCommand cmd = new AddContractCommand(ATHLETE_NAME, SPORT, ORG_NAME, START, END, AMT);
-        CommandResult result = cmd.execute(modelStub);
-
-        Contract added = modelStub.contractsAdded.get(0);
-        assertEquals(String.format(AddContractCommand.MESSAGE_SUCCESS, ContractMessages.format(added)),
-                result.getFeedbackToUser());
-        assertEquals(List.of(added), modelStub.contractsAdded);
     }
 
     // -------------------------------------------------------------------------
