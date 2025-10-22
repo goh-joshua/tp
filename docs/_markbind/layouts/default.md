@@ -33,8 +33,8 @@
   * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
   * [Core Features]({{ baseUrl }}/UserGuide.html#core-features)
   * [Command Reference]({{ baseUrl }}/UserGuide.html#command-reference)
-  * [Tips & Best Practices]({{ baseUrl }}/UserGuide.html#tips-best-practices)
-  * [Troubleshooting & FAQ]({{ baseUrl }}/UserGuide.html#troubleshooting-faq)
+  * [Tips and Best Practices]({{ baseUrl }}/UserGuide.html#tips-and-best-practices)
+  * [Troubleshooting and FAQ]({{ baseUrl }}/UserGuide.html#troubleshooting-and-faq)
   * [Appendix]({{ baseUrl }}/UserGuide.html#appendix)
 * [Developer Guide]({{ baseUrl }}/DeveloperGuide.html) :expanded:
   * [Acknowledgements]({{ baseUrl }}/DeveloperGuide.html#acknowledgements)
