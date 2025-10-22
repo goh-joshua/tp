@@ -1,5 +1,6 @@
 <head-bottom>
   <link rel="stylesheet" href="{{baseUrl}}/stylesheets/main.css">
+<link rel="icon" type="image/png" href="{{baseUrl}}/assets/images/playbook.png">
 </head-bottom>
 
 <header sticky>
@@ -28,10 +29,13 @@
       <site-nav>
 * [Home]({{ baseUrl }}/index.html)
 * [User Guide]({{ baseUrl }}/UserGuide.html) :expanded:
+  * [About This Guide]({{ baseUrl }}/UserGuide.html#about-this-guide)
   * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
-  * [Features]({{ baseUrl }}/UserGuide.html#features)
-  * [FAQ]({{ baseUrl }}/UserGuide.html#faq)
-  * [Command Summary]({{ baseUrl }}/UserGuide.html#faq)
+  * [Core Features]({{ baseUrl }}/UserGuide.html#core-features)
+  * [Command Reference]({{ baseUrl }}/UserGuide.html#command-reference)
+  * [Tips & Best Practices]({{ baseUrl }}/UserGuide.html#tips-best-practices)
+  * [Troubleshooting & FAQ]({{ baseUrl }}/UserGuide.html#troubleshooting-faq)
+  * [Appendix]({{ baseUrl }}/UserGuide.html#appendix)
 * [Developer Guide]({{ baseUrl }}/DeveloperGuide.html) :expanded:
   * [Acknowledgements]({{ baseUrl }}/DeveloperGuide.html#acknowledgements)
   * [Setting Up]({{ baseUrl }}/DeveloperGuide.html#setting-up-getting-started)
