@@ -31,7 +31,8 @@ public class AddOrganizationCommand extends Command {
             + PREFIX_EMAIL + "john.doe@nike.com";
 
     public static final String MESSAGE_SUCCESS = "New organisation added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ORGANIZATION = "This organisation already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_ORGANIZATION =
+        "Error: This organisation already exists in the address book";
 
     private final Organization toAdd;
 

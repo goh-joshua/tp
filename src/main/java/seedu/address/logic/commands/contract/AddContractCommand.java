@@ -40,10 +40,10 @@ public class AddContractCommand extends Command {
             + "n/Lionel Messi s/Football o/Inter Miami sd/01012024 ed/01012025 am/50000000";
 
     public static final String MESSAGE_SUCCESS = "Contract created: %1$s";
-    public static final String MESSAGE_DUPLICATE_CONTRACT = "This contract already exists";
-    public static final String MESSAGE_NOT_FOUND_FMT = "%s not found: %s. Ensure it exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_CONTRACT = "Error: This contract already exists";
+    public static final String MESSAGE_NOT_FOUND_FMT = "Error: %s not found: %s. Ensure it exists in the address book.";
     public static final String MESSAGE_INVALID_DATE_RANGE =
-            "Start date (%s) must not be after end date (%s).";
+            "Error: Start date (%s) must not be after end date (%s).";
 
     private final Name athleteName;
     private final Sport sport;

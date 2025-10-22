@@ -15,6 +15,7 @@ import seedu.address.model.Model;
 import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Name;
 import seedu.address.model.athlete.Sport;
+import seedu.address.model.contract.Contract;
 
 /**
  * Deletes an athlete identified from playbook.io.
@@ -52,15 +53,26 @@ public class DeleteAthleteCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Athlete> lastShownList = model.getFilteredAthleteList();
+        List<Contract> contracts = model.getFilteredContractList();
 
         Athlete athleteToDelete = lastShownList.stream()
-                .filter(a -> a.getName().equals(name)
-                        && a.getSport().equals(sport))
+                .filter(a -> a.getName().equals(this.name)
+                        && a.getSport().equals(this.sport))
+                .findFirst()
+                .orElse(null);
+
+        Contract existingContract = contracts.stream()
+                .filter(c -> c.getAthlete().getName().equals(this.name)
+                        && c.getAthlete().getSport().equals(this.sport))
                 .findFirst()
                 .orElse(null);
 
         if (athleteToDelete == null) {
             throw new CommandException(AthleteMessages.MESSAGE_INVALID_ATHLETE);
+        }
+
+        if (existingContract != null) {
+            throw new CommandException(AthleteMessages.MESSAGE_EXISTING_CONTRACT);
         }
 
         model.deleteAthlete(athleteToDelete);

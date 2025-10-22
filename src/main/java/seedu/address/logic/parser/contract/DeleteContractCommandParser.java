@@ -1,9 +1,11 @@
 package seedu.address.logic.parser.contract;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ORG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPORT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import seedu.address.logic.commands.contract.DeleteContractCommand;
@@ -14,6 +16,8 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.athlete.Name;
+import seedu.address.model.athlete.Sport;
+import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Date8;
 import seedu.address.model.organization.OrganizationName;
 
@@ -30,7 +34,9 @@ public class DeleteContractCommandParser implements Parser<DeleteContractCommand
                 PREFIX_NAME, // athlete
                 PREFIX_ORG, // organization
                 PREFIX_START_DATE, // start date
-                PREFIX_END_DATE // end date
+                PREFIX_END_DATE, // end date
+                PREFIX_SPORT,
+                PREFIX_AMOUNT
         );
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ORG, PREFIX_START_DATE, PREFIX_END_DATE)
@@ -46,8 +52,10 @@ public class DeleteContractCommandParser implements Parser<DeleteContractCommand
         OrganizationName organizationName = ContractParserUtil.parseOrgName(argMultimap.getValue(PREFIX_ORG).get());
         Date8 startDate = ContractParserUtil.parseDate8(argMultimap.getValue(PREFIX_START_DATE).get());
         Date8 endDate = ContractParserUtil.parseDate8(argMultimap.getValue(PREFIX_END_DATE).get());
+        Sport sport = ContractParserUtil.parseSport(argMultimap.getValue(PREFIX_SPORT).get());
+        Amount amount = ContractParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get());
 
-        return new DeleteContractCommand(athleteName, organizationName, startDate, endDate);
+        return new DeleteContractCommand(athleteName, organizationName, startDate, endDate, sport, amount);
     }
 
     /** Returns true if none of the prefixes contains empty Optional values. */
