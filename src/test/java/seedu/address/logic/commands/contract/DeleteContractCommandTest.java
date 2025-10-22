@@ -54,10 +54,6 @@ public class DeleteContractCommandTest {
         return new OrganizationBuilder().withName(ORG_NAME.fullOrganizationName).build();
     }
 
-    private Contract makeContract(Athlete a, Organization o) {
-        return new Contract(a, SPORT, o, START, END, AMOUNT);
-    }
-
     @Test
     public void execute_notFound_throwsCommandException() {
         ModelStubWithContracts modelStub = new ModelStubWithContracts();
@@ -65,7 +61,7 @@ public class DeleteContractCommandTest {
         modelStub.addAthlete(validAthlete());
         modelStub.addOrganization(validOrganization());
 
-        DeleteContractCommand cmd = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END);
+        DeleteContractCommand cmd = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END, SPORT, AMOUNT);
         assertThrows(CommandException.class, () -> cmd.execute(modelStub));
         assertTrue(modelStub.getDeleted().isEmpty());
     }
@@ -75,10 +71,10 @@ public class DeleteContractCommandTest {
     // -------------------------------------------------------------------------
     @Test
     public void equals() {
-        DeleteContractCommand a = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END);
-        DeleteContractCommand same = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END);
+        DeleteContractCommand a = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END, SPORT, AMOUNT);
+        DeleteContractCommand same = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END, SPORT, AMOUNT);
         DeleteContractCommand diff =
-                new DeleteContractCommand(new Name("Kylian Mbappe"), ORG_NAME, START, END);
+                new DeleteContractCommand(new Name("Kylian Mbappe"), ORG_NAME, START, END, SPORT, AMOUNT);
 
         assertTrue(a.equals(a));
         assertTrue(a.equals(same));
@@ -89,7 +85,7 @@ public class DeleteContractCommandTest {
 
     @Test
     public void toStringMethod() {
-        DeleteContractCommand a = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END);
+        DeleteContractCommand a = new DeleteContractCommand(ATHLETE_NAME, ORG_NAME, START, END, SPORT, AMOUNT);
         String s = a.toString();
         for (String mustContain : Arrays.asList(
                 "athleteName=" + ATHLETE_NAME,

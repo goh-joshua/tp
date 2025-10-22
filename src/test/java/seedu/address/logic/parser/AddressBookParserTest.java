@@ -74,7 +74,7 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_deleteContract() throws Exception {
-        String args = " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025";
+        String args = " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025 s/Football am/100000";
         assertTrue(parser.parseCommand(DeleteContractCommand.COMMAND_WORD + args)
                 instanceof DeleteContractCommand);
     }

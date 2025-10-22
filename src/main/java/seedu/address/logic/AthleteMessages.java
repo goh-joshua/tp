@@ -7,8 +7,9 @@ import seedu.address.model.athlete.Athlete;
  */
 public class AthleteMessages {
 
-    public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
-    public static final String MESSAGE_INVALID_ATHLETE = "Athlete not found";
+    public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Error: Invalid command format! \n%1$s";
+    public static final String MESSAGE_INVALID_ATHLETE = "Error: Athlete not found";
+    public static final String MESSAGE_EXISTING_CONTRACT = "Error: Athlete has existing contract";
 
     /**
      * Formats the {@code athlete} for display to the user.

@@ -7,7 +7,8 @@ import seedu.address.model.contract.Contract;
  * in command results or logs.
  */
 public class ContractMessages {
-    public static final String MESSAGE_INVALID_CONTRACT_DISPLAYED_INDEX = "The contract index provided is invalid";
+    public static final String MESSAGE_INVALID_CONTRACT_DISPLAYED_INDEX =
+        "Error: The contract index provided is invalid";
     public static final String MESSAGE_CONTRACTS_LISTED_OVERVIEW = "%1$d contracts listed!";
 
     /**

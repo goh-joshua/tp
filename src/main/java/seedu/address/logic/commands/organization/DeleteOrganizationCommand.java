@@ -10,6 +10,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.contract.Contract;
 import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.OrganizationName;
 
@@ -28,6 +29,8 @@ public class DeleteOrganizationCommand extends Command {
     public static final String MESSAGE_DELETE_ORGANIZATION_SUCCESS = "Deleted Organisation: %1$s";
     public static final String MESSAGE_ORGANIZATION_NOT_FOUND =
             "Error: No organisation found with name '%1$s'.";
+    public static final String MESSAGE_ORGANIZATION_EXISTING_CONTRACT =
+            "Error: Organization has existing contract.";
 
     private final OrganizationName targetName;
 
@@ -46,6 +49,7 @@ public class DeleteOrganizationCommand extends Command {
         requireNonNull(model);
 
         List<Organization> lastShownList = model.getFilteredOrganizationList();
+        List<Contract> contracts = model.getFilteredContractList();
 
         // Case-insensitive name comparison to comply with specification
         Organization organizationToDelete = lastShownList.stream()
@@ -53,9 +57,18 @@ public class DeleteOrganizationCommand extends Command {
                         .equalsIgnoreCase(targetName.fullOrganizationName))
                 .findFirst()
                 .orElse(null);
+        Contract existingContract = contracts.stream()
+                .filter(c -> c.getOrganization().getName().fullOrganizationName
+                        .equalsIgnoreCase(targetName.fullOrganizationName))
+                .findFirst()
+                .orElse(null);
 
         if (organizationToDelete == null) {
             throw new CommandException(String.format(MESSAGE_ORGANIZATION_NOT_FOUND, targetName));
+        }
+
+        if (existingContract != null) {
+            throw new CommandException(MESSAGE_ORGANIZATION_EXISTING_CONTRACT);
         }
 
         model.deleteOrganization(organizationToDelete);

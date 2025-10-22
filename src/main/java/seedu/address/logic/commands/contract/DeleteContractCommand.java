@@ -11,11 +11,11 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.athlete.Athlete;
 import seedu.address.model.athlete.Name;
+import seedu.address.model.athlete.Sport;
+import seedu.address.model.contract.Amount;
 import seedu.address.model.contract.Contract;
 import seedu.address.model.contract.Date8;
-import seedu.address.model.organization.Organization;
 import seedu.address.model.organization.OrganizationName;
 
 /**
@@ -31,17 +31,22 @@ public class DeleteContractCommand extends Command {
             + "n/NAME "
             + "o/ORG "
             + "sd/DDMMYYYY "
-            + "ed/DDMMYYYY\n"
-            + "Example: " + COMMAND_WORD + " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025";
+            + "ed/DDMMYYYY "
+            + "s/SPORT "
+            + "am/AMOUNT\n"
+            + "Example: " + COMMAND_WORD + " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025 s/Football am/100000";
 
     public static final String MESSAGE_SUCCESS = "Deleted contract: %1$s";
     public static final String MESSAGE_CONTRACT_NOT_FOUND =
-            "No matching contract found for athlete '%s', organisation '%s', start '%s', end '%s'.";
+            "Error: No matching contract found for athlete '%s', organisation '%s', "
+            + "start '%s', end '%s', sport '%s', amount '%s'.";
 
     private final Name athleteName;
     private final OrganizationName organizationName;
     private final Date8 startDate;
     private final Date8 endDate;
+    private final Sport sport;
+    private final Amount amount;
 
     /**
      * Constructs a {@code DeleteContractCommand} with the specified athlete, organization, and date range.
@@ -51,40 +56,43 @@ public class DeleteContractCommand extends Command {
      * @param startDate        Start date of the contract.
      * @param endDate          End date of the contract.
      */
-    public DeleteContractCommand(Name athleteName, OrganizationName organizationName, Date8 startDate, Date8 endDate) {
+    public DeleteContractCommand(Name athleteName, OrganizationName organizationName,
+        Date8 startDate, Date8 endDate, Sport sport, Amount amount) {
         requireNonNull(athleteName);
         requireNonNull(organizationName);
         requireNonNull(startDate);
         requireNonNull(endDate);
+        requireNonNull(sport);
+        requireNonNull(amount);
 
         this.athleteName = athleteName;
         this.organizationName = organizationName;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.sport = sport;
+        this.amount = amount;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        // Resolve names to actual objects first (safer matching)
-        Athlete athlete = findAthleteByName(model, athleteName).orElse(null);
-        Organization organization = findOrganizationByName(model, organizationName).orElse(null);
-
         // Search the filtered contract list (or use addressBook.getContractList())
         List<Contract> contracts = model.getFilteredContractList();
         Optional<Contract> match = contracts.stream()
                 .filter(c ->
-                        c.getAthlete().getName().equals(athleteName)
-                                && c.getOrganization().getName().equals(organizationName)
-                                && c.getStartDate().equals(startDate)
-                                && c.getEndDate().equals(endDate))
+                        c.getAthlete().getName().equals(this.athleteName)
+                                && c.getOrganization().getName().equals(this.organizationName)
+                                && c.getStartDate().equals(this.startDate)
+                                && c.getEndDate().equals(this.endDate)
+                                && c.getAthlete().getSport().equals(this.sport)
+                                && c.getAmount().equals(this.amount))
                 .findFirst();
 
         if (match.isEmpty()) {
             throw new CommandException(String.format(
                     MESSAGE_CONTRACT_NOT_FOUND,
-                    athleteName, organizationName, startDate, endDate
+                    athleteName, organizationName, startDate, endDate, sport, amount
             ));
         }
 
@@ -97,18 +105,6 @@ public class DeleteContractCommand extends Command {
         model.updateFilteredOrganizationList(Model.PREDICATE_SHOW_ALL_ORGANIZATIONS);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, ContractMessages.format(toDelete)));
-    }
-
-    private Optional<Athlete> findAthleteByName(Model model, Name name) {
-        return model.getAddressBook().getAthleteList().stream()
-                .filter(a -> a.getName().equals(name))
-                .findFirst();
-    }
-
-    private Optional<Organization> findOrganizationByName(Model model, OrganizationName name) {
-        return model.getAddressBook().getOrganizationList().stream()
-                .filter(o -> o.getName().equals(name))
-                .findFirst();
     }
 
     @Override

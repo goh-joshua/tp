@@ -37,7 +37,7 @@ public class ContractMessagesTest {
 
     @Test
     public void messageConstants_areDefinedCorrectly() {
-        assertEquals("The contract index provided is invalid",
+        assertEquals("Error: The contract index provided is invalid",
                 ContractMessages.MESSAGE_INVALID_CONTRACT_DISPLAYED_INDEX);
         assertEquals("%1$d contracts listed!",
                 ContractMessages.MESSAGE_CONTRACTS_LISTED_OVERVIEW);
