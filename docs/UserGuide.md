@@ -443,7 +443,7 @@ Exiting Address Book as requested ...
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Tips & Best Practices
+## Tips and Best Practices
 
 ### Effective Workflows
 
@@ -481,7 +481,7 @@ Exiting Address Book as requested ...
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Troubleshooting & FAQ
+## Troubleshooting and FAQ
 
 ### Common Error Messages
 
