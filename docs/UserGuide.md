@@ -4,7 +4,7 @@ title: "User Guide"
 pageNav: 3
 ---
 
-# playbook.io User Guide
+# User Guide
 
 **playbook.io** is the ultimate platform that empowers sports agents to stay organized, build stronger relationships, and drive success for their athletes and partners. It simplifies the management of athletes, organizations, and contracts — allowing agents to focus on what truly matters: closing deals and maximizing opportunities.
 
@@ -55,8 +55,9 @@ This guide is designed for **sports agents and talent managers** who:
    java -version
    ```
    
-   **Mac users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html) to install the correct JDK version.
-
+   **Mac users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html) to install the correct JDK version.  
+   **Windows users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html) to install the correct JDK version.  
+   **Linux users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html) to install the correct JDK version.
 2. **Download playbook.io**
    
    Download the latest `.jar` file from the [playbook.io Releases](https://github.com/AY2526S1-CS2103T-F13-3/tp/releases) page.
@@ -91,7 +92,7 @@ The playbook.io interface consists of five main areas:
 **Navigation Tips:**
 - Use **Cmd+1**, **Cmd+2**, **Cmd+3** (or **Ctrl+1**, **Ctrl+2**, **Ctrl+3** on Windows/Linux) to quickly switch between tabs
 - Press **F1** for help or use the `help` command
-- Use **Cmd+R** (or **Ctrl+R**) to refresh and clear any active search filters
+- Use **Cmd+R** (or **Ctrl+R** on Windows/Linux) to refresh and clear any active search filters
 
 ### Your First Commands
 
@@ -136,11 +137,11 @@ Athletes are the heart of your business. playbook.io makes it easy to track thei
 **Command:** `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL`
 
 **Parameters:**
-- `n/NAME`: Full name of the athlete (required)
-- `s/SPORT`: Primary sport (required)  
-- `a/AGE`: Age in years (required)
-- `p/PHONE`: Contact phone number (required)
-- `e/EMAIL`: Email address (required)
+- `n/NAME`: Full name of the athlete 
+- `s/SPORT`: Primary sport 
+- `a/AGE`: Age in years 
+- `p/PHONE`: Contact phone number 
+- `e/EMAIL`: Email address 
 
 **Examples:**
 ```
@@ -194,9 +195,9 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 **Command:** `add-o o/ORGANIZATION_NAME p/PHONE e/EMAIL`
 
 **Parameters:**
-- `o/ORGANIZATION_NAME`: Full name of the organization (required)
-- `p/PHONE`: Contact phone number (required)
-- `e/EMAIL`: Contact email address (required)
+- `o/ORGANIZATION_NAME`: Full name of the organization 
+- `p/PHONE`: Contact phone number 
+- `e/EMAIL`: Contact email address 
 
 **Examples:**
 ```
@@ -249,12 +250,12 @@ Contracts link athletes with organizations and track the business relationships 
 **Command:** `add-c n/NAME s/SPORT o/ORG sd/DDMMYYYY ed/DDMMYYYY am/AMOUNT`
 
 **Parameters:**
-- `n/NAME`: Athlete's full name (must exist in system)
+- `n/NAME`: Athlete's full name 
 - `s/SPORT`: Athlete's sport  
-- `o/ORG`: Organization name (must exist in system)
+- `o/ORG`: Organization name 
 - `sd/DDMMYYYY`: Start date in day-month-year format
 - `ed/DDMMYYYY`: End date in day-month-year format
-- `am/AMOUNT`: Contract amount (numbers only)
+- `am/AMOUNT`: Contract amount 
 
 **Examples:**
 ```
@@ -410,14 +411,14 @@ Exiting Address Book as requested ...
 ### Parameter Details
 
 **Common Parameters:**
-- `NAME`: Full name (spaces allowed, case sensitive)
-- `SPORT`: Sport name (spaces allowed, case sensitive)
-- `ORG_NAME`: Organization name (spaces allowed, case sensitive)
-- `PHONE`: Phone number (numbers only, international formats accepted)
-- `EMAIL`: Email address (must contain @ symbol)
+- `NAME`: Full name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes)
+- `SPORT`: Sport name (spaces allowed, case-insensitive; alphabetic characters only)
+- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes)
+- `PHONE`: Phone number (8-digit Singapore phone number onl)
+- `EMAIL`: Email address (must contain @ symbol, case insensitive)
 - `DATE`: Format DDMMYYYY (e.g., 25122024 for December 25, 2024)
-- `AMOUNT`: Numbers only (no currency symbols or commas)
-- `AGE`: Numbers only, typically 15-65
+- `AMOUNT`: Positive integers only (no currency symbols or commas)
+- `AGE`: Positive integers only (Numeric value from 1–99)
 
 ### Keyboard Shortcuts
 
