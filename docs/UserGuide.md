@@ -218,7 +218,7 @@ add-o o/IMG Academy p/15551234567 e/talent@img.com
 New organisation added: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-warning">
 
 **⚠️ Important:** Each organization name must be unique. You cannot add two organizations with the same name.
 
@@ -487,6 +487,16 @@ Exiting Address Book as requested ...
 --------------------------------------------------------------------------------------------------------------------
 
 ## Troubleshooting and FAQ
+
+### Display and Window Issues
+
+**Problem:** Application window opens off-screen after disconnecting a monitor  
+**Cause:** The app remembers its last window position (e.g., on a secondary display) from `preferences.json`  
+**Solution:** Delete the `preferences.json` file before launching the app again to reset window position
+
+**Problem:** Help Window remains minimized and does not reopen  
+**Cause:** The Help Window stays minimized instead of spawning a new window  
+**Solution:** Manually restore the minimized Help Window
 
 ### Common Error Messages
 
