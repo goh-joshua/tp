@@ -42,7 +42,7 @@ This guide is designed for **sports agents and talent managers** who:
 
 - **New users**: Start with [Quick Start](#quick-start) for setup and basic usage
 - **Existing users**: Jump to [Command Reference](#command-reference) for syntax details
-- **Power users**: Check [Tips & Best Practices](#tips--best-practices) for advanced workflows
+- **Power users**: Check [Tips and Best Practices](#tips-and-best-practices) for advanced workflows
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -222,9 +222,14 @@ New organisation added: Nike; Phone: 98765432; Email: partnerships@nike.com
 
 **⚠️ Important:** Each organization name must be unique. You cannot add two organizations with the same name.
 
+</div>
+
+<div markdown="block" class="alert alert-info">
+
 **💡 Tip:** Use descriptive names for organizations to easily distinguish between different types (teams, sponsors, agencies, etc.).
 
 </div>
+
 
 #### Deleting Organizations
 
