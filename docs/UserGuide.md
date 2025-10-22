@@ -6,7 +6,9 @@ pageNav: 3
 
 # User Guide
 
-**playbook.io** is the ultimate platform that empowers sports agents to stay organized, build stronger relationships, and drive success for their athletes and partners. It simplifies the management of athletes, organizations, and contracts — allowing agents to focus on what truly matters: closing deals and maximizing opportunities.
+**playbook.io** is the ultimate platform that empowers sports agents to stay organized, build stronger relationships, and drive success for their athletes and partners. It simplifies the management of athletes, organizations, and contracts — allowing agents to focus on what truly matters: closing deals and maximizing opportunities.  
+
+Optimized for use through a powerful Command Line Interface (CLI) while retaining the intuitive benefits of a Graphical User Interface (GUI), playbook.io offers the best of both worlds. If you can type fast, you can manage your athletes, contracts, and organizations faster than with traditional apps — combining speed, efficiency, and control in one seamless experience.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -218,6 +220,8 @@ New organisation added: Nike; Phone: 98765432; Email: partnerships@nike.com
 
 <div markdown="block" class="alert alert-info">
 
+**⚠️ Important:** Each organization name must be unique. You cannot add two organizations with the same name.
+
 **💡 Tip:** Use descriptive names for organizations to easily distinguish between different types (teams, sponsors, agencies, etc.).
 
 </div>
@@ -279,24 +283,26 @@ Contract created: Athlete: Lionel Messi; Sport: Football; Organisation: Inter Mi
 **⚠️ Important:** 
 - Both the athlete and organization must exist before creating a contract
 - Start date must be before or equal to end date
-- Contract amount should be numbers only (no currency symbols)
+- Contract amount should be positive integers only (no currency symbols)
+- Each contract must be unique. You cannot add two contracts with exactly the same details — athlete, organization, dates, and amount
 
 </div>
 
 #### Deleting Contracts
 
-**Command:** `delete-c n/NAME o/ORG sd/DDMMYYYY ed/DDMMYYYY`
+**Command:** `delete-c n/NAME s/SPORT o/ORG sd/DDMMYYYY ed/DDMMYYYY`
 
 **Parameters:**
 - `n/NAME`: Athlete's full name
+- `s/SPORT`: Athlete's sport
 - `o/ORG`: Organization name
 - `sd/DDMMYYYY`: Start date (must match exactly)
 - `ed/DDMMYYYY`: End date (must match exactly)
 
 **Examples:**
 ```
-delete-c n/Lionel Messi o/Inter Miami sd/01072023 ed/31122025
-delete-c n/LeBron James o/Nike sd/15052022 ed/15052032
+delete-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025
+delete-c n/LeBron James s/Basketball o/Nike sd/15052022 ed/15052032
 ```
 
 **Expected Output:**
