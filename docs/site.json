@@ -2,7 +2,7 @@
   "baseUrl": "",
   "titlePrefix": "",
   "titleSuffix": "playbook.io",
-  "faviconPath": "images/SeEduLogo.png",
+  "faviconPath": "images/playbook.png",
   "style": {
     "codeTheme": "light"
   },
