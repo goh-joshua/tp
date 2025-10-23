@@ -29,13 +29,13 @@ public class NameTest {
         assertFalse(seedu.address.model.athlete.Name.isValidName(" ")); // spaces only
         assertFalse(seedu.address.model.athlete.Name.isValidName("^")); // only non-alphanumeric characters
         assertFalse(seedu.address.model.athlete.Name.isValidName("peter*")); // contains non-alphanumeric characters
+        assertFalse(seedu.address.model.athlete.Name.isValidName("12345"));
 
         // valid name
         assertTrue(seedu.address.model.athlete.Name.isValidName("peter jack")); // alphabets only
-        assertTrue(seedu.address.model.athlete.Name.isValidName("12345")); // numbers only
-        assertTrue(seedu.address.model.athlete.Name.isValidName("peter the 2nd")); // alphanumeric characters
         assertTrue(seedu.address.model.athlete.Name.isValidName("Capital Tan")); // with capital letters
-        assertTrue(seedu.address.model.athlete.Name.isValidName("David Roger Jackson Ray Jr 2nd")); // long names
+        assertTrue(seedu.address.model.athlete.Name.isValidName("O'Neal"));
+        assertTrue(seedu.address.model.athlete.Name.isValidName("O-Neal"));
     }
 
     @Test

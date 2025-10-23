@@ -424,9 +424,9 @@ Exiting Address Book as requested ...
 ### Parameter Details
 
 **Common Parameters:**
-- `NAME`: Full name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes)
+- `NAME`: Full name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes; must start with a letter)
 - `SPORT`: Sport name (spaces allowed, case-insensitive; alphabetic characters only)
-- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes)
+- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes; must start with a letter)
 - `PHONE`: Phone number (8-digit Singapore phone number only)
 - `EMAIL`: Email address (must contain @ symbol, case insensitive)
 - `DATE`: Format DDMMYYYY (e.g., 25122024 for December 25, 2024)
