@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /** Positive integer amount (e.g., cents or dollars depending on your app spec). */
 public class Amount {
-    public static final String MESSAGE_CONSTRAINTS = "Amount must be a positive integer.";
+    public static final String MESSAGE_CONSTRAINTS = "Error: Amount must be a positive integer.";
 
     public final int value;
 

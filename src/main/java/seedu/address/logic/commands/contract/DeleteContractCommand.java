@@ -29,17 +29,17 @@ public class DeleteContractCommand extends Command {
             + ": Deletes a contract by athlete, organisation, and dates. "
             + "Parameters: "
             + "n/NAME "
+            + "s/SPORT "
             + "o/ORG "
             + "sd/DDMMYYYY "
             + "ed/DDMMYYYY "
-            + "s/SPORT "
             + "am/AMOUNT\n"
-            + "Example: " + COMMAND_WORD + " n/Lionel Messi o/Inter Miami sd/01012024 ed/01012025 s/Football am/100000";
+            + "Example: " + COMMAND_WORD + " n/Lebron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000";
 
     public static final String MESSAGE_SUCCESS = "Deleted contract: %1$s";
     public static final String MESSAGE_CONTRACT_NOT_FOUND =
-            "Error: No matching contract found for athlete '%s', organisation '%s', "
-            + "start '%s', end '%s', sport '%s', amount '%s'.";
+            "Error: No matching contract found for athlete '%s', sport '%s', organisation '%s', "
+            + "start '%s', end '%s', amount '%s'.";
 
     private final Name athleteName;
     private final OrganizationName organizationName;
@@ -112,18 +112,22 @@ public class DeleteContractCommand extends Command {
         return other == this
                 || (other instanceof DeleteContractCommand)
                 && athleteName.equals(((DeleteContractCommand) other).athleteName)
+                && sport.equals(((DeleteContractCommand) other).sport)
                 && organizationName.equals(((DeleteContractCommand) other).organizationName)
                 && startDate.equals(((DeleteContractCommand) other).startDate)
-                && endDate.equals(((DeleteContractCommand) other).endDate);
+                && endDate.equals(((DeleteContractCommand) other).endDate)
+                && amount.equals(((DeleteContractCommand) other).amount);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("athleteName", athleteName)
+                .add("sport", sport)
                 .add("organizationName", organizationName)
                 .add("startDate", startDate)
                 .add("endDate", endDate)
+                .add("amount", amount)
                 .toString();
     }
 }

@@ -53,7 +53,8 @@ public class DeleteAthleteCommandTest {
 
         DeleteAthleteCommand deleteCommand = new DeleteAthleteCommand(invalidName, invalidSport);
 
-        assertCommandFailure(deleteCommand, model, AthleteMessages.MESSAGE_INVALID_ATHLETE);
+        assertCommandFailure(deleteCommand, model,
+                AthleteMessages.MESSAGE_INVALID_ATHLETE + ": Nonexistent Athlete - Nonexistent Sport");
     }
 
     @Test

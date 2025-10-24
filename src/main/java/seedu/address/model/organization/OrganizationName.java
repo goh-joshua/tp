@@ -10,14 +10,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class OrganizationName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid organisation: "
-                    + "Only letters, numbers, spaces, apostrophes ('), ampersands (&), and hyphens (-) are allowed.";
+            "Error: Names should only contain alphabetic characters, spaces, hyphens, and apostrophes, "
+                    + "must start with a letter, and cannot be blank.";
 
     /*
      * Organization names can include letters, digits, spaces, apostrophes, ampersands, and hyphens.
      * Must contain at least one alphanumeric character and cannot be blank.
      */
-    public static final String VALIDATION_REGEX = "^(?=.*[A-Za-z0-9])[A-Za-z0-9 '&-]+$";
+    public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z' -]*$";
 
     public final String fullOrganizationName;
 

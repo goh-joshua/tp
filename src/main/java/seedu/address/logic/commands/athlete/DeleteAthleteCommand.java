@@ -68,7 +68,7 @@ public class DeleteAthleteCommand extends Command {
                 .orElse(null);
 
         if (athleteToDelete == null) {
-            throw new CommandException(AthleteMessages.MESSAGE_INVALID_ATHLETE);
+            throw new CommandException(AthleteMessages.MESSAGE_INVALID_ATHLETE + ": " + this.name + " - " + this.sport);
         }
 
         if (existingContract != null) {
