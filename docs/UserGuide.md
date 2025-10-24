@@ -6,10 +6,7 @@ pageNav: 3
 
 # User Guide
 
-**playbook.io** is the ultimate platform that empowers sports agents to stay organized, build stronger relationships, and drive success for their athletes and partners. It simplifies the management of athletes, organizations, and contracts — allowing agents to focus on what truly matters: closing deals and maximizing opportunities.  
-
-Optimized for use through a powerful Command Line Interface (CLI) while retaining the intuitive benefits of a Graphical User Interface (GUI), playbook.io offers the best of both worlds. If you can type fast, you can manage your athletes, contracts, and organizations faster than with traditional apps — combining speed, efficiency, and control in one seamless experience.
-
+**playbook.io** is a platform that helps sports agents efficiently manage athletes, organizations, and contracts. It combines the speed of a Command Line Interface with the ease of a Graphical Interface, enabling agents to stay organized, build stronger relationships, and focus on closing deals.
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -122,7 +119,7 @@ Let's try some basic operations to get you started:
 
 4. **Clear the Search**
    ```
-   refresh // or Cmd+R (Ctrl+R on windows)
+   refresh
    ```
 
 <div markdown="block" class="alert alert-info">
@@ -215,7 +212,7 @@ add-o o/IMG Academy p/87654321 e/talent@img.com
 
 **Expected Output:**
 ```
-New organisation added: Nike; Phone: 98765432; Email: partnerships@nike.com
+New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -246,7 +243,7 @@ delete-o o/Manchester United
 
 **Expected Output:**
 ```
-Deleted Organisation: Nike; Phone: 98765432; Email: partnerships@nike.com
+Deleted Organization: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -280,7 +277,7 @@ add-c n/Serena Williams s/Tennis o/Wilson sd/01012020 ed/31122024 am/5000000
 
 **Expected Output:**
 ```
-Contract created: Athlete: Lionel Messi; Sport: Football; Organisation: Inter Miami; Start: 01/07/2023; End: 31/12/2025; Amount: 50000000
+Contract created: Athlete: Lionel Messi; Sport: Football; Organization: Inter Miami; Start: 01/07/2023; End: 31/12/2025; Amount: 50000000
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -427,10 +424,10 @@ Exiting Address Book as requested ...
 ### Parameter Details
 
 **Common Parameters:**
-- `NAME`: Full name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes)
+- `NAME`: Full name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes; must start with a letter)
 - `SPORT`: Sport name (spaces allowed, case-insensitive; alphabetic characters only)
-- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes)
-- `PHONE`: Phone number (8-digit Singapore phone number onl)
+- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes; must start with a letter)
+- `PHONE`: Phone number (8-digit Singapore phone number only)
 - `EMAIL`: Email address (must contain @ symbol, case insensitive)
 - `DATE`: Format DDMMYYYY (e.g., 25122024 for December 25, 2024)
 - `AMOUNT`: Positive integers only (no currency symbols or commas)
