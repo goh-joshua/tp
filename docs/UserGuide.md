@@ -206,7 +206,7 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 
 #### Adding Organizations
 
-**Command:** `add-o o/ORGANIZATION_NAME p/PHONE e/EMAIL`
+**Command:** `add-o o/ORG_NAME p/PHONE e/EMAIL`
 
 **Parameters:**
 - `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
@@ -240,7 +240,7 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 
 #### Deleting Organizations
 
-**Command:** `delete-o o/ORGANIZATION_NAME`
+**Command:** `delete-o o/ORG_NAME`
 
 **Parameters:**
 - `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
