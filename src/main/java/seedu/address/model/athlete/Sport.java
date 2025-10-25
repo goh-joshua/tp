@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Sport {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid sport: Sport names should only contain alphabetic characters and spaces, "
+            "Error: Sport names should only contain alphabetic characters and spaces, "
                     + "and it should not be blank";
     public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z ]*$";
 

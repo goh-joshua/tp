@@ -37,7 +37,7 @@ public class AddContractCommand extends Command {
             + "ed/DDMMYYYY "
             + "am/AMOUNT\n"
             + "Example: " + COMMAND_WORD + " "
-            + "n/Lionel Messi s/Football o/Inter Miami sd/01012024 ed/01012025 am/50000000";
+            + "n/Lebron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000";
 
     public static final String MESSAGE_SUCCESS = "Contract created: %1$s";
     public static final String MESSAGE_DUPLICATE_CONTRACT = "Error: This contract already exists";
@@ -87,7 +87,7 @@ public class AddContractCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        Athlete athlete = findAthleteByNameOrThrow(model, athleteName);
+        Athlete athlete = findAthleteByNameOrThrow(model, athleteName, sport);
         Organization organization = findOrganizationByNameOrThrow(model, organizationName);
 
         if (startDate.toLocalDate().isAfter(endDate.toLocalDate())) {
@@ -110,11 +110,14 @@ public class AddContractCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, ContractMessages.format(toAdd)));
     }
 
-    private Athlete findAthleteByNameOrThrow(Model model, Name name) throws CommandException {
+    private Athlete findAthleteByNameOrThrow(Model model, Name name, Sport sport) throws CommandException {
         List<Athlete> list = model.getAddressBook().getAthleteList();
-        Optional<Athlete> match = list.stream().filter(a -> a.getName().equals(name)).findFirst();
+        Optional<Athlete> match = list.stream().filter(a -> a.getName().equals(name)
+                && a.getSport().equals(sport)).findFirst();
         if (match.isEmpty()) {
-            throw new CommandException(String.format(MESSAGE_NOT_FOUND_FMT, "Athlete", name));
+            throw new CommandException(
+                    String.format(MESSAGE_NOT_FOUND_FMT, "Athlete", name + " - " + sport)
+            );
         }
         return match.get();
     }

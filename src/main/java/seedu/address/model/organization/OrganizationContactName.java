@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class OrganizationContactName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid name: Names can only contain letters, spaces, hyphens, and apostrophes.";
+            "Error: Names can only contain letters, spaces, hyphens, and apostrophes.";
 
     /*
      * The name must contain only letters (upper/lowercase), spaces, apostrophes, and hyphens.

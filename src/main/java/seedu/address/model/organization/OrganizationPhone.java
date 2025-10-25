@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class OrganizationPhone {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid phone number: Must be exactly 8 digits.";
+            "Error: Phone numbers should only contain numbers, and be exactly 8 digits long";
     public static final String VALIDATION_REGEX = "\\d{8}";
 
     public final String value;

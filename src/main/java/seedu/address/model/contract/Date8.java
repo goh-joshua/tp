@@ -10,7 +10,7 @@ import java.util.Objects;
 /** DDMMYYYY date with strict validation (e.g., 01012025). */
 public class Date8 {
     public static final String MESSAGE_CONSTRAINTS =
-            "Date must be DDMMYYYY and a real calendar date (e.g., 01012025).";
+            "Error: Date must be DDMMYYYY and a real calendar date (e.g., 01012025).";
     private static final DateTimeFormatter FMT =
             DateTimeFormatter.ofPattern("ddMMuuuu").withResolverStyle(ResolverStyle.STRICT);
 

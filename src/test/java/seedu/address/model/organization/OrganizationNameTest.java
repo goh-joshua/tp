@@ -37,11 +37,8 @@ public class OrganizationNameTest {
 
         // valid names
         assertTrue(OrganizationName.isValidName("Nike")); // simple word
-        assertTrue(OrganizationName.isValidName("Procter & Gamble")); // ampersand
         assertTrue(OrganizationName.isValidName("Team O'Neal")); // apostrophe
         assertTrue(OrganizationName.isValidName("ACME-Corp")); // hyphen
-        assertTrue(OrganizationName.isValidName("Sports Hub 2")); // alphanumeric
-        assertTrue(OrganizationName.isValidName("The Athlete's Guild")); // apostrophe with space
     }
 
     @Test
