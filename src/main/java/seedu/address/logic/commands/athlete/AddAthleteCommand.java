@@ -33,7 +33,7 @@ public class AddAthleteCommand extends Command {
             + PREFIX_NAME + "LeBron James "
             + PREFIX_SPORT + "Basketball "
             + PREFIX_AGE + "40 "
-            + PREFIX_PHONE + "98765432 "
+            + PREFIX_PHONE + "99876543 "
             + PREFIX_EMAIL + "James@example.com ";
 
     public static final String MESSAGE_SUCCESS = "New athlete added: %1$s";

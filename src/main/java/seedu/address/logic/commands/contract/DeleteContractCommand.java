@@ -26,11 +26,11 @@ public class DeleteContractCommand extends Command {
     public static final String COMMAND_WORD = "delete-c";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes a contract by athlete, organisation, and dates. "
+            + ": Deletes a contract by athlete, organization, and dates. "
             + "Parameters: "
             + "n/NAME "
             + "s/SPORT "
-            + "o/ORG "
+            + "o/ORG_NAME "
             + "sd/DDMMYYYY "
             + "ed/DDMMYYYY "
             + "am/AMOUNT\n"
@@ -38,7 +38,7 @@ public class DeleteContractCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Deleted contract: %1$s";
     public static final String MESSAGE_CONTRACT_NOT_FOUND =
-            "Error: No matching contract found for athlete '%s', sport '%s', organisation '%s', "
+            "Error: No matching contract found for athlete '%s', sport '%s', organization '%s', "
             + "start '%s', end '%s', amount '%s'.";
 
     private final Name athleteName;

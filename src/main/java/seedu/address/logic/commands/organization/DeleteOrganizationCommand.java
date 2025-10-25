@@ -22,13 +22,13 @@ public class DeleteOrganizationCommand extends Command {
     public static final String COMMAND_WORD = "delete-o";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the organisation identified by its name. "
-            + "Parameters: o/ORGANISATION_NAME\n"
+            + ": Deletes the organization identified by its name. "
+            + "Parameters: o/ORG_NAME\n"
             + "Example: " + COMMAND_WORD + " o/Nike";
 
-    public static final String MESSAGE_DELETE_ORGANIZATION_SUCCESS = "Deleted Organisation: %1$s";
+    public static final String MESSAGE_DELETE_ORGANIZATION_SUCCESS = "Deleted Organization: %1$s";
     public static final String MESSAGE_ORGANIZATION_NOT_FOUND =
-            "Error: No organisation found: '%1$s'.";
+            "Error: No organization found: '%1$s'.";
     public static final String MESSAGE_ORGANIZATION_EXISTING_CONTRACT =
             "Error: Organization has existing contract.";
 
