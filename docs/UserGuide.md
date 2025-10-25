@@ -588,7 +588,7 @@ If you need to reset your data, delete the entire folder instead.
 
 **Supported Platforms:**
 - Windows 10/11
-- macOS 10.14 (Mojave) or later  
+- macOS 10.14 (Mojave) or later
 - Linux (Ubuntu 18.04+, CentOS 7+, or equivalent)
 
 **Data Storage:**
