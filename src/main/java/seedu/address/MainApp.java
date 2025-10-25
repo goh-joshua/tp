@@ -106,43 +106,32 @@ public class MainApp extends Application {
 
         try {
             athleteListOptional = storage.readAthleteList();
-            if (!athleteListOptional.isPresent()) {
-                logger.info("Creating a new athlete data file " + storage.getAthleteListFilePath()
-                        + " populated with an empty AthleteList.");
-            }
-            initialAthleteList = athleteListOptional.orElseGet(SampleDataUtil::getEmptyAthleteList);
-        } catch (DataLoadingException e) {
-            logger.warning("Athlete data file at " + storage.getAthleteListFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AthleteList.");
-            initialAthleteList = SampleDataUtil.getEmptyAthleteList();
-        }
-
-        try {
             contractListOptional = storage.readContractList();
-            if (!contractListOptional.isPresent()) {
-                logger.info("Creating a new contract data file " + storage.getContractListFilePath()
-                        + " populated with an empty ContractList.");
-            }
-            initialContractList = contractListOptional.orElseGet(SampleDataUtil::getEmptyContractList);
-        } catch (DataLoadingException e) {
-            logger.warning("Contract data file at " + storage.getContractListFilePath() + " could not be loaded."
-                    + " Will be starting with an empty ContractList.");
-            initialContractList = SampleDataUtil.getEmptyContractList();
-        }
-
-        try {
             organizationListOptional = storage.readOrganizationList();
-            if (!organizationListOptional.isPresent()) {
-                logger.info("Creating a new organization data file " + storage.getOrganizationListFilePath()
-                        + " populated with an empty OrganizationList.");
+
+            // If any file is missing or fails to load, reset all lists
+            if (!athleteListOptional.isPresent()
+                    || !contractListOptional.isPresent()
+                    || !organizationListOptional.isPresent()) {
+                logger.info("One or more data files are missing. Resetting all files.");
+                initialAthleteList = SampleDataUtil.getEmptyAthleteList();
+                initialContractList = SampleDataUtil.getEmptyContractList();
+                initialOrganizationList = SampleDataUtil.getEmptyOrganizationList();
+            } else {
+                // All files are present, load normally
+                initialAthleteList = athleteListOptional.get();
+                initialContractList = contractListOptional.get();
+                initialOrganizationList = organizationListOptional.get();
             }
-            initialOrganizationList = organizationListOptional.orElseGet(
-                    SampleDataUtil::getEmptyOrganizationList);
+
         } catch (DataLoadingException e) {
-            logger.warning("Organization data file at " + storage.getOrganizationListFilePath()
-                    + " could not be loaded. Will be starting with an empty OrganizationList.");
+            // Handles corrupted files
+            logger.warning("Failed to load data files. Resetting all files.");
+            initialAthleteList = SampleDataUtil.getEmptyAthleteList();
+            initialContractList = SampleDataUtil.getEmptyContractList();
             initialOrganizationList = SampleDataUtil.getEmptyOrganizationList();
         }
+
 
         return new ModelManager(initialData, userPrefs, initialAthleteList, initialContractList,
                 initialOrganizationList);

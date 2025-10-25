@@ -203,7 +203,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 **Target user profile**:
 
 * sports agents who manage multiple athletes and their careers
-* need to stay organised with many organisations (teams, sponsors, brands)
+* need to stay organised with many organizations (teams, sponsors, brands)
 * prefer structured tools over manual spreadsheets or scattered files
 * prefer desktop apps over other types
 * can type fast
@@ -222,11 +222,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user     | see usage instructions                                                                       | refer to instructions when I forget how to use the App               |
 | `* * *`  | sports agent | create a new athlete profile                                                                 | keep track of the athletes I currently represent                     |
 | `* * *`  | sports agent | delete an athlete profile                                                                    | remove athletes I no longer represent                                |
-| `* * *`  | sports agent | create a new organisation                                                                    | store details of teams, sponsors, or brands I work with              |
-| `* * *`  | sports agent | delete an organisation                                                                       | remove organisations that are no longer relevant                     |
+| `* * *`  | sports agent | create a new organization                                                                    | store details of teams, sponsors, or brands I work with              |
+| `* * *`  | sports agent | delete an organization                                                                       | remove organizations that are no longer relevant                     |
 | `* * *`  | sports agent | upload a new contract                                                                        | track my athletes’ active agreements                                 |
 | `* * *`  | sports agent | delete a contract                                                                            | keep my records up to date                                           |
-| `* *`    | sports agent | search for an athlete or organisation                                                        | quickly find the information I need without scrolling                |
+| `* *`    | sports agent | search for an athlete, organization, or contract                                             | quickly find the information I need without scrolling                |
 | `*`      | sports agent | view analytics on contracts & deals                                                          | gain insights into performance and opportunities                     |
 | `*`      | sports agent | link travel plans to competition and appearance schedules                                    | coordinate logistics efficiently and avoid scheduling conflicts      |
 | `*`      | sports agent | manage and sync my athletes’ competition schedules and training events in a central calendar | coordinate effectively with teams, sponsors, and travel arrangements |
@@ -259,7 +259,7 @@ otherwise)
 
       Use case ends.
 
-* 2aDuplicate athlete
+* 2a. Duplicate athlete
 
     * 2a1. playbook.io shows an error message
 
@@ -300,12 +300,12 @@ otherwise)
 
       Use case ends.
 
-**Use case: Add Organisation**
+**Use case: Add Organization Profile**
 
 **MSS**
 
-1. Agent requests to add organisation
-2. playbook.io stores the new athlete profile
+1. Agent requests to add organization
+2. playbook.io stores the new organization profile
 
    Use case ends.
 
@@ -323,18 +323,18 @@ otherwise)
 
       Use case ends.
 
-* 2a Duplicate athlete
+* 2a Duplicate organization
 
     * 2a1. playbook.io shows an error message
 
       Use case ends.
 
-**Use case: Delete Organisation**
+**Use case: Delete Organization**
 
 **MSS**
 
-1. Agent requests to delete a contact associated with an organisation
-2. If exactly one match is found, playbook.io deletes the contact
+1. Agent requests to delete an organization
+2. playbook.io deletes the organization
 
    Use case ends.
 
@@ -352,21 +352,15 @@ otherwise)
 
       Use case ends.
 
-* 2a. No organisation found
+* 2a. No organization found
 
     * 2a1. playbook.io shows an error message
 
       Use case ends.
 
-* 2b. Multiple contacts with associated organisation found
+* 2b. Organization has active contracts
 
     * 2b1. playbook.io shows an error message
-
-      Use case ends.
-
-* 2c. Contact has active contracts
-
-    * 2c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -393,15 +387,19 @@ otherwise)
 
       Use case ends.
 
-* 2a. No athlete / organisation / contact found
+* 2a. Athlete does not exist
 
     * 2a1. playbook.io shows an error message
 
       Use case ends.
 
-* 2b. Duplicate contract
-
+* 2b. Organization does not exist
     * 2b1. playbook.io shows an error message
+
+      Use case ends.
+* 2c. Duplicate contract
+
+    * 2c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -434,101 +432,278 @@ otherwise)
 
       Use case ends.
 
+**Use case: Find Athlete**
+
+**MSS**
+
+1. Agent requests to find an athlete
+2. playbook.io returns the list of athletes
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No athlete found
+
+    * 2a1. playbook.io returns an empty list
+
+      Use case ends.
+
+**Use case: Find Organization**
+
+**MSS**
+
+1. Agent requests to find an organization
+2. playbook.io returns the list of organization
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No organization found
+
+    * 2a1. playbook.io returns an empty list
+
+      Use case ends.
+
+**Use case: Find Contract**
+
+**MSS**
+
+1. Agent requests to find a contract
+2. playbook.io returns the list of contracts
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Missing required parameter
+
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 2a. No contract found
+
+    * 2a1. playbook.io returns an empty list
+
+      Use case ends.
+  
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2. Should be able to hold up to 1000 athletes, organizations, and contracts without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid
-   input is detected.
-5. Should prevent accidental data loss by requiring explicit confirmation for destructive operations such as deleting
-   athletes, organisations, or contracts.
-6. Should provide meaningful error handling and recovery messages if storage or system errors occur (e.g., “Unable to
-   save contract. Please try again.”).
-7. Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for
-   ease of deployment across environments.
-8. Should allow a new user to learn the system within 10 minutes by following the user guide and trying out the sample
-   dataset.
-9. Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes,
-   organisations, or contracts under normal usage load.
-10. Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport, same
-    organisation + contact person).
+   input is detected. 
+5. Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for
+   ease of deployment across environments. 
+6. Should allow a new user to learn the system within 10 minutes by following the user guide. 
+7. Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes,
+   organizations, or contracts under normal usage load. 
+8. Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport).
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
-* **Athlete Profile**: A record containing an athlete’s details such as name, sport, age, and contact information.
-* **Organisation**: An entity such as a team, brand, or sponsor that interacts with the sports agent.
-* **Contract**: A formal agreement between an athlete and an organisation, including details like duration, payment, and
-  contact person.
-* **Sponsor**: A company or brand that provides financial or material support to athletes, often in exchange for
-  promotion.
-* **Competition Schedule**: A calendar of matches, events, or appearances an athlete participates in.
-* **Training Event**: A scheduled practice or preparation session for an athlete.
-* **Contact Person**: The representative from an organisation who communicates with the sports agent.
-* **MVP (Minimum Viable Product)**: The smallest set of features that make the app usable, such as creating and deleting
-  athletes, organisations, and contracts.
-* **CRUD Operations**: Basic system functions — Create, Read, Update, Delete.
-* **Duplicate Handling**: Rules to prevent multiple entries of the same athlete, organisation, or contract.
-* **Validation Error**: A system-generated message shown when user input does not meet required constraints (e.g.,
-  invalid email format).
-* **UI Mock-up**: A sample design of the interface showing how the system should look and behave.
+* **Athlete**: An individual sports performer managed by the agent, with contact details and sport specialization.
+* **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
+* **Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
+* **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
+* **Sports Agent**: A professional who represents athletes in contract negotiations and career management.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
-<box type="info" seamless>
-
-**Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
-
-</box>
+> **Note:** These instructions only provide a starting point for testers to work on;
+> testers are expected to do more *exploratory* testing.
 
 ### Launch and shutdown
 
-1. Initial launch
+#### 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
+1. Download the jar file and copy into an empty folder.
+2. Double-click the jar file.
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
-       optimum.
+**Expected:**  
+Shows the GUI. The window size may not be optimum.
 
-1. Saving window preferences
+#### 2. Saving window preferences
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+2. Re-launch the app by double-clicking the jar file.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+**Expected:**  
+The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Adding an athlete
 
-### Deleting a person
+#### 1. Adding an athlete while all athletes are being shown
 
-1. Deleting a person while all persons are being shown
+1. **Prerequisites:** Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
+2. **Test case:** `add-a n/Lebron James s/Basketball a/40 p/99876543 e/James@example.com`  
+   **Expected:** Athlete is added to the athlete list. Details of the added athlete shown in the result pane.
+3. **Test case:** `add-a n/ s/Football a/39 p/87654321 e/cr7@example.com`  
+   **Expected:** No athlete is added. Error details shown in the result pane.
+4. **Other incorrect add-a commands to try:** `add-a`, `add-a n/Messi2 s/Football a/39 p/87654321 e/cr7@example.com`, `...`  
+   **Expected:** Similar to previous.
 
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+### Deleting an athlete
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
-       Timestamp in the status bar is updated.
+#### 1. Deleting an athlete while all athletes are being shown
 
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+1. **Prerequisites:**
+    - Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
+    - Ensure the athlete to be deleted has no existing contracts.
+2. **Test case:** `delete-a n/Lebron James s/Basketball`  
+   **Expected:** Athlete is deleted from the list. Details of the deleted athlete shown in the result pane.
+3. **Test case:** `delete-a n/Lebron James s/`  
+   **Expected:** No athlete is deleted. Error details shown in the result pane.
+4. **Other incorrect delete-a commands to try:** `delete-a`, `delete-a n/Lebron James s/Basket-ball`, `...`  
+   **Expected:** Similar to previous.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+### Adding an organization
+#### 1. Adding an organization while all organizations are being shown
 
-1. _{ more test cases …​ }_
+1. **Prerequisites:** Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
+2. **Test case:** `add-o o/Nike p/98765432 e/partnerships@nike.com`  
+   **Expected:** Organization is added to the organization list. Details of the added organization shown in the result pane.
+3. **Test case:** `add-o o/Nike p/+6598765432 e/partnerships@nike.com`  
+   **Expected:** No organization is added. Error details shown in the result pane.
+4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/Nike123 p/98765432 e/partnerships@nike.com`, `...`  
+   **Expected:** Similar to previous.
+
+### Deleting an organization
+
+#### 1. Deleting an organization while all organizations are being shown
+
+1. **Prerequisites:**
+    - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
+    - Ensure organization to be deleted has no existing contracts.
+2. **Test case:** `delete-o n/Nike`  
+   **Expected:** Organization is deleted from the list. Details of the deleted organization shown in the result pane.
+3. **Test case:** `delete-o n/`  
+   **Expected:** No organization is deleted. Error details shown in the result pane.
+4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o n/Nike1`, `...`  
+   **Expected:** Similar to previous.
+
+### Adding a contract
+
+#### 1. Adding a contract while all contracts are being shown
+
+1. **Prerequisites:**
+    - Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
+    - Ensure the athlete and organization exist in the system.
+2. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`  
+   **Expected:** Contract is added to the contracts list. Details of the added contract shown in the result pane.
+3. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/`  
+   **Expected:** No contract is added. Error details shown in the result pane.
+4. **Other incorrect add-c commands to try:** `add-c`, `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50.90`, `...`  
+   **Expected:** Similar to previous.
+
+### Deleting a contract
+
+#### 1. Deleting a contract while all contracts are being shown
+
+1. **Prerequisites:** Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
+2. **Test case:** `delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`  
+   **Expected:** Contract is deleted from the list. Details of the deleted contract shown in the result pane.
+3. **Test case:** `delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/ am/50000000`  
+   **Expected:** No contract is deleted. Error details shown in the result pane.
+4. **Other incorrect delete-c commands to try:** `delete-c`, `delete-c n/ s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`, `...`  
+   **Expected:** Similar to previous.
+
+### Finding an athlete
+
+#### 1. Finding an athlete while all athletes are being shown
+
+1. **Prerequisites:** Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
+2. **Test case:** `find -an LeBron James`  
+   **Expected:** Filtered list of athletes shown. Details of the filtered list shown in the result pane.
+3. **Test case:** `find -as Basketball`  
+   **Expected:** Filtered list of athletes shown. Details of the filtered list shown in the result pane.
+4. **Test case:** `find -an`  
+   **Expected:** No filtering occurs. Error details shown in the result pane.
+5. **Other incorrect find commands to try:** `find -as`, `find`, `...`  
+   **Expected:** Similar to previous.
+
+### Finding an organization
+
+#### 1. Finding an organization while all organizations are being shown
+
+1. **Prerequisites:** Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
+2. **Test case:** `find -on Nike`  
+   **Expected:** Filtered list of organizations shown. Details of the filtered list shown in the result pane.
+3. **Test case:** `find -on`  
+   **Expected:** No filtering occurs. Error details shown in the result pane.
+4. **Other incorrect find commands to try:** `find`, `...`  
+   **Expected:** Similar to previous.
+
+### Finding a contract
+
+#### 1. Finding a contract while all contracts are being shown
+
+1. **Prerequisites:** Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
+2. **Test case:** `find -ca LeBron James`  
+   **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
+3. **Test case:** `find -cs Basketball`  
+   **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
+4. **Test case:** `find -co Nike`  
+   **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
+5. **Test case:** `find -ca`  
+   **Expected:** No filtering occurs. Error details shown in the result pane.
+6. **Other incorrect find commands to try:** `find -cs`, `find -co`, `...`  
+   **Expected:** Similar to previous.
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+#### 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+##### 1.1 Simulate a missing file
 
-1. _{ more test cases …​ }_
+1. Close playbook.io.
+2. Navigate to the `data` folder.
+3. Delete one or more JSON files (e.g., `athletelist.json`, `contractlist.json`, `organizationlist.json`).
+4. Re-launch playbook.io.
+
+**Expected:**  
+The app detects that the files are missing and loads empty lists for all entities.
+
+##### 1.2 Simulate a corrupted file
+
+1. Open a JSON file (e.g., `athletelist.json`).
+2. Add invalid content (e.g., remove a closing bracket or insert invalid characters).
+3. Save the file and relaunch playbook.io.
+
+**Expected:**  
+The app detects that the files are corrupted and loads empty lists for all entities.
+
+> **⚠️ Important:**  
+> New JSON files are only created once data is written (e.g., after adding an athlete, contract, or organization).
+
+#### 2. Normal save
+
+##### 2.1 Simulate saving data after adding entries
+
+1. Open playbook.io.
+2. Add an athlete, contract, or organization
+3. Close playbook.io.
+
+**Expected:**  
+Data is persisted correctly in the JSON files.
