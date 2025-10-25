@@ -88,19 +88,19 @@ This guide is designed for **sports agents and talent managers** who:
 The playbook.io interface consists of five main areas:
 
 1. **Menu Bar** (top): File and Help menus for application settings and documentation
-   ![Menu Bar](images/menu.png)
+   ![Menu Bar](images/menu.png)  
    — highlighted in a blue box
 2. **Command Box** (top area): Text input field where you type commands to interact with the application
-   ![Command Box](images/command.png)
+   ![Command Box](images/command.png)  
    — highlighted in a blue box
 3. **Result Pane** (top area): Displays the outcome of your commands, such as success messages, or error notifications
-   ![Result Pane](images/pane.png)
+   ![Result Pane](images/pane.png)  
    — highlighted in a blue box
 4. **Main Display Area** (center): Shows your data lists and command feedback messages
-   ![Main Display Area](images/display.png)
+   ![Main Display Area](images/display.png)  
    — highlighted in a blue box
 5. **Navigation Tabs** (bottom): Three tabs for switching between Athletes, Organizations, and Contracts views
-   ![Navigation Tabs](images/tabs.png)
+   ![Navigation Tabs](images/tabs.png)  
    — highlighted in a blue box
 
 **Navigation Tips:**
