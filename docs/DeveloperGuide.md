@@ -207,7 +207,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 * prefer structured tools over manual spreadsheets or scattered files
 * prefer desktop apps over other types
 * can type fast
-* prefers typing to mouse interactions
+* prefer typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
 **Value proposition**: The ultimate platform that empowers sports agents to stay organised, build stronger
