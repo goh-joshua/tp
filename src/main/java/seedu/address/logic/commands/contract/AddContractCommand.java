@@ -28,11 +28,11 @@ public class AddContractCommand extends Command {
     public static final String COMMAND_WORD = "add-c";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Adds a contract linking an athlete and an organisation. "
+            + ": Adds a contract linking an athlete and an organization. "
             + "Parameters: "
             + "n/NAME "
             + "s/SPORT "
-            + "o/ORG "
+            + "o/ORG_NAME "
             + "sd/DDMMYYYY "
             + "ed/DDMMYYYY "
             + "am/AMOUNT\n"

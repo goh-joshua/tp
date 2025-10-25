@@ -88,10 +88,20 @@ This guide is designed for **sports agents and talent managers** who:
 The playbook.io interface consists of five main areas:
 
 1. **Menu Bar** (top): File and Help menus for application settings and documentation
+   ![Menu Bar](images/menu.png)
+   — highlighted in a blue box
 2. **Command Box** (top area): Text input field where you type commands to interact with the application
-3. **Main Display Area** (center): Shows your data lists and command feedback messages
-4. **Navigation Tabs** (bottom): Three tabs for switching between Athletes, Organizations, and Contracts views
-5. **Status Bar** (bottom): Shows current data file location and application status
+   ![Command Box](images/command.png)
+   — highlighted in a blue box
+3. **Result Pane** (top area): Displays the outcome of your commands, such as success messages, or error notifications
+   ![Result Pane](images/pane.png)
+   — highlighted in a blue box
+4. **Main Display Area** (center): Shows your data lists and command feedback messages
+   ![Main Display Area](images/display.png)
+   — highlighted in a blue box
+5. **Navigation Tabs** (bottom): Three tabs for switching between Athletes, Organizations, and Contracts views
+   ![Navigation Tabs](images/tabs.png)
+   — highlighted in a blue box
 
 **Navigation Tips:**
 - Use **Cmd+1**, **Cmd+2**, **Cmd+3** (or **Ctrl+1**, **Ctrl+2**, **Ctrl+3** on Windows/Linux) to quickly switch between tabs
@@ -141,22 +151,22 @@ Athletes are the heart of your business. playbook.io makes it easy to track thei
 **Command:** `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL`
 
 **Parameters:**
-- `n/NAME`: Full name of the athlete 
-- `s/SPORT`: Primary sport 
-- `a/AGE`: Age in years 
-- `p/PHONE`: Contact phone number 
-- `e/EMAIL`: Email address 
+- `n/NAME`: Full name of the athlete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
+- `s/SPORT`: Sport of the athlete (spaces allowed, case-insensitive; alphabetic characters only)
+- `a/AGE`: Age of the athlete (positive integers only, ranging from 1 to 99)
+- `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only)
+- `e/EMAIL`: Email address of the athlete (case-insensitive; must follow standard email format)
 
 **Examples:**
 ```
-add-a n/Serena Williams s/Tennis a/42 p/91234567 e/serena@example.com
+add-a n/Lebron James s/Basketball a/40 p/99876543 e/James@example.com
 add-a n/Cristiano Ronaldo s/Football a/39 p/87654321 e/cr7@example.com
 add-a n/Michael Jordan s/Basketball a/61 p/95551234 e/mj@example.com
 ```
 
 **Expected Output:**
 ```
-New athlete added: Serena Williams; Sport: Tennis; Age: 42; Phone: 91234567; Email: serena@example.com
+New athlete added: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Email: James@example.com
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -170,18 +180,18 @@ New athlete added: Serena Williams; Sport: Tennis; Age: 42; Phone: 91234567; Ema
 **Command:** `delete-a n/NAME s/SPORT`
 
 **Parameters:**
-- `n/NAME`: Full name of the athlete to delete
-- `s/SPORT`: Sport to identify the correct athlete
+- `n/NAME`: Full name of the athlete to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
+- `s/SPORT`: Sport of the athlete to delete (spaces allowed, case-insensitive; alphabetic characters only)
 
 **Examples:**
 ```
-delete-a n/Serena Williams s/Tennis
+delete-a n/Lebron James s/Basketball
 delete-a n/Cristiano Ronaldo s/Football
 ```
 
 **Expected Output:**
 ```
-Deleted Athlete: Serena Williams; Sport: Tennis; Age: 42; Phone: 91234567; Email: serena@example.com
+Deleted Athlete: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Email: James@example.com
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -199,15 +209,15 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 **Command:** `add-o o/ORGANIZATION_NAME p/PHONE e/EMAIL`
 
 **Parameters:**
-- `o/ORGANIZATION_NAME`: Full name of the organization 
-- `p/PHONE`: Contact phone number 
-- `e/EMAIL`: Contact email address 
+- `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
+- `p/PHONE`: Phone number of the organization (8-digit Singapore phone number only)
+- `e/EMAIL`: Email address of the organization (case-insensitive; must follow standard email format)
 
 **Examples:**
 ```
 add-o o/Nike p/98765432 e/partnerships@nike.com
-add-o o/Manchester United p/91234567 e/contracts@manutd.com
-add-o o/IMG Academy p/87654321 e/talent@img.com
+add-o o/Manchester United p/99998888 e/contracts@manutd.com
+add-o o/IMG Academy p/88889999 e/talent@img.com
 ```
 
 **Expected Output:**
@@ -233,7 +243,7 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 **Command:** `delete-o o/ORGANIZATION_NAME`
 
 **Parameters:**
-- `o/ORGANIZATION_NAME`: Full name of the organization to delete
+- `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 
 **Examples:**
 ```
@@ -261,23 +271,23 @@ Contracts link athletes with organizations and track the business relationships 
 **Command:** `add-c n/NAME s/SPORT o/ORG sd/DDMMYYYY ed/DDMMYYYY am/AMOUNT`
 
 **Parameters:**
-- `n/NAME`: Athlete's full name 
-- `s/SPORT`: Athlete's sport  
-- `o/ORG`: Organization name 
-- `sd/DDMMYYYY`: Start date in day-month-year format
-- `ed/DDMMYYYY`: End date in day-month-year format
-- `am/AMOUNT`: Contract amount 
+- `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter) 
+- `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only)
+- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
+- `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
+- `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
+- `am/AMOUNT`: Contract amount (Positive integers only; no currency symbols or commas)
 
 **Examples:**
 ```
+add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000
 add-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025 am/50000000
-add-c n/LeBron James s/Basketball o/Nike sd/15052022 ed/15052032 am/100000000
 add-c n/Serena Williams s/Tennis o/Wilson sd/01012020 ed/31122024 am/5000000
 ```
 
 **Expected Output:**
 ```
-Contract created: Athlete: Lionel Messi; Sport: Football; Organization: Inter Miami; Start: 01/07/2023; End: 31/12/2025; Amount: 50000000
+Contract created: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -292,24 +302,25 @@ Contract created: Athlete: Lionel Messi; Sport: Football; Organization: Inter Mi
 
 #### Deleting Contracts
 
-**Command:** `delete-c n/NAME s/SPORT o/ORG sd/DDMMYYYY ed/DDMMYYYY`
+**Command:** `delete-c n/NAME s/SPORT o/ORG sd/DDMMYYYY ed/DDMMYYYY am/AMOUNT`
 
 **Parameters:**
-- `n/NAME`: Athlete's full name
-- `s/SPORT`: Athlete's sport
-- `o/ORG`: Organization name
-- `sd/DDMMYYYY`: Start date (must match exactly)
-- `ed/DDMMYYYY`: End date (must match exactly)
+- `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
+- `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only)
+- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
+- `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
+- `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
+- `am/AMOUNT`: Contract amount (Positive integers only; no currency symbols or commas)
 
-**Examples:**
+  **Examples:**
 ```
-delete-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025
-delete-c n/LeBron James s/Basketball o/Nike sd/15052022 ed/15052032
+delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000
+delete-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025 am/50000000
 ```
 
 **Expected Output:**
 ```
-Deleted contract: Athlete: Lionel Messi; Sport: Football; Organisation: Inter Miami; Start: 01/07/2023; End: 31/12/2025; Amount: 50000000
+Deleted contract: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
 ```
 
 ### Finding & Filtering Data
@@ -322,29 +333,29 @@ The search functionality uses **fuzzy matching** to help you find what you're lo
 
 **Available Search Types:**
 
-| Flag | Searches | Example |
-|------|----------|---------|
-| `-an` | Athlete names | `find -an Lionel` |
-| `-as` | Athlete sports | `find -as Football` |
-| `-on` | Organization names | `find -on Nike` |
-| `-ca` | Contracts by athlete name | `find -ca LeBron` |
-| `-co` | Contracts by organization | `find -co Miami` |
+| Flag | Searches | Example               |
+|------|----------|-----------------------|
+| `-an` | Athlete names | `find -an LeBron`     |
+| `-as` | Athlete sports | `find -as Basketball` |
+| `-on` | Organization names | `find -on Nike`       |
+| `-ca` | Contracts by athlete name | `find -ca LeBron`     |
+| `-co` | Contracts by organization | `find -co Nike`       |
 | `-cs` | Contracts by sport | `find -cs Basketball` |
 
 **Examples:**
 ```
-find -an Messi          # Find athletes with names like "Messi"
-find -as Tennis         # Find all tennis athletes  
-find -on Nike           # Find Nike organization
+find -an James          # Find athletes with names like "James"
+find -as Basketball     # Find athletes with sports like "Basketball"
+find -on Nike           # Find organizations with names like "Nike"
 find -ca LeBron         # Find contracts with athletes named like "LeBron"
-find -co Manchester     # Find contracts with organizations like "Manchester"
-find -cs Football       # Find all football contracts
+find -co Nike           # Find contracts with organizations like "Nike"
+find -cs Basketball     # Find all contracts athletes' sports named like "Basketball"
 ```
 
-**Expected Output:**
+**Expected Output for `find -an James`:**
 ```
-Showing 1 athletes closely matching "Messi".
-Use the "refresh" command (or Cmd+R) to show all data again.
+Showing 1 athletes closely matching "James".
+Use the "refresh" command to show all data again.
 ```
 
 <div markdown="block" class="alert alert-info">
@@ -369,6 +380,12 @@ Use this command to clear any active search filters and return to viewing all da
 ```
 All filters cleared. Showing all athletes, organizations, and contracts.
 ```
+<div markdown="block" class="alert alert-info">
+
+**💡 Tip:**
+You can refresh the display anytime using **Cmd+R** (macOS) or **Ctrl+R** (Windows/Linux).
+
+</div>
 
 ### Application Controls
 
@@ -408,30 +425,30 @@ Exiting Address Book as requested ...
 
 ### Quick Syntax Guide
 
-| Command | Syntax | Description |
-|---------|--------|-------------|
-| `add-a` | `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL` | Add new athlete |
-| `delete-a` | `delete-a n/NAME s/SPORT` | Delete athlete |
-| `add-o` | `add-o o/ORG_NAME p/PHONE e/EMAIL` | Add new organization |
-| `delete-o` | `delete-o o/ORG_NAME` | Delete organization |
+| Command | Syntax                                                 | Description |
+|---------|--------------------------------------------------------|-------------|
+| `add-a` | `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL`           | Add new athlete |
+| `delete-a` | `delete-a n/NAME s/SPORT`                              | Delete athlete |
+| `add-o` | `add-o o/ORG_NAME p/PHONE e/EMAIL`                     | Add new organization |
+| `delete-o` | `delete-o o/ORG_NAME`                                  | Delete organization |
 | `add-c` | `add-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT` | Add new contract |
-| `delete-c` | `delete-c n/NAME o/ORG sd/DATE ed/DATE` | Delete contract |
-| `find` | `find -[an\|as\|on\|ca\|co\|cs] KEYWORD` | Search/filter data |
-| `refresh` | `refresh` | Clear all filters |
-| `help` | `help` | Open help window |
-| `exit` | `exit` | Close application |
+| `delete-c` | `delete-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT`       | Delete contract |
+| `find` | `find -[an\|as\|on\|ca\|co\|cs] KEYWORD`               | Search/filter data |
+| `refresh` | `refresh`                                              | Clear all filters |
+| `help` | `help`                                                 | Open help window |
+| `exit` | `exit`                                                 | Close application |
 
 ### Parameter Details
 
 **Common Parameters:**
-- `NAME`: Full name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes; must start with a letter)
-- `SPORT`: Sport name (spaces allowed, case-insensitive; alphabetic characters only)
-- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, spaces, hyphens, and apostrophes; must start with a letter)
+- `NAME`: Full Name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
+- `SPORT`: Sport (spaces allowed, case-insensitive; alphabetic characters only)
+- `AGE`: Age (positive integers only, ranging from 1 to 99)
+- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 - `PHONE`: Phone number (8-digit Singapore phone number only)
-- `EMAIL`: Email address (must contain @ symbol, case insensitive)
-- `DATE`: Format DDMMYYYY (e.g., 25122024 for December 25, 2024)
-- `AMOUNT`: Positive integers only (no currency symbols or commas)
-- `AGE`: Positive integers only (Numeric value from 1–99)
+- `EMAIL`: Email address (case-insensitive; must follow standard email format)
+- `DATE`: Date (must be in the DDMMYYYY format)
+- `AMOUNT`: Amount (Positive integers only; no currency symbols or commas)
 
 ### Keyboard Shortcuts
 
@@ -481,6 +498,9 @@ Exiting Address Book as requested ...
 **Problem:** Slow performance with large datasets  
 **Solution:** Use search filters regularly instead of browsing all data
 
+**Problem:** App behaves unexpectedly after deleting files  
+**Solution:** Never delete individual JSON files in the `data` folder.  
+If you need to reset your data, delete the entire folder instead.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Troubleshooting and FAQ

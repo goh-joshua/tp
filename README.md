@@ -6,7 +6,7 @@
 ![Ui](docs/images/Ui.png)
 
 - This is **a project for Software Engineering (SE) students**.<br>
-- The project simulates an ongoing software project for a desktop application (called _playbook.io_) used for managing athletes and partners.
+- The project simulates an ongoing software project for a desktop application (called _playbook.io_) used for managing athletes, organizations, and contracts.
   - It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
   - It comes with a **reasonable level of user and developer documentation**.
 - For the detailed documentation of this project, see the **[playbook.io product website](https://ay2526s1-cs2103t-f13-3.github.io/tp/)**.

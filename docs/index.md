@@ -10,7 +10,7 @@
 
 ![Ui](images/Ui.png)
 
-The ultimate platform that empowers sports agents to manage their athletes, team sponsors, sponsors, deals, and competition events. Allowing them to organise this complex mess of data, and focus on the work that matters.
+The ultimate platform that helps sports agents efficiently manage athletes, organizations, and contracts. It combines the speed of a Command Line Interface with the ease of a Graphical Interface, enabling agents to stay organized, build stronger relationships, and focus on closing deals.
 
 **Acknowledgements**
 
