@@ -30,6 +30,8 @@ public class NameTest {
         assertFalse(seedu.address.model.athlete.Name.isValidName("^")); // only non-alphanumeric characters
         assertFalse(seedu.address.model.athlete.Name.isValidName("peter*")); // contains non-alphanumeric characters
         assertFalse(seedu.address.model.athlete.Name.isValidName("12345")); //contains numeric
+        assertFalse(seedu.address.model.athlete.Name.isValidName("'peter")); //start with apostrophes
+        assertFalse(seedu.address.model.athlete.Name.isValidName("-peter")); //start with hyphens
 
         // valid name
         assertTrue(seedu.address.model.athlete.Name.isValidName("peter jack")); // alphabets only
