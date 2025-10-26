@@ -21,8 +21,6 @@ public class DeleteAthleteCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsDeleteAthleteCommand() {
-        // Assume the correct format is "n/Alice s/Basketball"
-        // (adjust the prefixes to match your actual DeleteAthleteCommand format)
         DeleteAthleteCommand expectedCommand = new DeleteAthleteCommand(new Name("Benson Meier"), new Sport("Pool"));
         assertParseSuccess(parser, NAME_DESC_BOB + SPORT_DESC_BOB, expectedCommand);
     }
