@@ -69,12 +69,12 @@ This guide is designed for **sports agents and talent managers** who:
    
    Open a terminal, navigate (`cd`) to that folder, and run:
    ```
-   java -jar playbook.io.jar
+   java -jar playbook.jar
    ```
    For example, if your `.jar` file is in the Downloads folder:
    ```
    cd Downloads
-   java -jar playbook.io.jar
+   java -jar playbook.jar
    ```
 
 5. **First Look**
@@ -282,7 +282,7 @@ add-c n/Serena Williams s/Tennis o/Wilson sd/01012020 ed/31122024 am/5000000
 
 **Expected Output:**
 ```
-Contract created: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -315,7 +315,7 @@ delete-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025 am/5000
 
 **Expected Output:**
 ```
-Deleted contract: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
 ```
 
 ### Finding & Filtering Data
