@@ -203,14 +203,14 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 **Target user profile**:
 
 * sports agents who manage multiple athletes and their careers
-* need to stay organised with many organizations (teams, sponsors, brands)
+* need to stay organized with many organizations (teams, sponsors, brands)
 * prefer structured tools over manual spreadsheets or scattered files
 * prefer desktop apps over other types
 * can type fast
 * prefer typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: The ultimate platform that empowers sports agents to stay organised, build stronger
+**Value proposition**: The ultimate platform that empowers sports agents to stay organized, build stronger
 relationships, and drive success for their athletes and partners.
 
 ### User stories
