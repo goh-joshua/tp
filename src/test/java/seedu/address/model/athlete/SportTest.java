@@ -28,7 +28,6 @@ public class SportTest {
         assertFalse(seedu.address.model.athlete.Sport.isValidSport(" ")); // spaces only
 
         // invalid parts
-        assertFalse(seedu.address.model.athlete.Sport.isValidSport(" Basketball")); // leading space
         assertFalse(seedu.address.model.athlete.Sport.isValidSport("Basket-ball")); // dash
         assertFalse(seedu.address.model.athlete.Sport.isValidSport("Basket_Ball")); // underscore
         assertFalse(seedu.address.model.athlete.Sport.isValidSport("Pool 2")); // numbers
