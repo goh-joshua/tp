@@ -271,7 +271,7 @@ Contracts link athletes with organizations and track the business relationships 
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
-- `am/AMOUNT`: Contract amount (Positive integers only; no currency symbols or commas)
+- `am/AMOUNT`: Contract amount (positive integers only; no currency symbols or commas)
 
 **Examples:**
 ```
@@ -290,7 +290,6 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 **⚠️ Important:** 
 - Both the athlete and organization must exist before creating a contract
 - Start date must be before or equal to end date
-- Contract amount should be positive integers only (no currency symbols)
 - Each contract must be unique. You cannot add two contracts with exactly the same details — athlete, organization, dates, and amount
 
 </div>
@@ -305,7 +304,7 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
-- `am/AMOUNT`: Contract amount (Positive integers only; no currency symbols or commas)
+- `am/AMOUNT`: Contract amount (positive integers only; no currency symbols or commas)
 
   **Examples:**
 ```
