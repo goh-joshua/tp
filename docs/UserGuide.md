@@ -333,8 +333,8 @@ The search functionality uses **fuzzy matching** to help you find what you're lo
 | `-as` | Athlete sports | `find -as Basketball` |
 | `-on` | Organization names | `find -on Nike`       |
 | `-ca` | Contracts by athlete name | `find -ca LeBron`     |
-| `-co` | Contracts by organization | `find -co Nike`       |
 | `-cs` | Contracts by sport | `find -cs Basketball` |
+| `-co` | Contracts by organization | `find -co Nike`       |
 
 **Examples:**
 ```
@@ -342,8 +342,8 @@ find -an James          # Find athletes with names like "James"
 find -as Basketball     # Find athletes with sports like "Basketball"
 find -on Nike           # Find organizations with names like "Nike"
 find -ca LeBron         # Find contracts with athletes named like "LeBron"
-find -co Nike           # Find contracts with organizations like "Nike"
 find -cs Basketball     # Find all contracts athletes' sports named like "Basketball"
+find -co Nike           # Find contracts with organizations like "Nike"
 ```
 
 **Expected Output for `find -an James`:**

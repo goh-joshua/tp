@@ -241,21 +241,26 @@ otherwise)
 **MSS**
 
 1. Agent requests to add athlete
-2. playbook.io stores the new athlete profile
+2. playbook.io creates and stores the new athlete profile
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
 
       Use case ends.
 
-* 1b. The given parameter is invalid
+* 1b. Missing required parameter
 
     * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -276,15 +281,20 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
 
       Use case ends.
 
-* 1b. The given parameter is invalid
+* 1b. Missing required parameter
 
     * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -305,21 +315,25 @@ otherwise)
 **MSS**
 
 1. Agent requests to add organization
-2. playbook.io stores the new organization profile
+2. playbook.io creates and stores the new organization profile
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
 
       Use case ends.
 
-* 1b. The given parameter is invalid
-
+* 1b. Missing required parameter
     * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -340,15 +354,20 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
 
       Use case ends.
 
-* 1b. The given parameter is invalid
+* 1b. Missing required parameter
 
     * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -369,21 +388,26 @@ otherwise)
 **MSS**
 
 1. Agent requests to add contract
-2. playbook.io stores the new contract
+2. playbook.io creates and stores the new contract
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
 
       Use case ends.
 
-* 1b. The given parameter is invalid
+* 1b. Missing required parameter
 
     * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -414,15 +438,20 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
 
       Use case ends.
 
-* 1b. The given parameter is invalid
+* 1b. Missing required parameter
 
     * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -436,16 +465,27 @@ otherwise)
 
 **MSS**
 
-1. Agent requests to find an athlete
+1. Agent requests to find an athlete, specifying either the athlete’s name or sport as a parameter
 2. playbook.io returns the list of athletes
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+  
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -459,16 +499,27 @@ otherwise)
 
 **MSS**
 
-1. Agent requests to find an organization
+1. Agent requests to find an organization, , specifying the organization’s name
 2. playbook.io returns the list of organization
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -482,16 +533,27 @@ otherwise)
 
 **MSS**
 
-1. Agent requests to find a contract
+1. Agent requests to find a contract, specifying either the athlete’s name, sport, or organization’s name as a parameter
 2. playbook.io returns the list of contracts
 
    Use case ends.
 
 **Extensions**
 
-* 1a. Missing required parameter
-
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
 
       Use case ends.
 
@@ -500,7 +562,55 @@ otherwise)
     * 2a1. playbook.io returns an empty list
 
       Use case ends.
-  
+
+**Use case: Refresh Data**
+
+**MSS**
+
+1. Agent requests to refresh to clear any active search filters
+2. playbook.io returns the latest lists of athletes, organizations, and contracts.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: View Help Information**
+
+**MSS**
+
+1. Agent requests to open the help window
+2. playbook.io opens the help window
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+**Use case: Close Session**
+
+**MSS**
+
+1. Agent requests to exit the system
+2. playbook.io closes the session
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given command is invalid 
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
