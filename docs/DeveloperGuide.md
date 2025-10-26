@@ -9,20 +9,19 @@ pageNav: 3
 <!-- * Table of Contents -->
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the
-original source as well }_
+This project was built upon the [**AddressBook-Level3 (AB3)**](https://github.com/nus-cs2103-AY2526S1/tp) codebase provided by the National University of Singapore’s **CS2103T Software Engineering** module.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Design**
 
@@ -30,7 +29,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="400" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App.
+The **_Architecture Diagram_** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -41,29 +40,29 @@ Given below is a quick overview of main components and how they interact with ea
 `MainApp`](https://github.com/AY2526S1-CS2103T-F13-3/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in
 charge of the app launch and shut down.
 
-* At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
-* At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+- At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
+- At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+- [**`UI`**](#ui-component): The UI of the App.
+- [**`Logic`**](#logic-component): The command executor.
+- [**`Model`**](#model-component): Holds the data of the App in memory.
+- [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
 ### How the architecture components interact with each other
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues
 the command `delete-a n/LeBron s/Basketball`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API
+- defines its _API_ in an `interface` with the same name as the Component.
+- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API
   `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using
@@ -97,10 +96,10 @@ is specified in [
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
-* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Athlete`, `Organization`, and `Contract` objects
+- executes user commands using the `Logic` component.
+- listens for changes to `Model` data so that the UI can be updated with the modified data.
+- keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+- depends on some classes in the `Model` component, as it displays `Athlete`, `Organization`, and `Contract` objects
   residing in the `Model`.
 
 ### Logic component
@@ -136,12 +135,12 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 
 How the parsing works:
 
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser`
+- When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser`
   (`XYZ` is a placeholder for the specific command name, e.g., `AddAthleteCommandParser`,
   `AddOrganizationCommandParser`,
   `AddContractCommandParser`, `DeleteAthleteCommandParser`, etc.), which uses the other classes shown above to parse
   the user command and create an `XYZCommand` object (e.g., `AddAthleteCommand`).
-* All `XYZCommandParser` classes (e.g., `AddAthleteCommandParser`, `DeleteAthleteCommandParser`,
+- All `XYZCommandParser` classes (e.g., `AddAthleteCommandParser`, `DeleteAthleteCommandParser`,
   `AddOrganizationCommandParser`)
   implement the `Parser` interface so that they can be treated uniformly (e.g., during testing).
 
@@ -154,14 +153,14 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the application data — i.e., all `Athlete`, `Organization`, and `Contract` objects, which are contained in
+- stores the application data — i.e., all `Athlete`, `Organization`, and `Contract` objects, which are contained in
   `UniqueAthleteList`, `UniqueOrganizationList`, and `UniqueContractList` objects respectively.
-* stores the currently “selected” data (e.g., results of a search query) as separate _filtered_ lists, which are exposed
+- stores the currently “selected” data (e.g., results of a search query) as separate _filtered_ lists, which are exposed
   to the outside as unmodifiable `ObservableList<>` objects (for example, `ObservableList<Athlete>`). This allows the UI
   to automatically update when the underlying data changes.
-* stores a `UserPrefs` object that represents the user’s preferences. This is exposed to the outside as a
+- stores a `UserPrefs` object that represents the user’s preferences. This is exposed to the outside as a
   `ReadOnlyUserPrefs` object.
-* does not depend on any of the other three components (as the `Model` represents domain data that should make sense
+- does not depend on any of the other three components (as the `Model` represents domain data that should make sense
   independently of other layers).
 
 ### Storage component
@@ -173,28 +172,28 @@ The `Model` component,
 
 The `Storage` component,
 
-* can save both application data (including `Athlete`, `Organization`, and `Contract` information) and user preference
+- can save both application data (including `Athlete`, `Organization`, and `Contract` information) and user preference
   data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefsStorage`, which means it can be treated as either one if only
+- inherits from both `AddressBookStorage` and `UserPrefsStorage`, which means it can be treated as either one if only
   the functionality of one is needed.
-* depends on some classes in the `Model` component, because the `Storage` component’s job is to save and retrieve
+- depends on some classes in the `Model` component, because the `Storage` component’s job is to save and retrieve
   objects that belong to the `Model`.
 
 ### Common classes
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+- [Documentation guide](Documentation.md)
+- [Testing guide](Testing.md)
+- [Logging guide](Logging.md)
+- [Configuration guide](Configuration.md)
+- [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Appendix: Requirements**
 
@@ -202,13 +201,13 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 **Target user profile**:
 
-* sports agents who manage multiple athletes and their careers
-* need to stay organised with many organizations (teams, sponsors, brands)
-* prefer structured tools over manual spreadsheets or scattered files
-* prefer desktop apps over other types
-* can type fast
-* prefer typing to mouse interactions
-* is reasonably comfortable using CLI apps
+- sports agents who manage multiple athletes and their careers
+- need to stay organised with many organizations (teams, sponsors, brands)
+- prefer structured tools over manual spreadsheets or scattered files
+- prefer desktop apps over other types
+- can type fast
+- prefer typing to mouse interactions
+- is reasonably comfortable using CLI apps
 
 **Value proposition**: The ultimate platform that empowers sports agents to stay organised, build stronger
 relationships, and drive success for their athletes and partners.
@@ -218,7 +217,7 @@ relationships, and drive success for their athletes and partners.
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​      | I want to …​                                                                                 | So that I can…​                                                      |
-|----------|--------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| -------- | ------------ | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `* * *`  | new user     | see usage instructions                                                                       | refer to instructions when I forget how to use the App               |
 | `* * *`  | sports agent | create a new athlete profile                                                                 | keep track of the athletes I currently represent                     |
 | `* * *`  | sports agent | delete an athlete profile                                                                    | remove athletes I no longer represent                                |
@@ -247,23 +246,20 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
+    Use case ends.
 
-    * 1b1. playbook.io shows an error message
+- 2a. Duplicate athlete
+  - 2a1. playbook.io shows an error message
 
-      Use case ends.
-
-* 2a. Duplicate athlete
-
-    * 2a1. playbook.io shows an error message
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Delete Athlete Profile**
 
@@ -276,29 +272,25 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
+    Use case ends.
 
-    * 1b1. playbook.io shows an error message
+- 2a. No athlete found
+  - 2a1. playbook.io shows an error message
 
-      Use case ends.
+    Use case ends.
 
-* 2a. No athlete found
+- 2b. Athlete has active contracts
+  - 2b1. playbook.io shows an error message
 
-    * 2a1. playbook.io shows an error message
-
-      Use case ends.
-
-* 2b. Athlete has active contracts
-
-    * 2b1. playbook.io shows an error message
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Add Organization Profile**
 
@@ -311,23 +303,20 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
+    Use case ends.
 
-    * 1b1. playbook.io shows an error message
+- 2a Duplicate organization
+  - 2a1. playbook.io shows an error message
 
-      Use case ends.
-
-* 2a Duplicate organization
-
-    * 2a1. playbook.io shows an error message
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Delete Organization**
 
@@ -340,29 +329,25 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
+    Use case ends.
 
-    * 1b1. playbook.io shows an error message
+- 2a. No organization found
+  - 2a1. playbook.io shows an error message
 
-      Use case ends.
+    Use case ends.
 
-* 2a. No organization found
+- 2b. Organization has active contracts
+  - 2b1. playbook.io shows an error message
 
-    * 2a1. playbook.io shows an error message
-
-      Use case ends.
-
-* 2b. Organization has active contracts
-
-    * 2b1. playbook.io shows an error message
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Add Contract**
 
@@ -375,33 +360,30 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
+    Use case ends.
 
-    * 1b1. playbook.io shows an error message
+- 2a. Athlete does not exist
+  - 2a1. playbook.io shows an error message
 
-      Use case ends.
+    Use case ends.
 
-* 2a. Athlete does not exist
+- 2b. Organization does not exist
+  - 2b1. playbook.io shows an error message
 
-    * 2a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 2c. Duplicate contract
+  - 2c1. playbook.io shows an error message
 
-* 2b. Organization does not exist
-    * 2b1. playbook.io shows an error message
-
-      Use case ends.
-* 2c. Duplicate contract
-
-    * 2c1. playbook.io shows an error message
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Delete Contract**
 
@@ -414,23 +396,20 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
+    Use case ends.
 
-    * 1b1. playbook.io shows an error message
+- 2a. No contract found
+  - 2a1. playbook.io shows an error message
 
-      Use case ends.
-
-* 2a. No contract found
-
-    * 2a1. playbook.io shows an error message
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Find Athlete**
 
@@ -443,17 +422,15 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 2a. No athlete found
+  - 2a1. playbook.io returns an empty list
 
-* 2a. No athlete found
-
-    * 2a1. playbook.io returns an empty list
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Find Organization**
 
@@ -466,17 +443,15 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 2a. No organization found
+  - 2a1. playbook.io returns an empty list
 
-* 2a. No organization found
-
-    * 2a1. playbook.io returns an empty list
-
-      Use case ends.
+    Use case ends.
 
 **Use case: Find Contract**
 
@@ -489,18 +464,16 @@ otherwise)
 
 **Extensions**
 
-* 1a. Missing required parameter
+- 1a. Missing required parameter
+  - 1a1. playbook.io shows an error message
 
-    * 1a1. playbook.io shows an error message
+    Use case ends.
 
-      Use case ends.
+- 2a. No contract found
+  - 2a1. playbook.io returns an empty list
 
-* 2a. No contract found
+    Use case ends.
 
-    * 2a1. playbook.io returns an empty list
-
-      Use case ends.
-  
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
@@ -508,31 +481,31 @@ otherwise)
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid
-   input is detected. 
+   input is detected.
 5. Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for
-   ease of deployment across environments. 
-6. Should allow a new user to learn the system within 10 minutes by following the user guide. 
+   ease of deployment across environments.
+6. Should allow a new user to learn the system within 10 minutes by following the user guide.
 7. Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes,
-   organizations, or contracts under normal usage load. 
+   organizations, or contracts under normal usage load.
 8. Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport).
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Athlete**: An individual sports performer managed by the agent, with contact details and sport specialization.
-* **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
-* **Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
-* **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
-* **Sports Agent**: A professional who represents athletes in contract negotiations and career management.
+- **Mainstream OS**: Windows, Linux, Unix, MacOS
+- **Athlete**: An individual sports performer managed by the agent, with contact details and sport specialization.
+- **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
+- **Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
+- **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
+- **Sports Agent**: A professional who represents athletes in contract negotiations and career management.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
 > **Note:** These instructions only provide a starting point for testers to work on;
-> testers are expected to do more *exploratory* testing.
+> testers are expected to do more _exploratory_ testing.
 
 ### Launch and shutdown
 
@@ -569,8 +542,8 @@ The most recent window size and location is retained.
 #### 1. Deleting an athlete while all athletes are being shown
 
 1. **Prerequisites:**
-    - Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
-    - Ensure the athlete to be deleted has no existing contracts.
+   - Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
+   - Ensure the athlete to be deleted has no existing contracts.
 2. **Test case:** `delete-a n/Lebron James s/Basketball`  
    **Expected:** Athlete is deleted from the list. Details of the deleted athlete shown in the result pane.
 3. **Test case:** `delete-a n/Lebron James s/`  
@@ -579,6 +552,7 @@ The most recent window size and location is retained.
    **Expected:** Similar to previous.
 
 ### Adding an organization
+
 #### 1. Adding an organization while all organizations are being shown
 
 1. **Prerequisites:** Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
@@ -594,8 +568,8 @@ The most recent window size and location is retained.
 #### 1. Deleting an organization while all organizations are being shown
 
 1. **Prerequisites:**
-    - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
-    - Ensure organization to be deleted has no existing contracts.
+   - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
+   - Ensure organization to be deleted has no existing contracts.
 2. **Test case:** `delete-o n/Nike`  
    **Expected:** Organization is deleted from the list. Details of the deleted organization shown in the result pane.
 3. **Test case:** `delete-o n/`  
@@ -608,8 +582,8 @@ The most recent window size and location is retained.
 #### 1. Adding a contract while all contracts are being shown
 
 1. **Prerequisites:**
-    - Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
-    - Ensure the athlete and organization exist in the system.
+   - Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
+   - Ensure the athlete and organization exist in the system.
 2. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`  
    **Expected:** Contract is added to the contracts list. Details of the added contract shown in the result pane.
 3. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/`  
