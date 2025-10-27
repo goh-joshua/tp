@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-This project was built upon the [**AddressBook-Level3 (AB3)**](https://github.com/nus-cs2103-AY2526S1/tp) codebase provided by the National University of Singapore’s **CS2103T Software Engineering** module.
+This project was built upon the [_AddressBook-Level3 (AB3)_](https://github.com/nus-cs2103-AY2526S1/tp) codebase provided by the National University of Singapore’s **CS2103T Software Engineering** module.
 
 ---
 
@@ -45,12 +45,12 @@ charge of the app launch and shut down.
 
 The bulk of the app's work is done by the following four components:
 
-- [**`UI`**](#ui-component): The UI of the App.
-- [**`Logic`**](#logic-component): The command executor.
-- [**`Model`**](#model-component): Holds the data of the App in memory.
-- [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+- [_`UI`_](#ui-component): The UI of the App.
+- [_`Logic`_](#logic-component): The command executor.
+- [_`Model`_](#model-component): Holds the data of the App in memory.
+- [_`Storage`_](#storage-component): Reads data from, and writes data to, the hard disk.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[_`Commons`_](#common-classes) represents a collection of classes used by multiple other components.
 
 ### How the architecture components interact with each other
 
@@ -189,13 +189,13 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-- [Documentation guide](Documentation.md)
-- [Testing guide](Testing.md)
-- [Logging guide](Logging.md)
-- [Configuration guide](Configuration.md)
-- [DevOps guide](DevOps.md)
+* [Documentation guide](Documentation.md)
+* [Testing guide](Testing.md)
+* [Logging guide](Logging.md)
+* [Configuration guide](Configuration.md)
+* [DevOps guide](DevOps.md)
 
----
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Requirements**
 
@@ -203,13 +203,13 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 **Target user profile**:
 
-- sports agents who manage multiple athletes and their careers
-- need to stay organized with many organizations (teams, sponsors, brands)
-- prefer structured tools over manual spreadsheets or scattered files
-- prefer desktop apps over other types
-- can type fast
-- prefer typing to mouse interactions
-- is reasonably comfortable using CLI apps
+* sports agents who manage multiple athletes and their careers
+* need to stay organized with many organizations (teams, sponsors, brands)
+* prefer structured tools over manual spreadsheets or scattered files
+* prefer desktop apps over other types
+* can type fast
+* prefer typing to mouse interactions
+* is reasonably comfortable using CLI apps
 
 **Value proposition**: The ultimate platform that empowers sports agents to stay organized, build stronger
 relationships, and drive success for their athletes and partners.
@@ -219,7 +219,7 @@ relationships, and drive success for their athletes and partners.
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
 | Priority | As a …​      | I want to …​                                                                                 | So that I can…​                                                      |
-| -------- | ------------ | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+|----------|--------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | `* * *`  | new user     | see usage instructions                                                                       | refer to instructions when I forget how to use the App               |
 | `* * *`  | sports agent | create a new athlete profile                                                                 | keep track of the athletes I currently represent                     |
 | `* * *`  | sports agent | delete an athlete profile                                                                    | remove athletes I no longer represent                                |
@@ -248,28 +248,28 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+      Use case ends.
 
-- 1b. Missing required parameter
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. Duplicate athlete
-  - 2a1. playbook.io shows an error message
 
-    Use case ends.
+    * 2a1. playbook.io shows an error message
 
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
-
-    Use case ends.
-
-- 2a. Duplicate athlete
-  - 2a1. playbook.io shows an error message
-
-    Use case ends.
+      Use case ends.
 
 **Use case: Delete Athlete Profile**
 
@@ -282,27 +282,34 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+      Use case ends.
 
-- 1b. Missing required parameter
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. No athlete found
-  - 2a1. playbook.io shows an error message
 
-    Use case ends.
+    * 2a1. playbook.io shows an error message
 
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
+      Use case ends.
 
-    Use case ends.
+* 2b. Athlete has active contracts
 
-- 2a. No athlete found
+    * 2b1. playbook.io shows an error message
 
-  Use case ends.
+      Use case ends.
 
 **Use case: Add Organization Profile**
 
@@ -315,26 +322,27 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+      Use case ends.
 
-- 1b. Missing required parameter
-  - 1b1. playbook.io shows an error message
+* 1b. Missing required parameter
+    * 1b1. playbook.io shows an error message
 
-    Use case ends.
+      Use case ends.
 
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
+* 1c. The given parameter is invalid
 
-    Use case ends.
+    * 1c1. playbook.io shows an error message
 
-- 2a Duplicate organization
-  - 2a1. playbook.io shows an error message
+      Use case ends.
 
-    Use case ends.
+* 2a Duplicate organization
+
+    * 2a1. playbook.io shows an error message
+
+      Use case ends.
 
 **Use case: Delete Organization**
 
@@ -347,27 +355,34 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+      Use case ends.
 
-- 1b. Missing required parameter
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. No organization found
-  - 2a1. playbook.io shows an error message
 
-    Use case ends.
+    * 2a1. playbook.io shows an error message
 
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
+      Use case ends.
 
-    Use case ends.
+* 2b. Organization has active contracts
 
-- 2a. No organization found
+    * 2b1. playbook.io shows an error message
 
-  Use case ends.
+      Use case ends.
 
 **Use case: Add Contract**
 
@@ -380,32 +395,38 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+      Use case ends.
 
-- 1b. Missing required parameter
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. Athlete does not exist
-  - 2a1. playbook.io shows an error message
 
-    Use case ends.
+    * 2a1. playbook.io shows an error message
 
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
+      Use case ends.
 
-    Use case ends.
+* 2b. Organization does not exist
+    * 2b1. playbook.io shows an error message
 
-- 2a. Athlete does not exist
-
-  Use case ends.
-
+      Use case ends.
 * 2c. Duplicate contract
-  - 2c1. playbook.io shows an error message
 
-    Use case ends.
+    * 2c1. playbook.io shows an error message
+
+      Use case ends.
 
 **Use case: Delete Contract**
 
@@ -418,28 +439,28 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-* 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+      Use case ends.
 
-- 1b. Missing required parameter
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. No contract found
-  - 2a1. playbook.io shows an error message
 
-    Use case ends.
+    * 2a1. playbook.io shows an error message
 
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
-
-    Use case ends.
-
-- 2a. No contract found
-  - 2a1. playbook.io shows an error message
-
-    Use case ends.
+      Use case ends.
 
 **Use case: Find Athlete**
 
@@ -452,26 +473,28 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. No athlete found
-  - 2a1. playbook.io returns an empty list
 
-- 1b. Missing required parameter
-  - 1b1. playbook.io shows an error message
+    * 2a1. playbook.io returns an empty list
 
-    Use case ends.
-
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
-
-    Use case ends.
-
-- 2a. No athlete found
-  - 2a1. playbook.io returns an empty list
-
-    Use case ends.
+      Use case ends.
 
 **Use case: Find Organization**
 
@@ -484,26 +507,28 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. No organization found
-  - 2a1. playbook.io returns an empty list
 
-- 1b. Missing required parameter
-  - 1b1. playbook.io shows an error message
+    * 2a1. playbook.io returns an empty list
 
-    Use case ends.
-
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
-
-    Use case ends.
-
-- 2a. No organization found
-  - 2a1. playbook.io returns an empty list
-
-    Use case ends.
+      Use case ends.
 
 **Use case: Find Contract**
 
@@ -516,26 +541,28 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1b. Missing required parameter
+
+    * 1b1. playbook.io shows an error message
+
+      Use case ends.
+
+* 1c. The given parameter is invalid
+
+    * 1c1. playbook.io shows an error message
+
+      Use case ends.
 
 * 2a. No contract found
-  - 2a1. playbook.io returns an empty list
 
-- 1b. Missing required parameter
-  - 1b1. playbook.io shows an error message
+    * 2a1. playbook.io returns an empty list
 
-    Use case ends.
-
-- 1c. The given parameter is invalid
-  - 1c1. playbook.io shows an error message
-
-    Use case ends.
-
-- 2a. No contract found
-  - 2a1. playbook.io returns an empty list
-
-    Use case ends.
+      Use case ends.
 
 **Use case: Refresh Data**
 
@@ -548,10 +575,10 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-    Use case ends.
+      Use case ends.
 
 **Use case: View Help Information**
 
@@ -564,10 +591,10 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-    Use case ends.
+      Use case ends.
 
 **Use case: Close Session**
 
@@ -580,10 +607,10 @@ otherwise)
 
 **Extensions**
 
-- 1a. The given command is invalid
-  - 1a1. playbook.io shows an error message
+* 1a. The given command is invalid
+    * 1a1. playbook.io shows an error message
 
-    Use case ends.
+      Use case ends.
 
 ### Non-Functional Requirements
 
@@ -602,21 +629,21 @@ otherwise)
 
 ### Glossary
 
-- **Mainstream OS**: Windows, Linux, Unix, MacOS
-- **Athlete**: An individual sports performer managed by the agent, with contact details and sport specialization.
-- **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
-- **Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
-- **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
-- **Sports Agent**: A professional who represents athletes in contract negotiations and career management.
+* **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **Athlete**: An individual sports performer managed by the agent, with contact details and sport specialization.
+* **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
+* **Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
+* **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
+* **Sports Agent**: A professional who represents athletes in contract negotiations and career management.
 
----
+--------------------------------------------------------------------------------------------------------------------
 
 ## Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
 > **Note:** These instructions only provide a starting point for testers to work on;
-> testers are expected to do more _exploratory_ testing.
+> testers are expected to do more *exploratory* testing.
 
 ### Launch and shutdown
 
@@ -653,8 +680,8 @@ The most recent window size and location is retained.
 #### 1. Deleting an athlete while all athletes are being shown
 
 1. **Prerequisites:**
-   - Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
-   - Ensure the athlete to be deleted has no existing contracts.
+    - Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
+    - Ensure the athlete to be deleted has no existing contracts.
 2. **Test case:** `delete-a n/Lebron James s/Basketball`
    **Expected:** Athlete is deleted from the list. Details of the deleted athlete shown in the result pane.
 3. **Test case:** `delete-a n/Lebron James s/`
@@ -663,7 +690,6 @@ The most recent window size and location is retained.
    **Expected:** Similar to previous.
 
 ### Adding an organization
-
 #### 1. Adding an organization while all organizations are being shown
 
 1. **Prerequisites:** Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
@@ -679,8 +705,8 @@ The most recent window size and location is retained.
 #### 1. Deleting an organization while all organizations are being shown
 
 1. **Prerequisites:**
-   - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
-   - Ensure organization to be deleted has no existing contracts.
+    - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
+    - Ensure organization to be deleted has no existing contracts.
 2. **Test case:** `delete-o n/Nike`
    **Expected:** Organization is deleted from the list. Details of the deleted organization shown in the result pane.
 3. **Test case:** `delete-o n/`
@@ -693,8 +719,8 @@ The most recent window size and location is retained.
 #### 1. Adding a contract while all contracts are being shown
 
 1. **Prerequisites:**
-   - Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
-   - Ensure the athlete and organization exist in the system.
+    - Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
+    - Ensure the athlete and organization exist in the system.
 2. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`
    **Expected:** Contract is added to the contracts list. Details of the added contract shown in the result pane.
 3. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/`
