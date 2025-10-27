@@ -22,7 +22,7 @@ public class ContractMessages {
         return new StringBuilder()
                 .append("Athlete: ").append(contract.getAthlete().getName())
                 .append("; Sport: ").append(contract.getSport())
-                .append("; Organisation: ").append(contract.getOrganization().getName())
+                .append("; Organization: ").append(contract.getOrganization().getName())
                 .append("; Start: ").append(contract.getStartDate())
                 .append("; End: ").append(contract.getEndDate())
                 .append("; Amount: ").append(contract.getAmount())

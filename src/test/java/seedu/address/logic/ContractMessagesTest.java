@@ -56,7 +56,7 @@ public class ContractMessagesTest {
 
         // Match exact structure expected by ContractMessages
         String expected = String.format(
-                "Athlete: %s; Sport: %s; Organisation: %s; Start: %s; End: %s; Amount: %s",
+                "Athlete: %s; Sport: %s; Organization: %s; Start: %s; End: %s; Amount: %s",
                 athlete.getName(), SPORT, organization.getName(), START, END, AMT);
 
         assertEquals(expected, formatted);

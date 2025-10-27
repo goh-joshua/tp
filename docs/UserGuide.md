@@ -69,12 +69,12 @@ This guide is designed for **sports agents and talent managers** who:
    
    Open a terminal, navigate (`cd`) to that folder, and run:
    ```
-   java -jar playbook.io.jar
+   java -jar playbook.jar
    ```
    For example, if your `.jar` file is in the Downloads folder:
    ```
    cd Downloads
-   java -jar playbook.io.jar
+   java -jar playbook.jar
    ```
 
 5. **First Look**
@@ -182,6 +182,7 @@ New athlete added: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Em
 ```
 delete-a n/Lebron James s/Basketball
 delete-a n/Cristiano Ronaldo s/Football
+delete-a n/Michael Jordan s/Basketball
 ```
 
 **Expected Output:**
@@ -244,6 +245,7 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
 delete-o o/Nike
 delete-o o/Manchester United
+delete-o o/IMG Academy
 ```
 
 **Expected Output:**
@@ -271,18 +273,18 @@ Contracts link athletes with organizations and track the business relationships 
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
-- `am/AMOUNT`: Contract amount (Positive integers only; no currency symbols or commas)
+- `am/AMOUNT`: Contract amount (positive integers only; no currency symbols or commas)
 
 **Examples:**
 ```
 add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000
-add-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025 am/50000000
-add-c n/Serena Williams s/Tennis o/Wilson sd/01012020 ed/31122024 am/5000000
+add-c n/Cristiano Ronaldo s/Football o/Manchester United sd/01072023 ed/31122025 am/50000000
+add-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/5000000
 ```
 
 **Expected Output:**
 ```
-Contract created: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -290,7 +292,6 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; 
 **⚠️ Important:** 
 - Both the athlete and organization must exist before creating a contract
 - Start date must be before or equal to end date
-- Contract amount should be positive integers only (no currency symbols)
 - Each contract must be unique. You cannot add two contracts with exactly the same details — athlete, organization, dates, and amount
 
 </div>
@@ -305,17 +306,18 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; 
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
-- `am/AMOUNT`: Contract amount (Positive integers only; no currency symbols or commas)
+- `am/AMOUNT`: Contract amount (positive integers only; no currency symbols or commas)
 
   **Examples:**
 ```
 delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000
-delete-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025 am/50000000
+delete-c n/Cristiano Ronaldo s/Football o/Manchester United sd/01072023 ed/31122025 am/50000000
+delete-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/5000000
 ```
 
 **Expected Output:**
 ```
-Deleted contract: Athlete: Lebron James; Sport: Basketball; Organisation: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
 ```
 
 ### Finding & Filtering Data
@@ -334,8 +336,8 @@ The search functionality uses **fuzzy matching** to help you find what you're lo
 | `-as` | Athlete sports | `find -as Basketball` |
 | `-on` | Organization names | `find -on Nike`       |
 | `-ca` | Contracts by athlete name | `find -ca LeBron`     |
-| `-co` | Contracts by organization | `find -co Nike`       |
 | `-cs` | Contracts by sport | `find -cs Basketball` |
+| `-co` | Contracts by organization | `find -co Nike`       |
 
 **Examples:**
 ```
@@ -343,8 +345,8 @@ find -an James          # Find athletes with names like "James"
 find -as Basketball     # Find athletes with sports like "Basketball"
 find -on Nike           # Find organizations with names like "Nike"
 find -ca LeBron         # Find contracts with athletes named like "LeBron"
-find -co Nike           # Find contracts with organizations like "Nike"
 find -cs Basketball     # Find all contracts athletes' sports named like "Basketball"
+find -co Nike           # Find contracts with organizations like "Nike"
 ```
 
 **Expected Output for `find -an James`:**
@@ -443,7 +445,7 @@ Exiting Address Book as requested ...
 - `PHONE`: Phone number (8-digit Singapore phone number only)
 - `EMAIL`: Email address (case-insensitive; must follow standard email format)
 - `DATE`: Date (must be in the DDMMYYYY format)
-- `AMOUNT`: Amount (Positive integers only; no currency symbols or commas)
+- `AMOUNT`: Amount (positive integers only; no currency symbols or commas)
 
 ### Keyboard Shortcuts
 
@@ -484,9 +486,6 @@ Exiting Address Book as requested ...
 **Problem:** "Athlete not found" when adding contracts  
 **Solution:** Use `find -an [name]` first to verify the exact name spelling
 
-**Problem:** Accidentally deleted important data  
-**Solution:** Data is automatically saved after each command - restart the application to restore the previous state
-
 **Problem:** Too many search results  
 **Solution:** Use more specific keywords or combine with tab switching
 
@@ -496,6 +495,7 @@ Exiting Address Book as requested ...
 **Problem:** App behaves unexpectedly after deleting files  
 **Solution:** Never delete individual JSON files in the `data` folder.  
 If you need to reset your data, delete the entire folder instead.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Troubleshooting and FAQ
@@ -512,7 +512,7 @@ If you need to reset your data, delete the entire folder instead.
 
 ### Common Error Messages
 
-**"Command not recognized"**
+**"Error: Unknown command"**
 - Check spelling of command name
 - Ensure you're using the correct flags (e.g., `-an` not `-name`)
 - See [Command Reference](#command-reference) for exact syntax
@@ -522,14 +522,15 @@ If you need to reset your data, delete the entire folder instead.
 - No spaces, dashes, or slashes in dates
 - Ensure day/month values are valid (01-31 for days, 01-12 for months)
 
-**"Athlete/Organization not found"**
+**"Athlete/Organization/Contract not found"**
 - Use `find` commands to locate the exact name
 - Check for typos or extra spaces
 - Names are case-sensitive and must match exactly
 
-**"Duplicate entry"**
+**"Athlete/Organization/Contract already exists"**
 - Athlete name + sport combinations must be unique
 - Organization names must be unique
+- Contracts must have unique parameter combinations
 - Try slightly different name variations if needed
 
 ### Performance Issues
@@ -548,7 +549,7 @@ If you need to reset your data, delete the entire folder instead.
 
 **Additional Resources:**
 - [GitHub Repository](https://github.com/AY2526S1-CS2103T-F13-3/tp) for technical issues
-- [Developer Guide](DeveloperGuide.md) for advanced customization
+- [Developer Guide](https://ay2526s1-cs2103t-f13-3.github.io/tp/DeveloperGuide.html) for advanced customization
 - Community forums for user tips and tricks
 
 **Reporting Bugs:**

@@ -14,7 +14,7 @@ public class OrganizationName {
                     + "must start with a letter, and cannot be blank.";
 
     /*
-     * Organization names can include letters, digits, spaces, apostrophes, ampersands, and hyphens.
+     * Organization names can include letters, spaces, apostrophes,and hyphens.
      * Must contain at least one alphanumeric character and cannot be blank.
      */
     public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z' -]*$";

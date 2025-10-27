@@ -204,14 +204,14 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 **Target user profile**:
 
 - sports agents who manage multiple athletes and their careers
-- need to stay organised with many organizations (teams, sponsors, brands)
+- need to stay organized with many organizations (teams, sponsors, brands)
 - prefer structured tools over manual spreadsheets or scattered files
 - prefer desktop apps over other types
 - can type fast
 - prefer typing to mouse interactions
 - is reasonably comfortable using CLI apps
 
-**Value proposition**: The ultimate platform that empowers sports agents to stay organised, build stronger
+**Value proposition**: The ultimate platform that empowers sports agents to stay organized, build stronger
 relationships, and drive success for their athletes and partners.
 
 ### User stories
@@ -242,19 +242,27 @@ otherwise)
 **MSS**
 
 1. Agent requests to add athlete
-2. playbook.io stores the new athlete profile
+2. playbook.io creates and stores the new athlete profile
 
    Use case ends.
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
+
+* 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
+
+- 1b. Missing required parameter
+
+* 2a. Duplicate athlete
+  - 2a1. playbook.io shows an error message
 
     Use case ends.
 
-- 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
 
@@ -274,44 +282,52 @@ otherwise)
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
 
-    Use case ends.
-
-- 1b. The given parameter is invalid
+* 1b. The given parameter is invalid
   - 1b1. playbook.io shows an error message
 
-    Use case ends.
+- 1b. Missing required parameter
 
-- 2a. No athlete found
+* 2a. No athlete found
   - 2a1. playbook.io shows an error message
 
     Use case ends.
 
-- 2b. Athlete has active contracts
-  - 2b1. playbook.io shows an error message
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
+
+- 2a. No athlete found
+
+  Use case ends.
 
 **Use case: Add Organization Profile**
 
 **MSS**
 
 1. Agent requests to add organization
-2. playbook.io stores the new organization profile
+2. playbook.io creates and stores the new organization profile
 
    Use case ends.
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
+
+* 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
+
+- 1b. Missing required parameter
+  - 1b1. playbook.io shows an error message
 
     Use case ends.
 
-- 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
 
@@ -331,58 +347,62 @@ otherwise)
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
 
-    Use case ends.
-
-- 1b. The given parameter is invalid
+* 1b. The given parameter is invalid
   - 1b1. playbook.io shows an error message
 
-    Use case ends.
+- 1b. Missing required parameter
 
-- 2a. No organization found
+* 2a. No organization found
   - 2a1. playbook.io shows an error message
 
     Use case ends.
 
-- 2b. Organization has active contracts
-  - 2b1. playbook.io shows an error message
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
+
+- 2a. No organization found
+
+  Use case ends.
 
 **Use case: Add Contract**
 
 **MSS**
 
 1. Agent requests to add contract
-2. playbook.io stores the new contract
+2. playbook.io creates and stores the new contract
 
    Use case ends.
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
 
-    Use case ends.
-
-- 1b. The given parameter is invalid
+* 1b. The given parameter is invalid
   - 1b1. playbook.io shows an error message
 
-    Use case ends.
+- 1b. Missing required parameter
 
-- 2a. Athlete does not exist
+* 2a. Athlete does not exist
   - 2a1. playbook.io shows an error message
 
     Use case ends.
 
-- 2b. Organization does not exist
-  - 2b1. playbook.io shows an error message
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
 
-- 2c. Duplicate contract
+- 2a. Athlete does not exist
+
+  Use case ends.
+
+* 2c. Duplicate contract
   - 2c1. playbook.io shows an error message
 
     Use case ends.
@@ -398,13 +418,21 @@ otherwise)
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
+
+* 1b. The given parameter is invalid
+  - 1b1. playbook.io shows an error message
+
+- 1b. Missing required parameter
+
+* 2a. No contract found
+  - 2a1. playbook.io shows an error message
 
     Use case ends.
 
-- 1b. The given parameter is invalid
-  - 1b1. playbook.io shows an error message
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
 
@@ -417,15 +445,26 @@ otherwise)
 
 **MSS**
 
-1. Agent requests to find an athlete
+1. Agent requests to find an athlete, specifying either the athlete’s name or sport as a parameter
 2. playbook.io returns the list of athletes
 
    Use case ends.
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
+
+* 2a. No athlete found
+  - 2a1. playbook.io returns an empty list
+
+- 1b. Missing required parameter
+  - 1b1. playbook.io shows an error message
+
+    Use case ends.
+
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
 
@@ -438,15 +477,26 @@ otherwise)
 
 **MSS**
 
-1. Agent requests to find an organization
+1. Agent requests to find an organization, , specifying the organization’s name
 2. playbook.io returns the list of organization
 
    Use case ends.
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
+
+* 2a. No organization found
+  - 2a1. playbook.io returns an empty list
+
+- 1b. Missing required parameter
+  - 1b1. playbook.io shows an error message
+
+    Use case ends.
+
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
 
@@ -459,20 +509,79 @@ otherwise)
 
 **MSS**
 
-1. Agent requests to find a contract
+1. Agent requests to find a contract, specifying either the athlete’s name, sport, or organization’s name as a parameter
 2. playbook.io returns the list of contracts
 
    Use case ends.
 
 **Extensions**
 
-- 1a. Missing required parameter
+- 1a. The given command is invalid
   - 1a1. playbook.io shows an error message
+
+* 2a. No contract found
+  - 2a1. playbook.io returns an empty list
+
+- 1b. Missing required parameter
+  - 1b1. playbook.io shows an error message
+
+    Use case ends.
+
+- 1c. The given parameter is invalid
+  - 1c1. playbook.io shows an error message
 
     Use case ends.
 
 - 2a. No contract found
   - 2a1. playbook.io returns an empty list
+
+    Use case ends.
+
+**Use case: Refresh Data**
+
+**MSS**
+
+1. Agent requests to refresh to clear any active search filters
+2. playbook.io returns the latest lists of athletes, organizations, and contracts.
+
+   Use case ends.
+
+**Extensions**
+
+- 1a. The given command is invalid
+  - 1a1. playbook.io shows an error message
+
+    Use case ends.
+
+**Use case: View Help Information**
+
+**MSS**
+
+1. Agent requests to open the help window
+2. playbook.io opens the help window
+
+   Use case ends.
+
+**Extensions**
+
+- 1a. The given command is invalid
+  - 1a1. playbook.io shows an error message
+
+    Use case ends.
+
+**Use case: Close Session**
+
+**MSS**
+
+1. Agent requests to exit the system
+2. playbook.io closes the session
+
+   Use case ends.
+
+**Extensions**
+
+- 1a. The given command is invalid
+  - 1a1. playbook.io shows an error message
 
     Use case ends.
 

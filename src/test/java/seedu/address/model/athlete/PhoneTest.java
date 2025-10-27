@@ -27,10 +27,11 @@ public class PhoneTest {
         // invalid phone numbers
         assertFalse(seedu.address.model.athlete.Phone.isValidPhone("")); // empty string
         assertFalse(seedu.address.model.athlete.Phone.isValidPhone(" ")); // spaces only
-        assertFalse(seedu.address.model.athlete.Phone.isValidPhone("91")); // less than 3 numbers
+        assertFalse(seedu.address.model.athlete.Phone.isValidPhone("91")); // less than 8 numbers
         assertFalse(seedu.address.model.athlete.Phone.isValidPhone("phone")); // non-numeric
         assertFalse(seedu.address.model.athlete.Phone.isValidPhone("9011p041")); // alphabets within digits
         assertFalse(seedu.address.model.athlete.Phone.isValidPhone("9312 1534")); // spaces within digits
+        assertFalse(seedu.address.model.athlete.Phone.isValidPhone("9312111534")); // more than 9 numbers
 
         // valid phone numbers
         assertTrue(seedu.address.model.athlete.Phone.isValidPhone("91234567"));
