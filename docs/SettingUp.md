@@ -15,8 +15,8 @@
 
 1. **Check your system requirements**
 
-   Make sure you have **Java 17 or above** installed on your computer.  
-    You can verify this by running the following command in your terminal or command prompt:
+   Make sure you have **Java 17 or above** installed on your computer.
+   You can verify this by running the following command in your terminal or command prompt:
    `java -version`
    If Java is not installed, download it from [Oracle’s JDK 17 page](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) or use [OpenJDK 17](https://openjdk.org/projects/jdk/17/).
 
@@ -36,12 +36,12 @@
 
 4. **Saving your data**
 
-   The app automatically saves your data to a JSON file on your computer whenever changes are made.  
+   The app automatically saves your data to a JSON file on your computer whenever changes are made.
    You do not need to manually save your progress.
 
 5. **Getting help**
 
-   Within the app, type `help` to get a link for our UserGuide.  
+   Within the app, type `help` to get a link for our UserGuide.
    You can also refer to the [**User Guide**](UserGuide.md) for detailed instructions and examples.
 
 ---

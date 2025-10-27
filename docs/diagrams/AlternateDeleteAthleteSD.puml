@@ -20,7 +20,7 @@ activate LogicManager
 LogicManager -> AddressBookParser : parseCommand("delete-a n/LeBron s/Basketball")
 activate AddressBookParser
 
-ref over AddressBookParser, DeleteAthleteCommandParser, DeleteAthleteCommand 
+ref over AddressBookParser, DeleteAthleteCommandParser, DeleteAthleteCommand
   parse details and build delete command
 end ref
 

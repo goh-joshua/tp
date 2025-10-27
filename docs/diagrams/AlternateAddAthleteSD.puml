@@ -20,7 +20,7 @@ activate LogicManager
 LogicManager -> AddressBookParser : parseCommand("add-a n/LeBron James s/Basketball a/40 p/98765432 e/james@example.com")
 activate AddressBookParser
 
-ref over AddressBookParser, AddAthleteCommandParser, AddAthleteCommand 
+ref over AddressBookParser, AddAthleteCommandParser, AddAthleteCommand
   parse details and build add command
 end ref
 

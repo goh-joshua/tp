@@ -18,7 +18,7 @@ group sd parse details and build add command
   AddAthleteCommandParser --> AddressBookParser
   deactivate AddAthleteCommandParser
   destroy AddAthleteCommandParser
-  
+
   AddressBookParser -> AddAthleteCommandParser : create & parse arguments
 
   create AddAthleteCommand
