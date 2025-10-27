@@ -23,9 +23,9 @@ public class FindCommand extends Command {
             + "Exactly one flag must be supplied:\n"
             + "  -an KEYWORD    Shows athletes whose name closely matches KEYWORD.\n"
             + "  -as KEYWORD    Shows athletes whose sport closely matches KEYWORD.\n"
-            + "  -on KEYWORD    Shows organisations whose name closely matches KEYWORD.\n"
+            + "  -on KEYWORD    Shows organizations whose name closely matches KEYWORD.\n"
             + "  -ca KEYWORD    Shows contracts whose athlete's name closely matches KEYWORD.\n"
-            + "  -co KEYWORD    Shows contracts whose organisation name closely matches KEYWORD.\n"
+            + "  -co KEYWORD    Shows contracts whose organization name closely matches KEYWORD.\n"
             + "  -cs KEYWORD    Shows contracts whose sport closely matches KEYWORD.\n"
             + "Example: " + COMMAND_WORD + " -an Lionel";
 
@@ -54,7 +54,7 @@ public class FindCommand extends Command {
                 return model.getFilteredAthleteList().size();
             }
         },
-        ORGANIZATION_NAME("organisations", CommandResult.UiTab.ORGANIZATIONS) {
+        ORGANIZATION_NAME("organizations", CommandResult.UiTab.ORGANIZATIONS) {
             @Override
             int apply(Model model, String keywordLower) {
                 model.updateFilteredOrganizationList(organizationMatchesName(keywordLower));

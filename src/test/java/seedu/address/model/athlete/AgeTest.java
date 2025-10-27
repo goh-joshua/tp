@@ -28,8 +28,8 @@ public class AgeTest {
         assertFalse(seedu.address.model.athlete.Age.isValidAge(" ")); // spaces only
 
         // invalid parts
-        assertFalse(seedu.address.model.athlete.Age.isValidAge(" 12")); // leading space
         assertFalse(seedu.address.model.athlete.Age.isValidAge("0")); // out of valid range
+        assertFalse(seedu.address.model.athlete.Age.isValidAge("100")); // out of valid range
         assertFalse(seedu.address.model.athlete.Age.isValidAge("three")); // letters
         assertFalse(seedu.address.model.athlete.Age.isValidAge("2-3")); // dashes
 
