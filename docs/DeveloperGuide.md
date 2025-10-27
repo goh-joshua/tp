@@ -668,11 +668,11 @@ The most recent window size and location is retained.
 #### 1. Adding an athlete while all athletes are being shown
 
 1. **Prerequisites:** Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
-2. **Test case:** `add-a n/Lebron James s/Basketball a/40 p/99876543 e/James@example.com`
+2. **Test case:** `add-a n/Lebron James s/Basketball a/40 p/99876543 e/James@example.com`  
    **Expected:** Athlete is added to the athlete list. Details of the added athlete shown in the result pane.
-3. **Test case:** `add-a n/ s/Football a/39 p/87654321 e/cr7@example.com`
+3. **Test case:** `add-a n/ s/Football a/39 p/87654321 e/cr7@example.com`  
    **Expected:** No athlete is added. Error details shown in the result pane.
-4. **Other incorrect add-a commands to try:** `add-a`, `add-a n/Messi2 s/Football a/39 p/87654321 e/cr7@example.com`, `...`
+4. **Other incorrect add-a commands to try:** `add-a`, `add-a n/Messi2 s/Football a/39 p/87654321 e/cr7@example.com`, `...`  
    **Expected:** Similar to previous.
 
 ### Deleting an athlete
@@ -682,22 +682,22 @@ The most recent window size and location is retained.
 1. **Prerequisites:**
     - Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
     - Ensure the athlete to be deleted has no existing contracts.
-2. **Test case:** `delete-a n/Lebron James s/Basketball`
+2. **Test case:** `delete-a n/Lebron James s/Basketball`  
    **Expected:** Athlete is deleted from the list. Details of the deleted athlete shown in the result pane.
-3. **Test case:** `delete-a n/Lebron James s/`
+3. **Test case:** `delete-a n/Lebron James s/`  
    **Expected:** No athlete is deleted. Error details shown in the result pane.
-4. **Other incorrect delete-a commands to try:** `delete-a`, `delete-a n/Lebron James s/Basket-ball`, `...`
+4. **Other incorrect delete-a commands to try:** `delete-a`, `delete-a n/Lebron James s/Basket-ball`, `...`  
    **Expected:** Similar to previous.
 
 ### Adding an organization
 #### 1. Adding an organization while all organizations are being shown
 
 1. **Prerequisites:** Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
-2. **Test case:** `add-o o/Nike p/98765432 e/partnerships@nike.com`
+2. **Test case:** `add-o o/Nike p/98765432 e/partnerships@nike.com`  
    **Expected:** Organization is added to the organization list. Details of the added organization shown in the result pane.
-3. **Test case:** `add-o o/Nike p/+6598765432 e/partnerships@nike.com`
+3. **Test case:** `add-o o/Nike p/+6598765432 e/partnerships@nike.com`  
    **Expected:** No organization is added. Error details shown in the result pane.
-4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/Nike123 p/98765432 e/partnerships@nike.com`, `...`
+4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/Nike123 p/98765432 e/partnerships@nike.com`, `...`  
    **Expected:** Similar to previous.
 
 ### Deleting an organization
@@ -707,11 +707,11 @@ The most recent window size and location is retained.
 1. **Prerequisites:**
     - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
     - Ensure organization to be deleted has no existing contracts.
-2. **Test case:** `delete-o n/Nike`
+2. **Test case:** `delete-o n/Nike`  
    **Expected:** Organization is deleted from the list. Details of the deleted organization shown in the result pane.
-3. **Test case:** `delete-o n/`
+3. **Test case:** `delete-o n/`  
    **Expected:** No organization is deleted. Error details shown in the result pane.
-4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o n/Nike1`, `...`
+4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o n/Nike1`, `...`  
    **Expected:** Similar to previous.
 
 ### Adding a contract
@@ -721,11 +721,11 @@ The most recent window size and location is retained.
 1. **Prerequisites:**
     - Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
     - Ensure the athlete and organization exist in the system.
-2. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`
+2. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`  
    **Expected:** Contract is added to the contracts list. Details of the added contract shown in the result pane.
-3. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/`
+3. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/`  
    **Expected:** No contract is added. Error details shown in the result pane.
-4. **Other incorrect add-c commands to try:** `add-c`, `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50.90`, `...`
+4. **Other incorrect add-c commands to try:** `add-c`, `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50.90`, `...`  
    **Expected:** Similar to previous.
 
 ### Deleting a contract
@@ -733,11 +733,11 @@ The most recent window size and location is retained.
 #### 1. Deleting a contract while all contracts are being shown
 
 1. **Prerequisites:** Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
-2. **Test case:** `delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`
+2. **Test case:** `delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`  
    **Expected:** Contract is deleted from the list. Details of the deleted contract shown in the result pane.
-3. **Test case:** `delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/ am/50000000`
+3. **Test case:** `delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/ am/50000000`  
    **Expected:** No contract is deleted. Error details shown in the result pane.
-4. **Other incorrect delete-c commands to try:** `delete-c`, `delete-c n/ s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`, `...`
+4. **Other incorrect delete-c commands to try:** `delete-c`, `delete-c n/ s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`, `...`  
    **Expected:** Similar to previous.
 
 ### Finding an athlete
@@ -745,13 +745,13 @@ The most recent window size and location is retained.
 #### 1. Finding an athlete while all athletes are being shown
 
 1. **Prerequisites:** Switch to the Athletes Tab by pressing **Cmd+1** (or **Ctrl+1** on Windows/Linux).
-2. **Test case:** `find -an LeBron James`
+2. **Test case:** `find -an LeBron James`  
    **Expected:** Filtered list of athletes shown. Details of the filtered list shown in the result pane.
-3. **Test case:** `find -as Basketball`
+3. **Test case:** `find -as Basketball`  
    **Expected:** Filtered list of athletes shown. Details of the filtered list shown in the result pane.
-4. **Test case:** `find -an`
+4. **Test case:** `find -an`  
    **Expected:** No filtering occurs. Error details shown in the result pane.
-5. **Other incorrect find commands to try:** `find -as`, `find`, `...`
+5. **Other incorrect find commands to try:** `find -as`, `find`, `...`  
    **Expected:** Similar to previous.
 
 ### Finding an organization
@@ -759,11 +759,11 @@ The most recent window size and location is retained.
 #### 1. Finding an organization while all organizations are being shown
 
 1. **Prerequisites:** Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
-2. **Test case:** `find -on Nike`
+2. **Test case:** `find -on Nike`  
    **Expected:** Filtered list of organizations shown. Details of the filtered list shown in the result pane.
-3. **Test case:** `find -on`
+3. **Test case:** `find -on`  
    **Expected:** No filtering occurs. Error details shown in the result pane.
-4. **Other incorrect find commands to try:** `find`, `...`
+4. **Other incorrect find commands to try:** `find`, `...`  
    **Expected:** Similar to previous.
 
 ### Finding a contract
@@ -771,15 +771,15 @@ The most recent window size and location is retained.
 #### 1. Finding a contract while all contracts are being shown
 
 1. **Prerequisites:** Switch to the Contracts Tab by pressing **Cmd+3** (or **Ctrl+3** on Windows/Linux).
-2. **Test case:** `find -ca LeBron James`
+2. **Test case:** `find -ca LeBron James`  
    **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
-3. **Test case:** `find -cs Basketball`
+3. **Test case:** `find -cs Basketball`  
    **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
-4. **Test case:** `find -co Nike`
+4. **Test case:** `find -co Nike`  
    **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
-5. **Test case:** `find -ca`
+5. **Test case:** `find -ca`  
    **Expected:** No filtering occurs. Error details shown in the result pane.
-6. **Other incorrect find commands to try:** `find -cs`, `find -co`, `...`
+6. **Other incorrect find commands to try:** `find -cs`, `find -co`, `...`  
    **Expected:** Similar to previous.
 
 ### Saving data
