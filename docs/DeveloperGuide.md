@@ -114,8 +114,10 @@ Here's a (partial) class diagram of the `Logic` component:
 The sequence diagrams below illustrate the interactions within the `Logic` component,
 taking the `add-a` and `delete-a` commands as examples.
 
-<puml src="diagrams/AddAthleteSequenceDiagram.puml" width="800" />
-<puml src="diagrams/DeleteAthleteSequenceDiagram.puml" width="800" />
+<puml src="diagrams/AlternateAddAthleteSD.puml" width="800" />
+<puml src="diagrams/ParsingAddSequenceDiagram.puml" width="800" />
+<puml src="diagrams/AlternateDeleteAthleteSD.puml" width="800" />
+<puml src="diagrams/ParsingDeleteSequenceDiagram.puml" width="800" />
 
 How the `Logic` component works:
 
