@@ -44,7 +44,7 @@ public class OrganizationCard extends UiPart<Region> {
         tagRow.getChildren().clear();
 
         // Total Contract Tag
-        int totalAmount = organization.getTotalContractAmount(allContracts);
+        long totalAmount = organization.getTotalContractAmount(allContracts);
         String formattedAmount = NumberFormat.getNumberInstance(Locale.US).format(totalAmount);
         tagRow.getChildren().add(makeTag("$" + formattedAmount, "tag", "tag-contract"));
 

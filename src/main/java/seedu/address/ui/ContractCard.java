@@ -59,7 +59,7 @@ public class ContractCard extends UiPart<Region> {
     }
 
     /** Format an amount with comma separators. */
-    private String formatAmount(int amount) {
+    private String formatAmount(long amount) {
         return String.format("%,d", amount);
     }
 }
