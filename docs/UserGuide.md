@@ -182,6 +182,7 @@ New athlete added: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Em
 ```
 delete-a n/Lebron James s/Basketball
 delete-a n/Cristiano Ronaldo s/Football
+delete-a n/Michael Jordan s/Basketball
 ```
 
 **Expected Output:**
@@ -244,6 +245,7 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
 delete-o o/Nike
 delete-o o/Manchester United
+delete-o o/IMG Academy
 ```
 
 **Expected Output:**
@@ -276,8 +278,8 @@ Contracts link athletes with organizations and track the business relationships 
 **Examples:**
 ```
 add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000
-add-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025 am/50000000
-add-c n/Serena Williams s/Tennis o/Wilson sd/01012020 ed/31122024 am/5000000
+add-c n/Cristiano Ronaldo s/Football o/Manchester United sd/01072023 ed/31122025 am/50000000
+add-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/5000000
 ```
 
 **Expected Output:**
@@ -309,7 +311,8 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
   **Examples:**
 ```
 delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000
-delete-c n/Lionel Messi s/Football o/Inter Miami sd/01072023 ed/31122025 am/50000000
+delete-c n/Cristiano Ronaldo s/Football o/Manchester United sd/01072023 ed/31122025 am/50000000
+delete-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/5000000
 ```
 
 **Expected Output:**
