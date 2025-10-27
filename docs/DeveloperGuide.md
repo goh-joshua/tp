@@ -45,12 +45,12 @@ charge of the app launch and shut down.
 
 The bulk of the app's work is done by the following four components:
 
-- [__`UI`__](#ui-component): The UI of the App.
-- [__`Logic`__](#logic-component): The command executor.
-- [__`Model`__](#model-component): Holds the data of the App in memory.
-- [__`Storage`__](#storage-component): Reads data from, and writes data to, the hard disk.
+- [_`UI`_](#ui-component): The UI of the App.
+- [_`Logic`_](#logic-component): The command executor.
+- [_`Model`_](#model-component): Holds the data of the App in memory.
+- [_`Storage`_](#storage-component): Reads data from, and writes data to, the hard disk.
 
-[__`Commons`__](#common-classes) represents a collection of classes used by multiple other components.
+[_`Commons`_](#common-classes) represents a collection of classes used by multiple other components.
 
 ### How the architecture components interact with each other
 
