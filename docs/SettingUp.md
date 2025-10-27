@@ -26,7 +26,7 @@
 
 2. **Download the latest release**
 
-   Go to the [**Releases**](https://github.com/AY2526S1-CS2103T-F13-3/tp/releases) page of our GitHub repository and download the latest `.jar` file.
+   Go to the [_Releases_](https://github.com/AY2526S1-CS2103T-F13-3/tp/releases) page of our GitHub repository and download the latest `.jar` file.
 
 3. **Run the application**
 
@@ -42,7 +42,7 @@
 5. **Getting help**
 
    Within the app, type `help` to get a link for our UserGuide.
-   You can also refer to the [**User Guide**](UserGuide.md) for detailed instructions and examples.
+   You can also refer to the [_User Guide_](UserGuide.md) for detailed instructions and examples.
 
 ---
 
