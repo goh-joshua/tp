@@ -542,15 +542,11 @@ If you need to reset your data, delete the entire folder instead.
 
 ## Troubleshooting and FAQ
 
-### Display and Window Issues
+### Display Issues
 
 **Problem:** Application window opens off-screen after disconnecting a monitor
 **Cause:** The application remembers its last window position from preferences.json. If the app was last open on a secondary monitor and that monitor is disconnected, the window tries to open in the same (now nonexistent) location
 **Solution:** Delete the `preferences.json` file before launching the app again to reset window position
-
-**Problem:** Help Window remains minimized and does not reopen
-**Cause:** If the Help Window is already open and minimized, invoking the help command again does not spawn a new window — the existing window simply remains minimized
-**Solution:** Manually restore the minimized Help Window
 
 ### Common Error Messages
 
