@@ -185,7 +185,32 @@ The `Storage` component,
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
----
+### Data Types and Overflow Protection
+
+**Contract Amount Handling**
+
+The application has been designed to handle large contract amounts that are common in professional sports:
+
+* **Data Type**: Contract amounts use `long` integers (64-bit) instead of `int` (32-bit)
+* **Maximum Value**: Up to 9,223,372,036,854,775,807 (approximately 9.2 quintillion)
+* **Overflow Protection**: Total contract calculations use `mapToLong()` to prevent overflow when summing multiple contracts
+* **UI Display**: Contract totals are properly formatted using `NumberFormat` for large amounts
+
+**Technical Implementation**
+
+* `Amount.java`: Uses `long` data type and `Long.parseLong()` for parsing
+* `Athlete.getTotalContractAmount()`: Returns `long` and uses `mapToLong()` 
+* `Organization.getTotalContractAmount()`: Returns `long` and uses `mapToLong()`
+* `AthleteCard.java` and `OrganizationCard.java`: Handle `long` values for display
+
+**Why Long Instead of Int**
+
+* **Real-world Requirements**: Professional sports contracts can exceed $2 billion (int limit: ~2.1 billion)
+* **Cumulative Totals**: Popular athletes/organizations can have total contracts exceeding int limits
+* **Future-proofing**: Protects against inflation and larger contract values
+* **Error Prevention**: Eliminates negative overflow display bugs in UI chips
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 

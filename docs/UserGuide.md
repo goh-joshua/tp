@@ -298,7 +298,7 @@ Contracts link athletes with organizations and track the business relationships 
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
-- `am/AMOUNT`: Contract amount (positive integers only; no currency symbols or commas)
+- `am/AMOUNT`: Contract amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
 
 **Examples:**
 
@@ -335,7 +335,7 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
-- `am/AMOUNT`: Contract amount (positive integers only; no currency symbols or commas)
+- `am/AMOUNT`: Contract amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
 
   **Examples:**
 
@@ -484,7 +484,7 @@ Exiting Address Book as requested ...
 - `PHONE`: Phone number (8-digit Singapore phone number only)
 - `EMAIL`: Email address (case-insensitive; must follow standard email format)
 - `DATE`: Date (must be in the DDMMYYYY format)
-- `AMOUNT`: Amount (positive integers only; no currency symbols or commas)
+- `AMOUNT`: Amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
 
 ### Keyboard Shortcuts
 
@@ -574,6 +574,12 @@ If you need to reset your data, delete the entire folder instead.
 - Organization names must be unique
 - Contracts must have unique parameter combinations
 - Try slightly different name variations if needed
+
+**"Error: Amount must be a positive integer within valid range"**
+- Contract amounts must be positive integers only
+- Maximum supported amount: 9,223,372,036,854,775,807
+- No commas, currency symbols, or decimal points allowed
+- Use whole numbers only (e.g., 50000000 for $50 million)
 
 ### Performance Issues
 

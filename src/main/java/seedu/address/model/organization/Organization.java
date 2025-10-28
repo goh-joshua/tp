@@ -56,14 +56,14 @@ public class Organization {
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    public int getTotalContractAmount(ObservableList<Contract> allContracts) {
+    public long getTotalContractAmount(ObservableList<Contract> allContracts) {
         if (allContracts == null || allContracts.isEmpty()) {
             return 0;
         }
 
         return allContracts.stream()
                 .filter(contract -> contract.getOrganization().equals(this))
-                .mapToInt(contract -> contract.getAmount().value)
+                .mapToLong(contract -> contract.getAmount().value)
                 .sum();
     }
 

@@ -56,7 +56,7 @@ public class ContractParserUtil {
         if (!Amount.isValidAmount(trimmed)) {
             throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
         }
-        return new Amount(Integer.parseInt(trimmed));
+        return new Amount(Long.parseLong(trimmed));
     }
 
     // --- Convenience pass-throughs for person names (athlete/org/contact) ---

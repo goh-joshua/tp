@@ -45,7 +45,7 @@ public class AthleteCard extends UiPart<Region> {
         email.setText(athlete.getEmail().value);
 
         // --- Total Contract Value tag ---
-        int totalAmount = athlete.getTotalContractAmount(allContracts);
+        long totalAmount = athlete.getTotalContractAmount(allContracts);
         String formattedAmount = NumberFormat.getNumberInstance(Locale.US).format(totalAmount);
 
         badgeRow.getChildren().clear();

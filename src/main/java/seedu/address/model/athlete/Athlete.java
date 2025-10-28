@@ -69,14 +69,14 @@ public class Athlete {
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    public int getTotalContractAmount(ObservableList<Contract> allContracts) {
+    public long getTotalContractAmount(ObservableList<Contract> allContracts) {
         if (allContracts == null || allContracts.isEmpty()) {
             return 0;
         }
 
         return allContracts.stream()
                 .filter(contract -> contract.getAthlete().isSameAthlete(this))
-                .mapToInt(contract -> contract.getAmount().value)
+                .mapToLong(contract -> contract.getAmount().value)
                 .sum();
     }
 
