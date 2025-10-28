@@ -30,9 +30,9 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " -an Lionel";
 
     private static final String MESSAGE_RESULTS_FORMAT = "Showing %1$d %2$s closely matching \"%3$s\".\n"
-            + "Use the \"refresh\" command (or Cmd+R) to show all data again.";
+            + "You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux) to show all data again.";
     private static final String MESSAGE_NO_RESULTS_FORMAT = "No %1$s found matching \"%2$s\".\n"
-            + "Use the \"refresh\" command (or Cmd+R) to show all data again.";
+            + "You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux) to show all data again.";
 
     /**
      * Supported scopes for the find command.
