@@ -294,7 +294,7 @@ otherwise)
 **MSS**
 
 1. Agent requests to delete athlete
-2. playbook.io deletes the athlete
+2. playbook.io deletes the athlete profile
 
    Use case ends.
 
@@ -367,7 +367,7 @@ otherwise)
 **MSS**
 
 1. Agent requests to delete an organization
-2. playbook.io deletes the organization
+2. playbook.io deletes the organization profile
 
    Use case ends.
 
