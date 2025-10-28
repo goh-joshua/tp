@@ -384,7 +384,7 @@ find -co Nike           # Find contracts with organizations like "Nike"
 **Expected Output for `find -an James`:**
 
 ```
-Showing 1 athletes closely matching "James".
+Showing 1 athlete closely matching "James".
 Use the "refresh" command to show all data again.
 ```
 

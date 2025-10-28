@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Age {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Error: Ages should be a numeric value between 1 and 99 (inclusive)";
+            "Error: Ages should be a numeric integer between 1 and 99 (inclusive).";
     public static final String VALIDATION_REGEX = "^[1-9][0-9]?$";
 
     public final String value;

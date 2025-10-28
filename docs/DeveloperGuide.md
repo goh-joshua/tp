@@ -196,17 +196,10 @@ The application has been designed to handle large contract amounts that are comm
 * **Overflow Protection**: Total contract calculations use `mapToLong()` to prevent overflow when summing multiple contracts
 * **UI Display**: Contract totals are properly formatted using `NumberFormat` for large amounts
 
-**Technical Implementation**
+**Why `long` Instead of `int`**
 
-* `Amount.java`: Uses `long` data type and `Long.parseLong()` for parsing
-* `Athlete.getTotalContractAmount()`: Returns `long` and uses `mapToLong()` 
-* `Organization.getTotalContractAmount()`: Returns `long` and uses `mapToLong()`
-* `AthleteCard.java` and `OrganizationCard.java`: Handle `long` values for display
-
-**Why Long Instead of Int**
-
-* **Real-world Requirements**: Professional sports contracts can exceed $2 billion (int limit: ~2.1 billion)
-* **Cumulative Totals**: Popular athletes/organizations can have total contracts exceeding int limits
+* **Real-world Requirements**: Professional sports contracts can exceed $2 billion (`int` limit: ~2.1 billion)
+* **Cumulative Totals**: Popular athletes/organizations can have total contracts exceeding `int` limits
 * **Future-proofing**: Protects against inflation and larger contract values
 * **Error Prevention**: Eliminates negative overflow display bugs in UI chips
 
@@ -301,7 +294,7 @@ otherwise)
 **MSS**
 
 1. Agent requests to delete athlete
-2. playbook.io deletes the athlete
+2. playbook.io deletes the athlete profile
 
    Use case ends.
 
@@ -374,7 +367,7 @@ otherwise)
 **MSS**
 
 1. Agent requests to delete an organization
-2. playbook.io deletes the organization
+2. playbook.io deletes the organization profile
 
    Use case ends.
 
