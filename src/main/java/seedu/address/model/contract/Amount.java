@@ -5,7 +5,7 @@ import java.util.Objects;
 /** Positive long integer amount (e.g., cents or dollars depending on your app spec). */
 public class Amount {
     public static final String MESSAGE_CONSTRAINTS =
-            "Error: Amount should be a numeric integer between 0 and 9,223,372,036,854,775,807(inclusive). "
+            "Error: Amount should be a numeric integer between 1 and 9,223,372,036,854,775,807(inclusive). "
                     + "Do not include currency symbols or commas.";
 
     public final long value;
