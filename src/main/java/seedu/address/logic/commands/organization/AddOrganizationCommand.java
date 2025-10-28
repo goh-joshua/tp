@@ -20,7 +20,7 @@ public class AddOrganizationCommand extends Command {
 
     public static final String COMMAND_WORD = "add-o";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an organization to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an organization to playbook.io. "
             + "Parameters: "
             + PREFIX_ORG + "ORG_NAME "
             + PREFIX_PHONE + "PHONE "

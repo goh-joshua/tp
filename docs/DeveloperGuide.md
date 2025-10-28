@@ -9,20 +9,19 @@ pageNav: 3
 <!-- * Table of Contents -->
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the
-original source as well }_
+This project was built upon the [_AddressBook-Level3 (AB3)_](https://github.com/nus-cs2103-AY2526S1/tp) codebase provided by the National University of Singapore’s **CS2103T Software Engineering** module.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Design**
 
@@ -30,7 +29,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="400" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App.
+The **_Architecture Diagram_** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -41,33 +40,33 @@ Given below is a quick overview of main components and how they interact with ea
 `MainApp`](https://github.com/AY2526S1-CS2103T-F13-3/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in
 charge of the app launch and shut down.
 
-* At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
-* At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+- At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
+- At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+- [_`UI`_](#ui-component): The UI of the App.
+- [_`Logic`_](#logic-component): The command executor.
+- [_`Model`_](#model-component): Holds the data of the App in memory.
+- [_`Storage`_](#storage-component): Reads data from, and writes data to, the hard disk.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[_`Commons`_](#common-classes) represents a collection of classes used by multiple other components.
 
 ### How the architecture components interact with each other
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues
 the command `delete-a n/LeBron s/Basketball`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API
+- defines its _API_ in an `interface` with the same name as the Component.
+- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API
   `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using
-the `LogicManager.java` class which follows the `Logic` interface.  
+the `LogicManager.java` class which follows the `Logic` interface.
 Other components interact with a given component through its interface rather than the concrete class (reason: to
 prevent outside components from being coupled to the implementation of a component), as illustrated in the (partial)
 class diagram below.
@@ -84,12 +83,12 @@ The **API** of this component is specified in [
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component" width="800"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g. `CommandBox`, `ResultDisplay`, `AthleteListPanel`,
-`OrganizationListPanel`, `ContractListPanel`, `StatusBarFooter`, etc.  
+`OrganizationListPanel`, `ContractListPanel`, `StatusBarFooter`, etc.
 All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between
 classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFX UI framework.  
-The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder.  
+The `UI` component uses the JavaFX UI framework.
+The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 For example, the layout of the [
 `MainWindow`](https://github.com/AY2526S1-CS2103T-F13-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java)
 is specified in [
@@ -97,10 +96,10 @@ is specified in [
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
-* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Athlete`, `Organization`, and `Contract` objects
+- executes user commands using the `Logic` component.
+- listens for changes to `Model` data so that the UI can be updated with the modified data.
+- keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+- depends on some classes in the `Model` component, as it displays `Athlete`, `Organization`, and `Contract` objects
   residing in the `Model`.
 
 ### Logic component
@@ -115,8 +114,10 @@ Here's a (partial) class diagram of the `Logic` component:
 The sequence diagrams below illustrate the interactions within the `Logic` component,
 taking the `add-a` and `delete-a` commands as examples.
 
-<puml src="diagrams/AddAthleteSequenceDiagram.puml" width="800" />
-<puml src="diagrams/DeleteAthleteSequenceDiagram.puml" width="800" />
+<puml src="diagrams/AlternateAddAthleteSD.puml" width="800" />
+<puml src="diagrams/ParsingAddSequenceDiagram.puml" width="800" />
+<puml src="diagrams/AlternateDeleteAthleteSD.puml" width="800" />
+<puml src="diagrams/ParsingDeleteSequenceDiagram.puml" width="800" />
 
 How the `Logic` component works:
 
@@ -125,7 +126,7 @@ How the `Logic` component works:
    and uses it to parse the command.
 2. This results in a `Command` object (more precisely, an instance of one of its subclasses such as
    `AddAthleteCommand` or `DeleteAthleteCommand`) which is executed by the `LogicManager`.
-3. The command communicates with the `Model` when executed (e.g., to add or delete an athlete).  
+3. The command communicates with the `Model` when executed (e.g., to add or delete an athlete).
    Although this is shown as a single step in the diagrams above for simplicity, the actual implementation involves
    multiple interactions between the `Command` and the `Model`.
 4. The result of the command execution is encapsulated as a `CommandResult` object, which is returned back from `Logic`.
@@ -136,12 +137,12 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 
 How the parsing works:
 
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser`
+- When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser`
   (`XYZ` is a placeholder for the specific command name, e.g., `AddAthleteCommandParser`,
   `AddOrganizationCommandParser`,
   `AddContractCommandParser`, `DeleteAthleteCommandParser`, etc.), which uses the other classes shown above to parse
   the user command and create an `XYZCommand` object (e.g., `AddAthleteCommand`).
-* All `XYZCommandParser` classes (e.g., `AddAthleteCommandParser`, `DeleteAthleteCommandParser`,
+- All `XYZCommandParser` classes (e.g., `AddAthleteCommandParser`, `DeleteAthleteCommandParser`,
   `AddOrganizationCommandParser`)
   implement the `Parser` interface so that they can be treated uniformly (e.g., during testing).
 
@@ -154,14 +155,14 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the application data — i.e., all `Athlete`, `Organization`, and `Contract` objects, which are contained in
+- stores the application data — i.e., all `Athlete`, `Organization`, and `Contract` objects, which are contained in
   `UniqueAthleteList`, `UniqueOrganizationList`, and `UniqueContractList` objects respectively.
-* stores the currently “selected” data (e.g., results of a search query) as separate _filtered_ lists, which are exposed
+- stores the currently “selected” data (e.g., results of a search query) as separate _filtered_ lists, which are exposed
   to the outside as unmodifiable `ObservableList<>` objects (for example, `ObservableList<Athlete>`). This allows the UI
   to automatically update when the underlying data changes.
-* stores a `UserPrefs` object that represents the user’s preferences. This is exposed to the outside as a
+- stores a `UserPrefs` object that represents the user’s preferences. This is exposed to the outside as a
   `ReadOnlyUserPrefs` object.
-* does not depend on any of the other three components (as the `Model` represents domain data that should make sense
+- does not depend on any of the other three components (as the `Model` represents domain data that should make sense
   independently of other layers).
 
 ### Storage component
@@ -173,11 +174,11 @@ The `Model` component,
 
 The `Storage` component,
 
-* can save both application data (including `Athlete`, `Organization`, and `Contract` information) and user preference
+- can save both application data (including `Athlete`, `Organization`, and `Contract` information) and user preference
   data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefsStorage`, which means it can be treated as either one if only
+- inherits from both `AddressBookStorage` and `UserPrefsStorage`, which means it can be treated as either one if only
   the functionality of one is needed.
-* depends on some classes in the `Model` component, because the `Storage` component’s job is to save and retrieve
+- depends on some classes in the `Model` component, because the `Storage` component’s job is to save and retrieve
   objects that belong to the `Model`.
 
 ### Common classes
@@ -507,7 +508,7 @@ otherwise)
     * 1b1. playbook.io shows an error message
 
       Use case ends.
-  
+
 * 1c. The given parameter is invalid
 
     * 1c1. playbook.io shows an error message
@@ -631,7 +632,7 @@ otherwise)
 
 **Extensions**
 
-* 1a. The given command is invalid 
+* 1a. The given command is invalid
     * 1a1. playbook.io shows an error message
 
       Use case ends.
@@ -643,12 +644,12 @@ otherwise)
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid
-   input is detected. 
+   input is detected.
 5. Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for
-   ease of deployment across environments. 
-6. Should allow a new user to learn the system within 10 minutes by following the user guide. 
+   ease of deployment across environments.
+6. Should allow a new user to learn the system within 10 minutes by following the user guide.
 7. Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes,
-   organizations, or contracts under normal usage load. 
+   organizations, or contracts under normal usage load.
 8. Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport).
 
 ### Glossary
@@ -676,7 +677,7 @@ Given below are instructions to test the app manually.
 1. Download the jar file and copy into an empty folder.
 2. Double-click the jar file.
 
-**Expected:**  
+**Expected:**
 Shows the GUI. The window size may not be optimum.
 
 #### 2. Saving window preferences
@@ -684,7 +685,7 @@ Shows the GUI. The window size may not be optimum.
 1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 2. Re-launch the app by double-clicking the jar file.
 
-**Expected:**  
+**Expected:**
 The most recent window size and location is retained.
 
 ### Adding an athlete
@@ -817,7 +818,7 @@ The most recent window size and location is retained.
 3. Delete one or more JSON files (e.g., `athletelist.json`, `contractlist.json`, `organizationlist.json`).
 4. Re-launch playbook.io.
 
-**Expected:**  
+**Expected:**
 The app detects that the files are missing and loads empty lists for all entities.
 
 ##### 1.2 Simulate a corrupted file
@@ -826,10 +827,10 @@ The app detects that the files are missing and loads empty lists for all entitie
 2. Add invalid content (e.g., remove a closing bracket or insert invalid characters).
 3. Save the file and relaunch playbook.io.
 
-**Expected:**  
+**Expected:**
 The app detects that the files are corrupted and loads empty lists for all entities.
 
-> **⚠️ Important:**  
+> **⚠️ Important:**
 > New JSON files are only created once data is written (e.g., after adding an athlete, contract, or organization).
 
 #### 2. Normal save
@@ -840,5 +841,5 @@ The app detects that the files are corrupted and loads empty lists for all entit
 2. Add an athlete, contract, or organization
 3. Close playbook.io.
 
-**Expected:**  
+**Expected:**
 Data is persisted correctly in the JSON files.

@@ -6,57 +6,52 @@
 
 # Setting up and getting started
 
-<!-- * Table of Contents -->
+<!-- * Table of Contents
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+--- -->
 
-## Setting up the project in your computer
+### Steps to take
 
-<box type="warning" seamless>
+1. **Check your system requirements**
 
-**Caution:**
-Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
-</box>
-
-First, **fork** this repo, and **clone** the fork into your computer.
-
-If you plan to use Intellij IDEA (highly recommended):
-
-1. **Configure the JDK**: Follow the guide [_[se-edu/guides] IDEA: Configuring the JDK_](https://se-education.org/guides/tutorials/intellijJdk.html) to ensure Intellij is configured to use **JDK 17**.
-1. **Import the project as a Gradle project**: Follow the guide [_[se-edu/guides] IDEA: Importing a Gradle project_](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) to import the project into IDEA.
-   <box type="warning" seamless>
-   Note: Importing a Gradle project is slightly different from importing a normal Java project.
-   </box>
-1. **Verify the setup**:
-   1. Run the `seedu.address.Main` and try a few commands.
-   1. [Run the tests](Testing.md) to ensure they all pass.
-
---------------------------------------------------------------------------------------------------------------------
-
-## Before writing code
-
-1. **Configure the coding style**
-
-   If using IDEA, follow the guide [_[se-edu/guides] IDEA: Configuring the code style_](https://se-education.org/guides/tutorials/intellijCodeStyle.html) to set up IDEA's coding style to match ours.
+   Make sure you have **Java 17 or above** installed on your computer.
+   You can verify this by running the following command in your terminal or command prompt:
+   `java -version`
+   If Java is not installed, download it from [Oracle’s JDK 17 page](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) or use [OpenJDK 17](https://openjdk.org/projects/jdk/17/).
 
    <box type="tip" seamless>
-
-   **Tip:**
-   Optionally, you can follow the guide [_[se-edu/guides] Using Checkstyle_](https://se-education.org/guides/tutorials/checkstyle.html) to find how to use the CheckStyle within IDEA e.g., to report problems _as_ you write code.
+   **Tip:** The app will not run properly on older Java versions.
    </box>
 
-1. **Set up CI**
+2. **Download the latest release**
 
-   This project comes with a GitHub Actions config files (in `.github/workflows` folder). When GitHub detects those files, it will run the CI for your project automatically at each push to the `master` branch or to any PR. No set up required.
+   Go to the [_Releases_](https://github.com/AY2526S1-CS2103T-F13-3/tp/releases) page of our GitHub repository and download the latest `.jar` file.
 
-1. **Learn the design**
+3. **Run the application**
 
-   When you are ready to start coding, we recommend that you get some sense of the overall design by reading about [Playbook.io's architecture](DeveloperGuide.md#architecture).
+   Open a terminal in the folder containing the downloaded `.jar` file and run:
+   `java -jar playbook.jar`
+   The application window should appear, ready for use.
 
-1. **Do the tutorials**
-   These tutorials will help you get acquainted with the codebase.
+4. **Saving your data**
 
-   * [Tracing code](https://se-education.org/guides/tutorials/ab3TracingCode.html)
-   * [Adding a new command](https://se-education.org/guides/tutorials/ab3AddRemark.html)
-   * [Removing fields](https://se-education.org/guides/tutorials/ab3RemovingFields.html)
+   The app automatically saves your data to a JSON file on your computer whenever changes are made.
+   You do not need to manually save your progress.
+
+5. **Getting help**
+
+   Within the app, type `help` to get a link for our UserGuide.
+   You can also refer to the [_User Guide_](UserGuide.md) for detailed instructions and examples.
+
+---
+
+### Having issues?
+
+If you encounter errors while running the `.jar` file, check:
+
+- That you’re using **Java 17 or newer**
+- The `.jar` file is located in a folder you have permission to access
+- You’re using the correct command syntax:
+
+---

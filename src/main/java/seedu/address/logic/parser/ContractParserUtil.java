@@ -72,8 +72,8 @@ public class ContractParserUtil {
     private static Name parseStrictName(String name) throws ParseException {
         requireNonNull(name);
         String trimmed = name.trim();
-        // letters and spaces only, at least one letter
-        if (!trimmed.matches("(?i)^[A-Z]+(?:[ A-Z]+)*$")) {
+        // letters, spaces, apostrophes, and hyphens allowed
+        if (!trimmed.matches("^[A-Za-z][A-Za-z' -]*$")) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmed);
@@ -82,8 +82,8 @@ public class ContractParserUtil {
     private static OrganizationName parseStrictOrganizationName(String name) throws ParseException {
         requireNonNull(name);
         String trimmed = name.trim();
-        // letters and spaces only, at least one letter
-        if (!trimmed.matches("(?i)^[A-Z]+(?:[ A-Z]+)*$")) {
+        // letters, spaces, apostrophes, and hyphens allowed
+        if (!trimmed.matches("^[A-Za-z][A-Za-z' -]*$")) {
             throw new ParseException(OrganizationName.MESSAGE_CONSTRAINTS);
         }
         return new OrganizationName(trimmed);
