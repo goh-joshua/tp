@@ -91,6 +91,27 @@ public class HelpWindow extends UiPart<Stage> {
     }
 
     /**
+     * Brings the help window to the front.
+     */
+    public void toFront() {
+        getRoot().toFront();
+    }
+
+    /**
+     * Returns true if the help window is minimized (iconified).
+     */
+    public boolean isIconified() {
+        return getRoot().isIconified();
+    }
+
+    /**
+     * Sets the iconified state of the help window.
+     */
+    public void setIconified(boolean iconified) {
+        getRoot().setIconified(iconified);
+    }
+
+    /**
      * Copies the URL to the user guide to the clipboard.
      */
     @FXML
