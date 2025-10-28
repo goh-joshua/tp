@@ -152,14 +152,14 @@ public class FindCommand extends Command {
         requireNonNull(model);
         String keywordLower = keyword.toLowerCase();
         int matches = scope.apply(model, keywordLower);
-        
+
         String feedback;
         if (matches == 0) {
             feedback = String.format(MESSAGE_NO_RESULTS_FORMAT, scope.getNoun(), keyword);
         } else {
             feedback = String.format(MESSAGE_RESULTS_FORMAT, matches, scope.getNoun(matches), keyword);
         }
-        
+
         return new CommandResult(feedback, scope.getTabToShow());
     }
 
