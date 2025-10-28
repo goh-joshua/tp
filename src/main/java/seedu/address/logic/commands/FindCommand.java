@@ -119,17 +119,17 @@ public class FindCommand extends Command {
 
         String getSingularNoun() {
             switch (this) {
-                case ATHLETE_NAME:
-                case ATHLETE_SPORT:
-                    return "athlete";
-                case ORGANIZATION_NAME:
-                    return "organization";
-                case CONTRACT_ATHLETE:
-                case CONTRACT_ORGANIZATION:
-                case CONTRACT_SPORT:
-                    return "contract";
-                default:
-                    return noun; // fallback
+            case ATHLETE_NAME:
+            case ATHLETE_SPORT:
+                return "athlete";
+            case ORGANIZATION_NAME:
+                return "organization";
+            case CONTRACT_ATHLETE:
+            case CONTRACT_ORGANIZATION:
+            case CONTRACT_SPORT:
+                return "contract";
+            default:
+                return noun; // fallback
             }
         }
     }
