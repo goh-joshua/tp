@@ -31,6 +31,8 @@ public class FindCommand extends Command {
 
     private static final String MESSAGE_RESULTS_FORMAT = "Showing %1$d %2$s closely matching \"%3$s\".\n"
             + "Use the \"refresh\" command (or Cmd+R) to show all data again.";
+    private static final String MESSAGE_NO_RESULTS_FORMAT = "No %1$s found matching \"%2$s\".\n"
+            + "Use the \"refresh\" command (or Cmd+R) to show all data again.";
 
     /**
      * Supported scopes for the find command.
@@ -112,7 +114,23 @@ public class FindCommand extends Command {
         }
 
         String getNoun(int count) {
-            return count == 1 ? singularNoun : noun;
+            return count == 1 ? getSingularNoun() : noun;
+        }
+
+        String getSingularNoun() {
+            switch (this) {
+            case ATHLETE_NAME:
+            case ATHLETE_SPORT:
+                return "athlete";
+            case ORGANIZATION_NAME:
+                return "organization";
+            case CONTRACT_ATHLETE:
+            case CONTRACT_ORGANIZATION:
+            case CONTRACT_SPORT:
+                return "contract";
+            default:
+                return noun; // fallback
+            }
         }
     }
 
@@ -136,7 +154,14 @@ public class FindCommand extends Command {
         requireNonNull(model);
         String keywordLower = keyword.toLowerCase();
         int matches = scope.apply(model, keywordLower);
-        String feedback = String.format(MESSAGE_RESULTS_FORMAT, matches, scope.getNoun(matches), keyword);
+
+        String feedback;
+        if (matches == 0) {
+            feedback = String.format(MESSAGE_NO_RESULTS_FORMAT, scope.getNoun(), keyword);
+        } else {
+            feedback = String.format(MESSAGE_RESULTS_FORMAT, matches, scope.getNoun(matches), keyword);
+        }
+
         return new CommandResult(feedback, scope.getTabToShow());
     }
 
