@@ -25,6 +25,7 @@ public class EmailTest {
         assertThrows(NullPointerException.class, () -> seedu.address.model.athlete.Email.isValidEmail(null));
 
         // blank email
+        String longEmail = "a".repeat(39) + "@example.com";
         assertFalse(seedu.address.model.athlete.Email.isValidEmail("")); // empty string
         assertFalse(seedu.address.model.athlete.Email.isValidEmail(" ")); // spaces only
 
@@ -51,8 +52,10 @@ public class EmailTest {
         assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@-example.com"));
         assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.com-"));
         assertFalse(seedu.address.model.athlete.Email.isValidEmail("peterjack@example.c"));
+        assertFalse(seedu.address.model.athlete.Email.isValidEmail(longEmail)); // exceeds max length
 
         // valid email
+        String boundaryEmail = "a".repeat(38) + "@example.com";
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack_1190@example.com")); // underscore
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack.1190@example.com")); // period
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("PeterJack+1190@example.com")); // '+' symbol
@@ -64,6 +67,7 @@ public class EmailTest {
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("peter_jack@very-very-very-long-example.com"));
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com"));
         assertTrue(seedu.address.model.athlete.Email.isValidEmail("e1234567@u.nus.edu")); // more than one period
+        assertTrue(seedu.address.model.athlete.Email.isValidEmail(boundaryEmail)); // boundary length
     }
 
     @Test

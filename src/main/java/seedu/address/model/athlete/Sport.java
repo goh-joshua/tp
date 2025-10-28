@@ -11,8 +11,8 @@ public class Sport {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Error: Sport names should only contain alphabetic characters and spaces, "
-                    + "and it should not be blank.";
-    public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z ]*$";
+                    + "should not be blank, and be at most 50 characters.";
+    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[A-Za-z][A-Za-z ]*$";
 
     public final String value;
 
