@@ -1,15 +1,18 @@
 package seedu.address.ui;
 
+import java.awt.Point;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -193,12 +196,61 @@ public class MainWindow extends UiPart<Stage> {
      * Sets the default size based on {@code guiSettings}.
      */
     private void setWindowDefaultSize(GuiSettings guiSettings) {
-        primaryStage.setHeight(guiSettings.getWindowHeight());
-        primaryStage.setWidth(guiSettings.getWindowWidth());
-        if (guiSettings.getWindowCoordinates() != null) {
-            primaryStage.setX(guiSettings.getWindowCoordinates().getX());
-            primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+        double width = guiSettings.getWindowWidth();
+        double height = guiSettings.getWindowHeight();
+
+        Point savedCoordinates = guiSettings.getWindowCoordinates();
+        if (savedCoordinates != null) {
+            Rectangle2D savedBounds = findBoundsFor(savedCoordinates.getX(), savedCoordinates.getY(),
+                    width, height);
+            if (savedBounds != null) {
+                width = Math.min(width, savedBounds.getWidth());
+                height = Math.min(height, savedBounds.getHeight());
+                double targetX = clamp(savedCoordinates.getX(),
+                        savedBounds.getMinX(),
+                        savedBounds.getMaxX() - width);
+                double targetY = clamp(savedCoordinates.getY(),
+                        savedBounds.getMinY(),
+                        savedBounds.getMaxY() - height);
+                applyStageBounds(width, height, targetX, targetY);
+                return;
+            }
         }
+
+        Rectangle2D primaryBounds = Screen.getPrimary().getVisualBounds();
+        width = Math.min(width, primaryBounds.getWidth());
+        height = Math.min(height, primaryBounds.getHeight());
+        double centerX = primaryBounds.getMinX() + (primaryBounds.getWidth() - width) / 2;
+        double centerY = primaryBounds.getMinY() + (primaryBounds.getHeight() - height) / 2;
+        applyStageBounds(width, height, centerX, centerY);
+    }
+
+    private Rectangle2D findBoundsFor(double x, double y, double width, double height) {
+        return Screen.getScreens().stream()
+                .map(Screen::getVisualBounds)
+                .filter(bounds -> bounds.contains(x, y) || bounds.intersects(x, y, width, height))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private void applyStageBounds(double width, double height, double x, double y) {
+        primaryStage.setWidth(width);
+        primaryStage.setHeight(height);
+        primaryStage.setX(x);
+        primaryStage.setY(y);
+    }
+
+    private double clamp(double value, double min, double max) {
+        if (min > max) {
+            return min;
+        }
+        if (value < min) {
+            return min;
+        }
+        if (value > max) {
+            return max;
+        }
+        return value;
     }
 
     /**
