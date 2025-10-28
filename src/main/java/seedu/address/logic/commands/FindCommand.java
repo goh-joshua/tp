@@ -38,7 +38,7 @@ public class FindCommand extends Command {
      * Supported scopes for the find command.
      */
     public enum SearchScope {
-        ATHLETE_NAME("athletes", CommandResult.UiTab.ATHLETES) {
+        ATHLETE_NAME("athletes", "athlete", CommandResult.UiTab.ATHLETES) {
             @Override
             int apply(Model model, String keywordLower) {
                 model.updateFilteredAthleteList(athleteMatchesName(keywordLower));
@@ -47,7 +47,7 @@ public class FindCommand extends Command {
                 return model.getFilteredAthleteList().size();
             }
         },
-        ATHLETE_SPORT("athletes", CommandResult.UiTab.ATHLETES) {
+        ATHLETE_SPORT("athletes", "athlete", CommandResult.UiTab.ATHLETES) {
             @Override
             int apply(Model model, String keywordLower) {
                 model.updateFilteredAthleteList(athleteMatchesSport(keywordLower));
@@ -56,7 +56,7 @@ public class FindCommand extends Command {
                 return model.getFilteredAthleteList().size();
             }
         },
-        ORGANIZATION_NAME("organizations", CommandResult.UiTab.ORGANIZATIONS) {
+        ORGANIZATION_NAME("organizations", "organization", CommandResult.UiTab.ORGANIZATIONS) {
             @Override
             int apply(Model model, String keywordLower) {
                 model.updateFilteredOrganizationList(organizationMatchesName(keywordLower));
@@ -65,7 +65,7 @@ public class FindCommand extends Command {
                 return model.getFilteredOrganizationList().size();
             }
         },
-        CONTRACT_ATHLETE("contracts", CommandResult.UiTab.CONTRACTS) {
+        CONTRACT_ATHLETE("contracts", "contract", CommandResult.UiTab.CONTRACTS) {
             @Override
             int apply(Model model, String keywordLower) {
                 model.updateFilteredContractList(contractMatchesAthleteName(keywordLower));
@@ -74,7 +74,7 @@ public class FindCommand extends Command {
                 return model.getFilteredContractList().size();
             }
         },
-        CONTRACT_ORGANIZATION("contracts", CommandResult.UiTab.CONTRACTS) {
+        CONTRACT_ORGANIZATION("contracts", "contract", CommandResult.UiTab.CONTRACTS) {
             @Override
             int apply(Model model, String keywordLower) {
                 model.updateFilteredContractList(contractMatchesOrganizationName(keywordLower));
@@ -83,7 +83,7 @@ public class FindCommand extends Command {
                 return model.getFilteredContractList().size();
             }
         },
-        CONTRACT_SPORT("contracts", CommandResult.UiTab.CONTRACTS) {
+        CONTRACT_SPORT("contracts", "contract", CommandResult.UiTab.CONTRACTS) {
             @Override
             int apply(Model model, String keywordLower) {
                 model.updateFilteredContractList(contractMatchesSport(keywordLower));
@@ -94,10 +94,12 @@ public class FindCommand extends Command {
         };
 
         private final String noun;
+        private final String singularNoun;
         private final CommandResult.UiTab tabToShow;
 
-        SearchScope(String noun, CommandResult.UiTab tabToShow) {
+        SearchScope(String noun, String singularNoun, CommandResult.UiTab tabToShow) {
             this.noun = noun;
+            this.singularNoun = singularNoun;
             this.tabToShow = tabToShow;
         }
 
