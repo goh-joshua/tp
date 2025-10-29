@@ -90,7 +90,7 @@ class JsonAdaptedContract {
         if (!Amount.isValidAmount(amount)) {
             throw new IllegalValueException(Amount.MESSAGE_CONSTRAINTS);
         }
-        final Amount modelAmount = new Amount(Integer.parseInt(amount));
+        final Amount modelAmount = new Amount(Long.parseLong(amount));
 
         return new Contract(modelAthlete, modelSport, modelOrganization, modelStartDate, modelEndDate, modelAmount);
     }
