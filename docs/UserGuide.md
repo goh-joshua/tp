@@ -17,13 +17,18 @@ pageNav: 3
 
 ### Target Users
 
-This guide is designed for **sports agents and talent managers** who:
+This guide is designed for **sports agents and talent managers** operating in Singapore who:
 
 - Manage multiple athletes across various sports
 - Work with sports organizations, teams, and sponsors
 - Handle contract negotiations and renewals
 - Need to track relationships and opportunities efficiently
 - Prefer fast, keyboard-driven workflows over mouse-heavy interfaces
+
+<div markdown="block" class="alert alert-warning">
+
+**⚠️ Important:** playbook.io follows Singapore conventions: phone numbers are 8-digit, contract amounts are in SGD, and dates use DDMMYYYY format.
+</div>
 
 ### What You'll Need
 
@@ -552,7 +557,7 @@ If you need to reset your data, delete the entire folder instead.
 
 ---
 
-## Troubleshooting and FAQ
+## Troubleshooting and Frequently Asked Questions
 
 ### Common Error Messages
 
@@ -594,6 +599,23 @@ Do not include currency symbols or commas.**
 - Check available disk space (need 50MB minimum)
 - Ensure Java version is 17 or higher
 - Try moving to a different folder location
+
+### Frequently Asked Questions
+**Why can't I use my international phone numbers?**    
+
+playbook.io is designed for agents operating in Singapore and currently supports only 8-digit Singapore phone numbers. This ensures data consistency and simplifies local operations.
+
+**Can I track contracts in different currencies?**  
+
+All contract amounts are in Singapore Dollars (SGD). If you need to track international contracts, we recommend converting amounts to SGD at the time of entry.
+
+**Why does the system say "duplicate athlete" when I'm adding someone with a different phone number?**  
+
+Athletes are identified by their name and sport combination, not by contact details. This is because athletes often share managers or have contact details managed by agencies. If you need to add an athlete with the same name, they must be in a different sport.
+
+**Can an athlete and an organization have the same phone number or email?**  
+
+Yes, this is allowed and intentional. Athletes and organizations are separate entities in the system, and it's common in practice for them to share contact details. This flexibility reflects real-world scenarios where contact information overlaps between different entities you manage.
 
 ### Getting More Help
 
