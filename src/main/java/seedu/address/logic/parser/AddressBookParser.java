@@ -50,10 +50,11 @@ public class AddressBookParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT));
         }
 
-        final String commandWord = matcher.group("commandWord");
+        final String rawCommandWord = matcher.group("commandWord");
+        final String commandWord = rawCommandWord.toLowerCase();
         final String arguments = matcher.group("arguments");
 
-        logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
+        logger.fine("Command word: " + rawCommandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
         // ================= Organizations =================
