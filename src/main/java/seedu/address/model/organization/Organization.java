@@ -50,7 +50,7 @@ public class Organization {
         }
 
         return allContracts.stream()
-                .filter(contract -> contract.getOrganization().equals(this))
+                .filter(contract -> isSameOrganization(contract.getOrganization()))
                 .map(Contract::getAthlete)
                 .distinct()
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
@@ -62,7 +62,7 @@ public class Organization {
         }
 
         return allContracts.stream()
-                .filter(contract -> contract.getOrganization().equals(this))
+                .filter(contract -> isSameOrganization(contract.getOrganization()))
                 .mapToLong(contract -> contract.getAmount().value)
                 .sum();
     }

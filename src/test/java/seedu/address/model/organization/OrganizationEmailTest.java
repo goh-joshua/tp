@@ -28,6 +28,7 @@ public class OrganizationEmailTest {
         assertThrows(NullPointerException.class, () -> OrganizationEmail.isValidEmail(null));
 
         // invalid emails
+        String longEmail = "a".repeat(39) + "@example.com";
         assertFalse(OrganizationEmail.isValidEmail("")); // empty string
         assertFalse(OrganizationEmail.isValidEmail(" ")); // spaces only
         assertFalse(OrganizationEmail.isValidEmail("noatsymbol.com")); // missing '@'
@@ -35,12 +36,15 @@ public class OrganizationEmailTest {
         assertFalse(OrganizationEmail.isValidEmail("john@.com")); // invalid domain
         assertFalse(OrganizationEmail.isValidEmail("@example.com")); // missing local part
         assertFalse(OrganizationEmail.isValidEmail("john@@example.com")); // double '@'
+        assertFalse(OrganizationEmail.isValidEmail(longEmail)); // exceeds max length
 
         // valid emails
+        String boundaryEmail = "a".repeat(38) + "@example.com";
         assertTrue(OrganizationEmail.isValidEmail("contact@nike.com"));
         assertTrue(OrganizationEmail.isValidEmail("info@procter-and-gamble.com"));
         assertTrue(OrganizationEmail.isValidEmail("sponsorship@brand.co"));
         assertTrue(OrganizationEmail.isValidEmail("john.doe@sub.example.org"));
+        assertTrue(OrganizationEmail.isValidEmail(boundaryEmail)); // boundary length
     }
 
     @Test

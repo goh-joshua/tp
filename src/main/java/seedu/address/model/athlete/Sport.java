@@ -3,6 +3,8 @@ package seedu.address.model.athlete;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Locale;
+
 /**
  * Represents an Athlete's sport in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidSport(String)}.
@@ -11,8 +13,8 @@ public class Sport {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Error: Sport names should only contain alphabetic characters and spaces, "
-                    + "and it should not be blank.";
-    public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z ]*$";
+                    + "should not be blank, and be at most 50 characters.";
+    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[A-Za-z][A-Za-z ]*$";
 
     public final String value;
 
@@ -24,7 +26,7 @@ public class Sport {
     public Sport(String sport) {
         requireNonNull(sport);
         checkArgument(isValidSport(sport), MESSAGE_CONSTRAINTS);
-        value = sport;
+        value = sport.trim().replaceAll("\\s+", " ");
     }
 
     /**
@@ -56,6 +58,6 @@ public class Sport {
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return value.toLowerCase(Locale.ROOT).hashCode();
     }
 }

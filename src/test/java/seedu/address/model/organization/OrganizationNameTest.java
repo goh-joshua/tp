@@ -28,17 +28,21 @@ public class OrganizationNameTest {
         assertThrows(NullPointerException.class, () -> OrganizationName.isValidName(null));
 
         // invalid names
+        String fiftyOneCharName = "A" + "a".repeat(50);
         assertFalse(OrganizationName.isValidName("")); // empty string
         assertFalse(OrganizationName.isValidName(" ")); // spaces only
         assertFalse(OrganizationName.isValidName("@Nike")); // invalid starting character
         assertFalse(OrganizationName.isValidName("Nike!")); // invalid symbol
         assertFalse(OrganizationName.isValidName("Procter&Gamble*")); // trailing invalid character
         assertFalse(OrganizationName.isValidName("John#Doe")); // invalid character inside
+        assertFalse(OrganizationName.isValidName(fiftyOneCharName)); // exceeds max length
 
         // valid names
+        String fiftyCharName = "A" + "a".repeat(49);
         assertTrue(OrganizationName.isValidName("Nike")); // simple word
         assertTrue(OrganizationName.isValidName("Team O'Neal")); // apostrophe
         assertTrue(OrganizationName.isValidName("ACME-Corp")); // hyphen
+        assertTrue(OrganizationName.isValidName(fiftyCharName)); // boundary length
     }
 
     @Test

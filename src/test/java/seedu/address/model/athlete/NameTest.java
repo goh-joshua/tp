@@ -25,6 +25,7 @@ public class NameTest {
         assertThrows(NullPointerException.class, () -> seedu.address.model.athlete.Name.isValidName(null));
 
         // invalid name
+        String fiftyOneCharName = "A" + "a".repeat(50);
         assertFalse(seedu.address.model.athlete.Name.isValidName("")); // empty string
         assertFalse(seedu.address.model.athlete.Name.isValidName(" ")); // spaces only
         assertFalse(seedu.address.model.athlete.Name.isValidName("^")); // only non-alphanumeric characters
@@ -32,12 +33,15 @@ public class NameTest {
         assertFalse(seedu.address.model.athlete.Name.isValidName("12345")); //contains numeric
         assertFalse(seedu.address.model.athlete.Name.isValidName("'peter")); //start with apostrophes
         assertFalse(seedu.address.model.athlete.Name.isValidName("-peter")); //start with hyphens
+        assertFalse(seedu.address.model.athlete.Name.isValidName(fiftyOneCharName)); // exceeds max length
 
         // valid name
+        String fiftyCharName = "A" + "a".repeat(49);
         assertTrue(seedu.address.model.athlete.Name.isValidName("peter jack")); // alphabets only
         assertTrue(seedu.address.model.athlete.Name.isValidName("Capital Tan")); // with capital letters
         assertTrue(seedu.address.model.athlete.Name.isValidName("O'Neal")); // with apostrophes
         assertTrue(seedu.address.model.athlete.Name.isValidName("O-Neal")); // with hyphens
+        assertTrue(seedu.address.model.athlete.Name.isValidName(fiftyCharName)); // boundary length
     }
 
     @Test

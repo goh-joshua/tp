@@ -13,7 +13,8 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-This project was built upon the [_AddressBook-Level3 (AB3)_](https://github.com/nus-cs2103-AY2526S1/tp) codebase provided by the National University of Singapore’s **CS2103T Software Engineering** module.
+This project was built upon the [_AddressBook-Level3 (AB3)_](https://github.com/nus-cs2103-AY2526S1/tp) codebase
+provided by the National University of Singapore’s **CS2103T Software Engineering** module.
 
 ---
 
@@ -204,6 +205,120 @@ The application has been designed to handle large contract amounts that are comm
 * **Cumulative Totals**: Popular athletes/organizations can have total contracts exceeding `int` limits
 * **Future-proofing**: Protects against inflation and larger contract values
 * **Error Prevention**: Eliminates negative overflow display bugs in UI chips
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Implementation**
+
+This section describes noteworthy details on how certain features are implemented.
+
+---
+
+### **[Implemented] Find command**
+
+The **Find** command enables users to perform keyword-based searches across different data types within the system —  
+athletes, organizations, and contracts — using flexible, case-insensitive, and fuzzy matching.  
+It temporarily filters the displayed lists in memory without altering any saved data.
+
+---
+
+The `FindCommand` extends `Command` and is invoked with one required flag that specifies the **search scope**.  
+The following flags are supported:
+
+| Flag  | Description                          |
+|-------|--------------------------------------|
+| `-an` | Finds athletes by name               |
+| `-as` | Finds athletes by sport              |
+| `-on` | Finds organizations by name          |
+| `-ca` | Finds contracts by athlete name      |
+| `-co` | Finds contracts by organization name |
+| `-cs` | Finds contracts by sport             |
+
+Example usage:  
+`find -an Lionel`
+
+Upon execution, the command:
+
+1. Validates that exactly one flag is present.
+2. Extracts the keyword and normalizes it to lowercase.
+3. Delegates filtering to an appropriate method in `Model`, depending on the flag.
+4. Applies a **multi-tier fuzzy-matching predicate** combining substring and Levenshtein-distance checks.
+5. Constructs a `CommandResult` reporting how many entities matched.
+
+<puml src="diagrams/FindSequenceDiagram-Logic.puml" alt="FindSequenceDiagram-Logic" width="750" />
+
+---
+
+#### Search scopes and behavior
+
+Each flag maps to a `SearchScope` enum constant that defines:
+
+- A label (e.g., “athletes”, “organizations”, “contracts”)
+- The `UiTab` to display in the interface
+- A custom `apply(Model, keyword)` implementation that calls the relevant model filter
+
+This enum-based design ensures that each scope encapsulates its filtering logic neatly within a single override,
+improving maintainability and readability.
+
+<puml src="diagrams/FindScopeClassDiagram.puml" alt="FindScopeClassDiagram" width="700" />
+
+---
+
+#### Matching logic
+
+The matching mechanism performs **three-tier Levenshtein-based fuzzy matching** implemented within the command itself:
+
+1. **Exact substring check** — returns a match if the keyword appears as a case-insensitive substring.
+2. **Full-text Levenshtein match** — compares the entire field value against the keyword, allowing a small number of
+   edits based on keyword length.
+3. **Word-by-word Levenshtein match** — splits the text into words and matches each token individually.
+
+This approach allows tolerant and human-friendly searches (e.g., `find -an leo` matches “Lionel Messi”;
+`find -co arsnal` matches “Arsenal”).
+
+<puml src="diagrams/FindMatchingActivityDiagram.puml" alt="FindMatchingActivityDiagram" width="700" />
+
+<box type="info" seamless>
+<strong>Note:</strong>  
+The command only affects filtered views in memory.  
+Persistent data stored on disk remains unchanged.
+</box>
+
+---
+
+#### Example flow
+
+The following scenario demonstrates how a typical command executes:
+
+**Step 1.** The user executes `find -co Arsenal`.  
+**Step 2.** The parser constructs a `FindCommand` with scope `CONTRACT_ORGANIZATION` and keyword `Arsenal`.  
+**Step 3.** The command invokes `model.updateFilteredContractList(predicate)`.  
+**Step 4.** The UI’s observable list updates, displaying all contracts linked to organizations matching “Arsenal”.  
+**Step 5.** A `CommandResult` reports the number of matching contracts and switches the active tab to **Contracts**.
+
+<puml src="diagrams/FindActivityDiagram.puml" alt="FindActivityDiagram" width="500" />
+
+---
+
+#### Design considerations
+
+**Aspect: How search scope is determined**
+
+- **Alternative 1 (current choice):** Use an enum (`SearchScope`) with one method per scope.
+    - Pros: Compact, type-safe, easily extensible for new scopes.
+    - Cons: Slightly more complex when flags overlap semantically.
+- **Alternative 2:** Use a single switch statement on the flag.
+    - Pros: Simple and direct for small command sets.
+    - Cons: Harder to extend; increases method size.
+
+**Aspect: Matching method**
+
+- **Alternative 1 (current choice):** Custom Levenshtein-based fuzzy match with multi-tier logic.
+    - Pros: Natural partial and typo-tolerant matches without external libraries.
+    - Cons: Slightly higher computational cost on large datasets.
+- **Alternative 2:** Simple exact or tokenized substring match.
+    - Pros: Faster and easier to reason about.
+    - Cons: Misses partial and typo-tolerant results.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -646,7 +761,8 @@ otherwise)
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 athletes, organizations, and contracts without a noticeable sluggishness in performance for typical usage.
+2. Should be able to hold up to 1000 athletes, organizations, and contracts without a noticeable sluggishness in
+   performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid
@@ -703,7 +819,8 @@ The most recent window size and location is retained.
    **Expected:** Athlete is added to the athlete list. Details of the added athlete shown in the result pane.
 3. **Test case:** `add-a n/ s/Football a/39 p/87654321 e/cr7@example.com`  
    **Expected:** No athlete is added. Error details shown in the result pane.
-4. **Other incorrect add-a commands to try:** `add-a`, `add-a n/Messi2 s/Football a/39 p/87654321 e/cr7@example.com`, `...`  
+4. **Other incorrect add-a commands to try:** `add-a`, `add-a n/Messi2 s/Football a/39 p/87654321 e/cr7@example.com`,
+   `...`  
    **Expected:** Similar to previous.
 
 ### Deleting an athlete
@@ -721,11 +838,13 @@ The most recent window size and location is retained.
    **Expected:** Similar to previous.
 
 ### Adding an organization
+
 #### 1. Adding an organization while all organizations are being shown
 
 1. **Prerequisites:** Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
 2. **Test case:** `add-o o/Nike p/98765432 e/partnerships@nike.com`  
-   **Expected:** Organization is added to the organization list. Details of the added organization shown in the result pane.
+   **Expected:** Organization is added to the organization list. Details of the added organization shown in the result
+   pane.
 3. **Test case:** `add-o o/Nike p/+6598765432 e/partnerships@nike.com`  
    **Expected:** No organization is added. Error details shown in the result pane.
 4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/Nike123 p/98765432 e/partnerships@nike.com`, `...`  
@@ -756,7 +875,8 @@ The most recent window size and location is retained.
    **Expected:** Contract is added to the contracts list. Details of the added contract shown in the result pane.
 3. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/`  
    **Expected:** No contract is added. Error details shown in the result pane.
-4. **Other incorrect add-c commands to try:** `add-c`, `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50.90`, `...`  
+4. **Other incorrect add-c commands to try:** `add-c`,
+   `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50.90`, `...`  
    **Expected:** Similar to previous.
 
 ### Deleting a contract
@@ -768,7 +888,8 @@ The most recent window size and location is retained.
    **Expected:** Contract is deleted from the list. Details of the deleted contract shown in the result pane.
 3. **Test case:** `delete-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/ am/50000000`  
    **Expected:** No contract is deleted. Error details shown in the result pane.
-4. **Other incorrect delete-c commands to try:** `delete-c`, `delete-c n/ s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`, `...`  
+4. **Other incorrect delete-c commands to try:** `delete-c`,
+   `delete-c n/ s/Basketball o/Nike sd/01012024 ed/01012025 am/50000000`, `...`  
    **Expected:** Similar to previous.
 
 ### Finding an athlete

@@ -2,9 +2,11 @@ package seedu.address.logic.commands.contract;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.ContractMessages;
 import seedu.address.logic.commands.Command;
@@ -44,6 +46,8 @@ public class AddContractCommand extends Command {
     public static final String MESSAGE_NOT_FOUND_FMT = "Error: %s not found: %s. Ensure it exists in the address book.";
     public static final String MESSAGE_INVALID_DATE_RANGE =
             "Error: Start date (%s) must not be after end date (%s).";
+    public static final String MESSAGE_TOTAL_AMOUNT_OVERFLOW =
+            "Error: Adding this contract would exceed the maximum total contract amount for %s.";
 
     private final Name athleteName;
     private final Sport sport;
@@ -100,6 +104,8 @@ public class AddContractCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_CONTRACT);
         }
 
+        ensureNoTotalOverflow(model, athlete, organization);
+
         model.addContract(toAdd);
         model.updateFilteredAthleteList(unused -> false);
         model.updateFilteredAthleteList(Model.PREDICATE_SHOW_ALL_ATHLETES);
@@ -120,6 +126,52 @@ public class AddContractCommand extends Command {
             );
         }
         return match.get();
+    }
+
+    private void ensureNoTotalOverflow(
+            Model model, Athlete athlete, Organization organization) throws CommandException {
+        ObservableList<Contract> contracts =
+                model.getContractList().getContractList();
+        long contractAmount = amount.value;
+
+        List<String> overflowTargets = new ArrayList<>();
+
+        long athleteTotal = sumForPredicate(contracts,
+                c -> c.getAthlete().isSameAthlete(athlete));
+        if (wouldOverflow(athleteTotal, contractAmount)) {
+            overflowTargets.add("the athlete");
+        }
+
+        long organizationTotal = sumForPredicate(contracts,
+                c -> c.getOrganization().isSameOrganization(organization));
+        if (wouldOverflow(organizationTotal, contractAmount)) {
+            overflowTargets.add("the organization");
+        }
+
+        if (!overflowTargets.isEmpty()) {
+            String targets = String.join(" and ", overflowTargets);
+            throw new CommandException(String.format(MESSAGE_TOTAL_AMOUNT_OVERFLOW, targets));
+        }
+    }
+
+    private long sumForPredicate(ObservableList<Contract> contracts,
+                                 java.util.function.Predicate<Contract> predicate) {
+        long total = 0;
+        for (Contract contract : contracts) {
+            if (!predicate.test(contract)) {
+                continue;
+            }
+            long value = contract.getAmount().value;
+            if (wouldOverflow(total, value)) {
+                return Long.MAX_VALUE;
+            }
+            total += value;
+        }
+        return total;
+    }
+
+    private boolean wouldOverflow(long base, long addition) {
+        return addition > 0 && base > Long.MAX_VALUE - addition;
     }
 
     private Organization findOrganizationByNameOrThrow(Model model, OrganizationName name) throws CommandException {

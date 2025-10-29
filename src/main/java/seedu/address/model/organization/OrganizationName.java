@@ -3,6 +3,8 @@ package seedu.address.model.organization;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Locale;
+
 /**
  * Represents an Organization's name in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}.
@@ -11,13 +13,13 @@ public class OrganizationName {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Error: Names should only contain alphabetic characters, spaces, hyphens, and apostrophes, "
-                    + "must start with a letter, and cannot be blank.";
+                    + "must start with a letter, cannot be blank, and be at most 50 characters.";
 
     /*
      * Organization names can include letters, spaces, apostrophes,and hyphens.
      * Must contain at least one alphanumeric character and cannot be blank.
      */
-    public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z' -]*$";
+    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[A-Za-z][A-Za-z' -]*$";
 
     public final String fullOrganizationName;
 
@@ -29,7 +31,7 @@ public class OrganizationName {
     public OrganizationName(String name) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        fullOrganizationName = name.trim();
+        fullOrganizationName = name.trim().replaceAll("\\s+", " ");
     }
 
     /**
@@ -53,6 +55,6 @@ public class OrganizationName {
 
     @Override
     public int hashCode() {
-        return fullOrganizationName.toLowerCase().hashCode();
+        return fullOrganizationName.toLowerCase(Locale.ROOT).hashCode();
     }
 }

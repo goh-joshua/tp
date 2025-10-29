@@ -24,6 +24,7 @@ public class SportTest {
         assertThrows(NullPointerException.class, () -> seedu.address.model.athlete.Sport.isValidSport(null));
 
         // blank email
+        String fiftyOneCharSport = "A" + "a".repeat(50);
         assertFalse(seedu.address.model.athlete.Sport.isValidSport("")); // empty string
         assertFalse(seedu.address.model.athlete.Sport.isValidSport(" ")); // spaces only
 
@@ -31,11 +32,14 @@ public class SportTest {
         assertFalse(seedu.address.model.athlete.Sport.isValidSport("Basket-ball")); // dash
         assertFalse(seedu.address.model.athlete.Sport.isValidSport("Basket_Ball")); // underscore
         assertFalse(seedu.address.model.athlete.Sport.isValidSport("Pool 2")); // numbers
+        assertFalse(seedu.address.model.athlete.Sport.isValidSport(fiftyOneCharSport)); // exceeds max length
 
         // valid sport
+        String fiftyCharSport = "A" + "a".repeat(49);
         assertTrue(seedu.address.model.athlete.Sport.isValidSport("Basketball"));
         assertTrue(seedu.address.model.athlete.Sport.isValidSport("Hip hop"));
         assertTrue(seedu.address.model.athlete.Sport.isValidSport("Volleyball"));
+        assertTrue(seedu.address.model.athlete.Sport.isValidSport(fiftyCharSport)); // boundary length
 
     }
 
