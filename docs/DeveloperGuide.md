@@ -248,9 +248,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | sports agent | upload a new contract                                                                        | track my athletes’ active agreements                                 |
 | `* * *`  | sports agent | delete a contract                                                                            | keep my records up to date                                           |
 | `* *`    | sports agent | search for an athlete, organization, or contract                                             | quickly find the information I need without scrolling                |
+| `* *`    | sports agent | edit an athlete's profile information                                                        | update their details as their career progresses                      |
+| `* *`    | sports agent | edit an organization's information                                                           | keep organization details current and accurate                       |
+| `* *`    | sports agent | edit a contract's information                                                                | keep contract details current and accurate                           |
+| `* *`    | sports agent | sort contracts by amount                                                                     | identify the most valuable deals quickly                             |
+| `* *`    | sports agent | export contract data                                                                         | share reports with clients or use in other applications              |
 | `*`      | sports agent | view analytics on contracts & deals                                                          | gain insights into performance and opportunities                     |
 | `*`      | sports agent | link travel plans to competition and appearance schedules                                    | coordinate logistics efficiently and avoid scheduling conflicts      |
 | `*`      | sports agent | manage and sync my athletes’ competition schedules and training events in a central calendar | coordinate effectively with teams, sponsors, and travel arrangements |
+| `*`      | sports agent | set reminders for contract renewal dates                                                     | never miss important negotiation windows                             |
+| `*`      | sports agent | track payment schedules within contracts                                                     | ensure timely payments and cash flow management                      |
+| `*`      | sports agent | compare multiple contracts side by side                                                      | make informed decisions during negotiations                          |
+| `*`      | sports agent | attach documents to contracts                                                                | keep all related paperwork in one place                              |
+| `*`      | sports agent | receive notifications for contract milestones                                                | stay informed of important contract events automatically             |
+| `*`      | sports agent | track commission earned from each contract                                                   | manage my own finances and business performance                      |
 
 ### Use cases
 
