@@ -275,7 +275,7 @@ The matching mechanism performs **three-tier Levenshtein-based fuzzy matching** 
 This approach allows tolerant and human-friendly searches (e.g., `find -an leo` matches “Lionel Messi”;
 `find -co arsnal` matches “Arsenal”).
 
-<puml src="diagrams/FindMatchingActivityDiagram.puml" alt="FindMatchingActivityDiagram" width="500" />
+<puml src="diagrams/FindMatchingActivityDiagram.puml" alt="FindMatchingActivityDiagram" width="700" />
 
 <box type="info" seamless>
 <strong>Note:</strong>  
