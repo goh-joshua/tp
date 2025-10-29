@@ -64,8 +64,8 @@ This guide is designed for **sports agents and talent managers** operating in Si
    java -version
    ```
 
-   **Mac users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html) to install the correct JDK version.
-   **Windows users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html) to install the correct JDK version.
+   **Mac users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html) to install the correct JDK version.  
+   **Windows users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html) to install the correct JDK version.  
    **Linux users:** Follow the setup guide [here](https://se-education.org/guides/tutorials/javaInstallationLinux.html) to install the correct JDK version.
 
 2. **Download playbook.io**
@@ -623,7 +623,7 @@ All contract amounts are in Singapore Dollars (SGD). If you need to track intern
 
 **Why does the system say "duplicate athlete" when I'm adding someone with a different phone number?**  
 
-Athletes are identified by their name and sport combination, not by contact details. This is because athletes often share managers or have contact details managed by agencies. If you need to add an athlete with the same name, they must be in a different sport.
+Athletes are identified by their name and sport combination, not by contact details. This is because athletes often share managers or have contact details managed by agencies. If you need to add an athlete with the same name, they must be in a different sport. We intentionally avoid using more specific identifiers like NRIC numbers, as doing so would improve duplicate detection but require collecting sensitive personal data, increasing privacy risks and regulatory compliance obligations.
 
 **Can an athlete and an organization have the same phone number or email?**  
 
