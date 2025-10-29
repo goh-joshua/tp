@@ -3,6 +3,8 @@ package seedu.address.model.athlete;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Locale;
+
 /**
  * Represents an Athlete's sport in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidSport(String)}.
@@ -24,7 +26,7 @@ public class Sport {
     public Sport(String sport) {
         requireNonNull(sport);
         checkArgument(isValidSport(sport), MESSAGE_CONSTRAINTS);
-        value = sport;
+        value = sport.trim().replaceAll("\\s+", " ");
     }
 
     /**
@@ -56,6 +58,6 @@ public class Sport {
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return value.toLowerCase(Locale.ROOT).hashCode();
     }
 }
