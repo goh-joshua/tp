@@ -17,7 +17,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class FindCommandParser implements Parser<FindCommand> {
 
     private static final Pattern FLAG_AND_QUERY_FORMAT =
-            Pattern.compile("^-(?<flag>an|as|on|ca|co|cs)(?:\\s+)(?<query>.+)$", Pattern.DOTALL);
+            Pattern.compile("^-(?<flag>an|as|on|ca|co|cs)(?:\\s+)(?<query>.+)$",
+                    Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
 
     @Override
     public FindCommand parse(String args) throws ParseException {
