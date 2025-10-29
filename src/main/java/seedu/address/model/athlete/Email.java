@@ -3,6 +3,8 @@ package seedu.address.model.athlete;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Locale;
+
 /**
  * Represents an Athlete's email in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
@@ -73,7 +75,7 @@ public class Email {
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return value.toLowerCase(Locale.ROOT).hashCode();
     }
 
 }
