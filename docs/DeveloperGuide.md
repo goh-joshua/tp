@@ -193,7 +193,9 @@ The application has been designed to handle large contract amounts that are comm
 
 * **Data Type**: Contract amounts use `long` integers (64-bit) instead of `int` (32-bit)
 * **Maximum Value**: Up to 9,223,372,036,854,775,807 (approximately 9.2 quintillion)
-* **Overflow Protection**: Total contract calculations use `mapToLong()` to prevent overflow when summing multiple contracts
+* **Limit Applied**: Both individual contract amounts and total contract amounts for an athlete or organization cannot exceed this maximum value
+* **Overflow Protection**: The `ensureNoTotalOverflow()` method validates total contract amounts using predicate-based filtering and checks both athlete and organization totals before adding new contracts
+* **Validation Logic**: Uses `sumForPredicate()` to calculate current totals and `wouldOverflow()` to detect if adding a new contract would exceed the maximum limit
 * **UI Display**: Contract totals are properly formatted using `NumberFormat` for large amounts
 
 **Why `long` Instead of `int`**

@@ -329,6 +329,8 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 - Start date must be before or equal to end date.
 - Each contract must be unique. You cannot add two contracts with exactly the same details — athlete, organization, dates, and amount.
 - For athlete names, sports, and organization names, spaces do not matter, so multiple consecutive spaces are treated as a single space.
+- The total contract amount for an athlete across all their contracts cannot exceed 9,223,372,036,854,775,807.
+- The total contract amount for an organization across all their contracts cannot exceed 9,223,372,036,854,775,807.
 
 </div>
 
@@ -631,6 +633,11 @@ Yes, this is allowed and intentional. Athletes and organizations are separate en
 
 **Can I edit athlete, organization, or contract information after adding them?**  
 No, editing is not allowed for athletes, organizations, or contracts once they've been added to the system. If you need to make changes or entered incorrect information, please delete the entry and create a new one with the correct details.
+
+### Why can't the total contract amount exceed 9,223,372,036,854,775,807?
+
+This is the maximum value for a 64-bit integer (`Long.MAX_VALUE`) in Java, which is the largest whole number the system can handle. Realistically, this number (over 9 quintillion) far exceeds the total amount of money in the world, so it's highly unlikely you'll ever encounter this limit in practice. This constraint exists purely as a technical limitation of the programming language used.
+
 ### Getting More Help
 
 **Additional Resources:**
