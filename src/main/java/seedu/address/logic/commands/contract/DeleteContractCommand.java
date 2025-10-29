@@ -92,7 +92,7 @@ public class DeleteContractCommand extends Command {
         if (match.isEmpty()) {
             throw new CommandException(String.format(
                     MESSAGE_CONTRACT_NOT_FOUND,
-                    athleteName, organizationName, startDate, endDate, sport, amount
+                    athleteName, sport, organizationName, startDate, endDate, amount
             ));
         }
 
