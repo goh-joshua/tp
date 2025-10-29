@@ -104,7 +104,7 @@ The playbook.io interface consists of five main areas:
 1. **Menu Bar** (top): File and Help menus for application settings and documentation
 2. **Command Box** (top area): Text input field where you type commands to interact with the application
 3. **Result Pane** (top area): Displays the outcome of your commands, such as success messages, or error notifications
-4. **Main Display Area** (center): Shows your data lists and command feedback messages
+4. **Main Display Area** (center): Shows your data lists 
 5. **Navigation Tabs** (bottom): Three tabs for switching between Athletes, Organizations, and Contracts views
 
 **Navigation Tips:**
@@ -159,7 +159,7 @@ Athletes are the heart of your business. playbook.io makes it easy to track thei
 
 **Parameters:**
 
-- `n/NAME`: Full name of the athlete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `n/NAME`: Full name of the athlete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Sport of the athlete (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
 - `a/AGE`: Age of the athlete (positive integers only, ranging from 1 to 99)
 - `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only; maximum of 50 characters)
@@ -174,6 +174,8 @@ add-a n/Michael Jordan s/Basketball a/61 p/95551234 e/mj@example.com
 ```
 
 **Expected Output:**
+
+![add-a](images/add-a.png)
 
 ```
 New athlete added: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Email: James@example.com
@@ -193,7 +195,7 @@ New athlete added: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Em
 
 **Parameters:**
 
-- `n/NAME`: Full name of the athlete to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `n/NAME`: Full name of the athlete to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Sport of the athlete to delete (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
 
 **Examples:**
@@ -205,6 +207,8 @@ delete-a n/Michael Jordan s/Basketball
 ```
 
 **Expected Output:**
+
+![delete-a](images/delete-a.png)
 
 ```
 Deleted Athlete: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Email: James@example.com
@@ -228,7 +232,7 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 
 **Parameters:**
 
-- `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `p/PHONE`: Phone number of the organization (8-digit Singapore phone number only)
 - `e/EMAIL`: Email address of the organization (case-insensitive; must follow standard email format; maximum of 50 characters)
 
@@ -241,6 +245,8 @@ add-o o/IMG Academy p/88889999 e/talent@img.com
 ```
 
 **Expected Output:**
+
+![add-o](images/add-o.png)
 
 ```
 New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
@@ -266,7 +272,7 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 
 **Parameters:**
 
-- `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 
 **Examples:**
 
@@ -277,6 +283,7 @@ delete-o o/IMG Academy
 ```
 
 **Expected Output:**
+![delete-o](images/delete-o.png)
 
 ```
 Deleted Organization: Nike; Phone: 98765432; Email: partnerships@nike.com
@@ -300,7 +307,7 @@ Contracts link athletes with organizations and track the business relationships 
 
 **Parameters:**
 
-- `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
@@ -316,6 +323,8 @@ add-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/500
 ```
 
 **Expected Output:**
+
+![add-o](images/add-o.png)
 
 ```
 Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
@@ -340,7 +349,7 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 
 **Parameters:**
 
-- `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
 - `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
@@ -356,6 +365,8 @@ delete-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/
 ```
 
 **Expected Output:**
+
+![delete-c](images/delete-c.png)
 
 ```
 Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
@@ -397,10 +408,20 @@ find -co Nike           # Find contracts with organizations like "Nike"
 
 **Expected Output for `find -an James`:**
 
+![find -an](images/find-an.png)
+
 ```
 Showing 1 athlete closely matching "James".
 You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux) to show all data again.
 ```
+<div markdown="block" class="alert alert-warning">
+
+**⚠️ Important:**
+After executing the `find` command, if you **add**, or **delete** an athlete, organization, or contract,  
+the list **will not refresh automatically**.  
+It will continue to display the **previously filtered results** until a `refresh` command is executed.
+
+</div>
 
 <div markdown="block" class="alert alert-info">
 
@@ -423,6 +444,8 @@ Use this command to clear any active search filters and return to viewing all da
 
 **Expected Output:**
 
+![refresh](images/refresh.png)
+
 ```
 All filters cleared. Showing all athletes, organizations, and contracts.
 ```
@@ -439,6 +462,9 @@ You can refresh the display anytime using **Cmd+R** (macOS) or **Ctrl+R** (Windo
 #### Getting Help
 
 **Command:** `help`
+
+![Help Window](images/help_window.png)
+
 
 Opens the help window with quick reference information and links to documentation.
 
@@ -496,7 +522,7 @@ Exiting Address Book as requested ...
 
 **Common Parameters:**
 
-- `NAME`: Full Name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `NAME`: Full Name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
    - Character restrictions: Only letters, hyphens (-), and apostrophes (') are allowed to accommodate legitimate name formats like "O'Brien", "Mary-Jane", or "Jean-Claude" while preventing special characters that could cause display or data processing issues.
    - Limitation rationale: The 50-character limit accommodates most athlete names while preventing extremely long entries that could affect display formatting and system performance.
 - `SPORT`: Sport (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)

@@ -98,7 +98,7 @@ public class AddContractCommand extends Command {
             throw new CommandException(String.format(MESSAGE_INVALID_DATE_RANGE, startDate, endDate));
         }
 
-        Contract toAdd = new Contract(athlete, sport, organization, startDate, endDate, amount);
+        Contract toAdd = new Contract(athlete, athlete.getSport(), organization, startDate, endDate, amount);
 
         if (model.hasContract(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_CONTRACT);

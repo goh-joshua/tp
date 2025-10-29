@@ -33,7 +33,7 @@ public class Sport {
      * Returns true if a given string is a valid sport name.
      */
     public static boolean isValidSport(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.trim().replaceAll("\\s+", " ").matches(VALIDATION_REGEX);
     }
 
     @Override
