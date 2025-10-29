@@ -194,8 +194,9 @@ The application has been designed to handle large contract amounts that are comm
 
 * **Data Type**: Contract amounts use `long` integers (64-bit) instead of `int` (32-bit)
 * **Maximum Value**: Up to 9,223,372,036,854,775,807 (approximately 9.2 quintillion)
-* **Overflow Protection**: Total contract calculations use `mapToLong()` to prevent overflow when summing multiple
-  contracts
+* **Limit Applied**: Both individual contract amounts and total contract amounts for an athlete or organization cannot exceed this maximum value
+* **Overflow Protection**: The `ensureNoTotalOverflow()` method validates total contract amounts using predicate-based filtering and checks both athlete and organization totals before adding new contracts
+* **Validation Logic**: Uses `sumForPredicate()` to calculate current totals and `wouldOverflow()` to detect if adding a new contract would exceed the maximum limit
 * **UI Display**: Contract totals are properly formatted using `NumberFormat` for large amounts
 
 **Why `long` Instead of `int`**
@@ -362,9 +363,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | sports agent | upload a new contract                                                                        | track my athletes’ active agreements                                 |
 | `* * *`  | sports agent | delete a contract                                                                            | keep my records up to date                                           |
 | `* *`    | sports agent | search for an athlete, organization, or contract                                             | quickly find the information I need without scrolling                |
+| `* *`    | sports agent | edit an athlete's profile information                                                        | update their details as their career progresses                      |
+| `* *`    | sports agent | edit an organization's information                                                           | keep organization details current and accurate                       |
+| `* *`    | sports agent | edit a contract's information                                                                | keep contract details current and accurate                           |
+| `* *`    | sports agent | sort contracts by amount                                                                     | identify the most valuable deals quickly                             |
+| `* *`    | sports agent | export contract data                                                                         | share reports with clients or use in other applications              |
 | `*`      | sports agent | view analytics on contracts & deals                                                          | gain insights into performance and opportunities                     |
 | `*`      | sports agent | link travel plans to competition and appearance schedules                                    | coordinate logistics efficiently and avoid scheduling conflicts      |
 | `*`      | sports agent | manage and sync my athletes’ competition schedules and training events in a central calendar | coordinate effectively with teams, sponsors, and travel arrangements |
+| `*`      | sports agent | set reminders for contract renewal dates                                                     | never miss important negotiation windows                             |
+| `*`      | sports agent | track payment schedules within contracts                                                     | ensure timely payments and cash flow management                      |
+| `*`      | sports agent | compare multiple contracts side by side                                                      | make informed decisions during negotiations                          |
+| `*`      | sports agent | attach documents to contracts                                                                | keep all related paperwork in one place                              |
+| `*`      | sports agent | receive notifications for contract milestones                                                | stay informed of important contract events automatically             |
+| `*`      | sports agent | track commission earned from each contract                                                   | manage my own finances and business performance                      |
 
 ### Use cases
 
