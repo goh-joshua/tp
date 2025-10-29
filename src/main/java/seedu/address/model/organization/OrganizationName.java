@@ -38,7 +38,7 @@ public class OrganizationName {
      * Returns true if a given string is a valid organization name.
      */
     public static boolean isValidName(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.trim().replaceAll("\\s+", " ").matches(VALIDATION_REGEX);
     }
 
     @Override
