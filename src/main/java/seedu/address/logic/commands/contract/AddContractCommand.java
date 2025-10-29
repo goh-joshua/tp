@@ -47,7 +47,7 @@ public class AddContractCommand extends Command {
     public static final String MESSAGE_INVALID_DATE_RANGE =
             "Error: Start date (%s) must not be after end date (%s).";
     public static final String MESSAGE_TOTAL_AMOUNT_OVERFLOW =
-            "Error: Adding this contract would exceed the maximum total contract amount for %s.";
+            "Error: Adding this contract would exceed the maximum total contract amount(9,223,372,036,854,775,807) for %s.";
 
     private final Name athleteName;
     private final Sport sport;
