@@ -3,6 +3,8 @@ package seedu.address.model.organization;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Locale;
+
 /**
  * Represents an Organization's name in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}.
@@ -29,7 +31,7 @@ public class OrganizationName {
     public OrganizationName(String name) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        fullOrganizationName = name.trim();
+        fullOrganizationName = name.trim().replaceAll("\\s+", " ");
     }
 
     /**
@@ -53,6 +55,6 @@ public class OrganizationName {
 
     @Override
     public int hashCode() {
-        return fullOrganizationName.toLowerCase().hashCode();
+        return fullOrganizationName.toLowerCase(Locale.ROOT).hashCode();
     }
 }

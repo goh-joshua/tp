@@ -26,7 +26,7 @@ public class Sport {
     public Sport(String sport) {
         requireNonNull(sport);
         checkArgument(isValidSport(sport), MESSAGE_CONSTRAINTS);
-        value = sport;
+        value = sport.trim().replaceAll("\\s+", " ");
     }
 
     /**
