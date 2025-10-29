@@ -629,6 +629,8 @@ Athletes are identified by their name and sport combination, not by contact deta
 
 Yes, this is allowed and intentional. Athletes and organizations are separate entities in the system, and it's common in practice for them to share contact details. This flexibility reflects real-world scenarios where contact information overlaps between different entities you manage.
 
+**Can I edit athlete, organization, or contract information after adding them?**  
+No, editing is not allowed for athletes, organizations, or contracts once they've been added to the system. If you need to make changes or entered incorrect information, please delete the entry and create a new one with the correct details.
 ### Getting More Help
 
 **Additional Resources:**
