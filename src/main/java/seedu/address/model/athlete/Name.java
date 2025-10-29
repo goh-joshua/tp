@@ -3,6 +3,8 @@ package seedu.address.model.athlete;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Locale;
+
 /**
  * Represents an Athlete's name in playbook.io.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
@@ -62,7 +64,7 @@ public class Name {
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return fullName.toLowerCase(Locale.ROOT).hashCode();
     }
 
 }
