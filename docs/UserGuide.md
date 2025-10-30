@@ -249,8 +249,6 @@ add-o o/IMG Academy p/88889999 e/talent@img.com
 
 **Expected Output:**
 
-![add-o](images/add-o.png)
-
 ```
 New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 ```
@@ -276,6 +274,8 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 **Parameters:**
 
 - `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
+
+<div style="page-break-before: always;"></div>
 
 **Examples:**
 
@@ -342,6 +342,8 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 - The total contract amount for an organization across all their contracts cannot exceed 9,223,372,036,854,775,807.
 
 </div>
+
+<div style="page-break-before: always;"></div>
 
 #### Deleting Contracts
 
