@@ -11,8 +11,9 @@ pageNav: 3
 <!-- * Table of Contents -->
 <page-nav-print />
 
----
 <div style="page-break-before: always;"></div>
+
+---
 
 ## About This Guide
 
@@ -51,8 +52,8 @@ This guide is designed for **sports agents and talent managers** operating in Si
 - **Existing users**: Jump to [Command Reference](#command-reference) for syntax details
 - **Power users**: Check [Tips and Best Practices](#tips-and-best-practices) for advanced workflows
 
----
 <div style="page-break-before: always;"></div>
+---
 
 ## Quick Start
 
