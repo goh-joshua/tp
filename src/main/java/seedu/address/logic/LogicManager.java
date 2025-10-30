@@ -44,6 +44,22 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
     }
 
+    /**
+     * Executes the user command.
+     * <p>
+     * This method:
+     * <ul>
+     *   <li>Logs the command entered by the user</li>
+     *   <li>Parses it into a {@link Command}</li>
+     *   <li>Executes the command on the {@link Model}</li>
+     *   <li>Attempts to save any modified data to storage</li>
+     * </ul>
+     *
+     * @param commandText The raw command input by the user.
+     * @return The {@link CommandResult} produced by executing the command.
+     * @throws CommandException If an error occurs during command execution or data saving.
+     * @throws ParseException If the command text cannot be parsed.
+     */
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -66,36 +82,71 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
+    /**
+     * Returns the current read-only {@link ReadOnlyAddressBook} from the model.
+     *
+     * @return The address book data.
+     */
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return model.getAddressBook();
     }
 
+    /**
+     * Returns the file path where the address book data is stored.
+     *
+     * @return The {@link Path} to the address book file.
+     */
     @Override
     public Path getAddressBookFilePath() {
         return model.getAddressBookFilePath();
     }
 
+    /**
+     * Returns the current GUI settings of the application.
+     *
+     * @return The {@link GuiSettings} stored in the model.
+     */
     @Override
     public GuiSettings getGuiSettings() {
         return model.getGuiSettings();
     }
 
+    /**
+     * Updates the GUI settings in the model.
+     *
+     * @param guiSettings The new GUI settings to apply.
+     */
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
 
+    /**
+     * Returns an unmodifiable view of the filtered list of contracts.
+     *
+     * @return The filtered {@link ObservableList} of {@link Contract}.
+     */
     @Override
     public ObservableList<Contract> getFilteredContractList() {
         return model.getFilteredContractList();
     }
 
+    /**
+     * Returns an unmodifiable view of the filtered list of athletes.
+     *
+     * @return The filtered {@link ObservableList} of {@link Athlete}.
+     */
     @Override
     public ObservableList<Athlete> getFilteredAthleteList() {
         return model.getFilteredAthleteList();
     }
 
+    /**
+     * Returns an unmodifiable view of the filtered list of organizations.
+     *
+     * @return The filtered {@link ObservableList} of {@link Organization}.
+     */
     @Override
     public ObservableList<Organization> getFilteredOrganizationList() {
         return model.getFilteredOrganizationList();

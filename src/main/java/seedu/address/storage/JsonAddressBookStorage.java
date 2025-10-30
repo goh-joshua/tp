@@ -23,10 +23,20 @@ public class JsonAddressBookStorage implements AddressBookStorage {
 
     private Path filePath;
 
+    /**
+     * Constructs a {@code JsonAddressBookStorage} with the specified file path.
+     *
+     * @param filePath The path to the JSON file.
+     */
     public JsonAddressBookStorage(Path filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Returns the file path of the AddressBook JSON file.
+     *
+     * @return the file path.
+     */
     public Path getAddressBookFilePath() {
         return filePath;
     }

@@ -14,6 +14,9 @@ import seedu.address.model.organization.ReadOnlyOrganizationList;
  */
 public class SampleDataUtil {
 
+    /**
+     * Returns an empty address book  for initializing the model when no data is present.
+     */
     public static ReadOnlyAddressBook getSampleAddressBook() {
         return new AddressBook();
     }

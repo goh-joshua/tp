@@ -44,6 +44,12 @@ public class Organization {
         return email;
     }
 
+    /**
+     * Returns a list of all athletes associated with this organization, given a list of all contracts.
+     *
+     * @param allContracts The list of all contracts.
+     * @return An unmodifiable observable list of athletes.
+     */
     public ObservableList<Athlete> getAthletes(ObservableList<Contract> allContracts) {
         if (allContracts == null || allContracts.isEmpty()) {
             return FXCollections.observableArrayList();
@@ -56,6 +62,12 @@ public class Organization {
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
+    /**
+     * Returns the total contract amount associated with this organization.
+     *
+     * @param allContracts The list of all contracts.
+     * @return The total sum of contract amounts for this organization.
+     */
     public long getTotalContractAmount(ObservableList<Contract> allContracts) {
         if (allContracts == null || allContracts.isEmpty()) {
             return 0;

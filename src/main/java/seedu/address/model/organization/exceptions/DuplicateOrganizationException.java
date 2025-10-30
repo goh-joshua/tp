@@ -5,6 +5,9 @@ package seedu.address.model.organization.exceptions;
  * duplicates if they have the same identity).
  */
 public class DuplicateOrganizationException extends RuntimeException {
+    /**
+     * Constructs a {@code DuplicateOrganizationException} with a default message.
+     */
     public DuplicateOrganizationException() {
         super("Operation would result in duplicate Organizations");
     }

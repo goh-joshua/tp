@@ -23,15 +23,32 @@ public class JsonAthleteListStorage implements AthleteListStorage {
 
     private final Path filePath;
 
+    /**
+     * Constructs a {@code JsonAthleteListStorage} with the specified file path.
+     *
+     * @param filePath The path to the JSON file.
+     */
     public JsonAthleteListStorage(Path filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Returns the file path of the AthleteList JSON file.
+     *
+     * @return the file path.
+     */
     @Override
     public Path getAthleteListFilePath() {
         return filePath;
     }
 
+    /**
+     * Reads the athlete list data from the default JSON file path.
+     *
+     * @return An {@code Optional} containing the athlete list if the file exists.
+     * @throws DataLoadingException if there were errors loading the data
+     *                              (e.g., illegal values or invalid JSON format).
+     */
     @Override
     public Optional<ReadOnlyAthleteList> readAthleteList() throws DataLoadingException {
         return readAthleteList(filePath);
@@ -61,11 +78,25 @@ public class JsonAthleteListStorage implements AthleteListStorage {
         }
     }
 
+    /**
+     * Saves the given athlete list data to the default JSON file path.
+     *
+     * @param athletes The athlete list data to save. Cannot be null.
+     * @throws IOException if there was a problem writing to the file.
+     */
     @Override
     public void saveAthleteList(ReadOnlyAthleteList athletes) throws IOException {
         saveAthleteList(athletes, filePath);
     }
 
+    /**
+     * Saves the given athlete list data to the specified JSON file path.
+     * Creates the file if it does not exist.
+     *
+     * @param athletes The athlete list data to save. Cannot be null.
+     * @param filePath The location of the data file. Cannot be null.
+     * @throws IOException if there was a problem writing to the file.
+     */
     @Override
     public void saveAthleteList(ReadOnlyAthleteList athletes, Path filePath) throws IOException {
         requireNonNull(athletes);

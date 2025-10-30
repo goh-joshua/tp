@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -223,5 +224,56 @@ public class RefreshCommandTest {
         public void updateFilteredContractList(Predicate<Contract> predicate) {
             isContractListUpdated = true;
         }
+
+        @Override
+        public ObservableList<Athlete> getFilteredAthleteList() {
+            return javafx.collections.FXCollections.observableArrayList();
+        }
+
+        @Override
+        public ObservableList<Organization> getFilteredOrganizationList() {
+            return javafx.collections.FXCollections.observableArrayList();
+        }
+
+        @Override
+        public ObservableList<Contract> getFilteredContractList() {
+            return javafx.collections.FXCollections.observableArrayList();
+        }
+
+        @Override
+        public ReadOnlyAddressBook getAddressBook() {
+            return new AddressBook();
+        }
+
+        @Override
+        public ReadOnlyAthleteList getAthleteList() {
+            return new ReadOnlyAthleteList() {
+                @Override
+                public ObservableList<Athlete> getAthleteList() {
+                    return javafx.collections.FXCollections.observableArrayList();
+                }
+            };
+        }
+
+        @Override
+        public ReadOnlyOrganizationList getOrganizationList() {
+            return new ReadOnlyOrganizationList() {
+                @Override
+                public ObservableList<Organization> getOrganizationList() {
+                    return javafx.collections.FXCollections.observableArrayList();
+                }
+            };
+        }
+
+        @Override
+        public ReadOnlyContractList getContractList() {
+            return new ReadOnlyContractList() {
+                @Override
+                public ObservableList<Contract> getContractList() {
+                    return javafx.collections.FXCollections.observableArrayList();
+                }
+            };
+        }
+
     }
 }

@@ -49,18 +49,34 @@ public class AddAthleteCommand extends Command {
         toAdd = athlete;
     }
 
+    /**
+     * Executes the command to add an athlete to the model.
+     *
+     * @param model The model which the athlete should be added to. Cannot be null.
+     * @return A CommandResult indicating the success of the operation.
+     * @throws CommandException If the athlete already exists in the model.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        assert toAdd != null : "Athlete to add should not be null";
 
         if (model.hasAthlete(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATHLETE);
         }
 
         model.addAthlete(toAdd);
+        assert model.hasAthlete(toAdd) : "Athlete should exist in model after adding";
         return new CommandResult(String.format(MESSAGE_SUCCESS, AthleteMessages.format(toAdd)));
     }
 
+    /**
+     * Returns true if both AddAthleteCommand objects add the same athlete.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -76,6 +92,11 @@ public class AddAthleteCommand extends Command {
         return toAdd.equals(otherAddAthleteCommand.toAdd);
     }
 
+    /**
+     * Returns a string representation of this AddAthleteCommand.
+     *
+     * @return A formatted string containing the athlete to be added.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

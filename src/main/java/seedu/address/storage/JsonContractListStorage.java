@@ -23,15 +23,32 @@ public class JsonContractListStorage implements ContractListStorage {
 
     private final Path filePath;
 
+    /**
+     * Constructs a {@code JsonContractListStorage} with the specified file path.
+     *
+     * @param filePath The path to the JSON file.
+     */
     public JsonContractListStorage(Path filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Returns the file path of the ContractList JSON file.
+     *
+     * @return the file path.
+     */
     @Override
     public Path getContractListFilePath() {
         return filePath;
     }
 
+    /**
+     * Reads the contract list data from the default JSON file path.
+     *
+     * @return An {@code Optional} containing the contract list if the file exists.
+     * @throws DataLoadingException if there were errors loading the data
+     *                              (e.g., illegal values or invalid JSON format).
+     */
     @Override
     public Optional<ReadOnlyContractList> readContractList() throws DataLoadingException {
         return readContractList(filePath);
@@ -61,11 +78,25 @@ public class JsonContractListStorage implements ContractListStorage {
         }
     }
 
+    /**
+     * Saves the given contract list data to the default JSON file path.
+     *
+     * @param contracts The contract list data to save. Cannot be null.
+     * @throws IOException if there was a problem writing to the file.
+     */
     @Override
     public void saveContractList(ReadOnlyContractList contracts) throws IOException {
         saveContractList(contracts, filePath);
     }
 
+    /**
+     * Saves the given contract list data to the specified JSON file path.
+     * Creates the file if it does not exist.
+     *
+     * @param contracts The contract list data to save. Cannot be null.
+     * @param filePath  The location of the data file. Cannot be null.
+     * @throws IOException if there was a problem writing to the file.
+     */
     @Override
     public void saveContractList(ReadOnlyContractList contracts, Path filePath) throws IOException {
         requireNonNull(contracts);

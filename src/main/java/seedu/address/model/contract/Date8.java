@@ -59,6 +59,11 @@ public class Date8 {
         }
     }
 
+    /**
+     * Converts this {@code Date8} to a {@link LocalDate}.
+     *
+     * @return A LocalDate representing the same date as this Date8.
+     */
     public LocalDate toLocalDate() {
         return LocalDate.parse(value, FMT);
     }

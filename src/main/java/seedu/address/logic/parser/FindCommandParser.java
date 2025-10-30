@@ -20,10 +20,20 @@ public class FindCommandParser implements Parser<FindCommand> {
             Pattern.compile("^-(?<flag>an|as|on|ca|co|cs)(?:\\s+)(?<query>.+)$",
                     Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the FindCommand
+     * and returns a FindCommand object for execution.
+     * Expected format: -FLAG KEYWORD, where FLAG is one of: an, as, on, ca, co, cs
+     *
+     * @param args The user input arguments to parse. Cannot be null.
+     * @return A FindCommand object with the parsed search scope and keyword.
+     * @throws ParseException If the user input does not conform to the expected format,
+     *                        the flag is invalid, or the keyword is blank.
+     */
     @Override
     public FindCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        String trimmed = args.trim();
+        String trimmed = args.trim().replaceAll("\\s+", " ");
         if (trimmed.isEmpty()) {
             throw new ParseException(String.format(seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_USAGE));

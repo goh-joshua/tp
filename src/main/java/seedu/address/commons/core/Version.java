@@ -32,18 +32,38 @@ public class Version implements Comparable<Version> {
         this.isEarlyAccess = isEarlyAccess;
     }
 
+    /**
+     * Returns the major version number.
+     *
+     * @return The major version number.
+     */
     public int getMajor() {
         return major;
     }
 
+    /**
+     * Returns the minor version number.
+     *
+     * @return The minor version number.
+     */
     public int getMinor() {
         return minor;
     }
 
+    /**
+     * Returns the patch version number.
+     *
+     * @return The patch version number.
+     */
     public int getPatch() {
         return patch;
     }
 
+    /**
+     * Returns whether this is an early access version.
+     *
+     * @return True if this is an early access version, false otherwise.
+     */
     public boolean isEarlyAccess() {
         return isEarlyAccess;
     }
@@ -67,11 +87,25 @@ public class Version implements Comparable<Version> {
                 versionMatcher.group(4) == null ? false : true);
     }
 
+    /**
+     * Returns the string representation of this version in the format V[major].[minor].[patch][ea].
+     *
+     * @return The version string.
+     */
     @JsonValue
     public String toString() {
         return String.format("V%d.%d.%d%s", major, minor, patch, isEarlyAccess ? "ea" : "");
     }
 
+    /**
+     * Compares this version with another version for ordering.
+     * Versions are compared by major, then minor, then patch number.
+     * Early access versions are considered less than non-early access versions with the same numbers.
+     *
+     * @param other The version to compare with.
+     * @return A negative integer, zero, or a positive integer as this version is less than,
+     *         equal to, or greater than the specified version.
+     */
     @Override
     public int compareTo(Version other) {
         if (major != other.major) {
@@ -92,6 +126,12 @@ public class Version implements Comparable<Version> {
         return 1;
     }
 
+    /**
+     * Returns true if both Version objects have the same version numbers and early access status.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -110,6 +150,13 @@ public class Version implements Comparable<Version> {
                 && isEarlyAccess == otherVersion.isEarlyAccess;
     }
 
+    /**
+     * Returns the hash code for this Version object.
+     * The hash code is calculated based on the major, minor, and patch numbers,
+     * with early access versions having a different hash than non-early access versions.
+     *
+     * @return The hash code.
+     */
     @Override
     public int hashCode() {
         String hash = String.format("%03d%03d%03d", major, minor, patch);

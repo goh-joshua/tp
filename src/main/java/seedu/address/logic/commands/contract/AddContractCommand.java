@@ -87,6 +87,16 @@ public class AddContractCommand extends Command {
         this.amount = amount;
     }
 
+    /**
+     * Executes the command to add a contract to the model.
+     * Validates that the athlete and organization exist, the date range is valid,
+     * the contract doesn't already exist, and adding it won't cause overflow.
+     *
+     * @param model The model to which the contract should be added. Cannot be null.
+     * @return A CommandResult indicating the success of the operation.
+     * @throws CommandException If the athlete or organization doesn't exist, dates are invalid,
+     *                          contract is a duplicate, or adding it would cause overflow.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -183,6 +193,12 @@ public class AddContractCommand extends Command {
         return match.get();
     }
 
+    /**
+     * Returns true if both AddContractCommand objects have the same contract details.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this
@@ -195,6 +211,11 @@ public class AddContractCommand extends Command {
                 && amount.equals(((AddContractCommand) other).amount);
     }
 
+    /**
+     * Returns a string representation of this AddContractCommand.
+     *
+     * @return A formatted string containing all contract details.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

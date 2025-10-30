@@ -58,6 +58,11 @@ public class UniqueAthleteList implements Iterable<Athlete> {
         }
     }
 
+    /**
+     * Replaces the contents of this list with the athletes in {@code replacement}.
+     *
+     * @param replacement The replacement list.
+     */
     public void setAthletes(UniqueAthleteList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

@@ -88,6 +88,7 @@ public class ModelManager implements Model {
         this.filteredAthletes = new FilteredList<>(this.addressBook.getAthleteList());
     }
 
+    /** Constructs a {@code ModelManager} with empty data. */
     public ModelManager() {
         this(new AddressBook(), new UserPrefs(), new AthleteList(), new ContractList(), new OrganizationList());
     }
@@ -96,33 +97,39 @@ public class ModelManager implements Model {
     // UserPrefs (AddressBook)
     // =====================================================================================
 
+    /** Returns the user preferences. */
     @Override
     public ReadOnlyUserPrefs getUserPrefs() {
         return userPrefs;
     }
 
+    /** Sets the user preferences. */
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
         this.userPrefs.resetData(userPrefs);
     }
 
+    /** Returns the GUI settings from user preferences. */
     @Override
     public GuiSettings getGuiSettings() {
         return userPrefs.getGuiSettings();
     }
 
+    /** Sets the GUI settings in user preferences. */
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         userPrefs.setGuiSettings(guiSettings);
     }
 
+    /** Returns the address book file path from user preferences. */
     @Override
     public Path getAddressBookFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
+    /** Sets the address book file path in user preferences. */
     @Override
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
@@ -133,11 +140,13 @@ public class ModelManager implements Model {
     // AddressBook (Contracts / Orgs / Athletes)
     // =====================================================================================
 
+    /** Replaces the contents of the AddressBook with the given data. */
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
     }
 
+    /** Returns the AddressBook. */
     @Override
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
@@ -156,12 +165,14 @@ public class ModelManager implements Model {
         };
     }
 
+    /** Returns true if a contract with the same identity exists in the AddressBook. */
     @Override
     public boolean hasContract(Contract contract) {
         requireNonNull(contract);
         return addressBook.hasContract(contract);
     }
 
+    /** Adds a contract to the AddressBook. Updates filtered view. */
     @Override
     public void addContract(Contract contract) {
         requireNonNull(contract);
@@ -169,17 +180,20 @@ public class ModelManager implements Model {
         updateFilteredContractList(PREDICATE_SHOW_ALL_CONTRACTS);
     }
 
+    /** Deletes a contract from the AddressBook. */
     @Override
     public void deleteContract(Contract target) {
         requireNonNull(target);
         addressBook.removeContract(target);
     }
 
+    /** Returns the filtered contract list. */
     @Override
     public ObservableList<Contract> getFilteredContractList() {
         return filteredContracts;
     }
 
+    /** Updates the filtered contract list using the given predicate. */
     @Override
     public void updateFilteredContractList(Predicate<Contract> predicate) {
         requireNonNull(predicate);
@@ -199,18 +213,21 @@ public class ModelManager implements Model {
         };
     }
 
+    /** Returns true if an organization with the same identity exists in the AddressBook. */
     @Override
     public boolean hasOrganization(Organization organization) {
         requireNonNull(organization);
         return addressBook.hasOrganization(organization);
     }
 
+    /** Deletes an organization from the AddressBook. */
     @Override
     public void deleteOrganization(Organization target) {
         requireNonNull(target);
         addressBook.removeOrganization(target);
     }
 
+    /** Adds an organization to the AddressBook and updates filtered view. */
     @Override
     public void addOrganization(Organization organization) {
         requireNonNull(organization);
@@ -218,17 +235,20 @@ public class ModelManager implements Model {
         updateFilteredOrganizationList(PREDICATE_SHOW_ALL_ORGANIZATIONS);
     }
 
+    /** Replaces an existing organization with an edited organization. */
     @Override
     public void setOrganization(Organization target, Organization editedOrganization) {
         requireAllNonNull(target, editedOrganization);
         addressBook.setOrganization(target, editedOrganization);
     }
 
+    /** Returns the filtered organization list. */
     @Override
     public ObservableList<Organization> getFilteredOrganizationList() {
         return filteredOrganizations;
     }
 
+    /** Updates the filtered organization list using the given predicate. */
     @Override
     public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
         requireNonNull(predicate);
@@ -248,28 +268,33 @@ public class ModelManager implements Model {
         };
     }
 
+    /** Returns true if an athlete with the same identity exists in the AddressBook. */
     @Override
     public boolean hasAthlete(Athlete athlete) {
         requireNonNull(athlete);
         return addressBook.hasAthlete(athlete);
     }
 
+    /** Deletes an athlete from the AddressBook. */
     @Override
     public void deleteAthlete(Athlete target) {
         addressBook.removeAthlete(target);
     }
 
+    /** Adds an athlete to the AddressBook and updates filtered view. */
     @Override
     public void addAthlete(Athlete athlete) {
         addressBook.addAthlete(athlete);
         updateFilteredAthleteList(PREDICATE_SHOW_ALL_ATHLETES);
     }
 
+    /** Returns the filtered athlete list. */
     @Override
     public ObservableList<Athlete> getFilteredAthleteList() {
         return filteredAthletes;
     }
 
+    /** Updates the filtered athlete list using the given predicate. */
     @Override
     public void updateFilteredAthleteList(Predicate<Athlete> predicate) {
         requireNonNull(predicate);
@@ -289,10 +314,10 @@ public class ModelManager implements Model {
             return false;
         }
 
-        ModelManager o = (ModelManager) other;
-        return addressBook.equals(o.addressBook)
-                && userPrefs.equals(o.userPrefs)
-                && filteredContracts.equals(o.filteredContracts)
-                && filteredAthletes.equals(o.filteredAthletes);
+        ModelManager otherModelManager = (ModelManager) other;
+        return addressBook.equals(otherModelManager.addressBook)
+                && userPrefs.equals(otherModelManager.userPrefs)
+                && filteredContracts.equals(otherModelManager.filteredContracts)
+                && filteredAthletes.equals(otherModelManager.filteredAthletes);
     }
 }

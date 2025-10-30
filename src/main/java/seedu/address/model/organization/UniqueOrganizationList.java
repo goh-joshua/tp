@@ -81,6 +81,11 @@ public class UniqueOrganizationList implements Iterable<Organization> {
         }
     }
 
+    /**
+     * Replaces the contents of this list with those from {@code replacement}.
+     *
+     * @param replacement The list whose elements will replace this list's elements.
+     */
     public void setOrganizations(UniqueOrganizationList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

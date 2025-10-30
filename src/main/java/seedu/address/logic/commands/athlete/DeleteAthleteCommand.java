@@ -49,6 +49,14 @@ public class DeleteAthleteCommand extends Command {
         this.sport = sport;
     }
 
+    /**
+     * Executes the command to delete an athlete from the model.
+     * The athlete must not have any existing contracts.
+     *
+     * @param model The model from which the athlete should be deleted. Cannot be null.
+     * @return A CommandResult indicating the success of the operation.
+     * @throws CommandException If the athlete does not exist or has an existing contract.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -81,6 +89,12 @@ public class DeleteAthleteCommand extends Command {
 
     }
 
+    /**
+     * Returns true if both DeleteAthleteCommand objects delete the same athlete.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -96,6 +110,11 @@ public class DeleteAthleteCommand extends Command {
                 && sport.equals(otherDeleteAthleteCommand.sport);
     }
 
+    /**
+     * Returns a string representation of this DeleteAthleteCommand.
+     *
+     * @return A formatted string containing the name and sport of the athlete to be deleted.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

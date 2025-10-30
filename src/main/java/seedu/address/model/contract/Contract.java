@@ -12,8 +12,10 @@ import seedu.address.model.organization.Organization;
 
 /**
  * Represents a Contract between an Athlete and an Organization.
- * Identity is defined by (athlete, sport, organization, contact, startDate, endDate, amount).
- * Here athlete/organization/contact are full Person objects.
+ * <p>
+ * Identity of a Contract is defined by the combination of:
+ * {@code athlete, sport, organization, startDate, endDate, amount}.
+ * Two contracts are considered the same if all these fields are equivalent.
  */
 public class Contract {
 
@@ -26,7 +28,15 @@ public class Contract {
     private final Amount amount; // positive integer
 
     /**
-     * All fields must be present and non-null.
+     * Constructs a {@code Contract} with all fields required.
+     * All fields must be non-null.
+     *
+     * @param athlete      The athlete involved in the contract.
+     * @param sport        The sport associated with the contract.
+     * @param organization The organization offering the contract.
+     * @param startDate    The start date of the contract (validated DDMMYYYY format).
+     * @param endDate      The end date of the contract (validated DDMMYYYY format).
+     * @param amount       The contract amount (positive integer).
      */
     public Contract(Athlete athlete,
                     Sport sport,
@@ -68,8 +78,12 @@ public class Contract {
     }
 
     /**
-     * “Same contract” according to your duplicate rule.
-     * For Person identity, we use Person#isSamePerson (like AB4’s UniquePersonList).
+     * Returns true if both contracts are considered the same according to identity fields.
+     * <p>
+     * This checks athlete, sport, organization, startDate, endDate, and amount.
+     *
+     * @param other The contract to compare with.
+     * @return true if both contracts are the same, false otherwise.
      */
     public boolean isSameContract(Contract other) {
         if (other == this) {
