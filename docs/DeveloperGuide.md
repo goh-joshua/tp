@@ -116,14 +116,13 @@ The `UI` component,
 Here's a (partial) class diagram of the `Logic` component:
 <puml src="diagrams/LogicClassDiagram.puml" width="550" height="375"/>
 
+<div style="page-break-before: always;"></div>
+
 The sequence diagrams below illustrate the interactions within the `Logic` component,
 taking the `add-a` and `delete-a` commands as examples.
 
 <puml src="diagrams/AlternateAddAthleteSD.puml" width="800" />
 <puml src="diagrams/ParsingAddSequenceDiagram.puml" width="800" />
-
-<div style="page-break-before: always;"></div>
-
 <puml src="diagrams/AlternateDeleteAthleteSD.puml" width="800" />
 <puml src="diagrams/ParsingDeleteSequenceDiagram.puml" width="800" />
 
@@ -391,6 +390,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | sports agent | receive notifications for contract milestones                                                | stay informed of important contract events automatically             |
 | `*`      | sports agent | track commission earned from each contract                                                   | manage my own finances and business performance                      |
 
+<div style="page-break-before: always;"></div>
+
 ### Use cases
 
 (For all use cases below, the **System** is the `playbook.io` and the **Actor** is the `user`, unless specified
@@ -429,6 +430,8 @@ otherwise)
     * 2a1. playbook.io shows an error message
 
       Use case ends.
+
+<div style="page-break-before: always;"></div>
 
 **Use case: Delete Athlete Profile**
 
@@ -470,6 +473,8 @@ otherwise)
 
       Use case ends.
 
+<div style="page-break-before: always;"></div>
+
 **Use case: Add Organization Profile**
 
 **MSS**
@@ -502,6 +507,8 @@ otherwise)
     * 2a1. playbook.io shows an error message
 
       Use case ends.
+
+<div style="page-break-before: always;"></div>
 
 **Use case: Delete Organization**
 
@@ -542,6 +549,8 @@ otherwise)
     * 2b1. playbook.io shows an error message
 
       Use case ends.
+
+<div style="page-break-before: always;"></div>
 
 **Use case: Add Contract**
 
@@ -587,6 +596,8 @@ otherwise)
 
       Use case ends.
 
+<div style="page-break-before: always;"></div>
+
 **Use case: Delete Contract**
 
 **MSS**
@@ -620,6 +631,8 @@ otherwise)
     * 2a1. playbook.io shows an error message
 
       Use case ends.
+
+<div style="page-break-before: always;"></div>
 
 **Use case: Find Athlete**
 
@@ -655,6 +668,8 @@ otherwise)
 
       Use case ends.
 
+<div style="page-break-before: always;"></div>
+
 **Use case: Find Organization**
 
 **MSS**
@@ -689,6 +704,8 @@ otherwise)
 
       Use case ends.
 
+<div style="page-break-before: always;"></div>
+
 **Use case: Find Contract**
 
 **MSS**
@@ -722,6 +739,8 @@ otherwise)
     * 2a1. playbook.io returns an empty list
 
       Use case ends.
+
+<div style="page-break-before: always;"></div>
 
 **Use case: Refresh Data**
 
@@ -770,6 +789,8 @@ otherwise)
     * 1a1. playbook.io shows an error message
 
       Use case ends.
+
+<div style="page-break-before: always;"></div>
 
 ### Non-Functional Requirements
 
@@ -836,6 +857,8 @@ The most recent window size and location is retained.
    `...`  
    **Expected:** Similar to previous.
 
+<div style="page-break-before: always;"></div>
+
 ### Deleting an athlete
 
 #### 1. Deleting an athlete while all athletes are being shown
@@ -892,6 +915,8 @@ The most recent window size and location is retained.
    `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50.90`, `...`  
    **Expected:** Similar to previous.
 
+<div style="page-break-before: always;"></div>
+
 ### Deleting a contract
 
 #### 1. Deleting a contract while all contracts are being shown
@@ -946,6 +971,8 @@ The most recent window size and location is retained.
    **Expected:** No filtering occurs. Error details shown in the result pane.
 6. **Other incorrect find commands to try:** `find -cs`, `find -co`, `...`  
    **Expected:** Similar to previous.
+
+<div style="page-break-before: always;"></div>
 
 ### Saving data
 
