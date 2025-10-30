@@ -76,6 +76,7 @@ public class AddressBookParser {
      * @throws ParseException If the command word is not recognized or arguments are invalid.
      */
     private Command parseCommandWord(String commandWord, String arguments) throws ParseException {
+        logger.fine("Parsing command word: \"" + commandWord + "\" with arguments: \"" + arguments + "\"");
         switch (commandWord) {
         case AddOrganizationCommand.COMMAND_WORD:
             return new AddOrganizationCommandParser().parse(arguments);
