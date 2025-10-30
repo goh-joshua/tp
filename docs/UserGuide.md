@@ -419,9 +419,9 @@ You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux
 <div markdown="block" class="alert alert-warning">
 
 **⚠️ Important:**
-After executing the `find` command, if you **add**, or **delete** an athlete, organization, or contract,  
-the list **will not refresh automatically**.  
-It will continue to display the **previously filtered results** until a `refresh` command is executed.
+- After executing the `find` command, if you **add**, or **delete** an athlete, organization, or contract,  
+the list **will not refresh automatically**. It will continue to display the **previously filtered results** until a `refresh` command is executed.
+- If you perform **another `find` command**, the **previously filtered results will be cleared** and replaced with the **new filtered list** based on your latest search criteria.
 
 </div>
 
@@ -457,6 +457,8 @@ You can refresh the display anytime using **Cmd+R** (macOS) or **Ctrl+R** (Windo
 
 </div>
 
+<div style="page-break-before: always;"></div>
+
 ### Application Controls
 
 #### Getting Help
@@ -467,8 +469,6 @@ You can refresh the display anytime using **Cmd+R** (macOS) or **Ctrl+R** (Windo
 Opens the help window with quick reference information and links to documentation.
 
 **Keyboard Shortcut:** **F1**
-
-<div style="page-break-before: always;"></div>
 
 **Expected Output:**
 ```

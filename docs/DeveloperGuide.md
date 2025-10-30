@@ -999,7 +999,8 @@ The most recent window size and location is retained.
 4. Re-launch playbook.io.
 
 **Expected:**
-The app detects that the files are missing and loads empty lists for all entities.
+- If `contractlist.json` is not empty but one or more of the other files are missing, all JSON files are re-generated as empty lists.
+- Otherwise, only the missing files are automatically generated as empty lists.
 
 ##### 1.2 Simulate a corrupted file
 
