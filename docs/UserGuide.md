@@ -11,9 +11,9 @@ pageNav: 3
 <!-- * Table of Contents -->
 <page-nav-print />
 
-<div style="page-break-before: always;"></div>
-
 ---
+
+<div style="page-break-before: always;"></div>
 
 ## About This Guide
 
