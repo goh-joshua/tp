@@ -67,6 +67,8 @@ Each of the four main components (also shown in the diagram above),
 - implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API
   `interface` mentioned in the previous point).
 
+<div style="page-break-before: always;"></div>
+
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using
 the `LogicManager.java` class which follows the `Logic` interface.
 Other components interact with a given component through its interface rather than the concrete class (reason: to
@@ -104,6 +106,8 @@ The `UI` component,
 - depends on some classes in the `Model` component, as it displays `Athlete`, `Organization`, and `Contract` objects
   residing in the `Model`.
 
+<div style="page-break-before: always;"></div>
+
 ### Logic component
 
 **API** : [
@@ -132,6 +136,8 @@ How the `Logic` component works:
    Although this is shown as a single step in the diagrams above for simplicity, the actual implementation involves
    multiple interactions between the `Command` and the `Model`.
 4. The result of the command execution is encapsulated as a `CommandResult` object, which is returned back from `Logic`.
+
+<div style="page-break-before: always;"></div>
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing user commands:
 

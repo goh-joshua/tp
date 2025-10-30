@@ -167,6 +167,8 @@ Athletes are the heart of your business. playbook.io makes it easy to track thei
 - `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only; maximum of 50 characters)
 - `e/EMAIL`: Email address of the athlete (case-insensitive; must follow standard email format)
 
+<div style="page-break-before: always;"></div>
+
 **Examples:**
 
 ```
@@ -207,6 +209,7 @@ delete-a n/Lebron James s/Basketball
 delete-a n/Cristiano Ronaldo s/Football
 delete-a n/Michael Jordan s/Basketball
 ```
+<div style="page-break-before: always;"></div>
 
 **Expected Output:**
 
