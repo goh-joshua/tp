@@ -28,9 +28,9 @@ public class DeleteOrganizationCommand extends Command {
 
     public static final String MESSAGE_DELETE_ORGANIZATION_SUCCESS = "Deleted Organization: %1$s";
     public static final String MESSAGE_ORGANIZATION_NOT_FOUND =
-            "Error: No organization found: '%1$s'.";
+            "Error: Organization not found: '%1$s'";
     public static final String MESSAGE_ORGANIZATION_EXISTING_CONTRACT =
-            "Error: Organization has existing contract.";
+            "Error: Organization has existing contracts";
 
     private final OrganizationName targetName;
 
