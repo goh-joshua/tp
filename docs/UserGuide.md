@@ -53,6 +53,7 @@ This guide is designed for **sports agents and talent managers** operating in Si
 - **Power users**: Check [Tips and Best Practices](#tips-and-best-practices) for advanced workflows
 
 <div style="page-break-before: always;"></div>
+
 ---
 
 ## Quick Start
@@ -210,6 +211,7 @@ delete-a n/Lebron James s/Basketball
 delete-a n/Cristiano Ronaldo s/Football
 delete-a n/Michael Jordan s/Basketball
 ```
+
 <div style="page-break-before: always;"></div>
 
 **Expected Output:**
@@ -514,6 +516,7 @@ Exiting Address Book as requested ...
 **💡 Tip:** All commands and flags (like `add`, `delete-a`, or `n/`) are **case-insensitive**, so you can type `ADD`, `Add`, or `add` and it will work the same. 
 
 </div>
+
 <div style="page-break-before: always;"></div>
 
 ### Parameter Details
@@ -680,8 +683,9 @@ This is the maximum value for a 64-bit integer (`Long.MAX_VALUE`) in Java, which
 3. Include your operating system and Java version
 4. Submit via GitHub Issues with detailed description
 
----
 <div style="page-break-before: always;"></div>
+
+---
 
 ## Appendix
 

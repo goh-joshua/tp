@@ -23,6 +23,7 @@ provided by the National University of Singapore’s **CS2103T Software Engineer
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div style="page-break-before: always;"></div>
+
 ---
 
 ## **Design**
@@ -219,6 +220,7 @@ The application has been designed to handle large contract amounts that are comm
 * **Error Prevention**: Eliminates negative overflow display bugs in UI chips
 
 <div style="page-break-before: always;"></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
@@ -263,6 +265,7 @@ Upon execution, the command:
 <puml src="diagrams/FindSequenceDiagram-Logic.puml" alt="FindSequenceDiagram-Logic" width="750" />
 
 <div style="page-break-before: always;"></div>
+
 ---
 
 #### Search scopes and behavior
@@ -279,6 +282,7 @@ improving maintainability and readability.
 <puml src="diagrams/FindScopeClassDiagram.puml" alt="FindScopeClassDiagram" width="700" />
 
 <div style="page-break-before: always;"></div>
+
 ---
 
 #### Matching logic
@@ -302,6 +306,7 @@ Persistent data stored on disk remains unchanged.
 </box>
 
 <div style="page-break-before: always;"></div>
+
 ---
 
 #### Example flow
@@ -349,6 +354,7 @@ The following scenario demonstrates how a typical command executes:
 * [DevOps guide](DevOps.md)
 
 <div style="page-break-before: always;"></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Requirements**
