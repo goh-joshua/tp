@@ -551,8 +551,6 @@ Exiting Address Book as requested ...
 | **Cmd+3** / **Ctrl+3** | Contracts Tab     | Switch to Contracts view     |
 
 ---
-<div style="page-break-before: always;"></div>
-
 ## Tips and Best Practices
 
 ### Effective Workflows
@@ -563,6 +561,8 @@ Exiting Address Book as requested ...
 2. Use `find -an [name]` to quickly locate specific athletes
 3. Check contract expiry dates regularly with `find -cs [sport]`
 4. Keep contact information updated for all entities
+
+<div style="page-break-before: always;"></div>
 
 **Contract Negotiation Season:**
 
