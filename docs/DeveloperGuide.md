@@ -140,8 +140,6 @@ How the `Logic` component works:
    multiple interactions between the `Command` and the `Model`.
 4. The result of the command execution is encapsulated as a `CommandResult` object, which is returned back from `Logic`.
 
-<div style="page-break-before: always;"></div>
-
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing user commands:
 
 <puml src="diagrams/ParserClasses.puml" width="600"/>
@@ -156,6 +154,8 @@ How the parsing works:
 - All `XYZCommandParser` classes (e.g., `AddAthleteCommandParser`, `DeleteAthleteCommandParser`,
   `AddOrganizationCommandParser`)
   implement the `Parser` interface so that they can be treated uniformly (e.g., during testing).
+
+<div style="page-break-before: always;"></div>
 
 ### Model component
 
@@ -191,6 +191,8 @@ The `Storage` component,
   the functionality of one is needed.
 - depends on some classes in the `Model` component, because the `Storage` component’s job is to save and retrieve
   objects that belong to the `Model`.
+
+<div style="page-break-before: always;"></div>
 
 ### Common classes
 
@@ -246,7 +248,9 @@ The following flags are supported:
 | `-cs` | Finds contracts by sport             |
 
 Example usage:  
-`find -an Lionel`
+```
+find -an Lionel
+```
 
 Upon execution, the command:
 
