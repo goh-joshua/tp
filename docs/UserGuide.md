@@ -208,8 +208,6 @@ delete-a n/Michael Jordan s/Basketball
 
 **Expected Output:**
 
-![delete-a](images/delete-a.png)
-
 ```
 Deleted Athlete: Lebron James; Sport: Basketball; Age: 40; Phone: 99876543; Email: James@example.com
 ```
@@ -283,7 +281,6 @@ delete-o o/IMG Academy
 ```
 
 **Expected Output:**
-![delete-o](images/delete-o.png)
 
 ```
 Deleted Organization: Nike; Phone: 98765432; Email: partnerships@nike.com
@@ -323,8 +320,6 @@ add-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/500
 ```
 
 **Expected Output:**
-
-![add-o](images/add-o.png)
 
 ```
 Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
@@ -366,8 +361,6 @@ delete-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/
 
 **Expected Output:**
 
-![delete-c](images/delete-c.png)
-
 ```
 Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
 ```
@@ -383,7 +376,6 @@ The search functionality uses **fuzzy matching** to help you find what you're lo
 #### Search Command
 
 **Command:** `find -[FLAG] KEYWORD`
-
 **Available Search Types:**
 
 | Flag  | Searches                  | Example               |
@@ -407,8 +399,6 @@ find -co Nike           # Find contracts with organizations like "Nike"
 ```
 
 **Expected Output for `find -an James`:**
-
-![find -an](images/find-an.png)
 
 ```
 Showing 1 athlete closely matching "James".
@@ -444,8 +434,6 @@ Use this command to clear any active search filters and return to viewing all da
 
 **Expected Output:**
 
-![refresh](images/refresh.png)
-
 ```
 All filters cleared. Showing all athletes, organizations, and contracts.
 ```
@@ -462,20 +450,16 @@ You can refresh the display anytime using **Cmd+R** (macOS) or **Ctrl+R** (Windo
 #### Getting Help
 
 **Command:** `help`
-
 ![Help Window](images/help_window.png)
-
 
 Opens the help window with quick reference information and links to documentation.
 
 **Keyboard Shortcut:** **F1**
 
 **Expected Output:**
-
 ```
 Opened help window.
 ```
-
 #### Exiting the Application
 
 **Command:** `exit`

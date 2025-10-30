@@ -37,18 +37,40 @@ public class GuiSettings implements Serializable {
         windowCoordinates = new Point(xPosition, yPosition);
     }
 
+    /**
+     * Returns the width of the window.
+     *
+     * @return The window width.
+     */
     public double getWindowWidth() {
         return windowWidth;
     }
 
+    /**
+     * Returns the height of the window.
+     *
+     * @return The window height.
+     */
     public double getWindowHeight() {
         return windowHeight;
     }
 
+    /**
+     * Returns a copy of the window coordinates.
+     * Returns null if no coordinates are set.
+     *
+     * @return A copy of the window coordinates, or null if not set.
+     */
     public Point getWindowCoordinates() {
         return windowCoordinates != null ? new Point(windowCoordinates) : null;
     }
 
+    /**
+     * Returns true if both GuiSettings objects have the same settings.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -66,11 +88,21 @@ public class GuiSettings implements Serializable {
                 && Objects.equals(windowCoordinates, otherGuiSettings.windowCoordinates);
     }
 
+    /**
+     * Returns the hash code for this GuiSettings object.
+     *
+     * @return The hash code based on windowWidth, windowHeight and windowCoordinates.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(windowWidth, windowHeight, windowCoordinates);
     }
 
+    /**
+     * Returns a string representation of this GuiSettings object.
+     *
+     * @return A formatted string containing the GUI settings.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

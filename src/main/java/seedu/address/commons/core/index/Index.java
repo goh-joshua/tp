@@ -25,10 +25,20 @@ public class Index {
         this.zeroBasedIndex = zeroBasedIndex;
     }
 
+    /**
+     * Returns the zero-based index value.
+     *
+     * @return The zero-based index.
+     */
     public int getZeroBased() {
         return zeroBasedIndex;
     }
 
+    /**
+     * Returns the one-based index value.
+     *
+     * @return The one-based index (zero-based index + 1).
+     */
     public int getOneBased() {
         return zeroBasedIndex + 1;
     }
@@ -62,6 +72,11 @@ public class Index {
         return zeroBasedIndex == otherIndex.zeroBasedIndex;
     }
 
+    /**
+     * Returns a string representation of this Index object.
+     *
+     * @return A formatted string containing the zero-based index value.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this).add("zeroBasedIndex", zeroBasedIndex).toString();

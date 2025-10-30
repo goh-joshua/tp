@@ -55,22 +55,48 @@ public class CommandResult {
         this(feedbackToUser, false, false, tabToShow);
     }
 
+    /**
+     * Returns the feedback message to be displayed to the user.
+     *
+     * @return The feedback message.
+     */
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
 
+    /**
+     * Returns whether help information should be shown to the user.
+     *
+     * @return True if help should be shown, false otherwise.
+     */
     public boolean isShowHelp() {
         return showHelp;
     }
 
+    /**
+     * Returns whether the application should exit.
+     *
+     * @return True if the application should exit, false otherwise.
+     */
     public boolean isExit() {
         return exit;
     }
 
+    /**
+     * Returns the UI tab to show, if specified.
+     *
+     * @return An Optional containing the UI tab to show, or an empty Optional if no specific tab was specified.
+     */
     public Optional<UiTab> getTabToShow() {
         return Optional.ofNullable(tabToShow);
     }
 
+    /**
+     * Returns true if both CommandResult objects have the same field values.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -89,11 +115,21 @@ public class CommandResult {
                 && Objects.equals(tabToShow, otherCommandResult.tabToShow);
     }
 
+    /**
+     * Returns the hash code for this CommandResult.
+     *
+     * @return The hash code based on feedbackToUser, showHelp, exit, and tabToShow.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(feedbackToUser, showHelp, exit, tabToShow);
     }
 
+    /**
+     * Returns a string representation of this CommandResult.
+     *
+     * @return A formatted string containing all field values.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

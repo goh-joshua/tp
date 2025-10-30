@@ -111,14 +111,30 @@ public class FindCommand extends Command {
             return tabToShow;
         }
 
+        /**
+         * Returns the plural noun for this search scope.
+         *
+         * @return The plural noun.
+         */
         String getNoun() {
             return noun;
         }
 
+        /**
+         * Returns the appropriate noun form based on the count.
+         *
+         * @param count The number of items.
+         * @return The singular noun if count is 1, otherwise the plural noun.
+         */
         String getNoun(int count) {
             return count == 1 ? getSingularNoun() : noun;
         }
 
+        /**
+         * Returns the singular noun for this search scope.
+         *
+         * @return The singular noun.
+         */
         String getSingularNoun() {
             switch (this) {
             case ATHLETE_NAME:
@@ -151,6 +167,13 @@ public class FindCommand extends Command {
         this.keyword = keyword;
     }
 
+    /**
+     * Executes the find command to filter entities in the model.
+     * Uses fuzzy matching to find entities that closely match the keyword.
+     *
+     * @param model The model to search in. Cannot be null.
+     * @return A CommandResult with feedback about the number of matches found.
+     */
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -167,6 +190,12 @@ public class FindCommand extends Command {
         return new CommandResult(feedback, scope.getTabToShow());
     }
 
+    /**
+     * Returns true if both FindCommand objects have the same scope and keyword (case-insensitive).
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -180,6 +209,11 @@ public class FindCommand extends Command {
         return scope == otherCommand.scope && keyword.equalsIgnoreCase(otherCommand.keyword);
     }
 
+    /**
+     * Returns the hash code for this FindCommand.
+     *
+     * @return The hash code based on scope and lowercase keyword.
+     */
     @Override
     public int hashCode() {
         return (scope.name() + "|" + keyword.toLowerCase()).hashCode();

@@ -44,10 +44,18 @@ public class DeleteOrganizationCommand extends Command {
         this.targetName = targetName;
     }
 
+    /**
+     * Executes the command to delete an organization from the model.
+     * The organization must not have any existing contracts.
+     * Name comparison is case-insensitive.
+     *
+     * @param model The model from which the organization should be deleted. Cannot be null.
+     * @return A CommandResult indicating the success of the operation.
+     * @throws CommandException If the organization does not exist or has an existing contract.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-
         List<Organization> lastShownList = model.getFilteredOrganizationList();
         List<Contract> contracts = model.getFilteredContractList();
 
@@ -76,6 +84,12 @@ public class DeleteOrganizationCommand extends Command {
                 MESSAGE_DELETE_ORGANIZATION_SUCCESS, Messages.format(organizationToDelete)));
     }
 
+    /**
+     * Returns true if both DeleteOrganizationCommand objects delete the same organization.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this
@@ -83,6 +97,11 @@ public class DeleteOrganizationCommand extends Command {
                 && targetName.equals(((DeleteOrganizationCommand) other).targetName));
     }
 
+    /**
+     * Returns a string representation of this DeleteOrganizationCommand.
+     *
+     * @return A formatted string containing the name of the organization to be deleted.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

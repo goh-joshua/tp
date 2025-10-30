@@ -12,10 +12,24 @@ import seedu.address.commons.exceptions.DataLoadingException;
  */
 public class ConfigUtil {
 
+    /**
+     * Reads the configuration from the specified file path.
+     *
+     * @param configFilePath The path to the config file.
+     * @return An Optional containing the Config if the file exists and is valid, or an empty Optional otherwise.
+     * @throws DataLoadingException If there is an error reading or parsing the config file.
+     */
     public static Optional<Config> readConfig(Path configFilePath) throws DataLoadingException {
         return JsonUtil.readJsonFile(configFilePath, Config.class);
     }
 
+    /**
+     * Saves the configuration to the specified file path.
+     *
+     * @param config The Config object to save.
+     * @param configFilePath The path where the config file should be saved.
+     * @throws IOException If there is an error writing to the file.
+     */
     public static void saveConfig(Config config, Path configFilePath) throws IOException {
         JsonUtil.saveJsonFile(config, configFilePath);
     }

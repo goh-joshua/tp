@@ -39,10 +39,27 @@ public class JsonUtil {
                     .addSerializer(Level.class, new ToStringSerializer())
                     .addDeserializer(Level.class, new LevelDeserializer(Level.class)));
 
+    /**
+     * Serializes a Java object to a JSON file.
+     *
+     * @param jsonFile The path where the JSON file should be saved.
+     * @param objectToSerialize The object to serialize to JSON.
+     * @param <T> The type of the object to serialize.
+     * @throws IOException If there is an error writing to the file.
+     */
     static <T> void serializeObjectToJsonFile(Path jsonFile, T objectToSerialize) throws IOException {
         FileUtil.writeToFile(jsonFile, toJsonString(objectToSerialize));
     }
 
+    /**
+     * Deserializes a JSON file to a Java object.
+     *
+     * @param jsonFile The path to the JSON file to read.
+     * @param classOfObjectToDeserialize The class type of the object to deserialize.
+     * @param <T> The type of the object to deserialize.
+     * @return The deserialized object.
+     * @throws IOException If there is an error reading from the file.
+     */
     static <T> T deserializeObjectFromJsonFile(Path jsonFile, Class<T> classOfObjectToDeserialize)
             throws IOException {
         return fromJsonString(FileUtil.readFromFile(jsonFile), classOfObjectToDeserialize);
@@ -91,7 +108,6 @@ public class JsonUtil {
         serializeObjectToJsonFile(filePath, jsonFile);
     }
 
-
     /**
      * Converts a given string representation of a JSON data to instance of a class
      * @param <T> The generic type to create an instance of
@@ -135,6 +151,11 @@ public class JsonUtil {
             return Level.parse(loggingLevelString);
         }
 
+        /**
+         * Returns the type handled by this deserializer.
+         *
+         * @return The Level class.
+         */
         @Override
         public Class<Level> handledType() {
             return Level.class;

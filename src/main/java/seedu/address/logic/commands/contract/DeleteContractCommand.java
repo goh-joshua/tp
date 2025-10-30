@@ -19,7 +19,7 @@ import seedu.address.model.contract.Date8;
 import seedu.address.model.organization.OrganizationName;
 
 /**
- * Deletes an existing {@link Contract} identified by athlete/org/dates.
+ * Deletes an existing {@link Contract} between an athlete and organization.
  */
 public class DeleteContractCommand extends Command {
 
@@ -49,12 +49,14 @@ public class DeleteContractCommand extends Command {
     private final Amount amount;
 
     /**
-     * Constructs a {@code DeleteContractCommand} with the specified athlete, organization, and date range.
+     * Constructs a {@code DeleteContractCommand} with the specified athlete, organization, dates, sport, and amount.
      *
-     * @param athleteName      Name of the athlete whose contract is to be deleted.
-     * @param organizationName Name of the organization involved in the contract.
-     * @param startDate        Start date of the contract.
-     * @param endDate          End date of the contract.
+     * @param athleteName      Name of the athlete whose contract is to be deleted. Cannot be null.
+     * @param organizationName Name of the organization involved in the contract. Cannot be null.
+     * @param startDate        Start date of the contract. Cannot be null.
+     * @param endDate          End date of the contract. Cannot be null.
+     * @param sport            Sport of the athlete in the contract. Cannot be null.
+     * @param amount           Amount of the contract. Cannot be null.
      */
     public DeleteContractCommand(Name athleteName, OrganizationName organizationName,
         Date8 startDate, Date8 endDate, Sport sport, Amount amount) {
@@ -73,9 +75,24 @@ public class DeleteContractCommand extends Command {
         this.amount = amount;
     }
 
+    /**
+     * Executes the command to delete a contract from the model.
+     * The contract is identified by matching athlete name, sport, organization name,
+     * start date, end date, and amount.
+     *
+     * @param model The model from which the contract should be deleted. Cannot be null.
+     * @return A CommandResult indicating the success of the operation.
+     * @throws CommandException If no matching contract is found.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        assert athleteName != null : "Athlete name should not be null";
+        assert sport != null : "Sport should not be null";
+        assert organizationName != null : "Organization name should not be null";
+        assert startDate != null : "Start date should not be null";
+        assert endDate != null : "End date should not be null";
+        assert amount != null : "Amount should not be null";
 
         // Search the filtered contract list (or use addressBook.getContractList())
         List<Contract> contracts = model.getFilteredContractList();
@@ -107,6 +124,12 @@ public class DeleteContractCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, ContractMessages.format(toDelete)));
     }
 
+    /**
+     * Returns true if both DeleteContractCommand objects have the same contract details.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this
@@ -119,6 +142,11 @@ public class DeleteContractCommand extends Command {
                 && amount.equals(((DeleteContractCommand) other).amount);
     }
 
+    /**
+     * Returns a string representation of this DeleteContractCommand.
+     *
+     * @return A formatted string containing all contract details.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

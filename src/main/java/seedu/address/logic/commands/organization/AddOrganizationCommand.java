@@ -44,18 +44,34 @@ public class AddOrganizationCommand extends Command {
         toAdd = organization;
     }
 
+    /**
+     * Executes the command to add an organization to the model.
+     *
+     * @param model The model which the organization should be added to. Cannot be null.
+     * @return A CommandResult indicating the success of the operation.
+     * @throws CommandException If the organization already exists in the model.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        assert toAdd != null : "Organization to add should not be null";
 
         if (model.hasOrganization(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_ORGANIZATION);
         }
 
         model.addOrganization(toAdd);
+        assert model.hasOrganization(toAdd) : "Organization should exist in model after adding";
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
+    /**
+     * Returns true if both AddOrganizationCommand objects add the same organization.
+     *
+     * @param other The other object to compare with.
+     * @return True if both objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -71,6 +87,11 @@ public class AddOrganizationCommand extends Command {
         return toAdd.equals(otherAddCommand.toAdd);
     }
 
+    /**
+     * Returns a string representation of this AddOrganizationCommand.
+     *
+     * @return A formatted string containing the organization to be added.
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)
