@@ -12,6 +12,7 @@ pageNav: 3
 <page-nav-print />
 
 ---
+<div style="page-break-before: always;"></div>
 
 ## About This Guide
 
@@ -51,6 +52,7 @@ This guide is designed for **sports agents and talent managers** operating in Si
 - **Power users**: Check [Tips and Best Practices](#tips-and-best-practices) for advanced workflows
 
 ---
+<div style="page-break-before: always;"></div>
 
 ## Quick Start
 
