@@ -32,6 +32,11 @@ public class UiManager implements Ui {
         this.logic = logic;
     }
 
+    /**
+     * Starts the UI by initializing the primary stage and main window.
+     *
+     * @param primaryStage the primary stage of the JavaFX application.
+     */
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting UI...");
@@ -54,6 +59,14 @@ public class UiManager implements Ui {
         return new Image(MainApp.class.getResourceAsStream(imagePath));
     }
 
+    /**
+     * Shows an alert dialog with the specified type and messages, owned by the main window.
+     *
+     * @param type        type of the alert
+     * @param title       title of the alert dialog
+     * @param headerText  header text of the alert dialog
+     * @param contentText content text of the alert dialog
+     */
     void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
         showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
     }

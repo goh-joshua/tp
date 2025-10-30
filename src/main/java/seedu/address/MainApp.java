@@ -55,6 +55,9 @@ public class MainApp extends Application {
     protected Model model;
     protected Config config;
 
+    /**
+     * Initializes the application, including configuration, storage, model, logic, and UI.
+     */
     @Override
     public void init() throws Exception {
         logger.info("=============================[ Initializing AddressBook ]===========================");
@@ -83,56 +86,54 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Initializes and returns a {@code ModelManager} with data from {@code storage} and {@code userPrefs}.
+     * <p>
+     * The method attempts to load data from all files:
+     * - Athlete list
+     * - Contract list
+     * - Organization list
+     * <p>
+     * Special handling:
+     * <ul>
+     *   <li>If the contract list is non-empty but either the athlete list or organization list is empty,
+     *       all three lists are reset to empty. This ensures contracts do not exist independently of
+     *       their dependent entities.</li>
+     *   <li>If any data files fail to load (e.g., due to corruption), all lists are reset to empty.</li>
+     *   <li>If all files are present and valid, the data is loaded normally.</li>
+     * </ul>
+     *
+     * @param storage the storage manager used to read the data files. Cannot be null.
+     * @param userPrefs the user preferences to use for the model. Cannot be null.
+     * @return a {@code ModelManager} initialized with the loaded or default data.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        logger.info("Using data file : " + storage.getAddressBookFilePath());
-        logger.info("Using athlete data file: " + storage.getAthleteListFilePath());
-        logger.info("Using contract data file: " + storage.getContractListFilePath());
-        logger.info("Using organization data file: " + storage.getOrganizationListFilePath());
-
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
-        Optional<ReadOnlyAthleteList> athleteListOptional;
+        logger.info("Initializing ModelManager...");
+        ReadOnlyAddressBook initialData = new AddressBook();
         ReadOnlyAthleteList initialAthleteList;
-        Optional<ReadOnlyContractList> contractListOptional;
         ReadOnlyContractList initialContractList;
-        Optional<ReadOnlyOrganizationList> organizationListOptional;
         ReadOnlyOrganizationList initialOrganizationList;
-
-        initialData = new AddressBook();
-
         try {
-            athleteListOptional = storage.readAthleteList();
-            contractListOptional = storage.readContractList();
-            organizationListOptional = storage.readOrganizationList();
-
-            // If any file is missing or fails to load, reset all lists
-            if (!athleteListOptional.isPresent()
-                    || !contractListOptional.isPresent()
-                    || !organizationListOptional.isPresent()) {
-                logger.info("One or more data files are missing. Resetting all files.");
+            Optional<ReadOnlyAthleteList> athleteOpt = storage.readAthleteList();
+            Optional<ReadOnlyContractList> contractOpt = storage.readContractList();
+            Optional<ReadOnlyOrganizationList> orgOpt = storage.readOrganizationList();
+            initialAthleteList = athleteOpt.orElse(SampleDataUtil.getEmptyAthleteList());
+            initialContractList = contractOpt.orElse(SampleDataUtil.getEmptyContractList());
+            initialOrganizationList = orgOpt.orElse(SampleDataUtil.getEmptyOrganizationList());
+            // Reset all if contracts exist but either athlete or organization list is empty
+            if (!initialContractList.getContractList().isEmpty()
+                    && (initialAthleteList.getAthleteList().isEmpty()
+                    || initialOrganizationList.getOrganizationList().isEmpty())) {
+                logger.info("Contracts exist but athlete/org data missing. Resetting all lists.");
                 initialAthleteList = SampleDataUtil.getEmptyAthleteList();
                 initialContractList = SampleDataUtil.getEmptyContractList();
                 initialOrganizationList = SampleDataUtil.getEmptyOrganizationList();
-            } else {
-                // All files are present, load normally
-                initialAthleteList = athleteListOptional.get();
-                initialContractList = contractListOptional.get();
-                initialOrganizationList = organizationListOptional.get();
             }
-
         } catch (DataLoadingException e) {
-            // Handles corrupted files
-            logger.warning("Failed to load data files. Resetting all files.");
+            logger.warning("Failed to load data files. Resetting all lists.");
             initialAthleteList = SampleDataUtil.getEmptyAthleteList();
             initialContractList = SampleDataUtil.getEmptyContractList();
             initialOrganizationList = SampleDataUtil.getEmptyOrganizationList();
         }
-
-
         return new ModelManager(initialData, userPrefs, initialAthleteList, initialContractList,
                 initialOrganizationList);
     }
@@ -212,17 +213,27 @@ public class MainApp extends Application {
         return initializedPrefs;
     }
 
+    /**
+     * Starts the JavaFX application UI.
+     *
+     * @param primaryStage the primary stage of the application
+     */
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
         ui.start(primaryStage);
+        logger.info("UI started successfully.");
     }
 
+    /**
+     * Stops the application, saving user preferences before exit.
+     */
     @Override
     public void stop() {
         logger.info("============================ [ Stopping AddressBook ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
+            logger.info("User preferences saved successfully.");
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }

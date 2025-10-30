@@ -23,15 +23,32 @@ public class JsonOrganizationListStorage implements OrganizationListStorage {
 
     private final Path filePath;
 
+    /**
+     * Constructs a {@code JsonOrganizationListStorage} with the specified file path.
+     *
+     * @param filePath The path to the JSON file.
+     */
     public JsonOrganizationListStorage(Path filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Returns the file path of the OrganizationList JSON file.
+     *
+     * @return the file path.
+     */
     @Override
     public Path getOrganizationListFilePath() {
         return filePath;
     }
 
+    /**
+     * Reads the organization list data from the default JSON file path.
+     *
+     * @return An {@code Optional} containing the organization list if the file exists.
+     * @throws DataLoadingException if there were errors loading the data
+     *                              (e.g., illegal values or invalid JSON format).
+     */
     @Override
     public Optional<ReadOnlyOrganizationList> readOrganizationList() throws DataLoadingException {
         return readOrganizationList(filePath);
@@ -61,11 +78,25 @@ public class JsonOrganizationListStorage implements OrganizationListStorage {
         }
     }
 
+    /**
+     * Saves the given organization list data to the default JSON file path.
+     *
+     * @param organizations The organization list data to save. Cannot be null.
+     * @throws IOException if there was a problem writing to the file.
+     */
     @Override
     public void saveOrganizationList(ReadOnlyOrganizationList organizations) throws IOException {
         saveOrganizationList(organizations, filePath);
     }
 
+    /**
+     * Saves the given organization list data to the specified JSON file path.
+     * Creates the file if it does not exist.
+     *
+     * @param organizations The organization list data to save. Cannot be null.
+     * @param filePath      The location of the data file. Cannot be null.
+     * @throws IOException if there was a problem writing to the file.
+     */
     @Override
     public void saveOrganizationList(ReadOnlyOrganizationList organizations, Path filePath) throws IOException {
         requireNonNull(organizations);
