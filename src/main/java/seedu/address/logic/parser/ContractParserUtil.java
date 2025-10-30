@@ -61,10 +61,28 @@ public class ContractParserUtil {
 
     // --- Convenience pass-throughs for person names (athlete/org/contact) ---
 
+    /**
+     * Parses a {@code String name} into an athlete {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     * Name must start with a letter and contain only letters, spaces, apostrophes, and hyphens.
+     *
+     * @param name The name string to parse. Cannot be null.
+     * @return A Name object with the parsed value.
+     * @throws ParseException If the given {@code name} is invalid.
+     */
     public static Name parseAthleteName(String name) throws ParseException {
         return parseStrictName(name);
     }
 
+    /**
+     * Parses a {@code String name} into an {@code OrganizationName}.
+     * Leading and trailing whitespaces will be trimmed.
+     * Name must start with a letter and contain only letters, spaces, apostrophes, and hyphens.
+     *
+     * @param name The organization name string to parse. Cannot be null.
+     * @return An OrganizationName object with the parsed value.
+     * @throws ParseException If the given {@code name} is invalid.
+     */
     public static OrganizationName parseOrgName(String name) throws ParseException {
         return parseStrictOrganizationName(name);
     }

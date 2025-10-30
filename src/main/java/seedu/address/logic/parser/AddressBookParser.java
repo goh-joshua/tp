@@ -39,59 +39,66 @@ public class AddressBookParser {
 
     /**
      * Parses user input into command for execution.
+     * The input is first split into a command word and arguments, then the appropriate
+     * parser is invoked based on the command word.
      *
-     * @param userInput full user input string
-     * @return the command based on the user input
-     * @throws ParseException if the user input does not conform to the expected format
+     * @param userInput Full user input string. Cannot be null.
+     * @return The command based on the user input.
+     * @throws ParseException If the user input does not conform to the expected format
+     *                        or if the command word is not recognized.
      */
     public Command parseCommand(String userInput) throws ParseException {
+        assert userInput != null : "User input should not be null";
+        logger.fine("Parsing command: " + userInput);
+
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
+            logger.warning("Invalid command format: " + userInput);
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT));
         }
 
-        final String rawCommandWord = matcher.group("commandWord");
-        final String commandWord = rawCommandWord.toLowerCase();
+        final String commandWord = matcher.group("commandWord").toLowerCase();
         final String arguments = matcher.group("arguments");
+        logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
-        logger.fine("Command word: " + rawCommandWord + "; Arguments: " + arguments);
+        Command result = parseCommandWord(commandWord, arguments);
+        assert result != null : "Parsed command should not be null";
+        logger.info("Successfully parsed command: " + commandWord);
+        return result;
+    }
 
+    /**
+     * Parses the command word and arguments to create the appropriate Command object.
+     *
+     * @param commandWord The command word in lowercase.
+     * @param arguments The arguments string.
+     * @return The parsed Command object.
+     * @throws ParseException If the command word is not recognized or arguments are invalid.
+     */
+    private Command parseCommandWord(String commandWord, String arguments) throws ParseException {
         switch (commandWord) {
-        // ================= Organizations =================
         case AddOrganizationCommand.COMMAND_WORD:
             return new AddOrganizationCommandParser().parse(arguments);
-
         case DeleteOrganizationCommand.COMMAND_WORD:
             return new DeleteOrganizationCommandParser().parse(arguments);
-
-        // ================= Athletes =================
         case AddAthleteCommand.COMMAND_WORD:
             return new AddAthleteCommandParser().parse(arguments);
-
         case DeleteAthleteCommand.COMMAND_WORD:
             return new DeleteAthleteCommandParser().parse(arguments);
-
-        // ================= Contracts =================
         case AddContractCommand.COMMAND_WORD:
             return new AddContractCommandParser().parse(arguments);
-
         case DeleteContractCommand.COMMAND_WORD:
             return new DeleteContractCommandParser().parse(arguments);
-
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
-
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
-
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
-
         case RefreshCommand.COMMAND_WORD:
             return new RefreshCommand();
-
         default:
-            logger.finer("This user input caused a ParseException: " + userInput);
+            logger.finer("This user input caused a ParseException: " + commandWord);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }

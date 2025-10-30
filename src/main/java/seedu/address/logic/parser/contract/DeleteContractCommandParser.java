@@ -24,9 +24,20 @@ import seedu.address.model.organization.OrganizationName;
 
 /**
  * Parses input arguments and creates a new DeleteContractCommand object.
+ * This parser extracts the athlete name, organization name, dates, sport, and amount
+ * to identify the contract to be deleted.
  */
 public class DeleteContractCommandParser implements Parser<DeleteContractCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the DeleteContractCommand
+     * and returns a DeleteContractCommand object for execution.
+     *
+     * @param args The user input arguments to parse.
+     * @return A DeleteContractCommand object with the parsed contract identification details.
+     * @throws ParseException If the user input does not conform to the expected format,
+     *                        contains duplicate prefixes, or has invalid field values.
+     */
     @Override
     public DeleteContractCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(

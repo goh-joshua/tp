@@ -24,11 +24,20 @@ import seedu.address.model.organization.OrganizationName;
 
 /**
  * Parses input arguments and creates a new AddContractCommand object.
- * This parser builds value objects (Name, Sport, Date8, Amount) and the command
- * will resolve the corresponding Person objects during execution.
+ * This parser builds value objects and the command will resolve the corresponding
+ * Athlete and Organization objects during execution.
  */
 public class AddContractCommandParser implements Parser<AddContractCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddContractCommand
+     * and returns an AddContractCommand object for execution.
+     *
+     * @param args The user input arguments to parse.
+     * @return An AddContractCommand object with the parsed contract details.
+     * @throws ParseException If the user input does not conform to the expected format,
+     *                        contains duplicate prefixes, or has invalid field values.
+     */
     @Override
     public AddContractCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
