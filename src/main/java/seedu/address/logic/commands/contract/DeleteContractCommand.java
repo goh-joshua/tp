@@ -95,7 +95,7 @@ public class DeleteContractCommand extends Command {
         assert amount != null : "Amount should not be null";
 
         // Search the filtered contract list (or use addressBook.getContractList())
-        List<Contract> contracts = model.getFilteredContractList();
+        List<Contract> contracts = model.getContractList().getContractList();
         Optional<Contract> match = contracts.stream()
                 .filter(c ->
                         c.getAthlete().getName().equals(this.athleteName)

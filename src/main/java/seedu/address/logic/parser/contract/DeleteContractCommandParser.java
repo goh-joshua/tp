@@ -50,14 +50,16 @@ public class DeleteContractCommandParser implements Parser<DeleteContractCommand
                 PREFIX_AMOUNT
         );
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ORG, PREFIX_START_DATE, PREFIX_END_DATE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ORG, PREFIX_START_DATE,
+                PREFIX_END_DATE, PREFIX_SPORT, PREFIX_AMOUNT)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT, DeleteContractCommand.MESSAGE_USAGE));
         }
 
         // Disallow duplicate fields
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ORG, PREFIX_START_DATE, PREFIX_END_DATE);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ORG, PREFIX_START_DATE,
+                PREFIX_END_DATE, PREFIX_SPORT, PREFIX_AMOUNT);
 
         Name athleteName = ContractParserUtil.parseAthleteName(argMultimap.getValue(PREFIX_NAME).get());
         OrganizationName organizationName = ContractParserUtil.parseOrgName(argMultimap.getValue(PREFIX_ORG).get());

@@ -56,11 +56,11 @@ public class DeleteOrganizationCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Organization> lastShownList = model.getFilteredOrganizationList();
-        List<Contract> contracts = model.getFilteredContractList();
+        List<Organization> allOrganizations = model.getAddressBook().getOrganizationList();
+        List<Contract> contracts = model.getContractList().getContractList();
 
         // Case-insensitive name comparison to comply with specification
-        Organization organizationToDelete = lastShownList.stream()
+        Organization organizationToDelete = allOrganizations.stream()
                 .filter(org -> org.getName().fullOrganizationName
                         .equalsIgnoreCase(targetName.fullOrganizationName))
                 .findFirst()
