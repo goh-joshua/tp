@@ -481,7 +481,7 @@ Safely closes playbook.io and saves all your data.
 **Expected Output:**
 
 ```
-Exiting Address Book as requested ...
+Exiting playbook.io as requested ...
 ```
 
 <div markdown="block" class="alert alert-info">
