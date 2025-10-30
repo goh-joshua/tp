@@ -394,6 +394,8 @@ The search functionality uses **fuzzy matching** to help you find what you're lo
 | `-cs` | Contracts by sport        | `find -cs Basketball` |
 | `-co` | Contracts by organization | `find -co Nike`       |
 
+<div style="page-break-before: always;"></div>
+
 **Examples:**
 
 ```
@@ -463,6 +465,8 @@ Opens the help window with quick reference information and links to documentatio
 
 **Keyboard Shortcut:** **F1**
 
+<div style="page-break-before: always;"></div>
+
 **Expected Output:**
 ```
 Opened help window.
@@ -509,6 +513,8 @@ Exiting Address Book as requested ...
 **💡 Tip:** All commands and flags (like `add`, `delete-a`, or `n/`) are **case-insensitive**, so you can type `ADD`, `Add`, or `add` and it will work the same. 
 
 </div>
+<div style="page-break-before: always;"></div>
+
 ### Parameter Details
 
 **Common Parameters:**
@@ -545,6 +551,7 @@ Exiting Address Book as requested ...
 | **Cmd+3** / **Ctrl+3** | Contracts Tab     | Switch to Contracts view     |
 
 ---
+<div style="page-break-before: always;"></div>
 
 ## Tips and Best Practices
 
@@ -617,6 +624,8 @@ Do not include currency symbols or commas.**
 - No commas, currency symbols, or decimal points allowed
 - Use whole numbers only (e.g., 50000000 for $50 million)
 
+<div style="page-break-before: always;"></div>
+
 ### Performance Issues
 
 **Large datasets (1000+ entries):**
@@ -671,6 +680,7 @@ This is the maximum value for a 64-bit integer (`Long.MAX_VALUE`) in Java, which
 4. Submit via GitHub Issues with detailed description
 
 ---
+<div style="page-break-before: always;"></div>
 
 ## Appendix
 
