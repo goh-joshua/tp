@@ -114,7 +114,6 @@ The `UI` component,
 `Logic.java`](https://github.com/AY2526S1-CS2103T-F13-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
-
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
 
 The sequence diagrams below illustrate the interactions within the `Logic` component,
@@ -122,6 +121,9 @@ taking the `add-a` and `delete-a` commands as examples.
 
 <puml src="diagrams/AlternateAddAthleteSD.puml" width="800" />
 <puml src="diagrams/ParsingAddSequenceDiagram.puml" width="800" />
+
+<div style="page-break-before: always;"></div>
+
 <puml src="diagrams/AlternateDeleteAthleteSD.puml" width="800" />
 <puml src="diagrams/ParsingDeleteSequenceDiagram.puml" width="800" />
 
