@@ -57,7 +57,15 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of athletes */
     ObservableList<Athlete> getFilteredAthleteList();
 
-    /** Returns an unmodifiable view of the filtered list of athletes */
+    /** Returns an unmodifiable view of the filtered list of organizations */
     ObservableList<Organization> getFilteredOrganizationList();
 
+    /** Returns an unmodifiable view of the filtered list of contracts */
+    ObservableList<Contract> getAllContractList();
+
+    /** Returns an unmodifiable view of the filtered list of Athletes */
+    ObservableList<Athlete> getAllAthleteList();
+
+    /** Returns an unmodifiable view of the filtered list of Organizations */
+    ObservableList<Organization> getAllOrganizationList();
 }
