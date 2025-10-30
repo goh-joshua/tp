@@ -176,7 +176,7 @@ public class MainWindow extends UiPart<Stage> {
         athleteListPanelPlaceholder.getChildren().add(athleteListPanel.getRoot());
 
         organizationListPanel = new OrganizationListPanel(logic.getFilteredOrganizationList(),
-                logic.getFilteredContractList());
+                logic.getFilteredContractList(), logic.getAllContractList());
         organizationListPanelPlaceholder.getChildren().add(organizationListPanel.getRoot());
 
         contractListPanel = new ContractListPanel(logic.getFilteredContractList());
