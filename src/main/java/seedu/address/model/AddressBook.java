@@ -97,15 +97,18 @@ public class AddressBook implements ReadOnlyAddressBook {
         return organizations.contains(organization);
     }
 
+    /** Adds an organization to the address book. */
     public void addOrganization(Organization organization) {
         organizations.add(organization);
     }
 
+    /** Replaces an existing organization with an edited organization. */
     public void setOrganization(Organization target, Organization editedOrganization) {
         requireNonNull(editedOrganization);
         organizations.setOrganization(target, editedOrganization);
     }
 
+    /** Removes an organization from the address book. */
     public void removeOrganization(Organization target) {
         organizations.remove(target);
     }
@@ -126,10 +129,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return athletes.contains(athlete);
     }
 
+    /** Adds an athlete to the address book. */
     public void addAthlete(Athlete athlete) {
         athletes.add(athlete);
     }
 
+    /** Removes an athlete from the address book. */
     public void removeAthlete(Athlete athlete) {
         athletes.remove(athlete);
     }
@@ -151,10 +156,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return contracts.contains(contract);
     }
 
+    /** Adds a contract to the address book. */
     public void addContract(Contract contract) {
         contracts.add(contract);
     }
 
+    /** Removes a contract from the address book. */
     public void removeContract(Contract contract) {
         contracts.remove(contract);
     }

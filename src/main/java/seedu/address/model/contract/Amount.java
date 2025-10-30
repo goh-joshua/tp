@@ -2,7 +2,11 @@ package seedu.address.model.contract;
 
 import java.util.Objects;
 
-/** Positive long integer amount (e.g., cents or dollars depending on your app spec). */
+/**
+ * Represents a positive long integer amount in a Contract.
+ * <p>
+ * Guarantees: immutable; value is always positive and within the range of a Java {@code long}.
+ */
 public class Amount {
     public static final String MESSAGE_CONSTRAINTS =
             "Error: Amount should be a numeric integer between 1 and 9,223,372,036,854,775,807(inclusive). "
