@@ -28,7 +28,8 @@ public class OrganizationListPanel extends UiPart<Region> {
     /**
      * Creates a {@code OrganizationListPanel} with the given {@code ObservableList}.
      */
-    public OrganizationListPanel(ObservableList<Organization> organizationList, ObservableList<Contract> allContracts, ObservableList<Contract> allNonFilteredContracts) {
+    public OrganizationListPanel(ObservableList<Organization> organizationList,
+        ObservableList<Contract> allContracts, ObservableList<Contract> allNonFilteredContracts) {
         super(FXML);
         this.allContracts = allContracts;
         this.allNonFilteredContracts = allNonFilteredContracts;

@@ -27,7 +27,8 @@ public class AthleteListPanel extends UiPart<Region> {
     /**
      * Creates a {@code AthleteListPanel} with the given {@code ObservableList}.
      */
-    public AthleteListPanel(ObservableList<Athlete> athleteList, ObservableList<Contract> contractList, ObservableList<Contract> nonFilteredContractList) {
+    public AthleteListPanel(ObservableList<Athlete> athleteList,
+        ObservableList<Contract> contractList, ObservableList<Contract> nonFilteredContractList) {
         super(FXML);
         this.allContracts = contractList;
         this.allNonFilteredContracts = nonFilteredContractList;
