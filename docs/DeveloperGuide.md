@@ -126,6 +126,8 @@ taking the `add-a` and `delete-a` commands as examples.
 <puml src="diagrams/AlternateDeleteAthleteSD.puml" width="800" />
 <puml src="diagrams/ParsingDeleteSequenceDiagram.puml" width="800" />
 
+<div style="page-break-before: always;"></div>
+
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it passes the user input to an `AddressBookParser` object, which
