@@ -40,6 +40,9 @@ public class ModelManager implements Model {
     private final FilteredList<Organization> filteredOrganizations; // placeholder until wired
     private final FilteredList<Contract> filteredContracts;
     private final FilteredList<Athlete> filteredAthletes;
+    private Predicate<Organization> organizationPredicate = PREDICATE_SHOW_ALL_ORGANIZATIONS;
+    private Predicate<Contract> contractPredicate = PREDICATE_SHOW_ALL_CONTRACTS;
+    private Predicate<Athlete> athletePredicate = PREDICATE_SHOW_ALL_ATHLETES;
 
     // =====================================================================================
     // Constructors
@@ -86,6 +89,9 @@ public class ModelManager implements Model {
         this.filteredContracts = new FilteredList<>(this.addressBook.getContractList());
         this.filteredOrganizations = new FilteredList<>(this.addressBook.getOrganizationList());
         this.filteredAthletes = new FilteredList<>(this.addressBook.getAthleteList());
+        reapplyPredicate(filteredContracts, contractPredicate);
+        reapplyPredicate(filteredOrganizations, organizationPredicate);
+        reapplyPredicate(filteredAthletes, athletePredicate);
     }
 
     public ModelManager() {
@@ -166,13 +172,18 @@ public class ModelManager implements Model {
     public void addContract(Contract contract) {
         requireNonNull(contract);
         addressBook.addContract(contract);
-        updateFilteredContractList(PREDICATE_SHOW_ALL_CONTRACTS);
+        reapplyPredicate(filteredContracts, contractPredicate);
+        reapplyPredicate(filteredAthletes, athletePredicate);
+        reapplyPredicate(filteredOrganizations, organizationPredicate);
     }
 
     @Override
     public void deleteContract(Contract target) {
         requireNonNull(target);
         addressBook.removeContract(target);
+        reapplyPredicate(filteredContracts, contractPredicate);
+        reapplyPredicate(filteredAthletes, athletePredicate);
+        reapplyPredicate(filteredOrganizations, organizationPredicate);
     }
 
     @Override
@@ -183,7 +194,8 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredContractList(Predicate<Contract> predicate) {
         requireNonNull(predicate);
-        filteredContracts.setPredicate(predicate);
+        contractPredicate = predicate;
+        reapplyPredicate(filteredContracts, contractPredicate);
     }
 
     // ---- Organizations ----
@@ -215,7 +227,7 @@ public class ModelManager implements Model {
     public void addOrganization(Organization organization) {
         requireNonNull(organization);
         addressBook.addOrganization(organization);
-        updateFilteredOrganizationList(PREDICATE_SHOW_ALL_ORGANIZATIONS);
+        reapplyPredicate(filteredOrganizations, organizationPredicate);
     }
 
     @Override
@@ -232,7 +244,8 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredOrganizationList(Predicate<Organization> predicate) {
         requireNonNull(predicate);
-        filteredOrganizations.setPredicate(predicate);
+        organizationPredicate = predicate;
+        reapplyPredicate(filteredOrganizations, organizationPredicate);
     }
 
     // ---- Athletes ----
@@ -262,7 +275,7 @@ public class ModelManager implements Model {
     @Override
     public void addAthlete(Athlete athlete) {
         addressBook.addAthlete(athlete);
-        updateFilteredAthleteList(PREDICATE_SHOW_ALL_ATHLETES);
+        reapplyPredicate(filteredAthletes, athletePredicate);
     }
 
     @Override
@@ -273,7 +286,12 @@ public class ModelManager implements Model {
     @Override
     public void updateFilteredAthleteList(Predicate<Athlete> predicate) {
         requireNonNull(predicate);
-        filteredAthletes.setPredicate(predicate);
+        athletePredicate = predicate;
+        reapplyPredicate(filteredAthletes, athletePredicate);
+    }
+
+    private <T> void reapplyPredicate(FilteredList<T> list, Predicate<T> predicate) {
+        list.setPredicate(predicate == null ? null : predicate::test);
     }
 
     // =====================================================================================

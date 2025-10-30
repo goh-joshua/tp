@@ -98,11 +98,6 @@ public class DeleteContractCommand extends Command {
 
         Contract toDelete = match.get();
         model.deleteContract(toDelete);
-        model.updateFilteredAthleteList(unused -> false);
-        model.updateFilteredAthleteList(Model.PREDICATE_SHOW_ALL_ATHLETES);
-
-        model.updateFilteredOrganizationList(unused -> false);
-        model.updateFilteredOrganizationList(Model.PREDICATE_SHOW_ALL_ORGANIZATIONS);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, ContractMessages.format(toDelete)));
     }
