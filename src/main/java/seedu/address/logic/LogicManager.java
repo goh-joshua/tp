@@ -152,4 +152,34 @@ public class LogicManager implements Logic {
         return model.getFilteredOrganizationList();
     }
 
+    /**
+     * Returns an unmodifiable view of the list of athlete.
+     *
+     * @return The {@link ObservableList} of {@link Athlete}.
+     */
+    @Override
+    public ObservableList<Athlete> getAllAthleteList() {
+        return model.getAthleteList().getAthleteList();
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of organizations.
+     *
+     * @return The {@link ObservableList} of {@link Organization}.
+     */
+    @Override
+    public ObservableList<Organization> getAllOrganizationList() {
+        return model.getOrganizationList().getOrganizationList();
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of contracts.
+     *
+     * @return The {@link ObservableList} of {@link Contract}.
+     */
+    @Override
+    public ObservableList<Contract> getAllContractList() {
+        return model.getContractList().getContractList();
+    }
+
 }

@@ -23,13 +23,16 @@ public class OrganizationListPanel extends UiPart<Region> {
     private ListView<Organization> organizationListView;
 
     private final ObservableList<Contract> allContracts;
+    private final ObservableList<Contract> allNonFilteredContracts;
 
     /**
      * Creates a {@code OrganizationListPanel} with the given {@code ObservableList}.
      */
-    public OrganizationListPanel(ObservableList<Organization> organizationList, ObservableList<Contract> allContracts) {
+    public OrganizationListPanel(ObservableList<Organization> organizationList,
+        ObservableList<Contract> allContracts, ObservableList<Contract> allNonFilteredContracts) {
         super(FXML);
         this.allContracts = allContracts;
+        this.allNonFilteredContracts = allNonFilteredContracts;
         organizationListView.setItems(organizationList);
         organizationListView.setCellFactory(listView -> new OrganizationListViewCell());
     }
@@ -68,7 +71,7 @@ public class OrganizationListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new OrganizationCard(organization, getIndex() + 1, allContracts).getRoot());
+                setGraphic(new OrganizationCard(organization, getIndex() + 1, allNonFilteredContracts).getRoot());
             }
         }
     }
