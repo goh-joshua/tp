@@ -60,10 +60,10 @@ public class DeleteAthleteCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Athlete> lastShownList = model.getFilteredAthleteList();
-        List<Contract> contracts = model.getFilteredContractList();
+        List<Athlete> allAthletes = model.getAddressBook().getAthleteList();
+        List<Contract> contracts = model.getContractList().getContractList();
 
-        Athlete athleteToDelete = lastShownList.stream()
+        Athlete athleteToDelete = allAthletes.stream()
                 .filter(a -> a.getName().equals(this.name)
                         && a.getSport().equals(this.sport))
                 .findFirst()

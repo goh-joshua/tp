@@ -28,9 +28,9 @@ public class DeleteOrganizationCommand extends Command {
 
     public static final String MESSAGE_DELETE_ORGANIZATION_SUCCESS = "Deleted Organization: %1$s";
     public static final String MESSAGE_ORGANIZATION_NOT_FOUND =
-            "Error: No organization found: '%1$s'.";
+            "Error: Organization not found: '%1$s'";
     public static final String MESSAGE_ORGANIZATION_EXISTING_CONTRACT =
-            "Error: Organization has existing contract.";
+            "Error: Organization has existing contracts";
 
     private final OrganizationName targetName;
 
@@ -56,11 +56,11 @@ public class DeleteOrganizationCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Organization> lastShownList = model.getFilteredOrganizationList();
-        List<Contract> contracts = model.getFilteredContractList();
+        List<Organization> allOrganizations = model.getAddressBook().getOrganizationList();
+        List<Contract> contracts = model.getContractList().getContractList();
 
         // Case-insensitive name comparison to comply with specification
-        Organization organizationToDelete = lastShownList.stream()
+        Organization organizationToDelete = allOrganizations.stream()
                 .filter(org -> org.getName().fullOrganizationName
                         .equalsIgnoreCase(targetName.fullOrganizationName))
                 .findFirst()

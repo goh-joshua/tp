@@ -32,7 +32,7 @@ public class AddOrganizationCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New organization added: %1$s";
     public static final String MESSAGE_DUPLICATE_ORGANIZATION =
-        "Error: This organization already exists in the address book";
+        "Error: This organization already exists in playbook.io";
 
     private final Organization toAdd;
 
