@@ -421,7 +421,6 @@ You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux
 **⚠️ Important:**
 - After a find command, the filtered list in the active tab does not refresh automatically if you add or delete an athlete, organization, or contract. The list still shows the previous results until refresh is executed. However, any updated details (e.g., contract amounts) are reflected in the displayed entries. 
 - Running another find clears the old results and shows a new filtered list based on the latest criteria.
-- Only 1 filter can be applied at all times.
 </div>
 
 <div markdown="block" class="alert alert-info">
@@ -446,7 +445,7 @@ Use this command to clear any active search filters and return to viewing all da
 **Expected Output:**
 
 ```
-All filters cleared. Showing all athletes, organizations, and contracts stored.
+All filters cleared. Showing all athletes, organizations, and contracts.
 ```
 
 <div markdown="block" class="alert alert-info">
@@ -482,7 +481,7 @@ Safely closes playbook.io and saves all your data.
 **Expected Output:**
 
 ```
-Exiting Address Book as requested ...
+Exiting playbook.io as requested ...
 ```
 
 <div markdown="block" class="alert alert-info">
@@ -624,7 +623,7 @@ If you need to reset your data, delete the entire folder instead.
 Do not include currency symbols or commas.**
 - Contract amounts must be positive integers only
 - Maximum supported amount: 9,223,372,036,854,775,807
-- No commas, currency symbols, or decimal points allowed (e.g., 9223372036854775807 for 9,223,372,036,854,775,807)
+- No commas, currency symbols, or decimal points allowed
 - Use whole numbers only (e.g., 50000000 for $50 million)
 
 <div style="page-break-before: always;"></div>
