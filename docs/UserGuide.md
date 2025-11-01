@@ -388,7 +388,9 @@ The search functionality uses **fuzzy matching** to help you find what you're lo
 #### Search Command
 
 **Command:** `find -[FLAG] KEYWORD`
-**Available Search Types:**
+**Parameters:**
+- `KEYWORD`: Keyword to be searched (spaces allowed, case-insensitive; cannot be blank or consist of only spaces)
+  **Available Search Types:**
 
 | Flag  | Searches                  | Example               |
 | ----- | ------------------------- | --------------------- |
@@ -543,7 +545,8 @@ Exiting playbook.io as requested ...
 - `AMOUNT`: Amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
    - Currency: All amounts are in Singapore Dollars (SGD) 
    - Format rationale: Integer-only format simplifies calculations and prevents errors. The maximum value accommodates even the largest sports contracts globally.
-
+- `KEYWORD`: Keyword to be searched (spaces allowed, case-insensitive; cannot be blank or consist of only spaces)
+  
 ### Keyboard Shortcuts
 
 | Shortcut               | Action            | Description                  |
