@@ -16,10 +16,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
-    private static final Pattern FLAG_AND_QUERY_FORMAT =
-            Pattern.compile("^-(?<flag>an|as|on|ca|co|cs)(?:\\s+)(?<query>.+)$",
-                    Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
-
     /**
      * Parses the given {@code String} of arguments in the context of the FindCommand
      * and returns a FindCommand object for execution.
@@ -33,35 +29,40 @@ public class FindCommandParser implements Parser<FindCommand> {
     @Override
     public FindCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        String trimmed = args.trim().replaceAll("\\s+", " ");
+        String trimmed = args.trim();
+
         if (trimmed.isEmpty()) {
             throw new ParseException(String.format(seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_USAGE));
         }
 
-        Matcher matcher = FLAG_AND_QUERY_FORMAT.matcher(trimmed);
+        // Regex: allow query to be empty (0 or more chars)
+        Pattern pattern = Pattern.compile("^-(?<flag>an|as|on|ca|co|cs)\\s*(?<query>.*)$",
+                Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(trimmed);
+
         if (!matcher.matches()) {
             throw new ParseException(String.format(seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT,
                     MESSAGE_USAGE));
         }
 
         String flag = matcher.group("flag").toLowerCase(Locale.ENGLISH);
-        String rawQuery = matcher.group("query").trim();
+        String rawQuery = matcher.group("query").trim().replaceAll("\\s+", " ");
 
         if (rawQuery.isEmpty()) {
-            throw new ParseException(String.format(seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    MESSAGE_USAGE));
+            throw new ParseException("Keyword to be searched cannot be blank or consists of spaces only.");
         }
 
         String keyword = stripEnclosingQuotes(rawQuery);
 
         if (keyword.isEmpty()) {
-            throw new ParseException("Search keyword cannot be blank.");
+            throw new ParseException("Keyword to be searched cannot be blank or consists of spaces only.");
         }
 
         SearchScope scope = mapFlagToScope(flag);
         return new FindCommand(scope, keyword);
     }
+
 
     private SearchScope mapFlagToScope(String flag) throws ParseException {
         switch (flag) {
