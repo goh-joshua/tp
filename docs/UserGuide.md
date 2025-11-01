@@ -6,7 +6,7 @@ pageNav: 3
 
 # User Guide
 
-**playbook.io** is a platform that helps sports agents efficiently manage athletes, organizations, and contracts. It combines the speed of a Command Line Interface with the ease of a Graphical Interface, enabling agents to stay organized, build stronger relationships, and focus on closing deals.
+**playbook.io** is a platform that helps sports agents efficiently manage athletes, organizations, and contracts. It combines the speed of a Command Line Interface with the ease of a Graphical User Interface, enabling agents to stay organized, build stronger relationships, and focus on closing deals.
 
 <!-- * Table of Contents -->
 <page-nav-print />
