@@ -425,6 +425,7 @@ You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux
 **⚠️ Important:**
 - After a find command, the filtered list in the active tab does not refresh automatically if you add or delete an athlete, organization, or contract. The list still shows the previous results until refresh is executed. However, any updated details (e.g., contract amounts) are reflected in the displayed entries. 
 - Running another find clears the old results and shows a new filtered list based on the latest criteria.
+- For keywords, spaces do not matter, so multiple consecutive spaces are treated as a single space.
 </div>
 
 <div markdown="block" class="alert alert-info">
