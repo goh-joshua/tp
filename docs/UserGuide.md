@@ -247,7 +247,7 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 ```
 add-o o/Nike p/98765432 e/partnerships@nike.com
 add-o o/Manchester United p/99998888 e/contracts@manutd.com
-add-o o/IMG Academy p/88889999 e/talent@img.com
+add-o o/IMG Academy p/88889999 e/talent@imgacad.com
 ```
 
 **Expected Output:**
@@ -511,7 +511,7 @@ Exiting playbook.io as requested ...
 
 <div markdown="block" class="alert alert-info">
 
-**💡 Tip:** All commands and flags (like `add`, `delete-a`, or `n/`) are **case-insensitive**, so you can type `ADD`, `Add`, or `add` and it will work the same. 
+**💡 Tip:** All commands and flags (like `add`, `delete-a`, or `n/`) are **case-insensitive**, so you can type `ADD`, `Add`, or `aDd` and it will work the same. 
 
 </div>
 

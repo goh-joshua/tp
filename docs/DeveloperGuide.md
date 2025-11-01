@@ -925,7 +925,7 @@ The most recent window size and location is retained.
 3. **Test case:** `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/`  
    **Expected:** No contract is added. Error details shown in the result pane.
 4. **Other incorrect add-c commands to try:** `add-c`,
-   `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/50.90`, `...`  
+   `add-c n/LeBron James s/Basketball o/Nike sd/01012024 ed/01012025 am/500.90`, `...`  
    **Expected:** Similar to previous.
 
 <div style="page-break-before: always;"></div>
@@ -952,9 +952,9 @@ The most recent window size and location is retained.
    **Expected:** Filtered list of athletes shown. Details of the filtered list shown in the result pane.
 3. **Test case:** `find -as Basketball`  
    **Expected:** Filtered list of athletes shown. Details of the filtered list shown in the result pane.
-4. **Test case:** `find -an`  
+4. **Test case:** `find -as`  
    **Expected:** No filtering occurs. Error details shown in the result pane.
-5. **Other incorrect find commands to try:** `find -as`, `find`, `...`  
+5. **Other incorrect find commands to try:** `find -an`, `find`, `...`  
    **Expected:** Similar to previous.
 
 ### Finding an organization
@@ -980,9 +980,9 @@ The most recent window size and location is retained.
    **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
 4. **Test case:** `find -co Nike`  
    **Expected:** Filtered list of contracts shown. Details of the filtered list shown in the result pane.
-5. **Test case:** `find -ca`  
+5. **Test case:** `find -co`  
    **Expected:** No filtering occurs. Error details shown in the result pane.
-6. **Other incorrect find commands to try:** `find -cs`, `find -co`, `...`  
+6. **Other incorrect find commands to try:** `find -cs`, `find -ca`, `...`  
    **Expected:** Similar to previous.
 
 <div style="page-break-before: always;"></div>
