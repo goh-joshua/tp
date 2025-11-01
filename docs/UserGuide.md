@@ -6,7 +6,7 @@ pageNav: 3
 
 # User Guide
 
-**playbook.io** is a platform that helps sports agents efficiently manage athletes, organizations, and contracts. It combines the speed of a Command Line Interface with the ease of a Graphical Interface, enabling agents to stay organized, build stronger relationships, and focus on closing deals.
+**playbook.io** is a platform that helps sports agents efficiently manage athletes, organizations, and contracts. It combines the speed of a Command Line Interface with the ease of a Graphical User Interface, enabling agents to stay organized, build stronger relationships, and focus on closing deals.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -101,6 +101,8 @@ This guide is designed for **sports agents and talent managers** operating in Si
 
    ![Ui](images/Ui.png)
 
+> **Note:** The screenshot above shows sample data. When you first launch the app, your screen will be blank until you add your own entries.
+
 ### Understanding the Interface
 
 The playbook.io interface consists of five main areas:
@@ -166,8 +168,8 @@ Athletes are the heart of your business. playbook.io makes it easy to track thei
 - `n/NAME`: Full name of the athlete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Sport of the athlete (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
 - `a/AGE`: Age of the athlete (positive integers only, ranging from 1 to 99)
-- `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only; maximum of 50 characters)
-- `e/EMAIL`: Email address of the athlete (case-insensitive; must follow standard email format)
+- `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only; must start with 6, 8, or 9)
+- `e/EMAIL`: Email address of the athlete (case-insensitive; must follow standard email format; maximum of 50 characters)
 
 <div style="page-break-before: always;"></div>
 
@@ -238,8 +240,8 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 
 **Parameters:**
 
-- `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
-- `p/PHONE`: Phone number of the organization (8-digit Singapore phone number only)
+- `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
+- `p/PHONE`: Phone number of the organization (8-digit Singapore phone number only; must start with 6, 8, or 9)
 - `e/EMAIL`: Email address of the organization (case-insensitive; must follow standard email format; maximum of 50 characters)
 
 **Examples:**
@@ -276,7 +278,7 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 
 **Parameters:**
 
-- `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
+- `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
 
 <div style="page-break-before: always;"></div>
 
@@ -314,7 +316,7 @@ Contracts link athletes with organizations and track the business relationships 
 
 - `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
-- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
 - `am/AMOUNT`: Contract amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
@@ -330,7 +332,7 @@ add-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/500
 **Expected Output:**
 
 ```
-Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01012024; End: 01012025; Amount: 50000000
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -356,7 +358,7 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 
 - `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
-- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
 - `am/AMOUNT`: Contract amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
@@ -372,7 +374,7 @@ delete-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/
 **Expected Output:**
 
 ```
-Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01012024; End: 01012025; Amount: 50000000
 ```
 <div markdown="block" class="alert alert-warning">
 
@@ -386,7 +388,9 @@ The search functionality uses **fuzzy matching** to help you find what you're lo
 #### Search Command
 
 **Command:** `find -[FLAG] KEYWORD`
-**Available Search Types:**
+**Parameters:**
+- `KEYWORD`: Keyword to be searched (spaces allowed, case-insensitive; cannot be blank or consist of only spaces)
+  **Available Search Types:**
 
 | Flag  | Searches                  | Example               |
 | ----- | ------------------------- | --------------------- |
@@ -421,11 +425,12 @@ You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux
 **⚠️ Important:**
 - After a find command, the filtered list in the active tab does not refresh automatically if you add or delete an athlete, organization, or contract. The list still shows the previous results until refresh is executed. However, any updated details (e.g., contract amounts) are reflected in the displayed entries. 
 - Running another find clears the old results and shows a new filtered list based on the latest criteria.
+- For keywords, spaces do not matter, so multiple consecutive spaces are treated as a single space.
 </div>
 
 <div markdown="block" class="alert alert-info">
 
-**💡 Fuzzy Search Features:**
+**💡 Fuzzy Matching Features:**
 
 - **Exact matches**: "Nike" will find "Nike" instantly
 - **Substring matches**: "Man" will find "Manchester United"
@@ -496,18 +501,18 @@ Exiting playbook.io as requested ...
 
 ### Quick Syntax Guide
 
-| Command    | Syntax                                                    | Description          |
-| ---------- | --------------------------------------------------------- | -------------------- |
-| `add-a`    | `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL`              | Add new athlete      |
-| `delete-a` | `delete-a n/NAME s/SPORT`                                 | Delete athlete       |
-| `add-o`    | `add-o o/ORG_NAME p/PHONE e/EMAIL`                        | Add new organization |
-| `delete-o` | `delete-o o/ORG_NAME`                                     | Delete organization  |
-| `add-c`    | `add-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT`    | Add new contract     |
-| `delete-c` | `delete-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT` | Delete contract      |
-| `find`     | `find -[an\|as\|on\|ca\|co\|cs] KEYWORD`                  | Search/filter data   |
-| `refresh`  | `refresh`                                                 | Clear all filters    |
-| `help`     | `help`                                                    | Open help window     |
-| `exit`     | `exit`                                                    | Close application    |
+| Command    | Syntax                                                                                                                                        | Description          |
+| ---------- |-----------------------------------------------------------------------------------------------------------------------------------------------| -------------------- |
+| `add-a`    | `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL`                                                                                                  | Add new athlete      |
+| `delete-a` | `delete-a n/NAME s/SPORT`                                                                                                                     | Delete athlete       |
+| `add-o`    | `add-o o/ORG_NAME p/PHONE e/EMAIL`                                                                                                            | Add new organization |
+| `delete-o` | `delete-o o/ORG_NAME`                                                                                                                         | Delete organization  |
+| `add-c`    | `add-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT`                                                                                        | Add new contract     |
+| `delete-c` | `delete-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT`                                                                                     | Delete contract      |
+| `find`     | `find -an KEYWORD`<br/>`find -as KEYWORD` <br/> `find -on KEYWORD` <br/> `find -ca KEYWORD` <br/> `find -co KEYWORD` <br/> `find -cs KEYWORD` | Search/filter data   |
+| `refresh`  | `refresh`                                                                                                                                     | Clear all filters    |
+| `help`     | `help`                                                                                                                                        | Open help window     |
+| `exit`     | `exit`                                                                                                                                        | Close application    |
 
 <div markdown="block" class="alert alert-info">
 
@@ -529,10 +534,10 @@ Exiting playbook.io as requested ...
    - Limitation rationale: The 50-character limit covers all major sports names and disciplines while preventing extremely long entries that could affect display formatting and system performance.
 - `AGE`: Age (positive integers only, ranging from 1 to 99)
    - Limitation rationale: Covers the realistic age range for professional athletes across all sports.
-- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
-   - Character restrictions: Only letters, hyphens (-), and apostrophes (') are allowed to accommodate legitimate organization names like "McDonald's" or "Hewlett-Packard" while preventing special characters that could cause display or data processing issues.
+- `ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
+   - Character restrictions: Only alphanumeric characters, hyphens (-), apostrophes ('), and ampersands (&) are allowed to accommodate legitimate organization names like "McDonald's" or "Hewlett-Packard" while preventing special characters that could cause display or data processing issues.
    - Limitation rationale: The 50-character limit accommodates most organization names, including full legal names and brand names, while preventing extremely long entries that could affect display formatting and system performance.
-- `PHONE`: Phone number (8-digit Singapore phone number only)
+- `PHONE`: Phone number (8-digit Singapore phone number only; must start with 6, 8, or 9)
    - Regional requirement: Singapore uses 8-digit phone numbers for both mobile and landline services. This validation ensures data consistency for local operations.
 - `EMAIL`: Email address (case-insensitive; must follow standard email format; maximum of 50 characters)
    - Limitation rationale: The 50-character limit covers most professional email addresses while preventing excessively long entries.
@@ -541,7 +546,8 @@ Exiting playbook.io as requested ...
 - `AMOUNT`: Amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
    - Currency: All amounts are in Singapore Dollars (SGD) 
    - Format rationale: Integer-only format simplifies calculations and prevents errors. The maximum value accommodates even the largest sports contracts globally.
-
+- `KEYWORD`: Keyword to be searched (spaces allowed, case-insensitive; cannot be blank or consist of only spaces)
+  
 ### Keyboard Shortcuts
 
 | Shortcut               | Action            | Description                  |
@@ -693,7 +699,7 @@ This is the maximum value for a 64-bit integer (`Long.MAX_VALUE`) in Java, which
 
 **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
 
-**Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
+**Fuzzy Matching**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
 
 **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
 
