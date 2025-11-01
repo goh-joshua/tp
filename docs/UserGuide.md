@@ -166,8 +166,8 @@ Athletes are the heart of your business. playbook.io makes it easy to track thei
 - `n/NAME`: Full name of the athlete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Sport of the athlete (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
 - `a/AGE`: Age of the athlete (positive integers only, ranging from 1 to 99)
-- `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only; maximum of 50 characters)
-- `e/EMAIL`: Email address of the athlete (case-insensitive; must follow standard email format)
+- `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only)
+- `e/EMAIL`: Email address of the athlete (case-insensitive; must follow standard email format; maximum of 50 characters)
 
 <div style="page-break-before: always;"></div>
 
