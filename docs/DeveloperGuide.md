@@ -410,7 +410,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 (For all use cases below, the **System** is the `playbook.io` and the **Actor** is the `user`, unless specified
 otherwise)
 
-**Use case: Add Athlete Profile**
+**Use case: UC01 - Add Athlete Profile**
 
 **MSS**
 
@@ -446,7 +446,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Delete Athlete Profile**
+**Use case: UC02 - Delete Athlete Profile**
 
 **MSS**
 
@@ -488,7 +488,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Add Organization Profile**
+**Use case: UC03 - Add Organization Profile**
 
 **MSS**
 
@@ -523,7 +523,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Delete Organization**
+**Use case: UC04 - Delete Organization**
 
 **MSS**
 
@@ -565,7 +565,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Add Contract**
+**Use case: UC05 - Add Contract**
 
 **MSS**
 
@@ -611,7 +611,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Delete Contract**
+**Use case: UC06 - Delete Contract**
 
 **MSS**
 
@@ -647,7 +647,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Find Athlete**
+**Use case: UC07 - Find Athlete**
 
 **MSS**
 
@@ -683,7 +683,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Find Organization**
+**Use case: UC08 - Find Organization**
 
 **MSS**
 
@@ -719,7 +719,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Find Contract**
+**Use case: UC09 - Find Contract**
 
 **MSS**
 
@@ -755,7 +755,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Refresh Data**
+**Use case: UC10 - Refresh Data**
 
 **MSS**
 
@@ -771,7 +771,7 @@ otherwise)
 
       Use case ends.
 
-**Use case: View Help Information**
+**Use case: UC11 - View Help Information**
 
 **MSS**
 
@@ -787,7 +787,7 @@ otherwise)
 
       Use case ends.
 
-**Use case: Close Session**
+**Use case: UC12 - Close Session**
 
 **MSS**
 
@@ -808,15 +808,17 @@ otherwise)
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 athletes, organizations, and contracts without a noticeable sluggishness in
-   performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
-   able to accomplish most of the tasks faster using commands than using the mouse.
+2. Should be able to hold up to 1000 athletes, organizations, and contracts while maintaining an average response time 
+   of under 2 seconds for common operations (e.g., adding, deleting, or searching) under typical usage conditions.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands), typically
+   around 50–60 words per minute (WPM), should be able to accomplish most of the tasks faster using commands than using
+   the mouse.
 4. Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid
    input is detected.
 5. Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for
    ease of deployment across environments.
-6. Should allow a new user to learn the system within 10 minutes by following the user guide.
+6. Should allow a new user to perform basic operations (e.g., adding, deleting and finding athletes, organizations, 
+   and contracts) within 10 minutes of using the application, by following the provided user guide.
 7. Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes,
    organizations, or contracts under normal usage load.
 8. Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport).
@@ -826,10 +828,9 @@ otherwise)
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Athlete**: An individual sports performer managed by the agent, with contact details and sport specialization.
 * **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
-* **Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
+* **Fuzzy Matching**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
 * **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
 * **Sports Agent**: A professional who represents athletes in contract negotiations and career management.
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Appendix: Instructions for manual testing
@@ -844,7 +845,11 @@ Given below are instructions to test the app manually.
 #### 1. Initial launch
 
 1. Download the jar file and copy into an empty folder.
-2. Double-click the jar file.
+2. Open a terminal, navigate (`cd`) to that folder, and run:
+
+   ```
+   java -jar playbook.jar
+   ```
 
 **Expected:**
 Shows the GUI. The window size may not be optimum.
@@ -896,7 +901,7 @@ The most recent window size and location is retained.
    pane.
 3. **Test case:** `add-o o/Nike p/+6598765432 e/partnerships@nike.com`  
    **Expected:** No organization is added. Error details shown in the result pane.
-4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/Nike123 p/98765432 e/partnerships@nike.com`, `...`  
+4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/&Nike p/98765432 e/partnerships@nike.com`, `...`  
    **Expected:** Similar to previous.
 
 ### Deleting an organization
@@ -906,11 +911,11 @@ The most recent window size and location is retained.
 1. **Prerequisites:**
     - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
     - Ensure organization to be deleted has no existing contracts.
-2. **Test case:** `delete-o n/Nike`  
+2. **Test case:** `delete-o o/Nike`  
    **Expected:** Organization is deleted from the list. Details of the deleted organization shown in the result pane.
-3. **Test case:** `delete-o n/`  
+3. **Test case:** `delete-o o/`  
    **Expected:** No organization is deleted. Error details shown in the result pane.
-4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o n/Nike1`, `...`  
+4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o o/Nike!`, `...`  
    **Expected:** Similar to previous.
 
 ### Adding a contract

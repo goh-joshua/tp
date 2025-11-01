@@ -37,7 +37,7 @@ public class AthleteListPanelTest {
                 .withName("Test Athlete")
                 .withSport("Running")
                 .withAge("22")
-                .withPhone("12345678")
+                .withPhone("99990000")
                 .withEmail("test@example.com")
                 .build();
         athleteList.add(athlete);
