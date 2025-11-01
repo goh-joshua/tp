@@ -900,7 +900,7 @@ The most recent window size and location is retained.
    pane.
 3. **Test case:** `add-o o/Nike p/+6598765432 e/partnerships@nike.com`  
    **Expected:** No organization is added. Error details shown in the result pane.
-4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/Nike123 p/98765432 e/partnerships@nike.com`, `...`  
+4. **Other incorrect add-o commands to try:** `add-o`, `add-o o/&Nike p/98765432 e/partnerships@nike.com`, `...`  
    **Expected:** Similar to previous.
 
 ### Deleting an organization
@@ -914,7 +914,7 @@ The most recent window size and location is retained.
    **Expected:** Organization is deleted from the list. Details of the deleted organization shown in the result pane.
 3. **Test case:** `delete-o o/`  
    **Expected:** No organization is deleted. Error details shown in the result pane.
-4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o o/Nike1`, `...`  
+4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o o/Nike!`, `...`  
    **Expected:** Similar to previous.
 
 ### Adding a contract

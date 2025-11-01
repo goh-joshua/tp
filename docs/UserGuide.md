@@ -240,7 +240,7 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 
 **Parameters:**
 
-- `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
+- `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
 - `p/PHONE`: Phone number of the organization (8-digit Singapore phone number only)
 - `e/EMAIL`: Email address of the organization (case-insensitive; must follow standard email format; maximum of 50 characters)
 
@@ -278,7 +278,7 @@ New organization added: Nike; Phone: 98765432; Email: partnerships@nike.com
 
 **Parameters:**
 
-- `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
+- `o/ORG_NAME`: Name of the organization to delete (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
 
 <div style="page-break-before: always;"></div>
 
@@ -316,7 +316,7 @@ Contracts link athletes with organizations and track the business relationships 
 
 - `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
-- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
 - `am/AMOUNT`: Contract amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
@@ -358,7 +358,7 @@ Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; 
 
 - `n/NAME`: Athlete's full name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Athlete's sport (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
-- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
+- `o/ORG_NAME`: Organization's name (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
 - `sd/DDMMYYYY`: Start date (must be in the DDMMYYYY format)
 - `ed/DDMMYYYY`: End date (must be in the DDMMYYYY format)
 - `am/AMOUNT`: Contract amount (positive integers only; supports large values up to 9,223,372,036,854,775,807; no currency symbols or commas)
@@ -531,8 +531,8 @@ Exiting playbook.io as requested ...
    - Limitation rationale: The 50-character limit covers all major sports names and disciplines while preventing extremely long entries that could affect display formatting and system performance.
 - `AGE`: Age (positive integers only, ranging from 1 to 99)
    - Limitation rationale: Covers the realistic age range for professional athletes across all sports.
-- `ORG_NAME`: Organization name (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters)
-   - Character restrictions: Only letters, hyphens (-), and apostrophes (') are allowed to accommodate legitimate organization names like "McDonald's" or "Hewlett-Packard" while preventing special characters that could cause display or data processing issues.
+- `ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
+   - Character restrictions: Only alphanumeric characters, hyphens (-), apostrophes ('), and ampersands (&) are allowed to accommodate legitimate organization names like "McDonald's" or "Hewlett-Packard" while preventing special characters that could cause display or data processing issues.
    - Limitation rationale: The 50-character limit accommodates most organization names, including full legal names and brand names, while preventing extremely long entries that could affect display formatting and system performance.
 - `PHONE`: Phone number (8-digit Singapore phone number only)
    - Regional requirement: Singapore uses 8-digit phone numbers for both mobile and landline services. This validation ensures data consistency for local operations.

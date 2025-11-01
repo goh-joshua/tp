@@ -12,14 +12,14 @@ import java.util.Locale;
 public class OrganizationName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Error: Names should only contain alphabetic characters, spaces, hyphens, and apostrophes, "
-                    + "must start with a letter, cannot be blank, and be at most 50 characters.";
+            "Error: Names should only contain alphanumeric characters, spaces, hyphens, apostrophes, or ampersands, "
+                    + "must start with an alphanumeric character, cannot be blank, and be at most 50 characters.";
 
     /*
-     * Organization names can include letters, spaces, apostrophes,and hyphens.
-     * Must contain at least one alphanumeric character and cannot be blank.
+     * Organization names can include letters, numbers, spaces, apostrophes, hyphens, and ampersands.
+     * Must start with an alphanumeric character and be at most 50 characters.
      */
-    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[A-Za-z][A-Za-z' -]*$";
+    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[A-Za-z0-9][A-Za-z0-9' &-]*$";
 
     public final String fullOrganizationName;
 
