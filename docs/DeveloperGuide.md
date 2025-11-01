@@ -906,11 +906,11 @@ The most recent window size and location is retained.
 1. **Prerequisites:**
     - Switch to the Organizations Tab by pressing **Cmd+2** (or **Ctrl+2** on Windows/Linux).
     - Ensure organization to be deleted has no existing contracts.
-2. **Test case:** `delete-o n/Nike`  
+2. **Test case:** `delete-o o/Nike`  
    **Expected:** Organization is deleted from the list. Details of the deleted organization shown in the result pane.
-3. **Test case:** `delete-o n/`  
+3. **Test case:** `delete-o o/`  
    **Expected:** No organization is deleted. Error details shown in the result pane.
-4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o n/Nike1`, `...`  
+4. **Other incorrect delete-o commands to try:** `delete-o`, `delete-o o/Nike1`, `...`  
    **Expected:** Similar to previous.
 
 ### Adding a contract
