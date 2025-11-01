@@ -808,15 +808,16 @@ otherwise)
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 athletes, organizations, and contracts without a noticeable sluggishness in
-   performance for typical usage.
+2. Should be able to hold up to 1000 athletes, organizations, and contracts while maintaining an average response time 
+   of under 2 seconds for common operations (e.g., adding, deleting, or searching) under typical usage conditions.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should validate all input data (e.g., names, emails, dates, amounts) and provide clear error messages when invalid
    input is detected.
 5. Should allow the application to be packaged and distributed in a portable format (e.g., JAR or Docker container) for
    ease of deployment across environments.
-6. Should allow a new user to learn the system within 10 minutes by following the user guide.
+6. Should allow a new user to perform basic operations (e.g., adding, deleting and finding athletes, organizations, 
+   and contracts) within 10 minutes of using the application, by following the provided user guide.
 7. Should provide consistent response times (<2 seconds) for retrieval commands such as searching athletes,
    organizations, or contracts under normal usage load.
 8. Should prevent duplicate records by enforcing unique key constraints (e.g., same athlete name + sport).
