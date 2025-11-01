@@ -844,7 +844,11 @@ Given below are instructions to test the app manually.
 #### 1. Initial launch
 
 1. Download the jar file and copy into an empty folder.
-2. Double-click the jar file.
+2. Open a terminal, navigate (`cd`) to that folder, and run:
+
+   ```
+   java -jar playbook.jar
+   ```
 
 **Expected:**
 Shows the GUI. The window size may not be optimum.
