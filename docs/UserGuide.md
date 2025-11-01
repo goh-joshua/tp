@@ -425,7 +425,7 @@ You can refresh the display anytime using Cmd+R (macOS) or Ctrl+R (Windows/Linux
 
 <div markdown="block" class="alert alert-info">
 
-**💡 Fuzzy Search Features:**
+**💡 Fuzzy Matching Features:**
 
 - **Exact matches**: "Nike" will find "Nike" instantly
 - **Substring matches**: "Man" will find "Manchester United"
@@ -693,7 +693,7 @@ This is the maximum value for a 64-bit integer (`Long.MAX_VALUE`) in Java, which
 
 **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
 
-**Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
+**Fuzzy Matching**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
 
 **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
 
