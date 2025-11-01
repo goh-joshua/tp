@@ -496,18 +496,18 @@ Exiting playbook.io as requested ...
 
 ### Quick Syntax Guide
 
-| Command    | Syntax                                                    | Description          |
-| ---------- | --------------------------------------------------------- | -------------------- |
-| `add-a`    | `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL`              | Add new athlete      |
-| `delete-a` | `delete-a n/NAME s/SPORT`                                 | Delete athlete       |
-| `add-o`    | `add-o o/ORG_NAME p/PHONE e/EMAIL`                        | Add new organization |
-| `delete-o` | `delete-o o/ORG_NAME`                                     | Delete organization  |
-| `add-c`    | `add-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT`    | Add new contract     |
-| `delete-c` | `delete-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT` | Delete contract      |
-| `find`     | `find -[an\|as\|on\|ca\|co\|cs] KEYWORD`                  | Search/filter data   |
-| `refresh`  | `refresh`                                                 | Clear all filters    |
-| `help`     | `help`                                                    | Open help window     |
-| `exit`     | `exit`                                                    | Close application    |
+| Command    | Syntax                                                                                                                                        | Description          |
+| ---------- |-----------------------------------------------------------------------------------------------------------------------------------------------| -------------------- |
+| `add-a`    | `add-a n/NAME s/SPORT a/AGE p/PHONE e/EMAIL`                                                                                                  | Add new athlete      |
+| `delete-a` | `delete-a n/NAME s/SPORT`                                                                                                                     | Delete athlete       |
+| `add-o`    | `add-o o/ORG_NAME p/PHONE e/EMAIL`                                                                                                            | Add new organization |
+| `delete-o` | `delete-o o/ORG_NAME`                                                                                                                         | Delete organization  |
+| `add-c`    | `add-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT`                                                                                        | Add new contract     |
+| `delete-c` | `delete-c n/NAME s/SPORT o/ORG sd/DATE ed/DATE am/AMOUNT`                                                                                     | Delete contract      |
+| `find`     | `find -an KEYWORD`<br/>`find -as KEYWORD` <br/> `find -on KEYWORD` <br/> `find -ca KEYWORD` <br/> `find -co KEYWORD` <br/> `find -cs KEYWORD` | Search/filter data   |
+| `refresh`  | `refresh`                                                                                                                                     | Clear all filters    |
+| `help`     | `help`                                                                                                                                        | Open help window     |
+| `exit`     | `exit`                                                                                                                                        | Close application    |
 
 <div markdown="block" class="alert alert-info">
 
