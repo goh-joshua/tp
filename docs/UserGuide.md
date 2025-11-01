@@ -101,6 +101,8 @@ This guide is designed for **sports agents and talent managers** operating in Si
 
    ![Ui](images/Ui.png)
 
+> **Note:** The screenshot above shows sample data. When you first launch the app, your screen will be blank until you add your own entries.
+
 ### Understanding the Interface
 
 The playbook.io interface consists of five main areas:
