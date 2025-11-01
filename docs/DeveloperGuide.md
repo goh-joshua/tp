@@ -410,7 +410,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 (For all use cases below, the **System** is the `playbook.io` and the **Actor** is the `user`, unless specified
 otherwise)
 
-**Use case: Add Athlete Profile**
+**Use case: UC01 - Add Athlete Profile**
 
 **MSS**
 
@@ -446,7 +446,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Delete Athlete Profile**
+**Use case: UC02 - Delete Athlete Profile**
 
 **MSS**
 
@@ -488,7 +488,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Add Organization Profile**
+**Use case: UC03 - Add Organization Profile**
 
 **MSS**
 
@@ -523,7 +523,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Delete Organization**
+**Use case: UC04 - Delete Organization**
 
 **MSS**
 
@@ -565,7 +565,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Add Contract**
+**Use case: UC05 - Add Contract**
 
 **MSS**
 
@@ -611,7 +611,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Delete Contract**
+**Use case: UC06 - Delete Contract**
 
 **MSS**
 
@@ -647,7 +647,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Find Athlete**
+**Use case: UC07 - Find Athlete**
 
 **MSS**
 
@@ -683,7 +683,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Find Organization**
+**Use case: UC08 - Find Organization**
 
 **MSS**
 
@@ -719,7 +719,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Find Contract**
+**Use case: UC09 - Find Contract**
 
 **MSS**
 
@@ -755,7 +755,7 @@ otherwise)
 
 <div style="page-break-before: always;"></div>
 
-**Use case: Refresh Data**
+**Use case: UC10 - Refresh Data**
 
 **MSS**
 
@@ -771,7 +771,7 @@ otherwise)
 
       Use case ends.
 
-**Use case: View Help Information**
+**Use case: UC11 - View Help Information**
 
 **MSS**
 
@@ -787,7 +787,7 @@ otherwise)
 
       Use case ends.
 
-**Use case: Close Session**
+**Use case: UC12 - Close Session**
 
 **MSS**
 
