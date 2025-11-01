@@ -826,10 +826,9 @@ otherwise)
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Athlete**: An individual sports performer managed by the agent, with contact details and sport specialization.
 * **Contract**: A business agreement between an athlete and organization, including financial terms and duration.
-* **Fuzzy Search**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
+* **Fuzzy Matching**: A search method that finds results even with typos or partial matches, using intelligent algorithms.
 * **Organization**: Any business entity that contracts with athletes - teams, sponsors, agencies, brands, etc.
 * **Sports Agent**: A professional who represents athletes in contract negotiations and career management.
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Appendix: Instructions for manual testing
