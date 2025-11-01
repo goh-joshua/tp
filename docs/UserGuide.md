@@ -168,7 +168,7 @@ Athletes are the heart of your business. playbook.io makes it easy to track thei
 - `n/NAME`: Full name of the athlete (spaces allowed, case-insensitive; accepts alphabetic characters, hyphens, and apostrophes; must start with a letter; maximum of 50 characters, including spaces)
 - `s/SPORT`: Sport of the athlete (spaces allowed, case-insensitive; alphabetic characters only; maximum of 50 characters)
 - `a/AGE`: Age of the athlete (positive integers only, ranging from 1 to 99)
-- `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only)
+- `p/PHONE`: Phone number of the athlete (8-digit Singapore phone number only; must start with 6, 8, or 9)
 - `e/EMAIL`: Email address of the athlete (case-insensitive; must follow standard email format; maximum of 50 characters)
 
 <div style="page-break-before: always;"></div>
@@ -241,7 +241,7 @@ Organizations include teams, sponsors, agencies, and any entity that contracts w
 **Parameters:**
 
 - `o/ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
-- `p/PHONE`: Phone number of the organization (8-digit Singapore phone number only)
+- `p/PHONE`: Phone number of the organization (8-digit Singapore phone number only; must start with 6, 8, or 9)
 - `e/EMAIL`: Email address of the organization (case-insensitive; must follow standard email format; maximum of 50 characters)
 
 **Examples:**
@@ -534,7 +534,7 @@ Exiting playbook.io as requested ...
 - `ORG_NAME`: Name of the organization (spaces allowed, case-insensitive; accepts alphanumeric characters, hyphens, apostrophes, and ampersands; must start with a alphanumeric character; maximum of 50 characters, including spaces)
    - Character restrictions: Only alphanumeric characters, hyphens (-), apostrophes ('), and ampersands (&) are allowed to accommodate legitimate organization names like "McDonald's" or "Hewlett-Packard" while preventing special characters that could cause display or data processing issues.
    - Limitation rationale: The 50-character limit accommodates most organization names, including full legal names and brand names, while preventing extremely long entries that could affect display formatting and system performance.
-- `PHONE`: Phone number (8-digit Singapore phone number only)
+- `PHONE`: Phone number (8-digit Singapore phone number only; must start with 6, 8, or 9)
    - Regional requirement: Singapore uses 8-digit phone numbers for both mobile and landline services. This validation ensures data consistency for local operations.
 - `EMAIL`: Email address (case-insensitive; must follow standard email format; maximum of 50 characters)
    - Limitation rationale: The 50-character limit covers most professional email addresses while preventing excessively long entries.

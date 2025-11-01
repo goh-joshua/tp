@@ -46,7 +46,7 @@ import seedu.address.storage.StorageManager;
 
 public class LogicManagerTest {
     private static final String VALID_ORG_NAME = "Acme Sports";
-    private static final String VALID_ORG_PHONE = "12345678";
+    private static final String VALID_ORG_PHONE = "99998888";
     private static final String VALID_ORG_EMAIL = "contact@acme.com";
     private static final String VALID_ADD_ORG_COMMAND =
             "add-o o/" + VALID_ORG_NAME + " p/" + VALID_ORG_PHONE + " e/" + VALID_ORG_EMAIL;
