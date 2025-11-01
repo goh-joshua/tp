@@ -330,7 +330,7 @@ add-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/500
 **Expected Output:**
 
 ```
-Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Contract created: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01012024; End: 01012025; Amount: 50000000
 ```
 
 <div markdown="block" class="alert alert-warning">
@@ -372,7 +372,7 @@ delete-c n/Michael Jordan s/Basketball o/IMG Academy sd/01012020 ed/31122024 am/
 **Expected Output:**
 
 ```
-Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01/01/2024; End: 01/01/2025; Amount: 50000000
+Deleted contract: Athlete: Lebron James; Sport: Basketball; Organization: Nike; Start: 01012024; End: 01012025; Amount: 50000000
 ```
 <div markdown="block" class="alert alert-warning">
 
